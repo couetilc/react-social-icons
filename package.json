@@ -4,6 +4,7 @@
   "description": "efficient svg social icons",
   "main": "index.js",
   "scripts": {
+    "start": "sh scripts/dev-examples.sh",
     "test": "./node_modules/.bin/karma start",
     "test-dev": "./node_modules/.bin/karma start --auto-watch --no-single-run"
   },
