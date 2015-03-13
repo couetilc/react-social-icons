@@ -35,8 +35,8 @@ describe('SocialIcon', function () {
     should.exist(container);
   });
 
-  it('renders the svg', function () {
-    var svg = TestUtils.findRenderedDOMComponentWithTag(socialIcon, 'svg');
+  it('renders the display svg', function () {
+    var svg = TestUtils.findRenderedDOMComponentWithClass(socialIcon, 'social-svg');
     should.exist(svg);
   });
 
