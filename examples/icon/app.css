@@ -1,0 +1,29 @@
+.container {
+  width: 900px;
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+#sizes .social-icon {
+  vertical-align: bottom;
+}
+#sizes .social-mask {
+  fill: pink;
+}
+
+#sizes .sm {
+  height: 25px;
+  width: 25px;
+}
+#sizes .med {
+  height: 50px;
+  width: 50px;
+}
+#sizes .lrg {
+  height: 100px;
+  width: 100px;
+}
+#sizes .xlrg {
+  height: 200px;
+  width: 200px;
+}

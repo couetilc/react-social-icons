@@ -1,6 +1,3 @@
-#social-symbols {
-  display: none;
-}
 .social-icons {
   text-align: center;
 }
@@ -9,14 +6,12 @@
 
   width: 50px;
   height: 50px;
-  margin: 0 4px;
   border-radius: 50%;
 
   position: relative;
   overflow: hidden;
   vertical-align: middle;
 }
-
 .social-icon .social-container {
   position: absolute;
   top: 0;
@@ -24,7 +19,6 @@
   width: 100%;
   height: 100%;
 }
-
 .social-icon .social-svg {
   position: absolute;
   top: 0;
@@ -32,13 +26,12 @@
   width: 100%;
   height: 100%;
 }
-
-.use-background,
-.use-icon,
-.use-mask {
+.social-background,
+.social-icon,
+.social-mask {
   transition: fill 170ms ease-in-out;
   fill: transparent;
 }
-.use-mask {
+.social-mask {
   fill: #0f0b0b;
 }
