@@ -1,16 +1,54 @@
+body {
+  font-family: "Bookman", Georgia, "Times New Roman", serif;
+  font-size: 18px;
+  background: #efefef;
+}
+h1, h2, h3, h4 {
+  font-family: "Roboto Slab", "HelveticaNeue-Light", "Helvetica Neue", Calibri, Helvetica, Arial;
+}
+h1 {
+  color: #ff4220;
+  text-shadow: 0 1px 0 rgba(0,0,0,.5);
+}
+h2 {
+  margin-top: 55px;
+}
+
+
+/* code style */
+pre {
+  max-width: 100%;
+  white-space: no-wrap;
+  border-radius: 0.4em;
+  padding: .8em .6em;
+  overflow: scroll;
+  vertical-align: middle;
+  background: #e9e9e9;
+  border: 1px solid #cdcdcd;
+}
+p code, li code {
+  display: inline-block;
+  white-space: no-wrap;
+  background: #fff;
+  font-size: .8em;
+  line-height: 1.5em;
+  color: #555;
+  border: 1px solid #ddd;
+  border-radius: 0.4em;
+  padding: 0 .3em;
+  margin: -1px 0;
+}
+
 .container {
-  width: 900px;
+  width: 850px;
   max-width: 100%;
   margin: 0 auto;
 }
 
 #sizes .social-icon {
   vertical-align: bottom;
+  margin-right: 10px;
 }
-#sizes .social-mask {
-  fill: pink;
-}
-
 #sizes .sm {
   height: 25px;
   width: 25px;
@@ -26,4 +64,27 @@
 #sizes .xlrg {
   height: 200px;
   width: 200px;
+}
+
+#lib .social-icon {
+  margin: 0 20px 20px 0;
+}
+
+#lib .social-icon:hover {
+  transform: scale(1.1);
+  box-shadow: 1px 1px 4px rgba(0,0,0,.5);
+}
+
+.one-line-example {
+  display: flex;
+  flex-wrap: nowrap;
+  align-content: flex-start;
+}
+.one-line-example .icon {
+  width: 100px;
+  margin-top: 8px;
+  text-align: center;
+}
+.one-line-example .code pre {
+  margin: 0;
 }

@@ -18,5 +18,15 @@ var lib = (
   </div>
 )
 
+var urlExample = (
+  <SocialIcon url="http://linkedin.com/in/jaketrent" />
+)
+
+var networkExample = (
+  <SocialIcon network="tumblr" url="http://jaketrent.com" />
+)
+
 React.render(sizes, document.getElementById('sizes'));
 React.render(lib, document.getElementById('lib'));
+React.render(networkExample, document.getElementById('network-example'));
+React.render(urlExample, document.getElementById('url-example'));
