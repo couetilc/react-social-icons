@@ -35,7 +35,8 @@ module.exports = {
 
   module: {
     loaders: [
-      { test: /\.js$/, exclude: /node_modules/, loader: '6to5?experimental' }
+      { test: /\.js$/, exclude: /node_modules/, loader: '6to5?experimental' },
+      { test: /\.scss/, loader:'style-loader!css-loader!autoprefixer-loader?browsers=last 2 version!sass-loader'},
     ]
   },
 
