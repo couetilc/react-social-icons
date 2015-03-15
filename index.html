@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+  <meta charset="UTF-8">
+  <title>Social Icon</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+  <link rel="stylesheet" type="text/css" href="examples/icon/app.css"/>
+  <link href='http://fonts.googleapis.com/css?family=Roboto+Slab' rel='stylesheet' type='text/css'>
+</head>
+<body class="black index">
+  <span><a target="_top" href="https://github.com/jaketrent/react-social-icons"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/a6677b08c955af8400f44c6298f40e7d19cc5b2d/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f677261795f3664366436642e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png"></a></span>
+
+  <div class="container">
+    <h1><a href="https://github.com/jaketrent/react-social-icons">react-social-icons</a></h1>
+    <p>A set of beautiful svg social icons.  Easily used in React.  No images or external css dependencies.</p>
+
+    <h2>Library</h2>
+    <p>Here are the available icons.</p>
+    <div id="lib"></div>
+
+    <h2>Usage</h2>
+    <h3>Single Icon</h3>
+
+    <h4>Detect URL</h4>
+    <p>By default, pass the <code>url</code> of your social network, and the icon will be detected from the url.</p>
+    <div class="one-line-example">
+      <div class="icon" id="url-example"></div>
+      <code class="code">
+        <pre>&lt;SocialIcon url="http://linkedin.com/in/jaketrent" /&gt;</pre>
+      </code>
+    </div>
+
+    <h4>Specify Network</h4>
+    <p>
+      If you have a need to specify the network, you can.  If you don't specify a url, your
+      <code>href</code> attribute will be omitted.  You can include props for both <code>url</code>
+      and <code>network</code>.  The <code>network</code> prop takes precedence.
+    </p>
+    <div class="one-line-example">
+      <div class="icon" id="network-example"></div>
+      <code class="code">
+        <pre>&lt;SocialIcon url="http://jaketrent.com" network="tumblr" /&gt;</pre>
+      </code>
+    </div>
+
+    <h4>Specify the Color</h4>
+    <p>
+      You can override the fill color associated with the network with the <code>color</code> prop.
+    </p>
+    <div class="one-line-example">
+      <div class="icon" id="color-example"></div>
+      <code class="code">
+        <pre>&lt;SocialIcon network="twitter" color="#ff5a01" /&gt;</pre>
+      </code>
+    </div>
+
+    <h4>Render</h4>
+    <p>The full code required to render.</p>
+    <code class="code">
+        <pre>var React = require('react');
+var { SocialIcon } = require('react-social-icons');
+React.render(&lt;SocialIcon url="http://linkedin.com/in/jaketrent" /&gt;, document.body);</pre>
+    </code>
+
+    <h3>Multiple Icons</h3>
+    <p>As a convenience api for rendering a collection of icons, <code>&lt;SocialIcons /&gt;</code> is provided.</p>
+
+    <h4>Detect from URLs</h4>
+    <p>You can easily render a set of social icons from an array of <code>urls</code>.  <i>Notice</i>: the default icon is displayed for the url (<code>jaketrent.com</code>) that is from an unsupported network.</p>
+    <div id="icons-example" class="collection-example"></div>
+    <code>
+        <pre>var urls = [
+  'http://jaketrent.com',
+  'http://twitter.com/jaketrent',
+  'http://linkedin.com/in/jaketrent',
+  'http://www.pinterest.com/jaketrent/artsy-fartsy/'
+];
+&lt;SocialIcons urls={urls} /&gt;</pre>
+    </code>
+
+    <h4>Specify all the Colors</h4>
+    <p>Or set a uniform color across your icons.  Look at that nice, tight set of icons!</p>
+    <div id="icons-color-example" class="collection-example"></div>
+    <code>
+        <pre>&lt;SocialIcons urls={urls} color="black" /&gt;</pre>
+    </code>
+
+    <h2>It scales!</h2>
+    <p>Witness the beautiful SVG in action.</p>
+    <p><i>Note:</i> this library injects on-page <code>style</code> tags into the <code>head</code>.  This is great because you don't have to import any additional stylesheet to support this library.  But more specificity in selectors will be required when overriding default styles from external stylesheets.</p>
+    <div id="sizes"></div>
+
+    <h2>Feedback</h2>
+    <p>If you're interested in adding additional networks or helping make the library better, <a href="https://github.com/jaketrent/react-social-icons">fork it on github</a> and let the code fly!</p>
+
+    <footer class="footer">
+      <p>
+        <a href="https://github.com/jaketrent/react-social-icons/blob/master/LICENSE.md">MIT Licensed</a>
+        - from
+        <a href="http://jaketrent.com">Jake Trent</a>
+      </p>
+    </footer>
+  </div>
+
+  <script src="examples/__build__/shared.js"></script>
+  <script src="examples/__build__/icon.js"></script>
+</body>
+
+
+</html>
