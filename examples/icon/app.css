@@ -2,6 +2,7 @@ body {
   font-family: "Bookman", Georgia, "Times New Roman", serif;
   font-size: 18px;
   background: #efefef;
+  color: #1a1a1a;
 }
 h1, h2, h3, h4 {
   font-family: "Roboto Slab", "HelveticaNeue-Light", "Helvetica Neue", Calibri, Helvetica, Arial;
@@ -9,6 +10,10 @@ h1, h2, h3, h4 {
 h1 {
   color: #ff4220;
   text-shadow: 0 1px 0 rgba(0,0,0,.5);
+}
+h1 a {
+  color: inherit;
+  text-decoration: none;
 }
 h2 {
   margin-top: 55px;
@@ -23,7 +28,7 @@ pre {
   padding: .8em .6em;
   overflow: scroll;
   vertical-align: middle;
-  background: #e9e9e9;
+  background: #fff;
   border: 1px solid #cdcdcd;
 }
 p code, li code {
@@ -82,9 +87,18 @@ p code, li code {
 }
 .one-line-example .icon {
   width: 100px;
-  margin-top: 8px;
   text-align: center;
 }
 .one-line-example .code pre {
   margin: 0;
+}
+
+
+.footer {
+  margin: 50px auto;
+  text-align: center;
+}
+.footer a {
+  color: #1a1a1a;
+  text-decoration: none;
 }

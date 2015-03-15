@@ -14,7 +14,7 @@ var sizes = (
 
 var lib = (
   <div>
-    {networks.KEYS.map((k) => { return <SocialIcon network={k} />; })}
+    {networks.KEYS.map((k) => { return <SocialIcon network={k} title={k} key={k} />; })}
   </div>
 )
 
