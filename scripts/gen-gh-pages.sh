@@ -4,7 +4,11 @@
 
 node_modules/.bin/webpack --content-base examples/
 cp examples/index.html index.html
-sed -i '' -- 's/__build__/examples\/__build__/g' index.html
-sed -i '' -- 's/icon\//examples\/icon\//g' index.html
-git add examples/__build__ index.html
+cp examples/__build__/* site/
+cp examples/icon/*.css site/
+
+sed -i '' -- 's/__build__/site/g' index.html
+sed -i '' -- 's/icon\//site\//g' index.html
+
+git add index.html site/
 git commit -m "gen gh-pages from examples"
