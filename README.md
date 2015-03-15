@@ -19,3 +19,5 @@ var React = require('react');
 var { SocialIcon } = require('react-social-icons');
 React.render(<SocialIcon url="http://twitter.com/jaketrent" />, document.body);
 ```
+
+See more [usage options on the example site](http://jaketrent.github.io/react-social-icons/).
