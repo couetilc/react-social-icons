@@ -26,12 +26,12 @@
   width: 100%;
   height: 100%;
 }
-.social-background,
-.social-icon,
-.social-mask {
+.social-svg-background,
+.social-svg-icon,
+.social-svg-mask {
   transition: fill 170ms ease-in-out;
   fill: transparent;
 }
-.social-mask {
+.social-svg-mask {
   fill: #0f0b0b;
 }

@@ -1,6 +1,6 @@
 {
   "name": "react-social-icons",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "efficient svg social icons",
   "main": "index.js",
   "scripts": {

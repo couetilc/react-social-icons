@@ -41,7 +41,7 @@ describe('SocialIcon', function () {
   });
 
   it('renders a circle for the background', function () {
-    var bgG = TestUtils.findRenderedDOMComponentWithClass(socialIcon, 'svg-background');
+    var bgG = TestUtils.findRenderedDOMComponentWithClass(socialIcon, 'social-svg-background');
     should.exist(bgG);
     var circle = TestUtils.findRenderedDOMComponentWithTag(bgG, 'circle');
     should.exist(circle);
@@ -64,6 +64,16 @@ describe('SocialIcon', function () {
     }));
     var path = TestUtils.findRenderedDOMComponentWithTag(socialIcon.refs.icon, 'path');
     path.props.d.should.eql(networks.iconFor('github'));
-  })
+  });
+
+  it('takes a color prop for overriding default color', function () {
+    var color = 'pink';
+    socialIcon = TestUtils.renderIntoDocument(SocialIcon({
+      color: color,
+      network: 'github'
+    }));
+    var mask = TestUtils.findRenderedDOMComponentWithClass(socialIcon, 'social-svg-mask');
+    mask.props.style.fill.should.eql(color);
+  });
 
 });
