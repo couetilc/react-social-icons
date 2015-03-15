@@ -81,8 +81,11 @@ p code, li code {
 }
 
 .one-line-example {
+  display: -webkit-flex;
   display: flex;
+  -webkit-flex-wrap: nowrap;
   flex-wrap: nowrap;
+  -webkit-align-content: flex-start;
   align-content: flex-start;
 }
 .one-line-example .icon {
