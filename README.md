@@ -12,8 +12,10 @@ npm install react-social-icons --save-dev
 
 # Usage
 
+Pass in the `url` prop of your social network, and the icon will be rendered.
+
 ```js
 var React = require('react');
 var { SocialIcon } = require('react-social-icons');
-React.render(<SocialIcon url="http://linkedin.com/in/jaketrent" />, document.body);
+React.render(<SocialIcon url="http://twitter.com/jaketrent" />, document.body);
 ```
