@@ -1,6 +1,3 @@
-.social-icons {
-  text-align: center;
-}
 .social-icon {
   display: inline-block;
 
@@ -25,6 +22,7 @@
   left: 0;
   width: 100%;
   height: 100%;
+  fill-rule: evenodd;
 }
 .social-svg-background,
 .social-svg-icon,

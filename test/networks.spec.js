@@ -18,11 +18,11 @@ describe('networks', function () {
   describe('#keyFor', function () {
 
     it('returns "default" for null', function () {
-      networks.keyFor(null).should.eql('default');
+      networks.keyFor(null).should.eql('sharethis');
     });
 
-    it('returns "default" for unknown network url', function () {
-      networks.keyFor('unknownUrl.com').should.eql('default');
+    it('returns "sharethis" for unknown network url', function () {
+      networks.keyFor('unknownUrl.com').should.eql('sharethis');
     });
 
     it('returns key for key.com address', function () {

@@ -54,19 +54,19 @@ p code, li code {
   vertical-align: bottom;
   margin-right: 10px;
 }
-#sizes .sm {
+.social-icon.sm {
   height: 25px;
   width: 25px;
 }
-#sizes .med {
+.social-icon.med {
   height: 50px;
   width: 50px;
 }
-#sizes .lrg {
+.social-icon.lrg {
   height: 100px;
   width: 100px;
 }
-#sizes .xlrg {
+.social-icon.xlrg {
   height: 200px;
   width: 200px;
 }
@@ -94,6 +94,11 @@ p code, li code {
 }
 .one-line-example .code pre {
   margin: 0;
+}
+
+.collection-example .social-icon,
+.collection-example .social-icon {
+  margin-right: 6px;
 }
 
 

@@ -12,7 +12,7 @@
 
   <div class="container">
     <h1><a href="https://github.com/jaketrent/react-social-icons">react-social-icons</a></h1>
-    <p>A set of beautiful svg social icons.  Easily used in React.  No images or external css dependencies.  Svg paths provided by Squarespace.</p>
+    <p>A set of beautiful svg social icons.  Easily used in React.  No images or external css dependencies.</p>
 
     <h2>Library</h2>
     <p>Here are the available icons.</p>
@@ -50,7 +50,7 @@
     <div class="one-line-example">
       <div class="icon" id="color-example"></div>
       <code class="code">
-        <pre>&lt;SocialIcon network="pinterest" color="#ff5a01" /&gt;</pre>
+        <pre>&lt;SocialIcon network="twitter" color="#ff5a01" /&gt;</pre>
       </code>
     </div>
 
@@ -60,6 +60,29 @@
         <pre>var React = require('react');
 var { SocialIcon } = require('react-social-icons');
 React.render(&lt;SocialIcon url="http://linkedin.com/in/jaketrent" /&gt;, document.body);</pre>
+    </code>
+
+    <h3>Multiple Icons</h3>
+    <p>As a convenience api for rendering a collection of icons, <code>&lt;SocialIcons /&gt;</code> is provided.</p>
+
+    <h4>Detect from URLs</h4>
+    <p>You can easily render a set of social icons from an array of <code>urls</code>.  <i>Notice</i>: the default icon is displayed for the url (<code>jaketrent.com</code>) that is from an unsupported network.</p>
+    <div id="icons-example" class="collection-example"></div>
+    <code>
+        <pre>var urls = [
+  'http://jaketrent.com',
+  'http://twitter.com/jaketrent',
+  'http://linkedin.com/in/jaketrent',
+  'http://www.pinterest.com/jaketrent/artsy-fartsy/'
+];
+&lt;SocialIcons urls={urls} /&gt;</pre>
+    </code>
+
+    <h4>Specify all the Colors</h4>
+    <p>Or set a uniform color across your icons.  Look at that nice, tight set of icons!</p>
+    <div id="icons-color-example" class="collection-example"></div>
+    <code>
+        <pre>&lt;SocialIcons urls={urls} color="black" /&gt;</pre>
     </code>
 
     <h2>It scales!</h2>
