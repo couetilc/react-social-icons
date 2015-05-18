@@ -11,6 +11,7 @@
   "author": "jaketrent",
   "license": "MIT",
   "devDependencies": {
+    "6to5-loader": "^3.0.0",
     "autoprefixer-loader": "^1.2.0",
     "babel": "^4.7.7",
     "babel-core": "^4.7.7",

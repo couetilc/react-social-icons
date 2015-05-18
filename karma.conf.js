@@ -4,7 +4,7 @@ module.exports = function(config) {
     basePath: '',
     frameworks: ['mocha', 'chai'],
     files: [
-      'node_modules/6to5/browser-polyfill.js',
+      'node_modules/babel/browser-polyfill.js',
       'test/**/*.spec.js',
     ],
     exclude: [],
