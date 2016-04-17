@@ -56,7 +56,6 @@
     "babel-plugin-transform-runtime": "^6.7.5"
   },
   "peerDependencies": {
-    "react": "^0.14.8",
-    "react-dom": "^0.14.8"
+    "react": "0.14.x"
   }
 }
