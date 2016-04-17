@@ -12,6 +12,13 @@
   },
   "author": "jaketrent",
   "license": "MIT",
+  "contributors": [
+    "Vitaly Aminev <v@makeomatic.ru>"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AVVS/react-social-icons.git"
+  },
   "devDependencies": {
     "babel-eslint": "^6.0.2",
     "babel-loader": "^6.2.4",
