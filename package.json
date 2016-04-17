@@ -7,7 +7,7 @@
     "start": "./scripts/dev-examples.sh",
     "test": "./node_modules/.bin/karma start",
     "test-dev": "./node_modules/.bin/karma start --auto-watch --no-single-run",
-    "prepublish": "/node_modules/.bin/webpack --config ./webpack.config.node.js",
+    "prepublish": "./node_modules/.bin/webpack --config ./webpack.config.node.js",
     "publish": "./scripts/release.sh"
   },
   "author": "jaketrent",
