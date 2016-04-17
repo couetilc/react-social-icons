@@ -1,43 +1,43 @@
-var React = require('react');
+import React from 'react';
+import ReactDOM from 'react-dom';
+import * as networks from '../../lib/networks';
+import SocialIcon from '../../lib/social-icon';
+import SocialIcons from '../../lib/social-icons';
 
-var networks = require('../../lib/networks');
-var SocialIcon = require('../../lib/social-icon');
-var SocialIcons = require('../../lib/social-icons');
-
-var lib = (
+const lib = (
   <div>
-    {networks.KEYS.map((k) => { return <SocialIcon network={k} title={k} key={k} />; })}
+    {networks.KEYS.map((k) => (<SocialIcon network={k} title={k} key={k} />))}
   </div>
 );
 
-var urlExample = (
+const urlExample = (
   <SocialIcon url="http://linkedin.com/in/jaketrent" />
 );
 
-var networkExample = (
+const networkExample = (
   <SocialIcon network="tumblr" url="http://jaketrent.com" />
 );
 
-var colorExample = (
+const colorExample = (
   <SocialIcon network="twitter" color="#ff5a01" />
 );
 
-var urls = [
+const urls = [
   'http://jaketrent.com',
   'http://twitter.com/jaketrent',
   'http://linkedin.com/in/jaketrent',
-  'https://www.pinterest.com/jaketrent/artsy-fartsy/'
-]
+  'https://www.pinterest.com/jaketrent/artsy-fartsy/',
+];
 
-var iconsExample = (
+const iconsExample = (
   <SocialIcons urls={urls} className="med" />
 );
 
-var iconsColorExample = (
+const iconsColorExample = (
   <SocialIcons urls={urls} color="black" className="sm" />
 );
 
-var sizes = (
+const sizes = (
   <div>
     <SocialIcon network="pinterest" className="sm" />
     <SocialIcon network="pinterest" className="med" />
@@ -46,10 +46,10 @@ var sizes = (
   </div>
 );
 
-React.render(lib, document.getElementById('lib'));
-React.render(networkExample, document.getElementById('network-example'));
-React.render(urlExample, document.getElementById('url-example'));
-React.render(colorExample, document.getElementById('color-example'));
-React.render(iconsExample, document.getElementById('icons-example'));
-React.render(iconsColorExample, document.getElementById('icons-color-example'));
-React.render(sizes, document.getElementById('sizes'));
+ReactDOM.render(lib, document.getElementById('lib'));
+ReactDOM.render(networkExample, document.getElementById('network-example'));
+ReactDOM.render(urlExample, document.getElementById('url-example'));
+ReactDOM.render(colorExample, document.getElementById('color-example'));
+ReactDOM.render(iconsExample, document.getElementById('icons-example'));
+ReactDOM.render(iconsColorExample, document.getElementById('icons-color-example'));
+ReactDOM.render(sizes, document.getElementById('sizes'));

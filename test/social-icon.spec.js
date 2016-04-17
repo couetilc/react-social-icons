@@ -1,79 +1,66 @@
-var React = require('react/addons');
-var should = require('should');
+/* global describe, it, beforeEach */
 
-var networks = require('../lib/networks');
-var SocialIcon = React.createFactory(require('../lib/social-icon'));
+import 'should';
+import React from 'react';
+import { iconFor, maskFor } from '../lib/networks';
+import Icon from '../lib/icon';
+import Mask from '../lib/mask';
+import SocialIcon from '../lib/social-icon';
+import Background from '../lib/background';
+import { shallow } from 'enzyme';
 
-var TestUtils = React.addons.TestUtils;
-
-describe('SocialIcon', function () {
-
-  it('exists', function () {
-    SocialIcon.should.be.instanceOf(Function);
+describe('<SocialIcon />', () => {
+  const url = 'http://pinterest.com';
+  let socialIcon;
+  beforeEach(() => {
+    socialIcon = shallow(<SocialIcon url={url} />);
   });
 
-  var url = 'http://pinterest.com';
-  var socialIcon;
-  beforeEach(function () {
-    socialIcon = TestUtils.renderIntoDocument(SocialIcon({
-      url: url
-    }));
+  it('takes a url prop', () => {
+    socialIcon.props().url.should.eql(url);
   });
 
-  it('takes a url prop', function () {
-    socialIcon.props.url.should.eql(url);
+  it('renders the anchor with the url', () => {
+    const a = socialIcon.find('a');
+    a.length.should.eql(1);
+    a.hasClass('social-icon').should.eql(true);
+    a.props().href.should.eql(url);
   });
 
-  it('renders the anchor with the url', function () {
-    var a = TestUtils.findRenderedDOMComponentWithClass(socialIcon, 'social-icon');
-    should.exist(a);
-    socialIcon.refs.link.props.href.should.eql(url);
+  it('renders the container', () => {
+    socialIcon.find('.social-container').length.should.eql(1);
   });
 
-  it('renders the container', function () {
-    var container = TestUtils.findRenderedDOMComponentWithClass(socialIcon, 'social-container');
-    should.exist(container);
+  it('renders the display svg', () => {
+    socialIcon.find('.social-svg').length.should.eql(1);
   });
 
-  it('renders the display svg', function () {
-    var svg = TestUtils.findRenderedDOMComponentWithClass(socialIcon, 'social-svg');
-    should.exist(svg);
+  it('renders a circle for the background', () => {
+    socialIcon.find('social-svg-background').length.should.eql(0);
+    socialIcon.find(Background).length.should.eql(1);
+    socialIcon.find(Background).shallow().find('circle').length.should.eql(1);
   });
 
-  it('renders a circle for the background', function () {
-    var bgG = TestUtils.findRenderedDOMComponentWithClass(socialIcon, 'social-svg-background');
-    should.exist(bgG);
-    var circle = TestUtils.findRenderedDOMComponentWithTag(bgG, 'circle');
-    should.exist(circle);
+  it('renders an icon based on the url', () => {
+    const path = socialIcon.find(Icon).shallow().find('path');
+    path.prop('d').should.eql(iconFor('pinterest'));
   });
 
-  it('renders an icon based on the url', function () {
-    var path = TestUtils.findRenderedDOMComponentWithTag(socialIcon.refs.icon, 'path');
-    path.props.d.should.eql(networks.iconFor('pinterest'));
+  it('renders a mask based on the url', () => {
+    const mask = socialIcon.find(Mask).shallow().find('path');
+    mask.prop('d').should.eql(maskFor('pinterest'));
   });
 
-  it('renders a mask based on the url', function () {
-    var path = TestUtils.findRenderedDOMComponentWithTag(socialIcon.refs.mask, 'path');
-    path.props.d.should.eql(networks.maskFor('pinterest'));
+  it('takes a network prop for overriding default generated from url', () => {
+    socialIcon = shallow(<SocialIcon url={url} network="github" />);
+    const mask = socialIcon.find(Mask).shallow().find('path');
+    mask.prop('d').should.eql(maskFor('github'));
   });
 
-  it('takes a network prop for overriding default generated from url', function () {
-    socialIcon = TestUtils.renderIntoDocument(SocialIcon({
-      url: url,
-      network: 'github'
-    }));
-    var path = TestUtils.findRenderedDOMComponentWithTag(socialIcon.refs.icon, 'path');
-    path.props.d.should.eql(networks.iconFor('github'));
+  it('takes a color prop for overriding default color', () => {
+    const color = 'pink';
+    socialIcon = shallow(<SocialIcon color={color} network="github" />);
+    const mask = socialIcon.find(Mask).shallow().find('.social-svg-mask');
+    mask.prop('style').fill.should.eql(color);
   });
-
-  it('takes a color prop for overriding default color', function () {
-    var color = 'pink';
-    socialIcon = TestUtils.renderIntoDocument(SocialIcon({
-      color: color,
-      network: 'github'
-    }));
-    var mask = TestUtils.findRenderedDOMComponentWithClass(socialIcon, 'social-svg-mask');
-    mask.props.style.fill.should.eql(color);
-  });
-
 });

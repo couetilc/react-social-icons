@@ -1,44 +1,67 @@
-module.exports = function(config) {
+const path = require('path');
 
+module.exports = function karmaConfig(config) {
   config.set({
     basePath: '',
     frameworks: ['mocha', 'chai'],
     files: [
-      'node_modules/6to5/browser-polyfill.js',
       'test/**/*.spec.js',
     ],
     exclude: [],
     preprocessors: {
-      'test/**/*.spec.js': [ 'webpack', 'sourcemap' ]
+      'lib/**/*.js': ['webpack', 'sourcemap'],
+      'test/**/*.spec.js': ['webpack', 'sourcemap'],
     },
     webpack: {
-      cache: true,
-      debug: true,
+      devtool: 'inline-source-map',
       module: {
         loaders: [
-          { test: /\.js$/, exclude: /node_modules/, loader: '6to5?experimental' },
-          { test: /\.scss/, loader:'style-loader!css-loader!autoprefixer-loader?browsers=last 2 version!sass-loader'},
-        ]
-      }
+          {
+            test: /\.js$/,
+            loader: 'babel',
+            exclude: path.resolve(__dirname, 'node_modules'),
+            query: {
+              presets: ['es2015', 'stage-0', 'react', 'airbnb'],
+            },
+          },
+          {
+            test: /\.json$/,
+            loader: 'json',
+          },
+          {
+            test: /\.scss/,
+            loader:'style-loader!css-loader!autoprefixer-loader?browsers=last 2 version!sass-loader', // eslint-disable-line
+          },
+        ],
+      },
+    },
+    externals: {
+      'cheerio': 'window', // eslint-disable-line
+      'react-dom': true,
+      'react-dom/server': true,
+      'react-addons-test-utils': true,
     },
     webpackServer: {
       quiet: true,
-      stats: {
-        colors: true
-      }
+      noInfo: true, // please don't spam the console when running in karma!
     },
-    reporters: [ 'dots' ],
-    port: 9876,
-    colors: true,
-    autoWatch: false,
-    singleRun: true,
-    browsers: ['Chrome'],
     plugins: [
       'karma-mocha',
       'karma-chai',
       'karma-chrome-launcher',
       'karma-sourcemap-loader',
       'karma-webpack',
-    ]
+    ],
+    babelPreprocessor: {
+      options: {
+        presets: ['es2015', 'stage-0', 'react', 'airbnb'],
+      },
+    },
+    reporters: ['progress'],
+    port: 9876,
+    colors: true,
+    autoWatch: false,
+    singleRun: true,
+    browsers: ['Chrome'],
   });
 };
