@@ -2,11 +2,11 @@
 
 import 'should';
 import React from 'react';
-import { iconFor, maskFor } from '../lib/networks';
-import Icon from '../lib/icon';
-import Mask from '../lib/mask';
-import SocialIcon from '../lib/social-icon';
-import Background from '../lib/background';
+import { iconFor, maskFor } from '../src/networks';
+import Icon from '../src/icon';
+import Mask from '../src/mask';
+import SocialIcon from '../src/social-icon';
+import Background from '../src/background';
 import { shallow } from 'enzyme';
 
 describe('<SocialIcon />', () => {

@@ -4,7 +4,7 @@ import Background from './background';
 import Icon from './icon';
 import Mask from './mask';
 import { keyFor } from './networks';
-import './social-icon.scss';
+import { socialIcon, socialContainer, socialSvg } from './styles.js';
 
 function getNetworkKey(props) {
   return props.network || keyFor(props.url);
@@ -18,9 +18,11 @@ function SocialIcon(props) {
   const networkKey = getNetworkKey(props);
 
   return (
-    <a {...props} href={props.url} target="_blank" className={getClassName(props)}>
-      <div className="social-container">
-        <svg className="social-svg" viewBox="0 0 64 64">
+    <a {...props}
+      href={props.url} target="_blank" className={getClassName(props)} style={socialIcon}
+    >
+      <div className="social-container" style={socialContainer} >
+        <svg className="social-svg" style={socialSvg} viewBox="0 0 64 64">
           <Background />
           <Icon networkKey={networkKey} />
           <Mask networkKey={networkKey} color={props.color} />

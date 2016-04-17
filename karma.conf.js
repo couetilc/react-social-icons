@@ -9,7 +9,7 @@ module.exports = function karmaConfig(config) {
     ],
     exclude: [],
     preprocessors: {
-      'lib/**/*.js': ['webpack', 'sourcemap'],
+      'src/**/*.js': ['webpack', 'sourcemap'],
       'test/**/*.spec.js': ['webpack', 'sourcemap'],
     },
     webpack: {
@@ -27,10 +27,6 @@ module.exports = function karmaConfig(config) {
           {
             test: /\.json$/,
             loader: 'json',
-          },
-          {
-            test: /\.scss/,
-            loader:'style-loader!css-loader!autoprefixer-loader?browsers=last 2 version!sass-loader', // eslint-disable-line
           },
         ],
       },

@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import * as networks from '../../lib/networks';
-import SocialIcon from '../../lib/social-icon';
-import SocialIcons from '../../lib/social-icons';
+import * as networks from '../../src/networks';
+import SocialIcon from '../../src/social-icon';
+import SocialIcons from '../../src/social-icons';
 
 const lib = (
   <div>

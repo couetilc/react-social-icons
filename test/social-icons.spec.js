@@ -2,9 +2,9 @@
 
 import 'should';
 import React from 'react';
-import Mask from '../lib/mask';
-import SocialIcon from '../lib/social-icon';
-import SocialIcons from '../lib/social-icons';
+import Mask from '../src/mask';
+import SocialIcon from '../src/social-icon';
+import SocialIcons from '../src/social-icons';
 import { mount } from 'enzyme';
 
 describe('< SocialIcons />', () => {

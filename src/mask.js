@@ -1,8 +1,10 @@
 import React, { PropTypes } from 'react';
 import { colorFor, maskFor } from './networks';
+import { socialSvgMask } from './styles.js';
 
 function getStyle({ color, networkKey }) {
   return {
+    ...socialSvgMask,
     fill: color || colorFor(networkKey),
   };
 }

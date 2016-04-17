@@ -49,10 +49,6 @@ module.exports = {
         test: /\.json$/,
         loader: 'json',
       },
-      {
-        test: /\.scss/,
-        loader:'style-loader!css-loader!autoprefixer-loader?browsers=last 2 version!sass-loader', // eslint-disable-line
-      },
     ],
   },
 

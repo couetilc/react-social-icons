@@ -3,8 +3,8 @@
 import 'should';
 import random from 'lodash/random';
 import range from 'lodash/range';
-import { keyFor } from '../lib/networks';
-import networksDb from '../lib/_networks-db';
+import { keyFor } from '../src/networks';
+import networksDb from '../src/_networks-db';
 
 const networkKeys = Object.keys(networksDb);
 const poss = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
