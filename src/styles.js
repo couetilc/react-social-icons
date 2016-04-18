@@ -26,10 +26,10 @@ export const socialSvg = {
 };
 
 export const socialSvgContent = {
-  '-ms-transition': 'fill 170ms ease-in-out',
-  '-o-transition': 'fill 170ms ease-in-out',
-  '-moz-transition': 'fill 170ms ease-in-out',
-  '-webkit-transition': 'fill 170ms ease-in-out',
+  msTransition: 'fill 170ms ease-in-out',
+  OTransition: 'fill 170ms ease-in-out',
+  MozTransition: 'fill 170ms ease-in-out',
+  WebkitTransition: 'fill 170ms ease-in-out',
   transition: 'fill 170ms ease-in-out',
   fill: 'transparent',
 };
