@@ -19,6 +19,7 @@ module.exports = {
   output: {
     path: path.join(__dirname, 'lib'),
     filename: 'react-social-icons.js',
+    libraryTarget: 'commonjs'
   },
 
   externals: nodeModules,
