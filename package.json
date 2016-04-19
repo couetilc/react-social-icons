@@ -1,13 +1,13 @@
 {
   "name": "react-social-icons",
-  "version": "2.0.2",
+  "version": "2.1.0",
   "description": "beautiful, easy svg social icons in react",
   "main": "./react-social-icons.js",
   "scripts": {
     "start": "./scripts/dev-examples.sh",
     "test": "./node_modules/.bin/karma start",
     "test-dev": "./node_modules/.bin/karma start --auto-watch --no-single-run",
-    "prepublish": "./node_modules/.bin/webpack --config ./webpack.config.node.js",
+    "prepublish": "./node_modules/.bin/babel -d ./lib ./src",
     "publish": "./scripts/release.sh"
   },
   "author": "jaketrent",
@@ -20,6 +20,7 @@
     "url": "git+https://github.com/AVVS/react-social-icons.git"
   },
   "devDependencies": {
+    "babel-cli": "^6.7.5",
     "babel-eslint": "^6.0.2",
     "babel-loader": "^6.2.4",
     "babel-preset-airbnb": "^1.1.1",
