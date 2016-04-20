@@ -1,6 +1,6 @@
 {
   "name": "react-social-icons",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "description": "beautiful, easy svg social icons in react",
   "main": "./react-social-icons.js",
   "scripts": {
@@ -57,6 +57,6 @@
     "babel-plugin-transform-runtime": "^6.7.5"
   },
   "peerDependencies": {
-    "react": "0.14.x"
+    "react": "0.13.x || 0.14.x || 15.x.x"
   }
 }
