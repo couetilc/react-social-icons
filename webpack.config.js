@@ -42,7 +42,8 @@ module.exports = {
         loader: 'babel',
         exclude: path.resolve(__dirname, 'node_modules'),
         query: {
-          presets: ['es2015', 'stage-0', 'react', 'airbnb'],
+          presets: ['es2015-loose', 'stage-0', 'react', 'react-optimize'],
+          plugins: ['transform-runtime'],
         },
       },
       {
