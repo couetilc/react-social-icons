@@ -17,7 +17,7 @@ describe('<SocialIcon />', () => {
   });
 
   it('takes a url prop', () => {
-    socialIcon.props().url.should.eql(url);
+    socialIcon.props().href.should.eql(url);
   });
 
   it('renders the anchor with the url', () => {

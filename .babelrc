@@ -1,4 +1,9 @@
 {
-  "presets": ["es2015", "stage-0", "react", "airbnb"],
-  "plugins": ["transform-runtime"]
+  "presets": ["es2015-loose", "stage-0", "react"],
+  "plugins": ["transform-runtime"],
+  "env": {
+    "production": {
+      "presets": ["es2015-loose", "stage-0", "react", "react-optimize"]
+    }
+  }
 }
