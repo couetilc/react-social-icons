@@ -1,9 +1,16 @@
 {
   "presets": ["es2015-loose", "stage-0", "react"],
-  "plugins": ["transform-runtime"],
+  "plugins": [
+    ["transform-runtime", {
+      "polyfill": false,
+      "regenerator": true
+    }]
+  ],
   "env": {
     "production": {
-      "presets": ["es2015-loose", "stage-0", "react", "react-optimize"]
+      "plugins": [
+        "transform-react-remove-prop-types"
+      ]
     }
   }
 }
