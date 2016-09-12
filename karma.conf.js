@@ -1,44 +1,65 @@
-module.exports = function(config) {
+const path = require('path');
 
+module.exports = function karmaConfig(config) {
   config.set({
     basePath: '',
     frameworks: ['mocha', 'chai'],
     files: [
-      'node_modules/6to5/browser-polyfill.js',
       'test/**/*.spec.js',
     ],
     exclude: [],
     preprocessors: {
-      'test/**/*.spec.js': [ 'webpack', 'sourcemap' ]
+      'src/**/*.js': ['webpack', 'sourcemap'],
+      'test/**/*.spec.js': ['webpack', 'sourcemap'],
     },
     webpack: {
-      cache: true,
-      debug: true,
+      devtool: 'inline-source-map',
       module: {
         loaders: [
-          { test: /\.js$/, exclude: /node_modules/, loader: '6to5?experimental' },
-          { test: /\.scss/, loader:'style-loader!css-loader!autoprefixer-loader?browsers=last 2 version!sass-loader'},
-        ]
-      }
+          {
+            test: /\.js$/,
+            loader: 'babel',
+            exclude: path.resolve(__dirname, 'node_modules'),
+            query: {
+              presets: ['es2015-loose', 'stage-0', 'react', 'react-optimize'],
+              plugins: ['transform-runtime'],
+            },
+          },
+          {
+            test: /\.json$/,
+            loader: 'json',
+          },
+        ],
+      },
+    },
+    externals: {
+      'cheerio': 'window', // eslint-disable-line
+      'react-dom': true,
+      'react-dom/server': true,
+      'react-addons-test-utils': true,
     },
     webpackServer: {
       quiet: true,
-      stats: {
-        colors: true
-      }
+      noInfo: true, // please don't spam the console when running in karma!
     },
-    reporters: [ 'dots' ],
-    port: 9876,
-    colors: true,
-    autoWatch: false,
-    singleRun: true,
-    browsers: ['Chrome'],
     plugins: [
       'karma-mocha',
       'karma-chai',
       'karma-chrome-launcher',
       'karma-sourcemap-loader',
       'karma-webpack',
-    ]
+    ],
+    babelPreprocessor: {
+      options: {
+        presets: ['es2015-loose', 'stage-0', 'react', 'react-optimize'],
+        plugins: ['transform-runtime'],
+      },
+    },
+    reporters: ['progress'],
+    port: 9876,
+    colors: true,
+    autoWatch: false,
+    singleRun: true,
+    browsers: ['Chrome'],
   });
 };

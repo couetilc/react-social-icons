@@ -1,1 +1,0 @@
-exports.SocialIcon = require('./lib/social-icon');

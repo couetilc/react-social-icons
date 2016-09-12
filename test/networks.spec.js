@@ -1,45 +1,40 @@
-var random = require('lodash-node/modern/number/random');
-var range = require('lodash-node/modern/utility/range');
-var should = require('should');
+/* global describe, it */
 
-var networks = require('../lib/networks');
-const networkKeys = Object.keys(require('../lib/_networks-db'));
+import 'should';
+import random from 'lodash/random';
+import range from 'lodash/range';
+import { keyFor } from '../src/networks';
+import networksDb from '../src/_networks-db';
 
-var randStr = (len) => {
-  var poss = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-  return range(len).reduce((str) => {
-    str += poss.charAt(random(poss.length));
-    return str;
-  }, '');
-}
+const networkKeys = Object.keys(networksDb);
+const poss = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+const randStr = (len) => range(len).reduce((str) =>
+  str + poss.charAt(random(poss.length))
+, '');
 
-describe('networks', function () {
-
-  describe('#keyFor', function () {
-
-    it('returns "default" for null', function () {
-      networks.keyFor(null).should.eql('sharethis');
+describe('networks', () => {
+  describe('#keyFor', () => {
+    it('returns "default" for null', () => {
+      keyFor(null).should.eql('sharethis');
     });
 
-    it('returns "sharethis" for unknown network url', function () {
-      networks.keyFor('unknownUrl.com').should.eql('sharethis');
+    it('returns "sharethis" for unknown network url', () => {
+      keyFor('unknownUrl.com').should.eql('sharethis');
     });
 
-    it('returns key for key.com address', function () {
+    it('returns key for key.com address', () => {
       networkKeys.length.should.be.greaterThan(0);
       networkKeys.forEach((k) => {
-        networks.keyFor(`http://${k}.com`).should.eql(k);
+        keyFor(`http://${k}.com`).should.eql(k);
       });
     });
 
-    it('returns key for key.com/something address', function () {
+    it('returns key for key.com/something address', () => {
       networkKeys.length.should.be.greaterThan(0);
       networkKeys.forEach((k) => {
-        let path = range(random(5, 10)).map(randStr).join('/')
-        networks.keyFor(`http://${k}.com${path}`).should.eql(k);
+        const path = range(random(5, 10)).map(randStr).join('/');
+        keyFor(`http://${k}.com${path}`).should.eql(k);
       });
     });
-
   });
-
 });

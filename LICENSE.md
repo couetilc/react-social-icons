@@ -1,5 +1,6 @@
 # The MIT License (MIT)
 
+Copyright (c) 2016 Vitaly Aminev
 Copyright (c) 2015 Jake Trent
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
