@@ -39,10 +39,10 @@ const iconsColorExample = (
 
 const sizes = (
   <div>
-    <SocialIcon network="pinterest" className="sm" />
-    <SocialIcon network="pinterest" className="med" />
-    <SocialIcon network="pinterest" className="lrg" />
-    <SocialIcon network="pinterest" className="xlrg" />
+    <SocialIcon network="pinterest" style={{ height: 25, width: 25 }} />
+    <SocialIcon network="pinterest" style={{ height: 50, width: 50 }} />
+    <SocialIcon network="pinterest" style={{ height: 100, width: 100 }} />
+    <SocialIcon network="pinterest" style={{ height: 200, width: 200 }} />
   </div>
 );
 
