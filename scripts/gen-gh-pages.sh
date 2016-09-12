@@ -2,6 +2,7 @@
 
 # first, git rebase master
 
+npm run prepublish
 node_modules/.bin/webpack --content-base examples/
 cp examples/index.html index.html
 cp examples/__build__/* site/
