@@ -68,16 +68,16 @@ webpackJsonp([0,1],[
 
 	var sizes = (0, _jsx3.default)('div', {}, void 0, (0, _jsx3.default)(_socialIcon2.default, {
 	  network: 'pinterest',
-	  className: 'sm'
+	  style: { height: 25, width: 25 }
 	}), (0, _jsx3.default)(_socialIcon2.default, {
 	  network: 'pinterest',
-	  className: 'med'
+	  style: { height: 50, width: 50 }
 	}), (0, _jsx3.default)(_socialIcon2.default, {
 	  network: 'pinterest',
-	  className: 'lrg'
+	  style: { height: 100, width: 100 }
 	}), (0, _jsx3.default)(_socialIcon2.default, {
 	  network: 'pinterest',
-	  className: 'xlrg'
+	  style: { height: 200, width: 200 }
 	}));
 
 	_reactDom2.default.render(lib, document.getElementById('lib'));
@@ -22843,13 +22843,13 @@ webpackJsonp([0,1],[
 
 	exports.__esModule = true;
 
-	var _extends2 = __webpack_require__(237);
-
-	var _extends3 = _interopRequireDefault(_extends2);
-
 	var _jsx2 = __webpack_require__(1);
 
 	var _jsx3 = _interopRequireDefault(_jsx2);
+
+	var _extends2 = __webpack_require__(237);
+
+	var _extends3 = _interopRequireDefault(_extends2);
 
 	var _objectWithoutProperties2 = __webpack_require__(242);
 
@@ -22898,12 +22898,11 @@ webpackJsonp([0,1],[
 
 	  return _react2.default.createElement(
 	    'a',
-	    (0, _extends3.default)({
+	    (0, _extends3.default)({}, rest, {
 	      href: url,
 	      target: '_blank',
 	      className: (0, _classnames2.default)('social-icon', className),
-	      style: _styles.socialIcon
-	    }, rest),
+	      style: (0, _extends3.default)({}, _styles.socialIcon, props.style) }),
 	    (0, _jsx3.default)('div', {
 	      className: 'social-container',
 	      style: _styles.socialContainer
