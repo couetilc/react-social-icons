@@ -54,22 +54,6 @@ p code, li code {
   vertical-align: bottom;
   margin-right: 10px;
 }
-.social-icon.sm {
-  height: 25px;
-  width: 25px;
-}
-.social-icon.med {
-  height: 50px;
-  width: 50px;
-}
-.social-icon.lrg {
-  height: 100px;
-  width: 100px;
-}
-.social-icon.xlrg {
-  height: 200px;
-  width: 200px;
-}
 
 #lib .social-icon {
   margin: 0 20px 20px 0;
