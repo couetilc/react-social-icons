@@ -2,7 +2,7 @@
   "name": "react-social-icons",
   "version": "2.5.0",
   "description": "beautiful, easy svg social icons in react",
-  "main": "./react-social-icons.js",
+  "main": "./lib/react-social-icons.js",
   "scripts": {
     "start": "./scripts/dev-examples.sh",
     "test": "karma start",
