@@ -2,7 +2,6 @@ export const socialIcon = {
   display: 'inline-block',
   width: '50px',
   height: '50px',
-  borderRadius: '50%',
   position: 'relative',
   overflow: 'hidden',
   verticalAlign: 'middle',
@@ -17,6 +16,7 @@ export const socialContainer = {
 };
 
 export const socialSvg = {
+  borderRadius: '50%',
   position: 'absolute',
   top: 0,
   left: 0,
