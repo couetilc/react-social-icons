@@ -7,7 +7,7 @@ A set of beautiful svg social icons.  Easily used in React.  No images or extern
 # Install
 
 ```
-npm install react-social-icons --save-dev
+npm i react-social-icons --save
 ```
 
 # Usage
