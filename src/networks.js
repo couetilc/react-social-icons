@@ -2,7 +2,7 @@ import DB from './_networks-db';
 
 const DEFAULT_KEY = 'sharethis';
 export const KEYS = Object.keys(DB);
-const KEYS_REGEX = new RegExp(`(?:https?:\\/\\/(?:www\.)?)?(${KEYS.join('|')}).*`);
+const KEYS_REGEX = new RegExp('(?:https?:\\/\\/(?:[a-z0-9]*.)?)?(' + KEYS.join('|') + ').*');
 
 export function iconFor(key) {
   return DB[key] ? DB[key].icon : null;
