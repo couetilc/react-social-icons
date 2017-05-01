@@ -4,13 +4,13 @@ A set of beautiful svg social icons.  Easily used in React.  No images or extern
 
 ![social network icons](http://i.imgur.com/RoIt9OD.png)
 
-# Install
+## Install
 
 ```
 npm install react-social-icons --save-dev
 ```
 
-# Usage
+## Usage
 
 Pass in the `url` prop of your social network, and the icon will be rendered.
 
@@ -22,3 +22,11 @@ ReactDOM.render(<SocialIcon url="http://twitter.com/jaketrent" />, document.body
 ```
 
 See more [usage options on the example site](http://jaketrent.github.io/react-social-icons/).
+
+## Rebuild Examples
+
+```
+git checkout gh-pages
+git rebase master
+sh scripts/gen-gh-pages.sh
+```
