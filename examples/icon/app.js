@@ -27,6 +27,7 @@ const urls = [
   'http://twitter.com/jaketrent',
   'http://linkedin.com/in/jaketrent',
   'https://www.pinterest.com/jaketrent/artsy-fartsy/',
+  'mailto:awesome@jaketrent.com',
 ];
 
 const iconsExample = (
