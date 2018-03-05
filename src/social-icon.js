@@ -18,6 +18,7 @@ function SocialIcon(props) {
     <a {...rest}
        href={url}
        target="_blank"
+       rel="noopener"
        className={cx('social-icon', className)}
        style={{ ...socialIcon, ...props.style }}>
       <div className="social-container" style={socialContainer} >
