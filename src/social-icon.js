@@ -11,7 +11,7 @@ function getNetworkKey(props) {
 }
 
 function SocialIcon(props) {
-  const { url, network, color, className, ...rest } = props;
+  const { url, network, color, className, label, ...rest } = props;
   const networkKey = getNetworkKey({ url, network });
 
   return (
@@ -20,7 +20,8 @@ function SocialIcon(props) {
        target="_blank"
        rel="noopener"
        className={cx('social-icon', className)}
-       style={{ ...socialIcon, ...props.style }}>
+       style={{ ...socialIcon, ...props.style }}
+       aria-label={label}>
       <div className="social-container" style={socialContainer} >
         <svg className="social-svg" style={socialSvg} viewBox="0 0 64 64">
           <Background />
@@ -35,6 +36,7 @@ function SocialIcon(props) {
 SocialIcon.propTypes = {
   className: PropTypes.string,
   color: PropTypes.string,
+  label: PropTypes.string,
   network: PropTypes.string,
   url: PropTypes.string,
 };
