@@ -19,7 +19,6 @@
     <div id="lib"></div>
 
     <h2>Usage</h2>
-    <h3>Single Icon</h3>
 
     <h4>Detect URL</h4>
     <p>By default, pass the <code>url</code> of your social network, and the icon will be detected from the url.</p>
@@ -54,36 +53,23 @@
       </code>
     </div>
 
+    <h4>Specify the Label</h4>
+    <p>
+      By default, the <code>SocialIcon</code> will use the name of a social network as an icon's accessible label. If you think the social network name is not enough context, you can pass in the <code>label</code> prop.
+    </p>
+    <div class="one-line-example">
+      <div class="icon" id="label-example"></div>
+      <code class="code">
+            <pre>&lt;SocialIcon url="https://www.example.com" label="Our portfolio" /&gt;</pre>
+          </code>
+    </div>
+
     <h4>Render</h4>
     <p>The full code required to render.</p>
     <code class="code">
         <pre>var React = require('react');
 var { SocialIcon } = require('react-social-icons');
 React.render(&lt;SocialIcon url="http://linkedin.com/in/jaketrent" /&gt;, document.body);</pre>
-    </code>
-
-    <h3>Multiple Icons</h3>
-    <p>As a convenience api for rendering a collection of icons, <code>&lt;SocialIcons /&gt;</code> is provided.</p>
-
-    <h4>Detect from URLs</h4>
-    <p>You can easily render a set of social icons from an array of <code>urls</code>.  <i>Notice</i>: the default icon is displayed for the url (<code>jaketrent.com</code>) that is from an unsupported network.</p>
-    <div id="icons-example" class="collection-example"></div>
-    <code>
-        <pre>var urls = [
-  'http://jaketrent.com',
-  'http://twitter.com/jaketrent',
-  'http://linkedin.com/in/jaketrent',
-  'http://www.pinterest.com/jaketrent/artsy-fartsy/',
-  'mailto:awesome@jaketrent.com'
-];
-&lt;SocialIcons urls={urls} /&gt;</pre>
-    </code>
-
-    <h4>Specify all the Colors</h4>
-    <p>Or set a uniform color across your icons.  Look at that nice, tight set of icons!</p>
-    <div id="icons-color-example" class="collection-example"></div>
-    <code>
-        <pre>&lt;SocialIcons urls={urls} color="black" /&gt;</pre>
     </code>
 
     <h2>It scales!</h2>
