@@ -22,6 +22,10 @@ const colorExample = (
   <SocialIcon network="twitter" color="#ff5a01" />
 );
 
+const labelExample = (
+  <SocialIcon url="https://www.example.com" label="Our portfolio" />
+);
+
 const urls = [
   'http://jaketrent.com',
   'http://twitter.com/jaketrent',
@@ -51,6 +55,7 @@ ReactDOM.render(lib, document.getElementById('lib'));
 ReactDOM.render(networkExample, document.getElementById('network-example'));
 ReactDOM.render(urlExample, document.getElementById('url-example'));
 ReactDOM.render(colorExample, document.getElementById('color-example'));
+ReactDOM.render(labelExample, document.getElementById('label-example'));
 ReactDOM.render(iconsExample, document.getElementById('icons-example'));
 ReactDOM.render(iconsColorExample, document.getElementById('icons-color-example'));
 ReactDOM.render(sizes, document.getElementById('sizes'));
