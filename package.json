@@ -4,11 +4,6 @@
   "description": "beautiful, easy svg social icons in react",
   "main": "./src/react-social-icons.js",
   "scripts": {
-    "start": "./scripts/dev-examples.sh",
-    "test": "karma start",
-    "test-dev": "karma start --auto-watch --no-single-run",
-    "prepublish": "NODE_ENV=production babel -d ./lib ./src",
-    "publish": "./scripts/release.sh"
   },
   "author": "tsaohucn",
   "license": "MIT",
