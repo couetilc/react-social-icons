@@ -10,14 +10,14 @@
     "prepublish": "NODE_ENV=production babel -d ./lib ./src",
     "publish": "./scripts/release.sh"
   },
-  "author": "jaketrent",
+  "author": "tsaohucn",
   "license": "MIT",
   "contributors": [
-    "Vitaly Aminev <v@makeomatic.ru>"
+    "Tsao Hsiu Chuan"
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/AVVS/react-social-icons"
+    "url": "https://github.com/tsaohucn/react-social-icons"
   },
   "devDependencies": {
     "babel-cli": "^6.11.4",
