@@ -19,7 +19,9 @@ const networkExample = h(SocialIcon, {
   url: 'http://jaketrent.com'
 })
 
-const colorExample = h(SocialIcon, { network: 'twitter', color: '#ff5a01' })
+const bgColorExample = h(SocialIcon, { network: 'twitter', bgColor: '#ff5a01' })
+
+const fgColorExample = h(SocialIcon, { network: 'twitter', fgColor: '#ff5a01' })
 
 const labelExample = h(SocialIcon, {
   url: 'https://www.example.com',
@@ -36,6 +38,7 @@ const sizes = h('div', {}, [
 ReactDOM.render(lib, document.getElementById('lib'))
 ReactDOM.render(networkExample, document.getElementById('network-example'))
 ReactDOM.render(urlExample, document.getElementById('url-example'))
-ReactDOM.render(colorExample, document.getElementById('color-example'))
+ReactDOM.render(bgColorExample, document.getElementById('bg-color-example'))
+ReactDOM.render(fgColorExample, document.getElementById('fg-color-example'))
 ReactDOM.render(labelExample, document.getElementById('label-example'))
 ReactDOM.render(sizes, document.getElementById('sizes'))

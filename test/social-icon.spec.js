@@ -76,4 +76,14 @@ describe('<SocialIcon />', () => {
       .find('.social-svg-mask')
     mask.prop('style').fill.should.eql(bgColor)
   })
+
+  it('takes a fgColor prop for overriding default transparent fgColor', () => {
+    const fgColor = 'red'
+    socialIcon = shallow(<SocialIcon fgColor={fgColor} network="github" />)
+    const icon = socialIcon
+      .find(Icon)
+      .shallow()
+      .find('.social-svg-icon')
+    icon.prop('style').fill.should.eql(fgColor)
+  })
 })
