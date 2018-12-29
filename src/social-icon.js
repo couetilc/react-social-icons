@@ -1,6 +1,5 @@
 import PropTypes from 'prop-types'
 import React from 'react'
-import cx from 'classnames'
 
 import Background from './background.js'
 import Icon from './icon.js'
@@ -22,7 +21,7 @@ function SocialIcon(props) {
       href={url}
       target="_blank"
       rel="noopener"
-      className={cx('social-icon', className)}
+      className={'social-icon' + (!!className ? ' ' + className : '')}
       style={{ ...socialIcon, ...props.style }}
       aria-label={label || networkKey}
     >
