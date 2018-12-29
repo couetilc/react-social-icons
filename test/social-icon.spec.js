@@ -24,6 +24,20 @@ describe('<SocialIcon />', () => {
     a.props().href.should.eql(url)
   })
 
+  it('doesnt have a target prop', () => {
+    const a = socialIcon.find('a')
+    a.props().should.not.have.property('target')
+    a.props().should.not.have.property('rel')
+  })
+
+  it('can add a target prop', () => {
+    const a = shallow(
+      <SocialIcon url={url} target="_blank" rel="noopener noreferrer" />
+    ).find('a')
+    a.props().target.should.eql('_blank')
+    a.props().rel.should.eql('noopener noreferrer')
+  })
+
   it('renders the container', () => {
     socialIcon.find('.social-container').length.should.eql(1)
   })
