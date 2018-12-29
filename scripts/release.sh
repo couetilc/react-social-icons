@@ -1,6 +1,6 @@
 #!/bin/bash
 
-RELEASE_DIR=${RELEASE_DIR:-lib}
+RELEASE_DIR=${RELEASE_DIR:-dist}
 PACKAGE_VERSION=$(cat package.json | ./node_modules/.bin/json version)
 BRANCH_NAME=$(git rev-parse --abbrev-ref HEAD)
 

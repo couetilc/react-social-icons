@@ -1,34 +1,36 @@
-import DB from './_networks-db';
+import DB from './_networks-db.js'
 
-const DEFAULT_KEY = 'sharethis';
-export const KEYS = Object.keys(DB);
-const KEYS_REGEX = new RegExp('(?:https?:\\/\\/(?:[a-z0-9]*.)?)?(' + KEYS.join('|') + ').*');
+const DEFAULT_KEY = 'sharethis'
+export const KEYS = Object.keys(DB)
+const KEYS_REGEX = new RegExp(
+  '(?:https?:\\/\\/(?:[a-z0-9]*.)?)?(' + KEYS.join('|') + ').*'
+)
 
 export function iconFor(key) {
-  return DB[key] ? DB[key].icon : null;
+  return DB[key] ? DB[key].icon : null
 }
 
 export function maskFor(key) {
-  return DB[key] ? DB[key].mask : null;
+  return DB[key] ? DB[key].mask : null
 }
 
 export function colorFor(key) {
-  return DB[key] ? DB[key].color : null;
+  return DB[key] ? DB[key].color : null
 }
 
 export function keyFor(url) {
   if (!url) {
-    return DEFAULT_KEY;
+    return DEFAULT_KEY
   }
 
-  const key = url.replace(KEYS_REGEX, '$1');
-  return key === url ? DEFAULT_KEY : key;
+  const key = url.replace(KEYS_REGEX, '$1')
+  return key === url ? DEFAULT_KEY : key
 }
 
 export function keysFor(urls) {
   if (!urls || !Array.isArray(urls) || urls.length === 0) {
-    return [];
+    return []
   }
 
-  return urls.map(keyFor);
+  return urls.map(keyFor)
 }

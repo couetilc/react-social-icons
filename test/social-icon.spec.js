@@ -1,6 +1,3 @@
-/* global describe, it, beforeEach */
-
-import 'should';
 import React from 'react';
 import { iconFor, maskFor } from '../src/networks';
 import Icon from '../src/icon';

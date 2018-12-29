@@ -1,5 +1,6 @@
-import React, { PropTypes } from 'react';
-import { maskFor, iconFor } from './networks';
+import React, { PropTypes } from 'react'
+
+import { maskFor, iconFor } from './networks.js'
 
 function renderBackgroundSymbol() {
   return (
@@ -8,11 +9,11 @@ function renderBackgroundSymbol() {
         <circle cx="32" cy="32" r="31" />
       </g>
     </symbol>
-  );
+  )
 }
 
 function renderSymbols(props) {
-  return props.networks.map((key) => [
+  return props.networks.map(key => [
     <symbol id={`${key}-icon`} viewBox="0 0 64 64">
       <g className="social-icon">
         <path d={iconFor(key)} />
@@ -22,8 +23,8 @@ function renderSymbols(props) {
       <g className="social-mask">
         <path d={maskFor(key)} />
       </g>
-    </symbol>,
-  ]);
+    </symbol>
+  ])
 }
 
 function Symbols(props) {
@@ -32,11 +33,11 @@ function Symbols(props) {
       {renderBackgroundSymbol()}
       {renderSymbols(props)}
     </svg>
-  );
+  )
 }
 
 Symbols.propTypes = {
-  networks: PropTypes.arrayOf(PropTypes.string).isRequired,
-};
+  networks: PropTypes.arrayOf(PropTypes.string).isRequired
+}
 
-export default Symbols;
+export default Symbols
