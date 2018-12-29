@@ -30,3 +30,10 @@ git checkout gh-pages
 git rebase master
 sh scripts/gen-gh-pages.sh
 ```
+
+## Release
+
+```
+npm version <semver>
+npm publish
+```
