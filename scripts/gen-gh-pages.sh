@@ -1,15 +1,14 @@
 #!/bin/sh
 
-# first, git rebase master
+# first, git rebase/merge master
 
-npm run prepublish
-node_modules/.bin/webpack --content-base examples/
-cp examples/index.html index.html
-cp examples/__build__/* site/
-cp examples/icon/*.css site/
+npm install
 
-sed -i '' -- 's/__build__/site/g' index.html
-sed -i '' -- 's/icon\//site\//g' index.html
+parcel build examples/index.html
 
-git add index.html site/
+git rm app.*
+rm app.*
+cp dist/* .
+
+git add .
 git commit -m "gen gh-pages from examples"
