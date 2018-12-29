@@ -12,15 +12,29 @@ function getNetworkKey(props) {
 }
 
 function SocialIcon(props) {
-  const { url, network, bgColor, fgColor, className, label, ...rest } = props
+  const {
+    url,
+    network,
+    bgColor,
+    fgColor,
+    opensNewWindow,
+    className,
+    label,
+    ...rest
+  } = props
   const networkKey = getNetworkKey({ url, network })
+  const opensNewWindowProps = opensNewWindow
+    ? {
+        target: '_blank',
+        rel: 'noopener noreferrer'
+      }
+    : null
 
   return (
     <a
       {...rest}
+      {...opensNewWindowProps}
       href={url}
-      target="_blank"
-      rel="noopener"
       className={'social-icon' + (!!className ? ' ' + className : '')}
       style={{ ...socialIcon, ...props.style }}
       aria-label={label || networkKey}
@@ -41,7 +55,11 @@ SocialIcon.propTypes = {
   bgColor: PropTypes.string,
   label: PropTypes.string,
   network: PropTypes.string,
+  opensNewWindow: PropTypes.bool,
   url: PropTypes.string
+}
+SocialIcon.defaultProps = {
+  opensNewWindow: true
 }
 
 export default SocialIcon

@@ -24,6 +24,18 @@ describe('<SocialIcon />', () => {
     a.props().href.should.eql(url)
   })
 
+  it('usually has target=_blank', () => {
+    const a = socialIcon.find('a')
+    a.props().target.should.eql('_blank')
+    a.props().rel.should.eql('noopener noreferrer')
+  })
+
+  it('turns off target=_blank if opensNewWindow is false', () => {
+    const a = shallow(<SocialIcon url={url} opensNewWindow={false} />).find('a')
+    a.props().should.not.have.property('target')
+    a.props().should.not.have.property('rel')
+  })
+
   it('renders the container', () => {
     socialIcon.find('.social-container').length.should.eql(1)
   })
