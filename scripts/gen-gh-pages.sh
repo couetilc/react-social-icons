@@ -4,7 +4,7 @@
 
 npm install
 
-parcel build examples/index.html
+parcel build examples/index.html --public-url /react-social-icons/
 
 git rm app.*
 rm app.*
