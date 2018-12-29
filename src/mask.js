@@ -4,19 +4,19 @@ import React from 'react'
 import { colorFor, maskFor } from './networks.js'
 import { socialSvgMask } from './styles.js'
 
-function getStyle({ color, networkKey }) {
+function getStyle({ bgColor, networkKey }) {
   return {
     ...socialSvgMask,
-    fill: color || colorFor(networkKey)
+    fill: bgColor || colorFor(networkKey)
   }
 }
 
-function Mask({ color, networkKey, ...rest }) {
+function Mask({ bgColor, networkKey, ...rest }) {
   return (
     <g
       {...rest}
       className="social-svg-mask"
-      style={getStyle({ color, networkKey })}
+      style={getStyle({ bgColor, networkKey })}
     >
       <path d={maskFor(networkKey)} />
     </g>
@@ -24,7 +24,7 @@ function Mask({ color, networkKey, ...rest }) {
 }
 
 Mask.propTypes = {
-  color: PropTypes.string,
+  bgColor: PropTypes.string,
   networkKey: PropTypes.string.isRequired
 }
 

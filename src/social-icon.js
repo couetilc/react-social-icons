@@ -13,7 +13,7 @@ function getNetworkKey(props) {
 }
 
 function SocialIcon(props) {
-  const { url, network, color, className, label, ...rest } = props
+  const { url, network, bgColor, className, label, ...rest } = props
   const networkKey = getNetworkKey({ url, network })
 
   return (
@@ -30,7 +30,7 @@ function SocialIcon(props) {
         <svg className="social-svg" style={socialSvg} viewBox="0 0 64 64">
           <Background />
           <Icon networkKey={networkKey} />
-          <Mask networkKey={networkKey} color={color} />
+          <Mask networkKey={networkKey} bgColor={bgColor} />
         </svg>
       </div>
     </a>
@@ -39,7 +39,7 @@ function SocialIcon(props) {
 
 SocialIcon.propTypes = {
   className: PropTypes.string,
-  color: PropTypes.string,
+  bgColor: PropTypes.string,
   label: PropTypes.string,
   network: PropTypes.string,
   url: PropTypes.string

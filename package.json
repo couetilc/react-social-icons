@@ -9,7 +9,8 @@
     "examples:serve": "parcel examples/index.html",
     "prepublish": "NODE_ENV=production babel -d ./lib ./src",
     "start": "npm run examples:serve",
-    "test": "mocha"
+    "test": "mocha",
+    "test:watch": "npm run test -- --watch"
   },
   "author": "jaketrent",
   "license": "MIT",
