@@ -19,8 +19,6 @@ function SocialIcon(props) {
     <a
       {...rest}
       href={url}
-      target="_blank"
-      rel="noopener"
       className={'social-icon' + (!!className ? ' ' + className : '')}
       style={{ ...socialIcon, ...props.style }}
       aria-label={label || networkKey}
