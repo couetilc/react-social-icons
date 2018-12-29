@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <title>Social Icon</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-  <link rel="stylesheet" type="text/css" href="icon/app.css"/>
+  <link rel="stylesheet" type="text/css" href="app.css"/>
   <link href='http://fonts.googleapis.com/css?family=Roboto+Slab' rel='stylesheet' type='text/css'>
 </head>
 <body class="black index">
@@ -19,7 +19,6 @@
     <div id="lib"></div>
 
     <h2>Usage</h2>
-    <h3>Single Icon</h3>
 
     <h4>Detect URL</h4>
     <p>By default, pass the <code>url</code> of your social network, and the icon will be detected from the url.</p>
@@ -45,13 +44,34 @@
 
     <h4>Specify the Color</h4>
     <p>
-      You can override the fill color associated with the network with the <code>color</code> prop.
+      You can override the background fill color associated with the network with the <code>bgColor</code> prop.
     </p>
     <div class="one-line-example">
-      <div class="icon" id="color-example"></div>
+      <div class="icon" id="bg-color-example"></div>
       <code class="code">
-        <pre>&lt;SocialIcon network="twitter" color="#ff5a01" /&gt;</pre>
+        <pre>&lt;SocialIcon network="twitter" bgColor="#ff5a01" /&gt;</pre>
       </code>
+    </div>
+
+    <p>
+      You can fill the usually-transparent icon color with the <code>fgColor</code> prop.
+    </p>
+    <div class="one-line-example">
+      <div class="icon" id="fg-color-example"></div>
+      <code class="code">
+        <pre>&lt;SocialIcon network="twitter" fgColor="#ff5a01" /&gt;</pre>
+      </code>
+    </div>
+
+    <h4>Specify the Label</h4>
+    <p>
+      By default, the <code>SocialIcon</code> will use the name of a social network as an icon's accessible label. If you think the social network name is not enough context, you can pass in the <code>label</code> prop.
+    </p>
+    <div class="one-line-example">
+      <div class="icon" id="label-example"></div>
+      <code class="code">
+            <pre>&lt;SocialIcon url="https://www.example.com" label="Our portfolio" /&gt;</pre>
+          </code>
     </div>
 
     <h4>Render</h4>
@@ -86,8 +106,7 @@ React.render(&lt;SocialIcon url="http://linkedin.com/in/jaketrent" /&gt;, docume
     </footer>
   </div>
 
-  <script src="__build__/shared.js"></script>
-  <script src="__build__/icon.js"></script>
+  <script type="module" src="./app.js"></script>
 </body>
 
 
