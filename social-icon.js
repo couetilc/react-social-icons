@@ -50,8 +50,6 @@ function SocialIcon(props) {
   });
   return _react.default.createElement("a", _extends({}, rest, {
     href: url,
-    target: "_blank",
-    rel: "noopener",
     className: 'social-icon' + (!!className ? ' ' + className : ''),
     style: _objectSpread({}, _styles.socialIcon, props.style),
     "aria-label": label || networkKey
