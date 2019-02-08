@@ -12,11 +12,11 @@ const lib = h(
   networks.KEYS.map(k => h(SocialIcon, { network: k, title: k, key: k }))
 )
 
-const urlExample = h(SocialIcon, { url: 'http://linkedin.com/in/jaketrent' })
+const urlExample = h(SocialIcon, { url: 'https://linkedin.com/in/jaketrent' })
 
 const networkExample = h(SocialIcon, {
   network: 'tumblr',
-  url: 'http://jaketrent.com'
+  url: 'https://jaketrent.com'
 })
 
 const bgColorExample = h(SocialIcon, { network: 'twitter', bgColor: '#ff5a01' })

@@ -2,7 +2,7 @@
 
 A set of beautiful svg social icons.  Easily used in React.  No images or external css dependencies.  Svg paths provided by Squarespace.
 
-![social network icons](http://i.imgur.com/RoIt9OD.png)
+![social network icons](https://i.imgur.com/RoIt9OD.png)
 
 ## Install
 
@@ -18,10 +18,10 @@ Pass in the `url` prop of your social network, and the icon will be rendered.
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { SocialIcon } from 'react-social-icons';
-ReactDOM.render(<SocialIcon url="http://twitter.com/jaketrent" />, document.body);
+ReactDOM.render(<SocialIcon url="https://twitter.com/jaketrent" />, document.body);
 ```
 
-See more [usage options on the example site](http://jaketrent.github.io/react-social-icons/).
+See more [usage options on the example site](https://jaketrent.github.io/react-social-icons/).
 
 ## Rebuild Examples
 
