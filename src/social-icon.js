@@ -15,6 +15,27 @@ function SocialIcon(props) {
   const { url, network, bgColor, fgColor, className, label, ...rest } = props
   const networkKey = getNetworkKey({ url, network })
 
+  const icon = (
+    <div className="social-container" style={socialContainer}>
+      <svg className="social-svg" style={socialSvg} viewBox="0 0 64 64">
+        <Background />
+        <Icon networkKey={networkKey} fgColor={fgColor} />
+        <Mask networkKey={networkKey} bgColor={bgColor} />
+      </svg>
+    </div>
+  )
+
+  if (!url) {
+    return <div 
+      {...rest}
+      className={'social-icon' + (!!className ? ' ' + className : '')}
+      style={{ ...socialIcon, ...props.style }}
+      aria-label={label || networkKey}
+    >
+      {icon}
+    </div>
+  }
+
   return (
     <a
       {...rest}
@@ -23,13 +44,7 @@ function SocialIcon(props) {
       style={{ ...socialIcon, ...props.style }}
       aria-label={label || networkKey}
     >
-      <div className="social-container" style={socialContainer}>
-        <svg className="social-svg" style={socialSvg} viewBox="0 0 64 64">
-          <Background />
-          <Icon networkKey={networkKey} fgColor={fgColor} />
-          <Mask networkKey={networkKey} bgColor={bgColor} />
-        </svg>
-      </div>
+      {icon}
     </a>
   )
 }
