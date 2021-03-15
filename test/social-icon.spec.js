@@ -24,6 +24,11 @@ describe('<SocialIcon />', () => {
     a.props().href.should.eql(url)
   })
 
+  it('renders child elements', () => {
+    socialIcon = shallow(<SocialIcon url={url}><div id="test" /></SocialIcon>)
+    socialIcon.contains(<div id="test" />).should.equal(true);
+  });
+
   it('doesnt have a target prop', () => {
     const a = socialIcon.find('a')
     a.props().should.not.have.property('target')
