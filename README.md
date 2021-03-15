@@ -23,6 +23,18 @@ ReactDOM.render(<SocialIcon url="https://twitter.com/jaketrent" />, document.bod
 
 See more [usage options on the example site](https://jaketrent.github.io/react-social-icons/).
 
+## Prop Types
+
+| Property   | Type   | Required | Description |
+| :--------- | :----- | :------: | :---------- |
+| url        | String | No       | The rendered component will link to this url and show the social network's icon.
+| network    | String | No       | Override which network icon to render (defaults to the url's social network)
+| bgColor    | String | No       | Override the background fill color (defaults to social network's color)
+| fgColor    | String | No       | Override the icon's fill color (defaults to transparent)
+| label      | String | No       | Set the `aria-label` attribute on the rendered anchor tag (defaults to the social network's name)
+| className  | String | No       | Specify a class to attach to the rendered anchor tag
+| defaultSVG | Object | No       | Override the default icon for when a url is not matched to a social network. Requires string properties `icon`, `mask`, and `color`. (defaults to network `'sharethis'`)
+
 ## Rebuild Examples
 
 ```
