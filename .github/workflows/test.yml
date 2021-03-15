@@ -30,6 +30,10 @@ jobs:
         run: |
           npm ci
 
+      - name: Test build
+        run: |
+          npm run build
+
       - name: Test using React 17
         run: |
           npm i react@17 react-dom@17 --no-save
