@@ -36,7 +36,7 @@ jobs:
 
       - name: Check bundlesize
         run: |
-          npm run bundlesize
+          npm run bundlesize --silent
 
       - name: Test using React 17
         run: |
