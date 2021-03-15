@@ -106,8 +106,9 @@ make the final svg look neater:
 3. Select the icon and click `Object > Align and Distribute` in the menu bar.
    Set relative to "Page" in the dropdown menu and click the buttons "Center on
    vertical axis" and "Center on horizontal axis".
-4. Create a square starting at the origin with a width of 64px. Select `Object
-   > Lower to Bottom` in the menu. Select `Path > Object to Path` in the menu.
+4. Create a square starting at the origin with a width of 64px. Select
+   `Object > Lower to Bottom` in the menu. Select `Path > Object to Path` in
+   the menu.
 5. Select both the square and icon. Click `Path > Exclusion` in the menu. You
    must convert all objects to paths and remove all groups before you can
    perform the Exclusion operation.
