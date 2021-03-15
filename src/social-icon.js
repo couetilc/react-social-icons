@@ -4,7 +4,7 @@ import React from 'react'
 import Background from './background.js'
 import Icon from './icon.js'
 import Mask from './mask.js'
-import { keyFor } from './networks.js'
+import { keyFor, keyTo, DEFAULT_KEY } from './networks.js'
 import { socialIcon, socialContainer, socialSvg } from './styles.js'
 
 function getNetworkKey(props) {
@@ -12,7 +12,15 @@ function getNetworkKey(props) {
 }
 
 function SocialIcon(props) {
-  const { url, network, bgColor, fgColor, className, label, children, ...rest } = props
+  const {
+    url, network, bgColor, fgColor, className, label, children, defaultSVG,
+    ...rest
+  } = props
+
+  if (typeof defaultSVG === 'object' && defaultSVG !== null) {
+    keyTo(DEFAULT_KEY, defaultSVG);
+  }
+
   const networkKey = getNetworkKey({ url, network })
 
   return (
@@ -38,9 +46,16 @@ function SocialIcon(props) {
 SocialIcon.propTypes = {
   className: PropTypes.string,
   bgColor: PropTypes.string,
+  fgColor: PropTypes.string,
   label: PropTypes.string,
   network: PropTypes.string,
-  url: PropTypes.string
+  url: PropTypes.string,
+  defaultSVG: PropTypes.exact({
+    icon: PropTypes.string,
+    mask: PropTypes.string,
+    color: PropTypes.string,
+  }),
+  children: PropTypes.node,
 }
 
 export default SocialIcon

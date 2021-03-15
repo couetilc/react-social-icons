@@ -105,4 +105,28 @@ describe('<SocialIcon />', () => {
       .find('.social-svg-icon')
     icon.prop('style').fill.should.eql(fgColor)
   })
+
+  it('takes a defaultSVG prop for overriding the default network key', () => {
+    socialIcon = shallow(<SocialIcon url="https://example.com" defaultSVG={{
+      icon: 'test-icon',
+      mask: 'test-mask',
+      color: 'test-color',
+    }} />);
+    const iconPath = socialIcon
+      .find(Icon)
+      .shallow()
+      .find('path')
+    iconPath.prop('d').should.eql('test-icon')
+    const maskPath = socialIcon
+      .find(Mask)
+      .shallow()
+      .find('path')
+    maskPath.prop('d').should.eql('test-mask')
+    const mask = socialIcon
+      .find(Mask)
+      .shallow()
+      .find('.social-svg-mask')
+    mask.prop('style').fill.should.eql('test-color')
+  })
+
 })
