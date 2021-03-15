@@ -68,14 +68,56 @@ facebook: {
 },
 ```
 
-  To add a new icon, you first need to find a copy of that icon as an svg file, and a hex code for the social network's main color.
-  Check the network's own style guidelines or website for the official icon and color.
+To add a new icon, you first need to find a copy of that icon as an svg file,
+and a hex code for the social network's main color.  Check the network's own
+style guidelines or website for the official icon and color.
 
-  The 'icon' and 'mask' properties for each network in `networks-db.js` should contain the vector information for the svg.
-  The 'icon' is the foreground, so the path for describes the shape of the icon itself. This will be transparent by default.
-  The 'mask' is the background area, so the path for this describes the area between the surrounding circle and the icon shape. By default this will take the color you provide in the 'color' property.
-  The 'color' property will set the background color for the icon. This should be the main color associated with the social network.
+The 'icon' and 'mask' properties for each network in `networks-db.js` should
+contain the vector information for the svg.  The 'icon' is the foreground, so
+the path for describes the shape of the icon itself. This will be transparent
+by default.  The 'mask' is the background area, so the path for this describes
+the area between the surrounding circle and the icon shape. By default this
+will take the color you provide in the 'color' property.  The 'color' property
+will set the background color for the icon. This should be the main color
+associated with the social network.
 
-  An easy way to generate the path for the 'mask' is to begin with 'M0,0v64h64V0H0z', which defines the circular border, and follow this with the exact same path that you used for the 'icon'.  
+An easy way to generate the path for the 'mask' is to begin with
+'M0,0v64h64V0H0z', which defines the circular border, and follow this with the
+exact same path that you used for the 'icon'.
 
-  Depending on the svg file that you start with, you may need to edit attributes in the svg file such as width, height, and viewbox (see https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial) in order to put the icon in the centre of the circular border. You can then use a tool such as https://www.iloveimg.com/resize-image to rewrite the svg path so you have a nice simple path to use here in the 'icon' and 'mask', without needing those extra attributes.
+Depending on the svg file that you start with, you may need to edit attributes
+in the svg file such as width, height, and viewbox (see
+https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial) in order to put the
+icon in the centre of the circular border. You can then use a tool such as
+https://www.iloveimg.com/resize-image to rewrite the svg path so you have a
+nice simple path to use here in the 'icon' and 'mask', without needing those
+extra attributes.
+
+### Using Inkscape
+
+These steps should work for most logos. Feel free to tweak any of the steps to
+make the final svg look neater:
+
+1. Open the SVG in Inkscape's editor and select `File > Document Properties` in
+   the menu bar.  Change the page's width and height to 64px.
+2. Select the icon and click `Object > Transform` in the menu bar. Choose the
+   "Scale" tab, check the box "Scale proportionally", set the height and width
+   to be within 32px, and click the "Apply" button
+3. Select the icon and click `Object > Align and Distribute` in the menu bar.
+   Set relative to "Page" in the dropdown menu and click the buttons "Center on
+   vertical axis" and "Center on horizontal axis".
+4. Create a square starting at the origin with a width of 64px. Select `Object
+   > Lower to Bottom` in the menu. Select `Path > Object to Path` in the menu.
+5. Select both the square and icon. Click `Path > Exclusion` in the menu. You
+   must convert all objects to paths and remove all groups before you can
+   perform the Exclusion operation.
+6. Select `File > Save a Copy` in the menu. Open the saved svg file in a text
+   editor, find the `path` element, and copy the `d` attribute's value.
+7. In the `react-social-icons` repository, open the `src/_networks-db.js` file
+   and add a new entry in the object whose key has the same name as the social
+   network's domain name. Set the property `icon` to `"M 0,0 H 64 V 64 H 0 Z"`.
+   Set the property `mask` to the copied value from Step 6. Set the property
+   `color` to the social network's brand color.
+8. Commit your changes and create a PR against master at
+   https://github.com/jaketrent/react-social-icons, where it will be reviewed
+   and merged. Thank you for contributing!
