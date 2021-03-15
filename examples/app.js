@@ -29,10 +29,10 @@ const labelExample = h(SocialIcon, {
 })
 
 const sizes = h('div', {}, [
-  h(SocialIcon, { network: 'pinterest', style: { height: 25, width: 25 } }),
-  h(SocialIcon, { network: 'pinterest', style: { height: 50, width: 50 } }),
-  h(SocialIcon, { network: 'pinterest', style: { height: 100, width: 100 } }),
-  h(SocialIcon, { network: 'pinterest', style: { height: 200, width: 200 } })
+  h(SocialIcon, { network: 'pinterest', style: { height: 25, width: 25 }, key: '25' }),
+  h(SocialIcon, { network: 'pinterest', style: { height: 50, width: 50 }, key: '50' }),
+  h(SocialIcon, { network: 'pinterest', style: { height: 100, width: 100 }, key: '100' }),
+  h(SocialIcon, { network: 'pinterest', style: { height: 200, width: 200 }, key: '200' })
 ])
 
 ReactDOM.render(lib, document.getElementById('lib'))
