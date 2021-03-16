@@ -119,6 +119,8 @@ make the final svg look neater:
    network's domain name. Set the property `icon` to `"M 0,0 H 64 V 64 H 0 Z"`.
    Set the property `mask` to the copied value from Step 6. Set the property
    `color` to the social network's brand color.
-8. Commit your changes and create a PR against master at
+8. Commit your changes and preview the new icon by running `npm start` and
+   visiting `http://localhost:1234` in your web browser. Once you're happy with
+   the result, create a PR against master at
    https://github.com/jaketrent/react-social-icons, where it will be reviewed
    and merged. Thank you for contributing!
