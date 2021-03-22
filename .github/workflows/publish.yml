@@ -1,0 +1,53 @@
+name: Publish package
+
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Read .nvmrc
+        run: echo ::set-output name=NVMRC::$(cat .nvmrc)
+        id: nvm
+
+      - name: Set Node.js Version
+        uses: actions/setup-node@v1
+        with:
+          node-version: '${{ steps.nvm.outputs.NVMRC }}'
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: Install Dependencies
+        run: |
+          npm ci
+
+      - name: Test using React 17
+        run: |
+          npm i react@17 react-dom@17 --no-save
+          npm run test
+
+      - name: Test using React 16
+        run: |
+          npm i react@16 react-dom@16 --no-save
+          npm run test
+
+      - name: Test using React 15
+        run: |
+          npm i react@15 react-dom@15 --no-save
+          npm run test
+
+      - name: Prepublish
+        run: |
+          npm run prepublish
+
+      - name: Publish
+        run: |
+          npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

@@ -1,3 +1,4 @@
+dist
 src
 test
 scripts
@@ -7,3 +8,4 @@ webpack.config.js
 .babelrc
 .eslintrc
 .gitignore
+build.tar.gz

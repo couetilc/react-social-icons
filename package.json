@@ -1,16 +1,17 @@
 {
   "name": "react-social-icons",
-  "version": "4.1.0",
+  "version": "5.0.0",
   "description": "beautiful, easy svg social icons in react",
-  "main": "./dist/react-social-icons.js",
+  "main": "./build/react-social-icons.js",
   "scripts": {
-    "build": "babel -d ./dist ./src",
+    "build": "babel -d ./build ./src",
     "build:watch": "npm run build -- --watch",
     "examples:serve": "parcel examples/index.html",
-    "prepublish": "NODE_ENV=production babel -d ./dist ./src",
+    "prepublish": "NODE_ENV=production npm run build",
     "start": "npm run examples:serve",
     "test": "mocha",
-    "test:watch": "npm run test -- --watch"
+    "test:watch": "npm run test -- --watch",
+    "bundlesize": "npm run prepublish && tar -c build | gzip > build.tar.gz && du -h build build.tar.gz"
   },
   "author": "jaketrent",
   "license": "MIT",
@@ -40,6 +41,6 @@
     "prop-types": "^15.6.2"
   },
   "peerDependencies": {
-    "react": "15.x.x || 16.x.x"
+    "react": "15.x.x || 16.x.x || 17.x.x"
   }
 }
