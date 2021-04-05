@@ -15,6 +15,7 @@ jobs:
 
       - name: Build Example Site
         run: |
+          npm ci
           parcel build examples/index.html --public-url /react-social-icons/
           rm app.*
           cp dist/* .
