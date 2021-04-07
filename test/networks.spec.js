@@ -27,10 +27,15 @@ describe('networks', () => {
     it('returns key for key.com/something address', () => {
       networkKeys.length.should.be.greaterThan(0)
       networkKeys.forEach(k => {
-        const path = range(random(5, 10))
-          .map(randStr)
-          .join('/')
+        const path = range(3).map(() => random(5,10)).map(randStr).join('/')
         keyFor(`http://${k}.com${path}`).should.eql(k)
+      })
+    })
+
+    it('returns key for sub-domain.key.com address', () => {
+      networkKeys.length.should.be.greaterThan(0)
+      networkKeys.forEach(k => {
+        keyFor(`http://sub-domain.${k}.com`).should.eql(k)
       })
     })
   })
@@ -38,7 +43,7 @@ describe('networks', () => {
 
 function randStr(len) {
   const poss = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'
-  return range(len).reduce(str => str + poss.charAt(random(poss.length)), '')
+  return range(len).reduce(str => str + poss.charAt(random(0, poss.length)), '')
 }
 
 function random(min, max) {
