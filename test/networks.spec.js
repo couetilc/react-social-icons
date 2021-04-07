@@ -28,7 +28,7 @@ describe('networks', () => {
       networkKeys.length.should.be.greaterThan(0)
       networkKeys.forEach(k => {
         const path = range(3).map(() => random(5,10)).map(randStr).join('/')
-        keyFor(`http://${k}.com${path}`).should.eql(k)
+        keyFor(`http://${k}.com/${path}`).should.eql(k)
       })
     })
 
@@ -36,7 +36,7 @@ describe('networks', () => {
       networkKeys.length.should.be.greaterThan(0)
       networkKeys.forEach(k => {
         const path = range(3).map(() => random(5,10)).map(randStr).join('.')
-        keyFor(`http://${k}.com${path}`).should.eql(k)
+        keyFor(`http://${k}.com/${path}`).should.eql(k)
       })
     })
 
