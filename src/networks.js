@@ -2,7 +2,9 @@ import DB from './_networks-db.js'
 
 export const DEFAULT_KEY = 'sharethis'
 export const KEYS = Object.keys(DB)
-const KEYS_REGEX = /(?:https?:\/\/)?(?:.*\.)?(?<key>.*?)\..*?($|\/)/;
+const KEYS_REGEX = new RegExp(
+  '(?:https?:\\/\\/(?:[a-z0-9]*.)?)?(' + KEYS.join('|') + ').*'
+)
 
 export function keyTo(key, { icon, mask, color }) {
   DB[key] = { icon, mask, color };
@@ -25,12 +27,8 @@ export function keyFor(url) {
     return DEFAULT_KEY
   }
 
-  if (url.startsWith('mailto:')) {
-    return 'mailto'
-  }
-
-  const { groups } = url.match(KEYS_REGEX);
-  return groups && KEYS.includes(groups.key) ? groups.key : DEFAULT_KEY
+  const key = url.replace(KEYS_REGEX, '$1')
+  return key === url ? DEFAULT_KEY : key
 }
 
 export function keysFor(urls) {
