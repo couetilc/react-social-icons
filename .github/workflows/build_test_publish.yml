@@ -24,6 +24,8 @@ jobs:
 
       - name: Setup Node
         uses: guardian/actions-setup-node@main
+        with:
+          registry-url: 'https://registry.npmjs.org'
 
       - name: Install Dependencies
         uses: bahmutov/npm-install@v1
@@ -49,6 +51,8 @@ jobs:
 
       - name: Setup Node
         uses: guardian/actions-setup-node@main
+        with:
+          registry-url: 'https://registry.npmjs.org'
 
       - name: Install Dependencies
         uses: bahmutov/npm-install@v1
@@ -83,6 +87,8 @@ jobs:
 
       - name: Setup Node
         uses: guardian/actions-setup-node@main
+        with:
+          registry-url: 'https://registry.npmjs.org'
 
       - name: Install Dependencies
         uses: bahmutov/npm-install@v1
