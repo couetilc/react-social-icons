@@ -1,0 +1,103 @@
+name: Build, Test, Publish
+
+on:
+  pull_request:
+    branches:
+      - '*'
+  push:
+    branches:
+      - '*'
+  release:
+    types: [published]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        react-version: [ 15, 16, 17 ]
+    steps:
+
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Setup Node
+        uses: guardian/actions-setup-node@main
+
+      - name: Install Dependencies
+        uses: bahmutov/npm-install@v1
+
+      - name: Install React v${{ matrix.react-version }}
+        run: npm i react@${{ matrix.react-version }} react-dom@${{ matrix.react-version }} --no-save
+
+      - name: Test build
+        run: npm run build
+
+      - name: Test React v${{ matrix.react-version }}
+        run: npm test
+
+  publish:
+    if: github.event_name == 'release' && github.event.action == 'published'
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Setup Node
+        uses: guardian/actions-setup-node@main
+
+      - name: Install Dependencies
+        uses: bahmutov/npm-install@v1
+
+      - name: Prepublish
+        run: npm run prepublish
+
+      - name: Publish
+        run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+  example-page:
+    needs: publish
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Save Release Version
+        id: release
+        run: echo ::set-output name=version::$(npm view react-social-icons version)
+
+      - name: Create Update Branch
+        id: branch
+        run: |
+          $BRANCH="update-example-v${{steps.release.outputs.version}}"
+          git checkout -b $BRANCH
+          echo ::set-output name=ref::$BRANCH
+
+      - name: Setup Node
+        uses: guardian/actions-setup-node@main
+
+      - name: Install Dependencies
+        uses: bahmutov/npm-install@v1
+
+      - name: Build Example Site
+        run: |
+          parcel build examples/index.html --public-url /react-social-icons/
+          rm app.*
+          cp dist/* .
+
+      - name: Commit/Push Changes
+        run: |
+          git add .
+          git commit -m "updates from release v${{steps.release.outputs.version}}"
+          git push origin ${{steps.branch.outputs.ref}}
+
+      - name: Create Pull Request
+        run: >
+          hub pull-request
+          -m "Update Example Page for v${{steps.release.outputs.version}}
+          -b gh-pages
