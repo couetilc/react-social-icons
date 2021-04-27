@@ -73,17 +73,8 @@ jobs:
 
       - name: Checkout
         uses: actions/checkout@v2
-
-      - name: Save Release Version
-        id: release
-        run: echo ::set-output name=version::$(npm view react-social-icons version)
-
-      - name: Create Update Branch
-        id: branch
-        run: |
-          $BRANCH="update-example-v${{steps.release.outputs.version}}"
-          git checkout -b $BRANCH
-          echo ::set-output name=ref::$BRANCH
+        with:
+          ref: 'gh-pages'
 
       - name: Setup Node
         uses: guardian/actions-setup-node@main
@@ -92,6 +83,14 @@ jobs:
 
       - name: Install Dependencies
         uses: bahmutov/npm-install@v1
+
+      - name: Save Release Version
+        id: release
+        run: echo ::set-output name=version::$(npm view react-social-icons version)
+
+      - name: Update Branch
+        run: |
+          git pull origin v${{steps.release.outputs.version}}
 
       - name: Build Example Site
         run: |
@@ -102,11 +101,5 @@ jobs:
       - name: Commit/Push Changes
         run: |
           git add .
-          git commit -m "updates from release v${{steps.release.outputs.version}}"
-          git push origin ${{steps.branch.outputs.ref}}
-
-      - name: Create Pull Request
-        run: >
-          hub pull-request
-          -m "Update Example Page for v${{steps.release.outputs.version}}
-          -b gh-pages
+          git commit -m "v${{steps.release.outputs.version}}"
+          git push origin gh-pages
