@@ -88,18 +88,12 @@ jobs:
         id: release
         run: echo ::set-output name=version::$(npm view react-social-icons version)
 
-      - name: Update Branch
+      - name: Update, Build & Commit Example Site
         run: |
-          git pull origin v${{steps.release.outputs.version}}
-
-      - name: Build Example Site
-        run: |
+          git pull --no-edit origin v${{steps.release.outputs.version}}
           parcel build examples/index.html --public-url /react-social-icons/
           rm app.*
           cp dist/* .
-
-      - name: Commit/Push Changes
-        run: |
           git add .
           git commit -m "v${{steps.release.outputs.version}}"
           git push origin gh-pages
