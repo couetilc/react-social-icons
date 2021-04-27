@@ -1,0 +1,40 @@
+name: PR for Example Page
+
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+
+jobs:
+  examplePage:
+    runs-on: macos-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Read .nvmrc
+        run: echo ::set-output name=NVMRC::$(cat .nvmrc)
+        id: nvm
+
+      - name: Set Node.js Version
+        uses: actions/setup-node@v1
+        with:
+          node-version: '${{ steps.nvm.outputs.NVMRC }}'
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: Build Example Site
+        run: |
+          npm ci
+          parcel build examples/index.html --public-url /react-social-icons/
+          rm app.*
+          cp dist/* .
+
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v3
+        with:
+          commit-message: update example page
+          title: Update Example Page
+          body: Update example page with the latest release.
+          branch: update-gh-pages
+          base: gh-pages

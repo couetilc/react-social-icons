@@ -1,12 +1,13 @@
 {
   "name": "react-social-icons",
-  "version": "5.0.0",
+  "version": "5.1.1",
   "description": "beautiful, easy svg social icons in react",
   "main": "./build/react-social-icons.js",
   "scripts": {
     "build": "babel -d ./build ./src",
     "build:watch": "npm run build -- --watch",
     "examples:serve": "parcel examples/index.html",
+    "examples:build": "parcel build examples/index.html",
     "prepublish": "NODE_ENV=production npm run build",
     "start": "npm run examples:serve",
     "test": "mocha",
