@@ -3,15 +3,18 @@
   "version": "5.1.1",
   "description": "beautiful, easy svg social icons in react",
   "main": "./build/react-social-icons.js",
+  "types": "./build/react-social-icons.d.ts",
   "scripts": {
-    "build": "babel -d ./build ./src",
+    "build": "babel --copy-files -d ./build ./src",
     "build:watch": "npm run build -- --watch",
     "examples:serve": "parcel examples/index.html",
     "examples:build": "parcel build examples/index.html",
     "prepublish": "NODE_ENV=production npm run build",
     "start": "npm run examples:serve",
-    "test": "mocha",
-    "test:watch": "npm run test -- --watch",
+    "test": "npm run test:js && npm run test:ts",
+    "test:watch": "npm run test:js -- --watch",
+    "test:ts": "npx tsc --jsx react --noEmit --strict --esModuleInterop test/SocialIcon.tsx",
+    "test:js": "mocha",
     "bundlesize": "npm run prepublish && tar -c build | gzip > build.tar.gz && du -h build build.tar.gz"
   },
   "author": "jaketrent",
@@ -29,6 +32,7 @@
     "@babel/preset-env": "^7.2.3",
     "@babel/preset-react": "^7.0.0",
     "@babel/register": "^7.0.0",
+    "@types/react": "^17.0.4",
     "enzyme": "^3.8.0",
     "enzyme-adapter-react-16": "^1.7.1",
     "mocha": "^5.2.0",
@@ -36,7 +40,8 @@
     "parcel-bundler": "^1.11.0",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
-    "should": "^13.2.3"
+    "should": "^13.2.3",
+    "typescript": "^4.2.4"
   },
   "dependencies": {
     "prop-types": "^15.6.2"
