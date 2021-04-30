@@ -74,7 +74,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
         with:
-          ref: 'gh-pages'
+          ref: 'origin/gh-pages'
 
       - name: Setup Node
         uses: guardian/actions-setup-node@main
