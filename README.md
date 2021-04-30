@@ -38,21 +38,6 @@ This library supports [TypeScript](https://www.typescriptlang.org/) since v5.2.0
 | className  | String | No       | Specify a class to attach to the rendered anchor tag
 | defaultSVG | Object | No       | Override the default icon for when a url is not matched to a social network. Requires string properties `icon`, `mask`, and `color`. (defaults to network `'sharethis'`)
 
-## Rebuild Examples
-
-```
-git checkout gh-pages
-git rebase master
-sh scripts/gen-gh-pages.sh
-```
-
-## Release
-
-```
-npm version <semver>
-npm publish
-```
-
 ## Contributing
 
 ### How to add new icons
