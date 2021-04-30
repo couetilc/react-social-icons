@@ -1,6 +1,6 @@
 {
   "name": "react-social-icons",
-  "version": "5.1.1",
+  "version": "5.2.0",
   "description": "beautiful, easy svg social icons in react",
   "main": "./build/react-social-icons.js",
   "types": "./build/react-social-icons.d.ts",
