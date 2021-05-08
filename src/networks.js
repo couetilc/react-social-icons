@@ -2,8 +2,9 @@ import DB from './_networks-db.js'
 
 export const DEFAULT_KEY = 'sharethis'
 export const KEYS = Object.keys(DB)
+const sortLongestFirst = arr => arr.sort((pre, post) => post.length - pre.length)
 const KEYS_REGEX = new RegExp(
-  '(?:https?:\\/\\/(?:[a-z0-9-]*.)?)?(' + KEYS.join('|') + ').*'
+  '(?:https?:\\/\\/(?:[a-z0-9-]*.)?)?(' + sortLongestFirst(KEYS).join('|') + ').*'
 )
 
 export function keyTo(key, { icon, mask, color }) {
