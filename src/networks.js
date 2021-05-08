@@ -3,7 +3,7 @@ import DB from './_networks-db.js'
 export const DEFAULT_KEY = 'sharethis'
 export const KEYS = Object.keys(DB)
 const KEYS_REGEX = new RegExp(
-  '(?:https?:\\/\\/(?:[a-z0-9\-]*.)?)?(' + KEYS.join('|') + ').*'
+  '(?:https?:\\/\\/(?:[a-z0-9-]*.)?)?(' + KEYS.join('|') + ').*'
 )
 
 export function keyTo(key, { icon, mask, color }) {

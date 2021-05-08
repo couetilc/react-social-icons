@@ -27,7 +27,7 @@ function SocialIcon(props) {
     <a
       {...rest}
       href={url}
-      className={'social-icon' + (!!className ? ' ' + className : '')}
+      className={'social-icon' + (className ? ' ' + className : '')}
       style={{ ...socialIcon, ...props.style }}
       aria-label={label || networkKey}
     >

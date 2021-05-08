@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react'
+import React from 'react'
+import PropTypes from 'prop-types'
 
 import { maskFor, iconFor } from './networks.js'
 
@@ -14,12 +15,12 @@ function renderBackgroundSymbol() {
 
 function renderSymbols(props) {
   return props.networks.map(key => [
-    <symbol id={`${key}-icon`} viewBox="0 0 64 64">
+    <symbol key={key} id={`${key}-icon`} viewBox="0 0 64 64">
       <g className="social-icon">
         <path d={iconFor(key)} />
       </g>
     </symbol>,
-    <symbol id={`${key}-mask`} viewBox="0 0 64 64">
+    <symbol key={key} id={`${key}-mask`} viewBox="0 0 64 64">
       <g className="social-mask">
         <path d={maskFor(key)} />
       </g>

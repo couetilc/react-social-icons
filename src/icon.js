@@ -3,7 +3,7 @@ import React from 'react'
 import { iconFor } from './networks.js'
 import { socialSvgContent } from './styles.js'
 
-function getStyle({ fgColor, networkKey }) {
+function getStyle({ fgColor }) {
   return {
     ...socialSvgContent,
     fill: fgColor || 'transparent'
