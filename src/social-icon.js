@@ -13,7 +13,7 @@ function getNetworkKey(props) {
 
 function SocialIcon(props) {
   const {
-    url, network, bgColor, fgColor, className, label, children, defaultSVG,
+    url, network, bgColor, fgColor, className, label, children, defaultSVG, style,
     ...rest
   } = props
 
@@ -28,7 +28,7 @@ function SocialIcon(props) {
       {...rest}
       href={url}
       className={'social-icon' + (className ? ' ' + className : '')}
-      style={{ ...socialIcon, ...props.style }}
+      style={{ ...socialIcon, ...style }}
       aria-label={label || networkKey}
     >
       <div className="social-container" style={socialContainer}>
@@ -55,6 +55,7 @@ SocialIcon.propTypes = {
     mask: PropTypes.string,
     color: PropTypes.string,
   }),
+  style: PropTypes.PropTypes.object,
   children: PropTypes.node,
 }
 
