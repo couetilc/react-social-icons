@@ -1,17 +1,18 @@
-import { FunctionComponent } from 'react';
+import { FunctionComponent } from 'react'
 interface SVG {
-  icon: string;
-  mask: string;
-  color: string;
+  icon: string
+  mask: string
+  color: string
 }
 interface SocialIconProps {
-  className?: string;
-  bgColor?: string;
-  fgColor?: string;
-  label?: string;
-  network?: string;
-  url?: string;
-  defaultSVG?: SVG;
+  className?: string
+  bgColor?: string
+  fgColor?: string
+  label?: string
+  network?: string
+  url?: string
+  style?: {}
+  defaultSVG?: SVG
 }
-declare const SocialIcon: FunctionComponent<SocialIconProps>;
-export { SocialIcon, SocialIconProps };
+declare const SocialIcon: FunctionComponent<SocialIconProps>
+export { SocialIcon, SocialIconProps }
