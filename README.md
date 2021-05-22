@@ -37,6 +37,7 @@ This library supports [TypeScript](https://www.typescriptlang.org/) since v5.2.0
 | label      | String | No       | Set the `aria-label` attribute on the rendered anchor tag (defaults to the social network's name)
 | className  | String | No       | Specify a class to attach to the rendered anchor tag
 | defaultSVG | Object | No       | Override the default icon for when a url is not matched to a social network. Requires string properties `icon`, `mask`, and `color`. (defaults to network `'sharethis'`)
+| style      | Object | No       | Override style properties passed to the rendered anchor tag |
 
 ## Contributing
 

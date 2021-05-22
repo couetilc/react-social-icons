@@ -1,4 +1,4 @@
-import { FunctionComponent } from 'react';
+import { FunctionComponent, CSSProperties } from 'react';
 interface SVG {
   icon: string;
   mask: string;
@@ -12,6 +12,7 @@ interface SocialIconProps {
   network?: string;
   url?: string;
   defaultSVG?: SVG;
+  style?: CSSProperties;
 }
 declare const SocialIcon: FunctionComponent<SocialIconProps>;
 export { SocialIcon, SocialIconProps };
