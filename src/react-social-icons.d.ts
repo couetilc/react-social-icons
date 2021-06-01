@@ -4,7 +4,7 @@ interface SVG {
   mask: string;
   color: string;
 }
-interface SocialIconProps {
+interface SocialIconProps extends React.DetailedHTMLProps<React.AnchorHTMLAttributes<HTMLAnchorElement>, HTMLAnchorElement>  {
   className?: string;
   bgColor?: string;
   fgColor?: string;
