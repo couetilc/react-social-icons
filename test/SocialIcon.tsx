@@ -10,6 +10,8 @@ const SocialIconTest = () => (
       network="example"
       defaultSVG={{ icon: "", mask: "", color: "" }}
       style={{ height: '100px', width: '100px' }}
+      target='blank'
+      rel='noreferrer'
     />
     <SocialIcon
       // @ts-expect-error
@@ -26,6 +28,10 @@ const SocialIconTest = () => (
       defaultSVG={{ icon: "" }}
       // @ts-expect-error
       style={null}
+      // @ts-expect-error
+      target={null}
+      // @ts-expect-error
+      rel={null}
     />
     <SocialIcon><div></div></SocialIcon>
   </>
