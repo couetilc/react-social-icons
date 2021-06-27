@@ -2,7 +2,7 @@ import React from 'react'
 import { iconFor, maskFor } from '../src/networks'
 import Icon from '../src/icon'
 import Mask from '../src/mask'
-import SocialIcon from '../src/social-icon'
+import { SocialIcon, keyFor } from '../src/react-social-icons'
 import Background from '../src/background'
 import { shallow } from 'enzyme'
 
@@ -130,3 +130,9 @@ describe('<SocialIcon />', () => {
   })
 
 })
+
+describe('keyFor', () => {
+  it('exports keyFor function', () => {
+    keyFor('https://example.com').should.eql('sharethis');
+  });
+});
