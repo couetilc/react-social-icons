@@ -39,6 +39,7 @@ const SocialIconTest = () => (
 );
 
 const keyForTest = () => {
+  keyFor();
   keyFor('https://twitter.com');
   // @ts-expect-error
   keyFor(1234);
