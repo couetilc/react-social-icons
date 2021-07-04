@@ -1,5 +1,6 @@
 import React from 'react';
-import { SocialIcon } from '../src/react-social-icons.js'
+import { SocialIcon, keyFor } from '../src/react-social-icons.js'
+
 const SocialIconTest = () => (
   <>
     <SocialIcon
@@ -36,4 +37,11 @@ const SocialIconTest = () => (
     <SocialIcon><div></div></SocialIcon>
   </>
 );
+
+const keyForTest = () => {
+  keyFor('https://twitter.com'),
+  // @ts-expect-error
+  keyFor(1234),
+}
+
 export default SocialIconTest;
