@@ -2,7 +2,7 @@
 
 A set of beautiful svg social icons.  Easily used in React.  No images or external css dependencies.  Svg paths provided by Squarespace.
 
-![social network icons](https://i.imgur.com/xQ0Aqng.png)
+![social network icons](https://i.imgur.com/OrNeTND.png)
 
 ## Install
 
