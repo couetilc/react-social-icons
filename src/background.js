@@ -2,9 +2,14 @@ import React from 'react'
 
 import { socialSvgContent } from './styles.js'
 
-function Background({ networkKey, ...props }) { // eslint-disable-line react/prop-types
+// eslint-disable-next-line react/prop-types
+function Background({ networkKey, fgColor, ...props }) {
   return (
-    <g {...props} className="social-svg-background" style={socialSvgContent}>
+    <g
+      {...props}
+      className="social-svg-background"
+      style={{ ...socialSvgContent, fill: fgColor || socialSvgContent.fill }}
+    >
       <circle cx="32" cy="32" r="31" />
     </g>
   )

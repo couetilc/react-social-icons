@@ -33,7 +33,7 @@ function SocialIcon(props) {
     >
       <div className="social-container" style={socialContainer}>
         <svg className="social-svg" style={socialSvg} viewBox="0 0 64 64">
-          <Background />
+          <Background fgColor={fgColor} />
           <Icon networkKey={networkKey} fgColor={fgColor} />
           <Mask networkKey={networkKey} bgColor={bgColor} />
         </svg>
