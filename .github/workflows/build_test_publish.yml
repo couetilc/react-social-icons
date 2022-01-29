@@ -16,9 +16,8 @@ jobs:
     name: Test React v${{ matrix.react-version }}
     strategy:
       matrix:
-        react-version: [ 15, 16, 17 ]
+        react-version: [15, 16, 17]
     steps:
-
       - name: Checkout
         uses: actions/checkout@v2
 
@@ -45,7 +44,6 @@ jobs:
     runs-on: ubuntu-latest
     name: Publish Package
     steps:
-
       - name: Checkout
         uses: actions/checkout@v2
 
@@ -70,7 +68,6 @@ jobs:
     runs-on: ubuntu-latest
     name: Update Example Page
     steps:
-
       - name: Checkout
         uses: actions/checkout@v2
         with:
@@ -86,12 +83,12 @@ jobs:
 
       - name: Save Release Version
         id: release
-        run: echo ::set-output name=version::$(npm view react-social-icons version)
+        run: echo ::set-output name=version::$(npm view react-share-social-icons version)
 
       - name: Update, Build & Commit Example Site
         run: |
           git pull --no-edit origin v${{steps.release.outputs.version}}
-          parcel build examples/index.html --public-url /react-social-icons/
+          parcel build examples/index.html --public-url /react-share-social-icons/
           rm app.*
           cp dist/* .
           git add .

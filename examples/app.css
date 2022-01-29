@@ -1,15 +1,19 @@
 body {
-  font-family: "Bookman", Georgia, "Times New Roman", serif;
+  font-family: 'Bookman', Georgia, 'Times New Roman', serif;
   font-size: 18px;
-  background: #efefef;
-  color: #1a1a1a;
+  background: #ffffff;
+  color: #000000;
 }
-h1, h2, h3, h4 {
-  font-family: "Roboto Slab", "HelveticaNeue-Light", "Helvetica Neue", Calibri, Helvetica, Arial;
+h1,
+h2,
+h3,
+h4 {
+  font-family: 'Roboto Slab', 'HelveticaNeue-Light', 'Helvetica Neue', Calibri,
+    Helvetica, Arial;
 }
 h1 {
   color: #ff4220;
-  text-shadow: 0 1px 0 rgba(0,0,0,.5);
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.5);
 }
 h1 a {
   color: inherit;
@@ -19,35 +23,29 @@ h2 {
   margin-top: 55px;
 }
 
-
 /* code style */
 pre {
   max-width: 100%;
   white-space: no-wrap;
   border-radius: 0.4em;
-  padding: .8em .6em;
+  padding: 0.8em 0.6em;
   overflow: scroll;
   vertical-align: middle;
   background: #fff;
   border: 1px solid #cdcdcd;
 }
-p code, li code {
+p code,
+li code {
   display: inline-block;
   white-space: no-wrap;
   background: #fff;
-  font-size: .8em;
+  font-size: 0.8em;
   line-height: 1.5em;
   color: #555;
   border: 1px solid #ddd;
   border-radius: 0.4em;
-  padding: 0 .3em;
+  padding: 0 0.3em;
   margin: -1px 0;
-}
-
-.container {
-  width: 850px;
-  max-width: 100%;
-  margin: 0 auto;
 }
 
 #sizes .social-icon {
@@ -75,11 +73,6 @@ p code, li code {
   margin: 0 20px 20px 0;
 }
 
-#lib .social-icon:hover {
-  transform: scale(1.1);
-  box-shadow: 1px 1px 4px rgba(0,0,0,.5);
-}
-
 .one-line-example {
   display: -webkit-flex;
   display: flex;
@@ -99,14 +92,4 @@ p code, li code {
 .collection-example .social-icon,
 .collection-example .social-icon {
   margin-right: 6px;
-}
-
-
-.footer {
-  margin: 50px auto;
-  text-align: center;
-}
-.footer a {
-  color: #1a1a1a;
-  text-decoration: none;
 }

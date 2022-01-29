@@ -1,9 +1,9 @@
 {
-  "name": "react-social-icons",
+  "name": "react-share-social-icons",
   "version": "5.9.0",
   "description": "beautiful, easy svg social icons in react",
-  "main": "./build/react-social-icons.js",
-  "types": "./build/react-social-icons.d.ts",
+  "main": "./build/react-share-social-icons.js",
+  "types": "./build/react-share-social-icons.d.ts",
   "scripts": {
     "build": "babel --copy-files -d ./build ./src",
     "build:watch": "npm run build -- --watch",
@@ -18,14 +18,11 @@
     "test:js": "mocha",
     "bundlesize": "npm run prepublish && tar -c build | gzip > build.tar.gz && du -h build build.tar.gz"
   },
-  "author": "jaketrent",
+  "author": "lucaspeferreira",
   "license": "MIT",
-  "contributors": [
-    "Vitaly Aminev <v@makeomatic.ru>"
-  ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/jaketrent/react-social-icons"
+    "url": "https://github.com/lucaspeferreira/react-share-social-icons"
   },
   "devDependencies": {
     "@babel/cli": "^7.2.3",
