@@ -1,4 +1,5 @@
-import ASocialIcon from './social-icon.js'
-export { keyFor } from './networks'
+import SocialIcon from './component';
+import './all';
+export { keyFor } from './networks';
 
-export const SocialIcon = ASocialIcon
+export { SocialIcon };

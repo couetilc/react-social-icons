@@ -2,7 +2,11 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 
 import * as networks from '../src/networks.js'
-import { SocialIcon } from '../src/react-social-icons.js'
+// import { SocialIcon } from '../src/react-social-icons.js'
+import '../src/all';
+// import '../src/icons/behance';
+import SocialIcon from '../src/component';
+console.log({ keys: networks.KEYS });
 
 function Page() {
   return (

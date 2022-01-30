@@ -1,26 +1,26 @@
-import DB from './_networks-db.js'
+import DB from './db';
 
 export const DEFAULT_KEY = 'sharethis'
-export const KEYS = Object.keys(DB)
+export const KEYS = Object.keys(DB.icons)
 const sortLongestFirst = arr => arr.sort((pre, post) => post.length - pre.length)
 const KEYS_REGEX = new RegExp(
   '(?:https?:\\/\\/(?:[a-z0-9-]*.)?)?(' + sortLongestFirst(KEYS).join('|') + ').*'
 )
 
 export function keyTo(key, { icon, mask, color }) {
-  DB[key] = { icon, mask, color };
+  DB.icons[key] = { icon, mask, color };
 }
 
 export function iconFor(key) {
-  return DB[key] ? DB[key].icon : null
+  return DB.icons[key] ? DB.icons[key].icon : null
 }
 
 export function maskFor(key) {
-  return DB[key] ? DB[key].mask : null
+  return DB.icons[key] ? DB.icons[key].mask : null
 }
 
 export function colorFor(key) {
-  return DB[key] ? DB[key].color : null
+  return DB.icons[key] ? DB.icons[key].color : null
 }
 
 export function keyFor(url) {
