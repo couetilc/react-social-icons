@@ -1,14 +1,22 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 
-import * as networks from '../src/networks.js'
 // import { SocialIcon } from '../src/react-social-icons.js'
-import '../src/all';
+// import '../src/all';
 // import '../src/icons/behance';
+// import '../src/icons/bandsintown';
+import '../src/_icons/twitter';
+import '../src/_icons/bandsintown';
+import '../src/_icons/instagram';
+import '../src/_icons/ravelry';
+import '../src/_icons/slack';
+// import '../src/_icons';
 import SocialIcon from '../src/component';
+import * as networks from '../src/networks.js'
 console.log({ keys: networks.KEYS });
 
 function Page() {
+console.log({ keys: networks.KEYS });
   return (
     <>
       <h1>

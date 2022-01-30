@@ -4,6 +4,7 @@
   "description": "beautiful, easy svg social icons in react",
   "main": "./build/react-social-icons.js",
   "types": "./build/react-social-icons.d.ts",
+  "type": "module",
   "scripts": {
     "build": "babel --copy-files -d ./build ./src",
     "build:watch": "npm run build -- --watch",

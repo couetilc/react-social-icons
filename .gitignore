@@ -1,3 +1,5 @@
+src/_icons
+src/icons
 node_modules
 npm-debug.log
 __build__
