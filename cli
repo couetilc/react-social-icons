@@ -1,0 +1,142 @@
+#!/usr/bin/env bash
+
+PRETTIER_PATTERN=("./*.js" "src/**" "test/**" "db/**")
+
+build() {
+  build:pkg "$@"
+}
+
+build:pkg() {
+  pnpm rollup -c rollup.config.js "$@"
+}
+
+build:visual() {
+  build:pkg
+  pnpm vite build -c test/visual/vite.config.js "$@" test/visual
+}
+
+build:www() {
+  pnpm vite build -c www/vite.config.js www/
+}
+
+dev() {
+  info:visual
+}
+
+info:bundlesize() {
+ build
+ tar -c dist | gzip > dist.tar.gz
+ du -h dist dist.tar.gz
+ rm dist.tar.gz
+}
+
+info:visual() {
+  pnpm vite --force -c vite.config.js test/visual/
+}
+
+info:www() {
+  pnpm vite -c vite.config.js www/
+}
+
+task:icons-shot() {
+  ./cli build:www
+  pnpx playwright
+}
+
+task:fmt() {
+  pnpm prettier -u -w "${PRETTIER_PATTERN[@]}"
+}
+
+task:update-node() {
+  brew upgrade nodenv node-build
+  latest="$(node-build --definitions | sort -urn | head -n 1)"
+  echo "$latest" > .node-version
+  nodenv install --skip-existing "$(cat .node-version)"
+  corepack enable
+  node -e "
+    var packagejson = require('./package.json')
+    packagejson.packageManager = 'pnpm@$(pnpm -v)'
+    fs.writeFileSync(
+      './package.json',
+      JSON.stringify(packagejson, null, 2)
+    )
+  "
+}
+
+task:setup-dev() {
+  brew install nodenv node-build
+  echo "eval \"\$(nodenv init -)\"" >> ".${SHELL/[a-z\/]*\//}rc"
+  nodenv install
+  corepack enable
+  pnpm install
+}
+
+test:lint() {
+  build --silent
+  pnpm eslint .eslintrc.cjs . db/*
+}
+
+test:publint() {
+  build --silent
+  pnpm publint .
+}
+
+test:fmt() {
+  pnpm prettier -u -c "${PRETTIER_PATTERN[@]}"
+}
+
+test:ts() {
+  pnpm tsc
+}
+
+test:unit() {
+  build --silent
+  pnpm vitest test/unit/*.test.js "$@"
+}
+
+test:src() {
+  pnpm vitest test/unit/src.test.js "$@"
+}
+
+test:codesplitting() {
+  build --silent
+  ./test/codesplitting.sh
+}
+
+test:visual() {
+  scale=2
+  network=tiktok
+  out=./tmp/visual-test/shot.png
+  pnpx playwright screenshot \
+    --viewport-size="$((1250 * scale)), $((400 * scale))" \
+    "http://localhost:5173/?network=$network&knobs=false&scale=$scale" \
+    "$out"
+}
+
+test:dep() {
+  [[ ! -a 'package-lock.json' ]] || (
+    echo "Error: invalid package manager npm detected, this project uses pnpm." && exit 1
+  )
+  [[ ! -a 'yarn.lock' ]] || (
+    echo "Error: invalid package manager yarn detected, this project uses pnpm." && exit 1
+  )
+}
+
+test:() {
+  set -e
+
+  test:lint;
+  test:publint;
+  test:fmt;
+  test:ts;
+  test:unit --run --silent;
+  test:codesplitting;
+  test:dep
+
+  echo
+  echo Passed All Tests
+
+  set +e
+}
+
+"$@"

@@ -1,0 +1,9 @@
+name: Release Helper
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
