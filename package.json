@@ -48,7 +48,9 @@
     "typescript": "^4.2.4"
   },
   "dependencies": {
-    "prop-types": "^15.7.2"
+    "@vitejs/plugin-react": "^1.1.4",
+    "prop-types": "^15.7.2",
+    "vite": "^2.7.13"
   },
   "peerDependencies": {
     "react": "15.x.x || 16.x.x || 17.x.x || 18.x.x"
