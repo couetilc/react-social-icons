@@ -1,22 +1,12 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
+import React from 'react';
+import ReactDOM from 'react-dom';
 
-// import { SocialIcon } from '../src/react-social-icons.js'
-// import '../src/all';
-// import '../src/icons/behance';
-// import '../src/icons/bandsintown';
-import '../src/_icons/twitter';
-import '../src/_icons/bandsintown';
-import '../src/_icons/instagram';
-import '../src/_icons/ravelry';
-import '../src/_icons/slack';
-// import '../src/_icons';
-import SocialIcon from '../src/component';
+import SocialIcon from '../src/react-social-icons';
+// this import must come after any icon imports
 import * as networks from '../src/networks.js'
-console.log({ keys: networks.KEYS });
 
 function Page() {
-console.log({ keys: networks.KEYS });
+  console.log({ ...networks });
   return (
     <>
       <h1>
@@ -112,8 +102,8 @@ console.log({ keys: networks.KEYS });
       <p>The full code required to render.</p>
       <code className="code">
         <pre>{
-`var React = require('react');
-var { SocialIcon } = require('react-social-icons');
+`import React from 'react';
+import { SocialIcon } from 'react-social-icons';
 React.render(<SocialIcon url="https://linkedin.com/in/jaketrent" />, document.body);`
         }</pre>
       </code>

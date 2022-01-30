@@ -1,9 +1,9 @@
 import PropTypes from 'prop-types'
 import React from 'react'
 
-import Background from './background.js'
-import Icon from './icon.js'
-import Mask from './mask.js'
+import Background from './background.jsx'
+import Icon from './icon.jsx'
+import Mask from './mask.jsx'
 import { keyFor, keyTo, DEFAULT_KEY } from './networks.js'
 import { socialIcon, socialContainer, socialSvg } from './styles.js'
 
