@@ -2,14 +2,10 @@ import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 
 export default defineConfig({
-  commonjsOptions: {
-    transformMixedEsModules: true,
+  build: {
+    target: 'es2015',
   },
   plugins: [
-    react({
-      babel: {
-        presets: ["@babel/preset-env", "@babel/preset-react"],
-      }
-    }),
+    react(),
   ],
 });

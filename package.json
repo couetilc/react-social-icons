@@ -11,7 +11,7 @@
     "examples": "vite examples/ -c vite.config.js",
     "lint": "eslint src",
     "prepublish": "NODE_ENV=production npm run build",
-    "start": "npm run examples:serve",
+    "start": "npm run examples",
     "test": "npm run lint && npm run test:js && npm run test:ts",
     "test:watch": "npm run test:js -- --watch",
     "test:ts": "npx tsc --jsx react --noEmit --strict --esModuleInterop test/SocialIcon.tsx",

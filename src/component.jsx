@@ -1,6 +1,3 @@
-import PropTypes from 'prop-types'
-import React from 'react'
-
 import Background from './background.jsx'
 import Icon from './icon.jsx'
 import Mask from './mask.jsx'
@@ -43,20 +40,5 @@ function SocialIcon(props) {
   )
 }
 
-SocialIcon.propTypes = {
-  className: PropTypes.string,
-  bgColor: PropTypes.string,
-  fgColor: PropTypes.string,
-  label: PropTypes.string,
-  network: PropTypes.string,
-  url: PropTypes.string,
-  defaultSVG: PropTypes.exact({
-    icon: PropTypes.string,
-    mask: PropTypes.string,
-    color: PropTypes.string,
-  }),
-  style: PropTypes.PropTypes.object,
-  children: PropTypes.node,
-}
-
+export { SocialIcon }
 export default SocialIcon

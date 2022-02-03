@@ -1,8 +1,10 @@
 import DB from './db';
 
 export const DEFAULT_KEY = 'sharethis'
-export const KEYS = Object.keys(DB.icons)
+export const KEYS = Object.keys(DB.icons) // TODO remove this export.
+export const getKeys = () => Object.keys(DB.icons);
 const sortLongestFirst = arr => arr.sort((pre, post) => post.length - pre.length)
+// TODO make this from a function? and make it a singleton?
 const KEYS_REGEX = new RegExp(
   '(?:https?:\\/\\/(?:[a-z0-9-]*.)?)?(' + sortLongestFirst(KEYS).join('|') + ').*'
 )

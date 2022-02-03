@@ -1,5 +1,3 @@
-import PropTypes from 'prop-types'
-import React from 'react'
 import { iconFor } from './networks.js'
 import { socialSvgContent } from './styles.js'
 
@@ -16,11 +14,6 @@ function Icon({ fgColor, networkKey, ...props }) {
       <path d={iconFor(networkKey)} />
     </g>
   )
-}
-
-Icon.propTypes = {
-  fgColor: PropTypes.string,
-  networkKey: PropTypes.string.isRequired
 }
 
 export default Icon
