@@ -2,7 +2,7 @@ import React from 'react'
 import { iconFor, maskFor } from '../src/networks'
 import Icon from '../src/icon'
 import Mask from '../src/mask'
-import { SocialIcon, keyFor } from '../src/react-social-icons'
+import { SocialIcon, keyFor } from '../src/react-social-icons.js'
 import Background from '../src/background'
 import { shallow } from 'enzyme'
 

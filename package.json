@@ -2,11 +2,21 @@
   "name": "react-social-icons",
   "version": "5.14.0",
   "description": "beautiful, easy svg social icons in react",
-  "main": "./build/react-social-icons.js",
-  "types": "./build/react-social-icons.d.ts",
+  "main": "./dist/react-social-icons.umd.js",
+  "module": "./dist/react-social-icons.es.js",
+  "types": "./dist/react-social-icons.d.ts",
   "type": "module",
+  "files": [
+    "dist"
+  ],
+  "exports": {
+    ".": {
+      "import": "./dist/react-social-icons.es.js",
+      "require": "./dist/react-social-icons.umd.js"
+    }
+  },
   "scripts": {
-    "build": "babel --copy-files -d ./build ./src",
+    "build": "vite build -c vite.config.js",
     "build:watch": "npm run build -- --watch",
     "examples": "vite examples/ -c vite.config.js",
     "lint": "eslint src",
@@ -15,7 +25,7 @@
     "test": "npm run lint && npm run test:js && npm run test:ts",
     "test:watch": "npm run test:js -- --watch",
     "test:ts": "npx tsc --jsx react --noEmit --strict --esModuleInterop test/SocialIcon.tsx",
-    "test:js": "mocha",
+    "test:js": "jest",
     "bundlesize": "npm run prepublish && tar -c build | gzip > build.tar.gz && du -h build build.tar.gz"
   },
   "author": "jaketrent",
@@ -37,19 +47,23 @@
     "@vitejs/plugin-react": "^1.1.4",
     "enzyme": "^3.8.0",
     "enzyme-adapter-react-16": "^1.7.1",
-    "eslint": "^7.26.0",
+    "eslint": "^8.8.0",
     "eslint-plugin-react": "^7.23.2",
-    "mocha": "^5.2.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "should": "^13.2.3",
     "typescript": "^4.2.4",
     "vite": "^2.7.13"
   },
-  "dependencies": {
-    "prop-types": "^15.8.1"
-  },
   "peerDependencies": {
     "react": "15.x.x || 16.x.x || 17.x.x || 18.x.x"
+  },
+  "jest": {
+    "setupFilesAfterEnv": [
+      "<rootDir>test/setup.js"
+    ]
+  },
+  "dependencies": {
+    "jest": "^27.4.7"
   }
 }

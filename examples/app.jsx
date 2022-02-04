@@ -1,11 +1,9 @@
 import ReactDOM from 'react-dom';
 
-import SocialIcon from '../src/react-social-icons';
+import SocialIcon, { getKeys } from '../src/react-social-icons.js';
 // this import must come after any icon imports
-import * as networks from '../src/networks.js'
 
 function Page() {
-  console.log({ ...networks });
   return (
     <>
       <h1>
@@ -19,7 +17,7 @@ function Page() {
       <h2>Library</h2>
       <p>Here are the available icons.</p>
       <div id="lib">
-        {networks.KEYS.map(k => <SocialIcon network={k} title={k} key={k} />)}
+        {getKeys().map(k => <SocialIcon network={k} title={k} key={k} />)}
       </div>
 
       <h2>Usage</h2>

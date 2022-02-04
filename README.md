@@ -1,8 +1,8 @@
 # TODO
 
-- get vite working for examples page: https://vitejs.dev/
-- get vite to build the project for us: https://vitejs.dev/guide/build.html#library-mode
 - once vite is at least building, then we need different types of builds:
+  (this may involving pulling the "generate_registraiton_files" script
+  into the vite config, or inside some hook I can add to vite config)
    - The "import everything by default" build
       ```js
       import SocialIcon from 'react-social-icons';
@@ -15,35 +15,27 @@
       import 'react-social-icons/icons/whatsapp';
       import 'react-social-icons/icons/whatsapp';
       ```
+- replace enzyme in tests with react-testing-library if possible. Get rid of "should" too.
 - instead of just mocha, use web test runner https://modern-web.dev/guides/test-runner/getting-started/ to run all the tests on different browsers.
-- use `pnpm` instead of npm, I mean come on, ewww. And write githook to throw
-  error if yarn.lock or package-lock.json exists.
-- replace enzyme in tests with react-testing-library if possible
+-  write githook to throw
+  error if yarn.lock or package-lock.json exists when commit or pushing. or have
+  it check at least no staged files are yar.lock or package-lock.json when committing.
 - alias "defaultIcon" for "defaultSVG" but still keep it around for compatibility, but have docs reflect new usage.
+- trim down everything into one file that still passes tests.
+- add styling with a <style></style> tag or resort to nano-css. Is there linting for css prefixes? how to handle css prefixes?
 - create an FAQ or something in the readme:
    - include "how do I open the social network into a new tab" and metion target="_blank"
    - what else can I include from the issues, opened or closed?
 - auto deploy examples page on every release
 - auto-update README image on every push to master.
-- switch test runner to mocha and web test runner, get rid of the should library too.
 - fix the inkscape instructions
 - add eslint rule to only allow like es2015 syntax or something like that so I
   can get rid of babel transpilation. do some research on whats needed here,
   also simplify all the code, there's too many files for what this package does.
   Also, can I not use inline styles somehow but still have it be re-usable and
-  performant?
-- remove that src/symbols.jsx file it's not being used.
-- maybe instead of removing inline styles, I just swap the react with svelte
-  so I don't have to add a css-in-js library.
-  or just use nano-css https://github.com/streamich/nano-css/blob/master/index.js
-  make sure you do/don't have to prefix, and see if there is css linting that
-  lets me set a target and flag css that needs prefixing or other issue
-  I think I want to make sure the css works for server side rendering, can
-  testwith renderToString from react-dom?
-  or just add a style tag and put styles in there and see if works.
+  performant? may not need this is esbuild with target es2015 does the trick.
 - how to handle changelog and releases? maybe everytime there's a new semantic
   versioning tag? or use that changesets package or something?
-- remove prop-types
 
 # react-social-icons &nbsp; ![build status](https://img.shields.io/github/workflow/status/jaketrent/react-social-icons/Build,%20Test,%20Publish/master) ![package version](https://img.shields.io/npm/v/react-social-icons) ![package size](https://img.shields.io/bundlephobia/minzip/react-social-icons) ![weekly downloads](https://img.shields.io/npm/dw/react-social-icons) ![type definitions](https://img.shields.io/npm/types/react-social-icons)
 
