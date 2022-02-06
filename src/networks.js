@@ -6,7 +6,7 @@ export const getKeys = () => Object.keys(DB.icons);
 const sortLongestFirst = arr => arr.sort((pre, post) => post.length - pre.length)
 // TODO make this from a function? and make it a singleton?
 const KEYS_REGEX = new RegExp(
-  '(?:https?:\\/\\/(?:[a-z0-9-]*.)?)?(' + sortLongestFirst(KEYS).join('|') + ').*'
+  '(?:https?:\\/\\/(?:[a-z0-9-]*.)?)?(' + sortLongestFirst(getKeys()).join('|') + ').*'
 )
 
 export function keyTo(key, { icon, mask, color }) {

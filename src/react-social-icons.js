@@ -1,7 +1,6 @@
-// icons MUST be imported before SocialIcon
-import './_icons';
-import SocialIcon from './component';
-export { keyFor, getKeys } from './networks';
+// icons MUST be imported before SocialIcon. TODO really?
+import './icons';
+import { SocialIcon } from './component.jsx';
 
+export { keyFor, getKeys } from './networks.js';
 export { SocialIcon };
-export default SocialIcon;

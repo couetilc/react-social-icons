@@ -1,6 +1,7 @@
 import ReactDOM from 'react-dom';
 
-import SocialIcon, { getKeys } from '../src/react-social-icons.js';
+import { SocialIcon, getKeys } from '../src/react-social-icons.js';
+// import { SocialIcon, getKeys } from '../dist/react-social-icons.js';
 // this import must come after any icon imports
 
 function Page() {
