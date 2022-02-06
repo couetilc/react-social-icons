@@ -1,3 +1,4 @@
+import React from 'react';
 import { socialSvgContent } from './styles.js'
 
 function Background({ networkKey, ...props }) { // eslint-disable-line react/prop-types

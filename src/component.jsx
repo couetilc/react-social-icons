@@ -1,3 +1,4 @@
+import React from 'react';
 import Background from './background.jsx'
 import Icon from './icon.jsx'
 import Mask from './mask.jsx'

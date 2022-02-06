@@ -1,3 +1,4 @@
+import React from 'react';
 import { iconFor } from './networks.js'
 import { socialSvgContent } from './styles.js'
 

@@ -1,3 +1,4 @@
+import React from 'react';
 import { colorFor, maskFor } from './networks.js'
 import { socialSvgMask } from './styles.js'
 

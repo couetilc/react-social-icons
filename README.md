@@ -1,20 +1,5 @@
 # TODO
 
-- once vite is at least building, then we need different types of builds:
-  (this may involving pulling the "generate_registraiton_files" script
-  into the vite config, or inside some hook I can add to vite config)
-   - The "import everything by default" build
-      ```js
-      import SocialIcon from 'react-social-icons';
-      <SocialIcon url="whatever" />;
-      ```
-   - The "import what you need" build
-      ```js
-      import SocialIcon from 'react-social-icons/component';
-      import 'react-social-icons/icons/twitter';
-      import 'react-social-icons/icons/whatsapp';
-      import 'react-social-icons/icons/whatsapp';
-      ```
 - replace enzyme in tests with react-testing-library if possible. Get rid of "should" too.
 - instead of just mocha, use web test runner https://modern-web.dev/guides/test-runner/getting-started/ to run all the tests on different browsers.
 -  write githook to throw
