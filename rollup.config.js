@@ -3,8 +3,6 @@ import babel from '@rollup/plugin-babel';
 import resolve from '@rollup/plugin-node-resolve';
 
 export default (async function config(){
-  // TODO do I need the globals option? e.g. globals: { react: 'React' }
-
   const plugins = [
     socialIcons(),
     resolve(),
@@ -49,75 +47,4 @@ export default (async function config(){
       output,
     },
   ];
-
-  // return [
-  //   './src/react-social-icons.js',
-  //   './src/component.jsx',
-  // ].map(input => {
-  //   return {
-  //     input,
-  //     plugins: ,
-  //     output: [
-  //       {
-  //         format: 'es',
-  //         preserveModules: true,
-  //         dir: './dist',
-  //       },
-  //       {
-  //         file: input.replace('./src', './dist').replace('.js', '.umd.js'),
-  //         format: 'umd',
-  //         name: 'SocialIcon',
-  //       },
-  //     ],
-  //     external: ,
-  //   }
-  // });
-
-  // return [
-  //   {
-  //     input: './src/react-social-icons.js',
-  //     plugins: [
-  //       resolve(),
-  //       babel({ 
-  //         babelHelpers: 'runtime',
-  //       }),
-  //       socialIcons(),
-  //     ],
-  //     output: [
-  //       {
-  //         file: './dist/react-social-icons.es.js',
-  //         format: 'es',
-  //       },
-  //     ],
-  //     external: id => {
-  //       if (id === 'react') return true;
-  //       if (id === 'react-dom') return true;
-  //       if (/@babel\/runtime/.test(id)) return true;
-  //       return false;
-  //     },
-  //   },
-  //   {
-  //     input: './src/component.jsx',
-  //     plugins: [
-  //       resolve(),
-  //       babel({
-  //         babelHelpers: 'runtime'
-  //       }),
-  //       socialIcons()
-  //   ],
-  //     output: [
-  //       {
-  //         file: './dist/component.es.js',
-  //         format: 'es',
-  //       },
-  //     ],
-  //     external: id => {
-  //       if (id === 'react') return true;
-  //       if (id === 'react-dom') return true;
-  //       if (/@babel\/runtime/.test(id)) return true;
-  //       return false;
-  //     },
-  //   },
-  //   // ... all icons
-  // ];
 })();
