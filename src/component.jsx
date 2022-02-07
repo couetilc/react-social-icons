@@ -23,14 +23,20 @@ function SocialIcon(props) {
 
   return (
     <a
-      href={url}
+      href={url || ''}
       className={'social-icon' + (className ? ' ' + className : '')}
       style={{ ...socialIcon, ...style }}
       aria-label={label || networkKey}
       {...rest}
     >
       <div className="social-container" style={socialContainer}>
-        <svg className="social-svg" style={socialSvg} viewBox="0 0 64 64">
+        <svg
+          role="img"
+          aria-label={`${networkKey} social icon`}
+          className="social-svg"
+          style={socialSvg}
+          viewBox="0 0 64 64"
+        >
           <Background />
           <Icon networkKey={networkKey} fgColor={fgColor} />
           <Mask networkKey={networkKey} bgColor={bgColor} />

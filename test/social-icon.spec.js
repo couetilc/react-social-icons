@@ -1,181 +1,154 @@
 import React from 'react'
+import { expect } from 'chai';
 import { iconFor, maskFor } from '../src/networks'
-import Icon from '../src/icon'
-import Mask from '../src/mask'
 import { SocialIcon, keyFor, getKeys } from '../src/react-social-icons.js'
-import Background from '../src/background'
-import { shallow } from 'enzyme'
+import { render, screen } from '@testing-library/react';
 
 describe('<SocialIcon />', () => {
-  const url = 'http://pinterest.com'
-  let socialIcon
-  beforeEach(() => {
-    socialIcon = shallow(<SocialIcon url={url} />)
-  })
-
-  it('takes a url prop', () => {
-    socialIcon.props().href.should.eql(url)
-  })
+  const url = 'http://pinterest.com/'
 
   it('renders the anchor with the url', () => {
-    const a = socialIcon.find('a')
-    a.length.should.eql(1)
-    a.hasClass('social-icon').should.eql(true)
-    a.props().href.should.eql(url)
+    render(<SocialIcon url={url} />);
+    const node = screen.getByRole('link')
+    expect(Array.from(node.classList)).to.include('social-icon')
+    expect(node.href).to.equal(url);
   })
 
   it('renders child elements', () => {
-    socialIcon = shallow(<SocialIcon url={url}><div id="test" /></SocialIcon>)
-    socialIcon.contains(<div id="test" />).should.equal(true);
+    render(<SocialIcon><div data-testid="child" /></SocialIcon>);
+    screen.getByTestId("child");
   });
 
   it('doesnt have a target prop', () => {
-    const a = socialIcon.find('a')
-    a.props().should.not.have.property('target')
-    a.props().should.not.have.property('rel')
+    render(<SocialIcon />);
+    const node = screen.getByRole('link');
+    expect(node.target).to.be.empty;
+    expect(node.rel).to.be.empty;
   })
 
-  it('can add a target prop', () => {
-    const a = shallow(
-      <SocialIcon url={url} target="_blank" rel="noopener noreferrer" />
-    ).find('a')
-    a.props().target.should.eql('_blank')
-    a.props().rel.should.eql('noopener noreferrer')
+  it('can add a target and rel prop', () => {
+    render(<SocialIcon target="_blank" rel="noopener noreferrer" />);
+    const node = screen.getByRole('link');
+    expect(node.target).to.equal('_blank');
+    expect(node.rel).to.equal('noopener noreferrer');
   })
 
   it('renders the container', () => {
-    socialIcon.find('.social-container').length.should.eql(1)
+    const { container } = render(<SocialIcon />);
+    const node = container.querySelector('.social-container');
+    expect(node).to.exist;
   })
 
   it('renders the display svg', () => {
-    socialIcon.find('.social-svg').length.should.eql(1)
+    render(<SocialIcon />);
+    const node = screen.getByRole('img');
+    expect(Array.from(node.classList)).to.include('social-svg');
+  })
+
+  it('adds an aria label to the svg', () => {
+    render(<SocialIcon url={url} />);
+    screen.getByLabelText('pinterest social icon');
   })
 
   it('renders a circle for the background', () => {
-    socialIcon.find('social-svg-background').length.should.eql(0)
-    socialIcon.find(Background).length.should.eql(1)
-    socialIcon
-      .find(Background)
-      .shallow()
-      .find('circle')
-      .length.should.eql(1)
+    const { container } = render(<SocialIcon />);
+    const node = container.querySelector('svg circle')
+    expect(node).to.exist;
+    expect(Array.from(node.closest('g').classList)).to.include('social-svg-background');
   })
 
   it('renders an icon based on the url', () => {
-    const path = socialIcon
-      .find(Icon)
-      .shallow()
-      .find('path')
-    path.prop('d').should.eql(iconFor('pinterest'))
+    const { container } = render(<SocialIcon url={url} />);
+    const node = container.querySelector('svg .social-svg-icon path');
+    expect(node.getAttribute('d')).to.equal(iconFor('pinterest'));
   })
 
   it('renders a mask based on the url', () => {
-    const mask = socialIcon
-      .find(Mask)
-      .shallow()
-      .find('path')
-    mask.prop('d').should.eql(maskFor('pinterest'))
+    const { container } = render(<SocialIcon url={url} />);
+    const node = container.querySelector('svg .social-svg-mask path');
+    expect(node.getAttribute('d')).to.equal(maskFor('pinterest'));
   })
 
   it('takes a network prop for overriding default generated from url', () => {
-    socialIcon = shallow(<SocialIcon url={url} network="github" />)
-    const mask = socialIcon
-      .find(Mask)
-      .shallow()
-      .find('path')
-    mask.prop('d').should.eql(maskFor('github'))
+    const { container } = render(<SocialIcon url={url} network="github" />);
+    const node = container.querySelector('svg .social-svg-mask path');
+    expect(node.getAttribute('d')).to.equal(maskFor('github'));
   })
 
   it('takes a bgColor prop for overriding default bgColor', () => {
     const bgColor = 'pink'
-    socialIcon = shallow(<SocialIcon bgColor={bgColor} network="github" />)
-    const mask = socialIcon
-      .find(Mask)
-      .shallow()
-      .find('.social-svg-mask')
-    mask.prop('style').fill.should.eql(bgColor)
+    const { container } = render(<SocialIcon url={url} bgColor={bgColor} />);
+    const node = container.querySelector('svg .social-svg-mask');
+    expect(window.getComputedStyle(node).fill).to.equal(bgColor);
   })
 
   it('takes a fgColor prop for overriding default transparent fgColor', () => {
     const fgColor = 'red'
-    socialIcon = shallow(<SocialIcon fgColor={fgColor} network="github" />)
-    const icon = socialIcon
-      .find(Icon)
-      .shallow()
-      .find('.social-svg-icon')
-    icon.prop('style').fill.should.eql(fgColor)
+    const { container } = render(<SocialIcon url={url} fgColor={fgColor} />);
+    const node = container.querySelector('svg .social-svg-icon');
+    expect(window.getComputedStyle(node).fill).to.equal(fgColor);
   })
 
   it('takes a defaultSVG prop for overriding the default network key', () => {
-    socialIcon = shallow(<SocialIcon url="https://example.com" defaultSVG={{
+    const { container } = render(<SocialIcon url="https://example.com" defaultSVG={{
       icon: 'test-icon',
       mask: 'test-mask',
       color: 'test-color',
-    }} />);
-    const iconPath = socialIcon
-      .find(Icon)
-      .shallow()
-      .find('path')
-    iconPath.prop('d').should.eql('test-icon')
-    const maskPath = socialIcon
-      .find(Mask)
-      .shallow()
-      .find('path')
-    maskPath.prop('d').should.eql('test-mask')
-    const mask = socialIcon
-      .find(Mask)
-      .shallow()
-      .find('.social-svg-mask')
-    mask.prop('style').fill.should.eql('test-color')
+    }} />)
+    expect(container.querySelector('svg .social-svg-icon path').getAttribute('d'))
+      .to.equal('test-icon');
+    expect(container.querySelector('svg .social-svg-mask path').getAttribute('d'))
+      .to.equal('test-mask');
+    expect(window.getComputedStyle(container.querySelector('svg .social-svg-mask')).fill)
+      .to.equal('test-color');
   })
 
 })
 
 describe('keyFor', () => {
   it('exports keyFor function', () => {
-    keyFor('https://example.com').should.eql('sharethis');
+    expect(keyFor('https://example.com')).to.equal('sharethis');
   });
 
   it('returns "default" for null', () => {
-    keyFor(null).should.eql('sharethis')
+    expect(keyFor(null)).to.equal('sharethis');
   })
 
   it('returns "sharethis" for unknown network url', () => {
-    keyFor('unknownUrl.com').should.eql('sharethis')
+    expect(keyFor('unknownUrl.com')).to.equal('sharethis');
   })
 
   it('returns key for mailto:some email address', () => {
-    keyFor('mailto:email@address.com').should.eql('mailto')
+    expect(keyFor('mailto:email@address.com')).to.equal('mailto');
   })
 
   it('returns key for key.com address', () => {
-    getKeys().length.should.be.greaterThan(0)
+    expect(getKeys().length).to.be.greaterThan(0);
     getKeys().forEach(k => {
-      keyFor(`http://${k}.com`).should.eql(k)
+      expect(keyFor(`http://${k}.com`)).to.equal(k);
     })
   })
 
   it('returns key for key.com/some/thing address', () => {
-    getKeys().length.should.be.greaterThan(0)
+    expect(getKeys().length).to.be.greaterThan(0);
     getKeys().forEach(k => {
       const path = range(3).map(() => random(5,10)).map(randStr).join('/')
-      keyFor(`http://${k}.com/${path}`).should.eql(k)
+      expect(keyFor(`http://${k}.com/${path}`)).to.equal(k);
     })
   })
 
   it('returns key for key.com/some.thing address', () => {
-    console.log({ KEYS: getKeys() });
-    getKeys().length.should.be.greaterThan(0)
+    expect(getKeys().length).to.be.greaterThan(0);
     getKeys().forEach(k => {
       const path = range(3).map(() => random(5,10)).map(randStr).join('.')
-      keyFor(`http://${k}.com/${path}`).should.eql(k)
+      expect(keyFor(`http://${k}.com/${path}`)).to.equal(k);
     })
   })
 
   it('returns key for sub-domain.key.com address', () => {
-    getKeys().length.should.be.greaterThan(0)
+    expect(getKeys().length).to.be.greaterThan(0);
     getKeys().forEach(k => {
-      keyFor(`http://sub-domain.${k}.com`).should.eql(k)
+      expect(keyFor(`http://sub-domain.${k}.com`)).to.equal(k);
     })
   })
 })
