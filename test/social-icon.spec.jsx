@@ -1,6 +1,6 @@
 import React from 'react'
-import { expect } from 'chai';
-import { iconFor, maskFor } from '../src/networks'
+import { expect } from '@esm-bundle/chai';
+import { iconFor, maskFor } from '../src/networks.js'
 import { SocialIcon, keyFor, getKeys } from '../src/react-social-icons.js'
 import { render, screen } from '@testing-library/react';
 

@@ -1,6 +1,5 @@
 # TODO
 
-- replace enzyme in tests with react-testing-library if possible. Get rid of "should" too.
 - instead of just mocha, use web test runner https://modern-web.dev/guides/test-runner/getting-started/ to run all the tests on different browsers.
 -  write githook to throw
   error if yarn.lock or package-lock.json exists when commit or pushing. or have
@@ -21,6 +20,11 @@
   performant? may not need this is esbuild with target es2015 does the trick.
 - how to handle changelog and releases? maybe everytime there's a new semantic
   versioning tag? or use that changesets package or something?
+- add prop to override the base type of the element e.g.
+  ```js
+  const { as = 'a' } = props;
+  React.createElement(as, props, children);
+  ```
 
 # react-social-icons &nbsp; ![build status](https://img.shields.io/github/workflow/status/jaketrent/react-social-icons/Build,%20Test,%20Publish/master) ![package version](https://img.shields.io/npm/v/react-social-icons) ![package size](https://img.shields.io/bundlephobia/minzip/react-social-icons) ![weekly downloads](https://img.shields.io/npm/dw/react-social-icons) ![type definitions](https://img.shields.io/npm/types/react-social-icons)
 
