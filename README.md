@@ -25,6 +25,9 @@
   const { as = 'a' } = props;
   React.createElement(as, props, children);
   ```
+- I can probably take screenshots of the example page using this tool, give it
+  a shot https://github.com/simonw/shot-scraper, otherwise playwright might be
+  the best move. This is blog post https://simonwillison.net/2022/Mar/10/shot-scraper/
 
 # react-social-icons &nbsp; ![build status](https://img.shields.io/github/workflow/status/jaketrent/react-social-icons/Build,%20Test,%20Publish/master) ![package version](https://img.shields.io/npm/v/react-social-icons) ![package size](https://img.shields.io/bundlephobia/minzip/react-social-icons) ![weekly downloads](https://img.shields.io/npm/dw/react-social-icons) ![type definitions](https://img.shields.io/npm/types/react-social-icons)
 

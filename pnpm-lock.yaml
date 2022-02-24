@@ -20,7 +20,7 @@ specifiers:
   eslint: ^8.8.0
   eslint-plugin-react: ^7.23.2
   jest: ^27.4.7
-  react: ^17.0.2
+  react: npm:@esm-bundle/react@^17.0.2-fix.1
   react-dom: ^17.0.2
   rollup: ^2.67.0
   typescript: ^4.2.4
@@ -39,7 +39,7 @@ devDependencies:
   '@esm-bundle/chai': 4.3.4-fix.0
   '@rollup/plugin-babel': 5.3.0_@babel+core@7.17.0+rollup@2.67.0
   '@rollup/plugin-node-resolve': 13.1.3_rollup@2.67.0
-  '@testing-library/react': 12.1.2_react-dom@17.0.2+react@17.0.2
+  '@testing-library/react': 12.1.2_283010760ac2e94f6435792f0f1a9abe
   '@types/react': 17.0.39
   '@vitejs/plugin-react': 1.1.4
   '@web/dev-server-esbuild': 0.2.16
@@ -48,8 +48,8 @@ devDependencies:
   eslint: 8.8.0
   eslint-plugin-react: 7.28.0_eslint@8.8.0
   jest: 27.4.7
-  react: 17.0.2
-  react-dom: 17.0.2_react@17.0.2
+  react: /@esm-bundle/react/17.0.2-fix.1
+  react-dom: 17.0.2_@esm-bundle+react@17.0.2-fix.1
   rollup: 2.67.0
   typescript: 4.5.5
   vite: 2.7.13
@@ -1384,6 +1384,10 @@ packages:
       '@types/chai': 4.3.0
     dev: true
 
+  /@esm-bundle/react/17.0.2-fix.1:
+    resolution: {integrity: sha512-AzHd8Hi5KQjwgU2e3SD1XrMm5WF8y8zsKmP9ttsyR6bzTS8TAc1mWRc8UW0Q/px4D38mcP4+ofJDAhhFiB7KXg==}
+    dev: true
+
   /@humanwhocodes/config-array/0.9.3:
     resolution: {integrity: sha512-3xSMlXHh03hCcCmFc0rbKp3Ivt2PFEJnQUJDDMTJQ2wkECZWdq4GePs2ctc5H8zV+cHPaq8k2vU8mrQjA6iHdQ==}
     engines: {node: '>=10.10.0'}
@@ -1741,7 +1745,7 @@ packages:
       pretty-format: 27.4.6
     dev: true
 
-  /@testing-library/react/12.1.2_react-dom@17.0.2+react@17.0.2:
+  /@testing-library/react/12.1.2_283010760ac2e94f6435792f0f1a9abe:
     resolution: {integrity: sha512-ihQiEOklNyHIpo2Y8FREkyD1QAea054U0MVbwH1m8N9TxeFz+KoJ9LkqoKqJlzx2JDm56DVwaJ1r36JYxZM05g==}
     engines: {node: '>=12'}
     peerDependencies:
@@ -1750,8 +1754,8 @@ packages:
     dependencies:
       '@babel/runtime': 7.17.0
       '@testing-library/dom': 8.11.3
-      react: 17.0.2
-      react-dom: 17.0.2_react@17.0.2
+      react: /@esm-bundle/react/17.0.2-fix.1
+      react-dom: 17.0.2_@esm-bundle+react@17.0.2-fix.1
     dev: true
 
   /@tootallnate/once/1.1.2:
@@ -5390,14 +5394,14 @@ packages:
       unpipe: 1.0.0
     dev: true
 
-  /react-dom/17.0.2_react@17.0.2:
+  /react-dom/17.0.2_@esm-bundle+react@17.0.2-fix.1:
     resolution: {integrity: sha512-s4h96KtLDUQlsENhMn1ar8t2bEa+q/YAtj8pPPdIjPDGBDIVNsrD9aXNWqspUe6AzKCIG0C1HZZLqLV7qpOBGA==}
     peerDependencies:
       react: 17.0.2
     dependencies:
       loose-envify: 1.4.0
       object-assign: 4.1.1
-      react: 17.0.2
+      react: /@esm-bundle/react/17.0.2-fix.1
       scheduler: 0.20.2
     dev: true
 
@@ -5412,14 +5416,6 @@ packages:
   /react-refresh/0.11.0:
     resolution: {integrity: sha512-F27qZr8uUqwhWZboondsPx8tnC3Ct3SxZA3V5WyEvujRyyNv0VYPhoBg1gZ8/MV5tubQp76Trw8lTv9hzRBa+A==}
     engines: {node: '>=0.10.0'}
-    dev: true
-
-  /react/17.0.2:
-    resolution: {integrity: sha512-gnhPt75i/dq/z3/6q/0asP78D0u592D5L1pd7M8P+dck6Fu/jJeL6iVVK23fptSUZj8Vjf++7wXA8UNclGQcbA==}
-    engines: {node: '>=0.10.0'}
-    dependencies:
-      loose-envify: 1.4.0
-      object-assign: 4.1.1
     dev: true
 
   /readable-stream/3.6.0:

@@ -6,15 +6,15 @@ export default (async function config(){
   const plugins = [
     socialIcons(),
     resolve(),
-    babel({
-      babelHelpers: 'runtime',
-    }),
+    // babel({
+    //   babelHelpers: 'runtime',
+    // }),
   ];
 
   const external = id => {
     if (id === 'react') return true;
     if (id === 'react-dom') return true;
-    if (/@babel\/runtime/.test(id)) return true;
+    // if (/@babel\/runtime/.test(id)) return true;
     if (id == '../db') return true;
     return false;
   }

@@ -7,9 +7,10 @@ export default {
   ],
   plugins: [
     esbuildPlugin({
+      target: 'auto',
       jsx: true,
     }),
   ],
-  open: true,
-  manual: true,
+  // open: true,
+  // manual: true,
 }
