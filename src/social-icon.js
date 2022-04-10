@@ -13,7 +13,7 @@ function getNetworkKey(props) {
 
 function SocialIcon(props) {
   const {
-    url, network, bgColor, fgColor, className, label, children, defaultSVG, style,
+    url, network, bgColor, fgColor, className, label, children, defaultSVG, style, openInNewTab,
     ...rest
   } = props
 
@@ -23,6 +23,9 @@ function SocialIcon(props) {
 
   const networkKey = getNetworkKey({ url, network })
 
+  const rel = openInNewTab ? 'noopener noreferrer' : '';
+  const target = openInNewTab ? '_blank' : '_self';
+
   return (
     <a
       {...rest}
@@ -30,6 +33,8 @@ function SocialIcon(props) {
       className={'social-icon' + (className ? ' ' + className : '')}
       style={{ ...socialIcon, ...style }}
       aria-label={label || networkKey}
+      rel={rel}
+      target={target}
     >
       <div className="social-container" style={socialContainer}>
         <svg className="social-svg" style={socialSvg} viewBox="0 0 64 64">
@@ -50,6 +55,7 @@ SocialIcon.propTypes = {
   label: PropTypes.string,
   network: PropTypes.string,
   url: PropTypes.string,
+  openInNewTab: PropTypes.bool,
   defaultSVG: PropTypes.exact({
     icon: PropTypes.string,
     mask: PropTypes.string,
