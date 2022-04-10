@@ -1,5 +1,5 @@
 {
-  "name": "@jmurphree/react-social-icons",
+  "name": "react-social-icons",
   "version": "5.13.0",
   "description": "beautiful, easy svg social icons in react",
   "main": "./build/react-social-icons.js",
