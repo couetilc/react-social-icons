@@ -106,6 +106,20 @@ React.render(<SocialIcon url="https://linkedin.com/in/jaketrent" />, document.bo
         }</pre>
       </code>
 
+      <h4>Open in a new tab</h4>
+      <p>
+        By default, the <code>SocialIcon</code> will navigate your page to the specified url.
+        You can specify the <code>openInNewTab</code> prop to open the link in a new tab.
+      </p>
+      <div className="one-line-example">
+        <div className="icon" id="network-example">
+          <SocialIcon network="tumblr" url="https://jaketrent.com" openInNewTab />
+        </div>
+        <code className="code">
+          <pre>{`<SocialIcon url="https://jaketrent.com" network="tumblr" openInNewTab />`}</pre>
+        </code>
+      </div>
+
       <h2>It scales!</h2>
       <p>Witness the beautiful SVG in action.</p>
       <p>
