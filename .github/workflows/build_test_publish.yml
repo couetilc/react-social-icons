@@ -16,7 +16,7 @@ jobs:
     name: Test React v${{ matrix.react-version }}
     strategy:
       matrix:
-        react-version: [ 15, 16, 17 ]
+        react-version: [ 15, 16, 17, 18 ]
     steps:
 
       - name: Checkout
