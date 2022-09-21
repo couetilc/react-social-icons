@@ -1,3 +1,4 @@
+import React from 'react';
 import { SocialIcon, keyFor } from '../src/react-social-icons.js'
 
 const SocialIconTest = () => (

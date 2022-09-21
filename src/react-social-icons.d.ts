@@ -16,4 +16,5 @@ interface SocialIconProps extends React.DetailedHTMLProps<React.AnchorHTMLAttrib
 }
 declare const SocialIcon: FunctionComponent<SocialIconProps>;
 declare function keyFor(url?: string): string;
-export { SocialIcon, SocialIconProps, keyFor };
+declare function getKeys(): string[];
+export { SocialIcon, SocialIconProps, keyFor, getKeys };

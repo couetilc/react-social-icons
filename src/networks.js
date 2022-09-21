@@ -1,4 +1,4 @@
-import DB from './db';
+import DB from './db.js';
 
 export const DEFAULT_KEY = 'sharethis'
 export const getKeys = () => Array.from(DB.socials)

@@ -1,0 +1,18 @@
+{
+    "compilerOptions": {
+        "module": "ES2015",
+        "noImplicitAny": true,
+        "removeComments": true,
+        "preserveConstEnums": true,
+        "sourceMap": false,
+        "noEmit": true,
+        "strict": true,
+        "esModuleInterop": true,
+        "moduleResolution": "node",
+        "lib": ["ES2015"],
+        "jsx": "react-jsx"
+    },
+    "files": [
+        "test/SocialIcon.tsx"
+    ],
+}

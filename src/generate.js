@@ -8,7 +8,7 @@ export async function generateSocialIcons() {
   await Promise.all(Object.keys(icons).map(async name => {
     imports.push(`import './${name}.js';`);
     await fs.writeFile(new URL(`./icons/${name}.js`, iconsDirectory), `
-      import { register } from '../db';
+      import { register } from '../db.js';
       register(${JSON.stringify(name)}, ${JSON.stringify(icons[name])});
     `);
   }));
