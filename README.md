@@ -1,6 +1,10 @@
 # TODO
 
-- instead of just mocha, use web test runner https://modern-web.dev/guides/test-runner/getting-started/ to run all the tests on different browsers.
+
+- get build working, see if packaging / publishing can be used by outside project.
+- make sure eslint and prettier is working how I want, and apply to codebase.
+- work on PR magic, for screenshots and bundlesize, etc.
+
 -  write githook to throw
   error if yarn.lock or package-lock.json exists when commit or pushing. or have
   it check at least no staged files are yar.lock or package-lock.json when committing.

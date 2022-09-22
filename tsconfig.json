@@ -1,6 +1,7 @@
 {
     "compilerOptions": {
         "module": "ES2015",
+        "target": "ES6",
         "noImplicitAny": true,
         "removeComments": true,
         "preserveConstEnums": true,
@@ -9,10 +10,14 @@
         "strict": true,
         "esModuleInterop": true,
         "moduleResolution": "node",
-        "lib": ["ES2015"],
+        "lib": ["es5", "es6", "dom"],
         "jsx": "react-jsx"
     },
     "files": [
-        "test/SocialIcon.tsx"
+        "test/SocialIcon.tsx",
+        "src/react-social-icons.ts"
     ],
+    "exclude": [
+        "node_modules"
+    ]
 }

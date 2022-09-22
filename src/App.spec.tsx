@@ -1,10 +1,15 @@
 import { test, expect } from '@playwright/experimental-ct-react';
-import { SocialIcon, keyFor, getKeys } from './react-social-icons.js';
-import './icons/index.js' // required for social network registry to populate
-import { iconFor, maskFor } from '../src/networks.js'
+import { SocialIcon, keyFor, getKeys } from './react-social-icons.ts';
+import './icons/index.ts' // required for social network registry to populate
 import React from 'react';
+import { social_icons, network_names, uri_regex } from './db.ts';
+
+declare global { interface Window { ReactSocialIcon: any }}
 
 const pinterest_url = 'http://pinterest.com'
+const pinterest_mask = social_icons.get('pinterest')?.mask || ''
+const pinterest_icon = social_icons.get('pinterest')?.icon || ''
+const github_mask = social_icons.get('github')?.mask || ''
 
 test.use({ viewport: { width: 500, height: 500 } });
 
@@ -50,19 +55,19 @@ test.describe('<SocialIcon />', () => {
     test('matches social provider to icon path', async ({ mount }) => {
         const component = await mount(<SocialIcon url={pinterest_url} />);
         const svg = component.locator('svg')
-        await expect(svg.locator('g:nth-child(2) path')).toHaveAttribute('d', iconFor('pinterest'));
+        await expect(svg.locator('g:nth-child(2) path')).toHaveAttribute('d', pinterest_icon);
     })
 
     test('matches social provider to mask path', async ({ mount }) => {
         const component = await mount(<SocialIcon url={pinterest_url} />);
         const svg = component.locator('svg')
-        await expect(svg.locator('g:nth-child(3) path')).toHaveAttribute('d', maskFor('pinterest'));
+        await expect(svg.locator('g:nth-child(3) path')).toHaveAttribute('d', pinterest_mask);
     })
 
     test('overrides network shown in anchor', async ({ mount }) => {
         const component = await mount(<SocialIcon url={pinterest_url} network="github" />);
         const svg = component.locator('svg')
-        await expect(svg.locator('g:nth-child(3) path')).toHaveAttribute('d', maskFor('github'));
+        await expect(svg.locator('g:nth-child(3) path')).toHaveAttribute('d', github_mask);
     })
 
     test('override bgColor of social svg', async ({ mount }) => {
