@@ -2,6 +2,7 @@
 
 
 - get build working, see if packaging / publishing can be used by outside project.
+- replace CSS-as-objects with nanocss or something similar, getting rid of inline styles.
 - make sure eslint and prettier is working how I want, and apply to codebase.
 - work on PR magic, for screenshots and bundlesize, etc.
 
