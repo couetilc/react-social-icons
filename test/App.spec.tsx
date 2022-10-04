@@ -1,8 +1,8 @@
 import { test, expect } from '@playwright/experimental-ct-react';
-import { SocialIcon, keyFor, getKeys } from './react-social-icons.ts';
-import './icons/index.ts' // required for social network registry to populate
+import { SocialIcon, keyFor, getKeys } from '../src/react-social-icons.ts';
+import '../src/icons/index.js' // required for social network registry to populate
 import React from 'react';
-import { social_icons, network_names, uri_regex } from './db.ts';
+import { social_icons, network_names, uri_regex } from '../src/db.ts';
 
 declare global { interface Window { ReactSocialIcon: any }}
 

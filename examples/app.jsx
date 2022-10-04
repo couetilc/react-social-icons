@@ -1,12 +1,13 @@
+import React from 'react';
 import ReactDOM from 'react-dom';
 
-// import { SocialIcon, getKeys } from '../src/react-social-icons';
+import { SocialIcon, getKeys } from '../src/react-social-icons';
 // import { SocialIcon, getKeys } from '../dist/react-social-icons.js';
 // import { SocialIcon, getKeys } from '../build/react-social-icons.js';
-import * as ReactSocialIcons from '../build/react-social-icons.js';
-console.log({ ReactSocialIcons });
-const SocialIcon = ReactSocialIcons.SocialIcon;
-const getKeys = ReactSocialIcons.getKeys;
+// import * as ReactSocialIcons from '../build/react-social-icons.js';
+// console.log({ ReactSocialIcons });
+// const SocialIcon = ReactSocialIcons.SocialIcon;
+// const getKeys = ReactSocialIcons.getKeys;
 // this import must come after any icon imports
 
 function Page() {

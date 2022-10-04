@@ -26,10 +26,10 @@ export async function generateSocialIcons() {
     // );
   }));
 
-//   await fs.writeFile(
-//     new URL(`./icons/index.ts`, iconsDirectory),
-//     names.map(name => `import './${name}.ts';`).join('\n'),
-//   );
+  await fs.writeFile(
+    new URL(`./icons/index.js`, iconsDirectory),
+    filenames.map(filename => `import './${filename}';`).join('\n'),
+  );
 
   // await fs.writeFile(
   //   new URL(`./icons/types.ts`, iconsDirectory),

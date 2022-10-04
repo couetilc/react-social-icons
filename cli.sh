@@ -23,7 +23,8 @@ dev() {
 }
 
 test:js() {
-  pnpm playwright test -c playwright-ct.config.ts
+  pnpm playwright test \
+    -c playwright-ct.config.ts
 }
 
 test:lint() {
