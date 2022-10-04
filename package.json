@@ -16,17 +16,16 @@
     }
   },
   "scripts": {
-    "build": "vite build -c vite.config.js",
-    "build:babel": "babel --copy-files -d ./build ./src --extensions \".ts\" ",
-    "bundlesize": "pnpm run prepublish && tar -c build | gzip > build.tar.gz && du -h build build.tar.gz",
-    "examples": "vite",
+    "build": "./cli.sh build",
+    "bundlesize": "pnpm build && tar -c dist | gzip > dist.tar.gz && du -h dist dist.tar.gz",
+    "examples": "pnpm start",
     "lint": "pnpm test:lint",
-    "prepublish": "NODE_ENV=production pnpm build",
-    "start": "pnpm examples",
-    "test": "pnpm run test:lint && pnpm run test:js && pnpm run test:ts",
-    "test:js": "playwright test -c playwright-ct.config.ts",
-    "test:lint": "eslint src",
-    "test:ts": "pnpm tsc"
+    "prepublish": "pnpm build",
+    "start": "./cli.sh dev",
+    "test": "./cli.sh test:",
+    "test:js": "./cli.sh test:js",
+    "test:lint": "./cli.sh test:lint",
+    "test:ts": "./cli.sh test:ts"
   },
   "author": "jaketrent",
   "license": "MIT",
