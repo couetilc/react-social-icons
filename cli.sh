@@ -34,6 +34,12 @@ test:ts() {
   pnpm tsc
 }
 
+info:bundlesize() {
+ build
+ tar -c dist | gzip > dist.tar.gz
+ du -h dist dist.tar.gz
+}
+
 test:() {
   test:js;
   test:lint;

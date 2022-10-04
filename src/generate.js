@@ -1,27 +1,40 @@
 import fs from 'fs/promises';
-import icons from '../src/_networks-db.js'
 
 export async function generateSocialIcons() {
   const iconsDirectory = new URL('../src/icons', import.meta.url);
+  const dbDirectory = new URL('../db', import.meta.url);
   await fs.mkdir(iconsDirectory, { recursive: true });
-  const names = Object.keys(icons);
+  await fs.mkdir(dbDirectory, { recursive: true });
+  const icons = await fs.readdir(dbDirectory);
+  const modules = {};
+  await Promise.all(icons.map(
+    filename => import(`../db/${filename}`)
+      .then(async module => { modules[filename] = module.default })
+  ));
+  const filenames = Object.keys(modules)
 
-  await Promise.all(names.map(async name => {
+  await Promise.all(filenames.map(async filename => {
+    const network = filename.replace(/\.(js|ts)/, '')
     await fs.writeFile(
-      new URL(`./icons/${name}.ts`, iconsDirectory),
-      `import { register } from "../db.ts";register(${JSON.stringify(name)}, ${JSON.stringify(icons[name])})`
+      new URL(`./icons/${network}.js`, iconsDirectory),
+      `import { register } from "../db.ts";register(${JSON.stringify(network)}, ${JSON.stringify(modules[filename])})`
     );
+    // const { icon, mask, color } = icons[name];
+    // await fs.writeFile(
+    //   new URL(`./db/${name}.js`, dbDirectory),
+    //   `export default {\n  icon: ${JSON.stringify(icon)},\n  mask: ${JSON.stringify(mask)},\n  color: ${JSON.stringify(color)},\n}`
+    // );
   }));
 
-  await fs.writeFile(
-    new URL(`./icons/index.ts`, iconsDirectory),
-    names.map(name => `import './${name}.ts';`).join('\n'),
-  );
+//   await fs.writeFile(
+//     new URL(`./icons/index.ts`, iconsDirectory),
+//     names.map(name => `import './${name}.ts';`).join('\n'),
+//   );
 
-  await fs.writeFile(
-    new URL(`./icons/types.ts`, iconsDirectory),
-    `export type Network = ${names.map(JSON.stringify).join(' | ')};`,
-  );
+  // await fs.writeFile(
+  //   new URL(`./icons/types.ts`, iconsDirectory),
+  //   `export type Network = ${names.map(JSON.stringify).join(' | ')};`,
+  // );
 }
 
 export function rollupPluginSocialIcons() {
