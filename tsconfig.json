@@ -1,0 +1,25 @@
+{
+    "compilerOptions": {
+        "allowJs": true,
+        "moduleResolution": "node",
+        "outDir": "./build",
+        "skipLibCheck": false,
+        "module": "ESNext",
+        "target": "esnext",
+        "declaration": true,
+        "lib": [
+            "DOM.Iterable",
+            "ESNext",
+            "dom"
+        ],
+    },
+    "include": [
+        "./src",
+    ],
+    "exclude": [
+        "node_modules",
+        "./test",
+        "./build",
+        "./dist",
+    ],
+}

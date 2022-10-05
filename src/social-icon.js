@@ -13,14 +13,21 @@ function getNetworkKey(props) {
 
 function SocialIcon(props) {
   const {
-    url, network, bgColor, fgColor, className, label, children, defaultSVG, style,
+    url,
+    network,
+    bgColor,
+    fgColor,
+    className,
+    label,
+    children,
+    defaultSVG,
+    style,
     ...rest
   } = props
 
   if (typeof defaultSVG === 'object' && defaultSVG !== null) {
-    keyTo(DEFAULT_KEY, defaultSVG);
+    keyTo(DEFAULT_KEY, defaultSVG)
   }
-
   const networkKey = getNetworkKey({ url, network })
 
   return (

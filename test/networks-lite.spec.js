@@ -1,15 +1,30 @@
-import { init, keyFor } from '../src/networks'
-import networksDb from '../src/_networks-db'
+import { keyFor, iconFor } from '../src/networks'
+import { SocialIconDatabase } from '../src/social-icon-database'
+import { facebook, mailto, github } from '../src/networks/all.js'
+import should from 'should'
 
-const networkKeys = Object.keys(networksDb)
+let networkKeys = []
 
-describe('networks', () => {
+describe('networks (lite)', () => {
   beforeEach(() => {
-    init(networksDb)
+    SocialIconDatabase.importNetwork(facebook)
+      .importNetwork(mailto)
+      .importNetwork(github)
+    networkKeys = Object.keys(SocialIconDatabase.networks)
   })
   describe('#keyFor', () => {
     it('returns "default" for null', () => {
       keyFor(null).should.eql('sharethis')
+    })
+
+    it('returns key for loaded network', () => {
+      keyFor('http://github.com').should.eql('github')
+      should.exist(iconFor('github'))
+    })
+
+    it('returns "default" for not loaded network', () => {
+      keyFor('http://pinterest.com').should.eql('sharethis')
+      should.not.exist(iconFor('sharethis'))
     })
 
     it('returns "sharethis" for unknown network url', () => {

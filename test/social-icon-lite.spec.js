@@ -2,14 +2,20 @@ import React from 'react'
 import { iconFor, maskFor } from '../src/networks'
 import Icon from '../src/icon'
 import Mask from '../src/mask'
-import { SocialIcon, keyFor } from '../src/react-social-icons'
+import { SocialIcon, keyFor } from '../src/react-social-icons-lite.js'
+import { SocialIconDatabase } from '../src/social-icon-database'
+import { facebook, mailto, github, pinterest } from '../src/networks/all.js'
 import Background from '../src/background'
 import { shallow } from 'enzyme'
 
-describe('<SocialIcon />', () => {
+describe('<SocialIcon /> (lite)', () => {
   const url = 'http://pinterest.com'
   let socialIcon
   beforeEach(() => {
+    SocialIconDatabase.importNetwork(facebook)
+      .importNetwork(mailto)
+      .importNetwork(github)
+      .importNetwork(pinterest)
     socialIcon = shallow(<SocialIcon url={url} />)
   })
 
@@ -64,6 +70,18 @@ describe('<SocialIcon />', () => {
   it('renders an icon based on the url', () => {
     const path = socialIcon.find(Icon).shallow().find('path')
     path.prop('d').should.eql(iconFor('pinterest'))
+  })
+
+  it('renders the default link when network was not imported', () => {
+    const url = 'https://www.twitch.com'
+    socialIcon = shallow(
+      <SocialIcon url={url}>
+        <div id="test" />
+      </SocialIcon>
+    )
+    socialIcon.prop('href').should.eql(url)
+    socialIcon.contains(<div id="test" />).should.eql(true)
+    socialIcon.find(Icon).shallow().contains('path').should.eql(false)
   })
 
   it('renders a mask based on the url', () => {

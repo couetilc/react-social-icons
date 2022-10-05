@@ -7,3 +7,4 @@ build.tar.gz
 lib
 .cache
 notes.md
+*.tgz

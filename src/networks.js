@@ -1,14 +1,27 @@
-import DB from './_networks-db.js'
+let DB = {}
 
 export const DEFAULT_KEY = 'sharethis'
-export const KEYS = Object.keys(DB)
-const sortLongestFirst = arr => arr.sort((pre, post) => post.length - pre.length)
-const KEYS_REGEX = new RegExp(
-  '(?:https?:\\/\\/(?:[a-z0-9-]*.)?)?(' + sortLongestFirst(KEYS).join('|') + ').*'
+export let KEYS = Object.keys(DB)
+let sortLongestFirst = (arr) =>
+  arr.sort((pre, post) => post.length - pre.length)
+let KEYS_REGEX = new RegExp(
+  '(?:https?:\\/\\/(?:[a-z0-9-]*.)?)?(' +
+    sortLongestFirst(KEYS).join('|') +
+    ').*'
 )
 
+export function init(db) {
+  DB = db
+  KEYS = Object.keys(DB)
+  KEYS_REGEX = new RegExp(
+    '(?:https?:\\/\\/(?:[a-z0-9-]*.)?)?(' +
+      sortLongestFirst(KEYS).join('|') +
+      ').*'
+  )
+}
+
 export function keyTo(key, { icon, mask, color }) {
-  DB[key] = { icon, mask, color };
+  DB[key] = { icon, mask, color }
 }
 
 export function iconFor(key) {
@@ -27,7 +40,6 @@ export function keyFor(url) {
   if (!url) {
     return DEFAULT_KEY
   }
-
   const key = url.replace(KEYS_REGEX, '$1')
   return key === url ? DEFAULT_KEY : key
 }

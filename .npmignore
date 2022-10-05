@@ -8,4 +8,6 @@ webpack.config.js
 .babelrc
 .eslintrc
 .gitignore
+.cache
 build.tar.gz
+*.tgz

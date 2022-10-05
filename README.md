@@ -1,6 +1,6 @@
 # react-social-icons &nbsp; ![build status](https://img.shields.io/github/workflow/status/jaketrent/react-social-icons/Build,%20Test,%20Publish/master) ![package version](https://img.shields.io/npm/v/react-social-icons) ![package size](https://img.shields.io/bundlephobia/minzip/react-social-icons) ![weekly downloads](https://img.shields.io/npm/dw/react-social-icons) ![type definitions](https://img.shields.io/npm/types/react-social-icons)
 
-A set of beautiful svg social icons.  Easily used in React.  No images or external css dependencies.  Svg paths provided by Squarespace.
+A set of beautiful svg social icons. Easily used in React. No images or external css dependencies. Svg paths provided by Squarespace.
 
 ![social network icons](https://i.imgur.com/OrNeTND.png)
 
@@ -15,10 +15,13 @@ npm install react-social-icons
 Pass in the `url` prop of your social network, and the icon will be rendered.
 
 ```js
-import React from 'react';
-import ReactDOM from 'react-dom';
-import { SocialIcon } from 'react-social-icons';
-ReactDOM.render(<SocialIcon url="https://twitter.com/jaketrent" />, document.body);
+import React from 'react'
+import ReactDOM from 'react-dom'
+import { SocialIcon } from 'react-social-icons'
+ReactDOM.render(
+  <SocialIcon url="https://twitter.com/jaketrent" />,
+  document.body
+)
 ```
 
 See more [usage options on the example site](https://jaketrent.github.io/react-social-icons/).
@@ -28,16 +31,16 @@ This library supports [TypeScript](https://www.typescriptlang.org/) since v5.2.0
 
 ## Prop Types
 
-| Property   | Type   | Required | Description |
-| :--------- | :----- | :------: | :---------- |
-| url        | String | No       | The rendered component will link to this url and show the social network's icon.
-| network    | String | No       | Override which network icon to render (defaults to the url's social network)
-| bgColor    | String | No       | Override the background fill color (defaults to social network's color)
-| fgColor    | String | No       | Override the icon's fill color (defaults to transparent)
-| label      | String | No       | Set the `aria-label` attribute on the rendered anchor tag (defaults to the social network's name)
-| className  | String | No       | Specify a class to attach to the rendered anchor tag
-| defaultSVG | Object | No       | Override the default icon for when a url is not matched to a social network. Requires string properties `icon`, `mask`, and `color`. (defaults to network `'sharethis'`)
-| style      | Object | No       | Override style properties passed to the rendered anchor tag |
+| Property   | Type   | Required | Description                                                                                                                                                              |
+| :--------- | :----- | :------: | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| url        | String |    No    | The rendered component will link to this url and show the social network's icon.                                                                                         |
+| network    | String |    No    | Override which network icon to render (defaults to the url's social network)                                                                                             |
+| bgColor    | String |    No    | Override the background fill color (defaults to social network's color)                                                                                                  |
+| fgColor    | String |    No    | Override the icon's fill color (defaults to transparent)                                                                                                                 |
+| label      | String |    No    | Set the `aria-label` attribute on the rendered anchor tag (defaults to the social network's name)                                                                        |
+| className  | String |    No    | Specify a class to attach to the rendered anchor tag                                                                                                                     |
+| defaultSVG | Object |    No    | Override the default icon for when a url is not matched to a social network. Requires string properties `icon`, `mask`, and `color`. (defaults to network `'sharethis'`) |
+| style      | Object |    No    | Override style properties passed to the rendered anchor tag                                                                                                              |
 
 ## Contributing
 
@@ -58,15 +61,15 @@ facebook: {
 ```
 
 To add a new icon, you first need to find a copy of that icon as an svg file,
-and a hex code for the social network's main color.  Check the network's own
+and a hex code for the social network's main color. Check the network's own
 style guidelines or website for the official icon and color.
 
 The 'icon' and 'mask' properties for each network in `networks-db.js` should
-contain the vector information for the svg.  The 'icon' is the foreground, so
+contain the vector information for the svg. The 'icon' is the foreground, so
 the path for describes the shape of the icon itself. This will be transparent
-by default.  The 'mask' is the background area, so the path for this describes
+by default. The 'mask' is the background area, so the path for this describes
 the area between the surrounding circle and the icon shape. By default this
-will take the color you provide in the 'color' property.  The 'color' property
+will take the color you provide in the 'color' property. The 'color' property
 will set the background color for the icon. This should be the main color
 associated with the social network.
 
@@ -88,7 +91,7 @@ These steps should work for most logos. Feel free to tweak any of the steps to
 make the final svg look neater:
 
 1. Open the SVG in Inkscape's editor and select `File > Document Properties` in
-   the menu bar.  Change the page's width and height to 64px.
+   the menu bar. Change the page's width and height to 64px.
 2. Select the icon and click `Object > Transform` in the menu bar. Choose the
    "Scale" tab, check the box "Scale proportionally", set the height and width
    to be within 32px, and click the "Apply" button
@@ -113,3 +116,29 @@ make the final svg look neater:
    the result, create a PR against master at
    https://github.com/jaketrent/react-social-icons, where it will be reviewed
    and merged. Thank you for contributing!
+
+### Select icons to include in the bundle
+
+A lightweight version of the component is provided in `react-social-icons/build/react-social-icons-lite.js`. This component requires individual icons to be loaded before use.
+
+Each network icon can be imported from `react-social-icons/build/networks/`, like `react-social-icons/build/networks/facebook.js`.
+
+```
+import facebook from "react-social-icons/build/networks/facebook.js";
+import github from "react-social-icons/build/networks/github.js";
+import {
+  SocialIcon,
+  SocialIconDatabase,
+} from "react-social-icons/build/react-social-icons-lite.js";
+
+SocialIconDatabase
+   .importNetwork(facebook)
+   .importNetwork(github);
+
+// ...
+
+ <SocialIcon network="facebook" title="facebook" />
+ <SocialIcon network="github" title="github" />
+```
+
+Importing only the used icons can reduce the final bundle size.
