@@ -10,7 +10,7 @@ generate-icons() {
 build() {
   generate-icons
 
-  # why do I transpile?
+  # why do I transpile? can I test my desired outcome?
   pnpm babel src \
     --copy-files \
     --out-dir "./dist" \

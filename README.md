@@ -1,7 +1,9 @@
 # TODO
 
 
-- get build working, see if packaging / publishing can be used by outside project.
+- see if packaging / publishing can be used by outside project.
+    - make puppeteer test against the distribution file
+    - are there tests I can write that provide me confidence of my publishing flow, or at least if my distribution files can be successfully used once published?
 - replace CSS-as-objects with nanocss or something similar, getting rid of inline styles.
 - make sure eslint and prettier is working how I want, and apply to codebase.
 - work on PR magic, for screenshots and bundlesize, etc.
