@@ -1,6 +1,13 @@
 # TODO
 
 
+- the issue with tests when Typescript is enabled (although even that is unclear
+  to me, the import situation with typescript), has rollup (or something) creating
+  multiple instances of the register function, separated by appending "register$<num>"
+  to the function name, each with their own DB in the closure. So there's an
+  issue surrounding which copy of the DB is actually populated. I need to figure
+  out why DB is not being treated as a singleton.
+
 - see if packaging / publishing can be used by outside project.
     - make puppeteer test against the distribution file
     - are there tests I can write that provide me confidence of my publishing flow, or at least if my distribution files can be successfully used once published?

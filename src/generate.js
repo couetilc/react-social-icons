@@ -12,9 +12,11 @@ export async function generateSocialIcons() {
       .then(async module => { modules[filename] = module.default })
   ));
   const filenames = Object.keys(modules)
+  const networks = [];
 
   await Promise.all(filenames.map(async filename => {
     const network = filename.replace(/\.(js|ts)/, '')
+    networks.push(network);
     await fs.writeFile(
       new URL(`./icons/${network}.js`, iconsDirectory),
       `import { register } from "../db.ts";register(${JSON.stringify(network)}, ${JSON.stringify(modules[filename])})`
@@ -30,11 +32,15 @@ export async function generateSocialIcons() {
     new URL(`./icons/index.js`, iconsDirectory),
     filenames.map(filename => `import './${filename}';`).join('\n'),
   );
+  await fs.writeFile(
+    new URL(`./icons/index.ts`, iconsDirectory),
+    filenames.map(filename => `import './${filename}';`).join('\n'),
+  );
 
-  // await fs.writeFile(
-  //   new URL(`./icons/types.ts`, iconsDirectory),
-  //   `export type Network = ${names.map(JSON.stringify).join(' | ')};`,
-  // );
+  await fs.writeFile(
+    new URL(`./icons/types.ts`, iconsDirectory),
+    `export type Network = ${networks.map(JSON.stringify).join(' | ')};`,
+  );
 }
 
 export function rollupPluginSocialIcons() {
