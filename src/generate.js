@@ -1,21 +1,21 @@
-import fs from 'fs/promises';
+import fs from "fs/promises";
 
 export async function generateSocialIcons() {
-  const iconsDirectory = new URL('../src/icons', import.meta.url);
-  const dbDirectory = new URL('../db', import.meta.url);
+  const iconsDirectory = new URL("../src/icons", import.meta.url);
+  const dbDirectory = new URL("../db", import.meta.url);
   await fs.mkdir(iconsDirectory, { recursive: true });
   await fs.mkdir(dbDirectory, { recursive: true });
   const icons = await fs.readdir(dbDirectory);
   const modules = {};
   await Promise.all(icons.map(
     filename => import(`../db/${filename}`)
-      .then(async module => { modules[filename] = module.default })
+      .then(async module => { modules[filename] = module.default; })
   ));
-  const filenames = Object.keys(modules)
+  const filenames = Object.keys(modules);
   const networks = [];
 
   await Promise.all(filenames.map(async filename => {
-    const network = filename.replace(/\.(js|ts)/, '')
+    const network = filename.replace(/\.(js|ts)/, "");
     networks.push(network);
     await fs.writeFile(
       new URL(`./icons/${network}.js`, iconsDirectory),
@@ -29,25 +29,25 @@ export async function generateSocialIcons() {
   }));
 
   await fs.writeFile(
-    new URL(`./icons/index.js`, iconsDirectory),
-    filenames.map(filename => `import './${filename}';`).join('\n'),
+    new URL("./icons/index.js", iconsDirectory),
+    filenames.map(filename => `import './${filename}';`).join("\n"),
   );
   await fs.writeFile(
-    new URL(`./icons/index.ts`, iconsDirectory),
-    filenames.map(filename => `import './${filename}';`).join('\n'),
+    new URL("./icons/index.ts", iconsDirectory),
+    filenames.map(filename => `import './${filename}';`).join("\n"),
   );
 
   await fs.writeFile(
-    new URL(`./icons/types.ts`, iconsDirectory),
-    `export type Network = ${networks.map(JSON.stringify).join(' | ')};`,
+    new URL("./icons/types.ts", iconsDirectory),
+    `export type Network = ${networks.map(JSON.stringify).join(" | ")};`,
   );
 }
 
 export function rollupPluginSocialIcons() {
   return {
-    name: 'rollup-plugin-social-icons',
+    name: "rollup-plugin-social-icons",
     async resolveId(source, importer, options) {
-      if (source === './icons') {
+      if (source === "./icons") {
         await generateSocialIcons();
         const resolution = await this.resolve(source, importer, {
           skipSelf: true,
@@ -57,5 +57,5 @@ export function rollupPluginSocialIcons() {
       }
       return null;
     },
-  }
+  };
 }
