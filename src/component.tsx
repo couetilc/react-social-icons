@@ -17,8 +17,6 @@ function register(social: string, icon: Icon) {
   );
 }
 
-export { register, social_icons, network_names, uri_regex };
-
 const DEFAULT_KEY = 'sharethis'
 
 function keyFor(url?: string) {
@@ -143,4 +141,11 @@ const socialSvgMask: React.CSSProperties = {
   fill: '#0f0b0b'
 }
 
-export { SocialIcon, keyFor }
+export {
+  SocialIcon,
+  keyFor,
+  register,
+  social_icons,
+  network_names,
+  uri_regex,
+}

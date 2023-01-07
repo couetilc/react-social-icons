@@ -1,6 +1,16 @@
 # TODO
 
 
+- is it possible with GitHub to provide a contributor temporary permissions to
+  merge their PR into the repo and to deploy a new version only of their
+  approved PR? Or possible to grant them permission to merge after I've approved,
+  then main branch CI will publish automatically, maybe after I give confirmation
+  via email notification or something. To minimize any work to publish and also
+  give people a sense of ownership by allowing to merge an approved PR themselves
+  and see it automatically deployed to NPM immediately afterwards. But they should
+  only be able to do it with their PRs, nothing else. So maybe minimal positions
+  for contributors that only grant them position to merge approved PRs.
+
 - the issue with tests when Typescript is enabled (although even that is unclear
   to me, the import situation with typescript), has rollup (or something) creating
   multiple instances of the register function, separated by appending "register$<num>"

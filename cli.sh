@@ -31,6 +31,10 @@ test:lint() {
   pnpm eslint src
 }
 
+test:publint() {
+  pnpm publint .
+}
+
 test:ts() {
   pnpm tsc
 }
@@ -44,6 +48,7 @@ info:bundlesize() {
 test:() {
   test:js;
   test:lint;
+  test:publint;
   test:ts;
 }
 
