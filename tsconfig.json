@@ -6,7 +6,7 @@
         "removeComments": true,
         "preserveConstEnums": true,
         "sourceMap": false,
-        "noEmit": false,
+        "noEmit": true,
         "strict": true,
         "esModuleInterop": true,
         "moduleResolution": "node",

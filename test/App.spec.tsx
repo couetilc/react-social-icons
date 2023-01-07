@@ -1,8 +1,8 @@
 import { test, expect } from '@playwright/experimental-ct-react';
-import { SocialIcon, keyFor, getKeys } from '../src/react-social-icons.ts';
+import { SocialIcon, keyFor, getKeys, network_names, uri_regex } from '../src/react-social-icons.ts';
+import { social_icons } from '../src/component.tsx';
 import '../src/icons/index.ts' // required for social network registry to populate
 import React from 'react';
-import { social_icons, network_names, uri_regex } from '../src/db.ts';
 
 declare global { interface Window { ReactSocialIcon: any }}
 
@@ -36,7 +36,7 @@ test.describe('<SocialIcon />', () => {
         await expect(component).toHaveAttribute('rel', /^noopener noreferrer$/);
     })
 
-    test.only('adds aria label to anchor', async ({ mount }) => {
+    test('adds aria label to anchor', async ({ mount }) => {
         const component = await mount(<SocialIcon url={pinterest_url} />);
         await expect(component).toHaveAttribute('aria-label', 'pinterest');
     })

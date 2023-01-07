@@ -1,6 +1,23 @@
 import React from 'react';
-import { FunctionComponent, CSSProperties } from 'react';
-import { social_icons, network_names, uri_regex } from './db';
+
+const makeRegex = (socials : string[] = []) => new RegExp('(?:https?:\\/\\/(?:[a-z0-9-]*.)?)?($SOCIALS).*'.replace('$SOCIALS', socials.join('|')))
+
+type Icon = { icon: string, mask: string, color: string }
+
+const social_icons = new Map<string, Icon>();
+const network_names = new Set<string>();
+let uri_regex = makeRegex();
+
+function register(social: string, icon: Icon) {
+  social_icons.set(social, icon);
+  network_names.add(social);
+  uri_regex = makeRegex(
+    // sort by longest string first
+    [ ...network_names ].sort((pre, post) => post.length - pre.length)
+  );
+}
+
+export { register, social_icons, network_names, uri_regex };
 
 const DEFAULT_KEY = 'sharethis'
 
@@ -76,7 +93,7 @@ interface SocialIconProps extends React.DetailedHTMLProps<React.AnchorHTMLAttrib
   network?: string;
   url?: string;
   defaultSVG?: SVG;
-  style?: CSSProperties;
+  style?: React.CSSProperties;
 }
 
 interface SVG {
@@ -85,7 +102,7 @@ interface SVG {
   color: string;
 }
 
-const socialIcon: CSSProperties = {
+const socialIcon: React.CSSProperties = {
   display: 'inline-block',
   width: '50px',
   height: '50px',
@@ -94,7 +111,7 @@ const socialIcon: CSSProperties = {
   verticalAlign: 'middle'
 }
 
-const socialContainer: CSSProperties = {
+const socialContainer: React.CSSProperties = {
   position: 'absolute',
   top: 0,
   left: 0,
@@ -102,7 +119,7 @@ const socialContainer: CSSProperties = {
   height: '100%'
 }
 
-const socialSvg: CSSProperties = {
+const socialSvg: React.CSSProperties = {
   borderRadius: '50%',
   position: 'absolute',
   top: 0,
@@ -112,7 +129,7 @@ const socialSvg: CSSProperties = {
   fillRule: 'evenodd'
 }
 
-const socialSvgContent: CSSProperties = {
+const socialSvgContent: React.CSSProperties = {
   msTransition: 'fill 170ms ease-in-out',
   OTransition: 'fill 170ms ease-in-out',
   MozTransition: 'fill 170ms ease-in-out',
@@ -121,7 +138,7 @@ const socialSvgContent: CSSProperties = {
   fill: 'transparent'
 }
 
-const socialSvgMask: CSSProperties = {
+const socialSvgMask: React.CSSProperties = {
   ...socialSvgContent,
   fill: '#0f0b0b'
 }
