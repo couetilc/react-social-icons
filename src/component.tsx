@@ -1,4 +1,5 @@
 import React from "react";
+import type { DetailedHTMLProps, AnchorHTMLAttributes } from "react";
 
 const DEFAULT_KEY = "sharethis";
 
@@ -8,7 +9,7 @@ interface SocialIconType {
   color: string;
 }
 
-interface SocialIconProps extends React.DetailedHTMLProps<React.AnchorHTMLAttributes<HTMLAnchorElement>, HTMLAnchorElement>  {
+interface SocialIconProps extends DetailedHTMLProps<AnchorHTMLAttributes<HTMLAnchorElement>, HTMLAnchorElement>  {
   className?: string;
   bgColor?: string;
   fgColor?: string;

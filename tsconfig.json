@@ -14,8 +14,8 @@
         "jsx": "react-jsx"
     },
     "files": [
-        "test/SocialIcon.tsx",
-        "src/react-social-icons.ts"
+        "src/react-social-icons.ts",
+        "test/App.spec.tsx"
     ],
     "exclude": [
         "node_modules"

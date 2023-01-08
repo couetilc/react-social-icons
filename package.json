@@ -55,6 +55,8 @@
     "@typescript-eslint/parser": "^5.48.0",
     "@vitejs/plugin-react": "^1.1.4",
     "eslint": "^8.31.0",
+    "eslint-import-resolver-typescript": "^3.5.2",
+    "eslint-plugin-import": "npm:eslint-plugin-i@2.26.0-2",
     "eslint-plugin-react": "^7.31.11",
     "publint": "^0.1.5",
     "rollup": "^2.79.1",

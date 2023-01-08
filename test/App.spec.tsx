@@ -1,10 +1,21 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment, react/react-in-jsx-scope */
 import { test, expect } from "@playwright/experimental-ct-react";
-import { SocialIcon, keyFor, getKeys, network_names, uri_regex } from "../src/react-social-icons.ts";
+// @ts-ignore: Vite requires a file extension 
+import { SocialIcon, keyFor, getKeys } from "../src/react-social-icons.ts";
+// @ts-ignore: Vite requires a file extension 
 import { social_icons } from "../src/component.tsx";
 import "../src/icons/index.ts"; // required for social network registry to populate
-import React from "react";
+/* eslint-enable @typescript-eslint/ban-ts-comment */
 
-declare global { interface Window { ReactSocialIcon: any }}
+declare global {
+  interface Window {
+    ReactSocialIcons: {
+      SocialIcon: SocialIcon,
+      keyFor: keyFor
+      getKeys: getKeys,
+    }
+  }
+}
 
 const pinterest_url = "http://pinterest.com";
 const pinterest_mask = social_icons.get("pinterest")?.mask || "";
@@ -32,8 +43,8 @@ test.describe("<SocialIcon />", () => {
 
   test("adds target and rel attributes to anchor", async ({ mount }) => {
     const component = await mount(<SocialIcon target="_blank" rel="noopener noreferrer" />);
-    await expect(component).toHaveAttribute("target", /^_blank$/);
-    await expect(component).toHaveAttribute("rel", /^noopener noreferrer$/);
+    await expect(component).toHaveAttribute("target", /^_blank$/u);
+    await expect(component).toHaveAttribute("rel", /^noopener noreferrer$/u);
   });
 
   test("adds aria label to anchor", async ({ mount }) => {
@@ -105,13 +116,13 @@ test.describe("<svg />", () => {
   test("includes social svg within anchor", async ({ mount }) => {
     const component = await mount(<SocialIcon />);
     const svg = component.locator("svg");
-    await expect(svg).toHaveAttribute("class", /^social-svg$/);
+    await expect(svg).toHaveAttribute("class", /^social-svg$/u);
   });
 
   test("adds img role to social svg", async ({ mount }) => {
     const component = await mount(<SocialIcon />);
     const svg = component.locator("svg");
-    await expect(svg).toHaveAttribute("role", /^img$/);
+    await expect(svg).toHaveAttribute("role", /^img$/u);
   });
 
   test("adds class to background path within svg", async ({ mount }) => {
@@ -136,11 +147,13 @@ test.describe("<svg />", () => {
 
 /* keyFor */
 
-test.describe("keyFor", async () => {
+test.describe("keyFor", () => {
+
+  const NUM_GREATER_THAN_ZERO = 1;
 
   test("falsy values return default social network", async ({ page }) => {
     await expect(await page.evaluate(() => window.ReactSocialIcons.keyFor(""))).toEqual("sharethis");
-    await expect(await page.evaluate(() => window.ReactSocialIcons.keyFor(undefined))).toEqual("sharethis");
+    await expect(await page.evaluate(() => window.ReactSocialIcons.keyFor())).toEqual("sharethis");
   });
 
   test("unknown values return default social network", async ({ page }) => {
@@ -152,34 +165,34 @@ test.describe("keyFor", async () => {
   });
 
   test("\"key\".com URIs return \"key\" social network", async ({ page }) => {
-    const keys = await page.evaluate(() => window.ReactSocialIcons.getKeys());
-    await expect(keys.length).toBeGreaterThanOrEqual(1);
+    const keys: Array<string> = await page.evaluate(() => window.ReactSocialIcons.getKeys());
+    await expect(keys.length).toBeGreaterThanOrEqual(NUM_GREATER_THAN_ZERO);
     await Promise.all(keys.map(async key => {
       return expect(await page.evaluate((k) => window.ReactSocialIcons.keyFor(`http://${k}.com`), key)).toEqual(key);
     }));
   });
 
   test("\"key\".com/foo/bar URIs return \"key\" social network", async ({ page }) => {
-    const keys = await page.evaluate(() => window.ReactSocialIcons.getKeys());
-    await expect(keys.length).toBeGreaterThanOrEqual(1);
+    const keys: Array<string> = await page.evaluate(() => window.ReactSocialIcons.getKeys());
+    await expect(keys.length).toBeGreaterThanOrEqual(NUM_GREATER_THAN_ZERO);
     await Promise.all(keys.map(async key => {
-      const uri = `http://${key}.com/${range(3).map(() => random(5, 10)).map(randStr).join("/")}`;
+      const uri = `http://${key}.com/foo/bar`;
       return expect(await page.evaluate((u) => window.ReactSocialIcons.keyFor(u), uri)).toEqual(key);
     }));
   });
 
   test("\"key\".com/foo.bar URIs return \"key\" social network", async ({ page }) => {
-    const keys = await page.evaluate(() => window.ReactSocialIcons.getKeys());
-    await expect(keys.length).toBeGreaterThanOrEqual(1);
+    const keys: Array<string> = await page.evaluate(() => window.ReactSocialIcons.getKeys());
+    await expect(keys.length).toBeGreaterThanOrEqual(NUM_GREATER_THAN_ZERO);
     await Promise.all(keys.map(async key => {
-      const uri = `http://${key}.com/${range(3).map(() => random(5, 10)).map(randStr).join(".")}`;
+      const uri = `http://${key}.com/foo.bar`;
       return expect(await page.evaluate((u) => window.ReactSocialIcons.keyFor(u), uri)).toEqual(key);
     }));
   });
 
   test("sub-domain.\"key\".com URIs return \"key\" social network", async ({ page }) => {
-    const keys = await page.evaluate(() => window.ReactSocialIcons.getKeys());
-    await expect(keys.length).toBeGreaterThanOrEqual(1);
+    const keys: Array<string> = await page.evaluate(() => window.ReactSocialIcons.getKeys());
+    await expect(keys.length).toBeGreaterThanOrEqual(NUM_GREATER_THAN_ZERO);
     await Promise.all(keys.map(async key => {
       const uri = `http://sub-domain.${key}.com`;
       return expect(await page.evaluate((u) => window.ReactSocialIcons.keyFor(u), uri)).toEqual(key);
@@ -187,20 +200,3 @@ test.describe("keyFor", async () => {
   });
 
 });
-
-/* util */
-
-function randStr(len) {
-  const poss = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-  return range(len).reduce(str => str + poss.charAt(random(0, poss.length)), "");
-}
-
-function random(min, max) {
-  min = Math.ceil(min);
-  max = Math.floor(max);
-  return Math.floor(Math.random() * (max - min + 1)) + min;
-}
-
-function range(size) {
-  return Array(Math.round(size)).fill(null);
-}

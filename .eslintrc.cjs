@@ -11,7 +11,9 @@ module.exports = {
   "extends": [
     "eslint:recommended",
     "plugin:react/recommended",
-    "plugin:@typescript-eslint/recommended"
+    "plugin:@typescript-eslint/recommended",
+    "plugin:import/recommended",
+    "plugin:import/typescript",
   ],
   "overrides": [
   ],
@@ -78,7 +80,8 @@ module.exports = {
     "no-dupe-else-if": ["error"],
     "no-dupe-keys": ["error"],
     "no-duplicate-case": ["error"],
-    "no-duplicate-imports": ["error"],
+    // conflicts with typescript's "import type", replaced by import/no-duplicates
+    "no-duplicate-imports": ["off"],
     "no-else-return": ["error", { "allowElseIf": false }],
     "no-empty": ["error"],
     "no-empty-character-class": ["error"],
@@ -209,6 +212,9 @@ module.exports = {
 
   },
   "settings": {
+    "import/resolver": {
+      "typescript": true,
+    },
     "react": {
       "version": "detect",
     },
