@@ -13,6 +13,8 @@
 
 - change bundler to rollup so I can re-use the generate icons plugin without
   creating a physical file, and have babel fit in the toolchain easily.
+- finalize the eslint config, do the pretty stuff, maybe just add prettier so I
+  can skip that tedious stuff, add any missing plugins that are good.
 
 - the issue with tests when Typescript is enabled (although even that is unclear
   to me, the import situation with typescript), has rollup (or something) creating

@@ -15,7 +15,7 @@
     },
     "files": [
         "src/react-social-icons.ts",
-        "test/App.spec.tsx"
+        "test/browsers/ReactSocialIcon.spec.tsx"
     ],
     "exclude": [
         "node_modules"

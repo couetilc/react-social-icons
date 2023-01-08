@@ -1,10 +1,11 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment, react/react-in-jsx-scope */
 import { test, expect } from "@playwright/experimental-ct-react";
 // @ts-ignore: Vite requires a file extension 
-import { SocialIcon, keyFor, getKeys } from "../src/react-social-icons.ts";
+import { SocialIcon, keyFor, getKeys } from "../../src/react-social-icons.ts";
 // @ts-ignore: Vite requires a file extension 
-import { social_icons } from "../src/component.tsx";
-import "../src/icons/index.ts"; // required for social network registry to populate
+import { social_icons } from "../../src/component.tsx";
+// required for social network registry to populate
+import "../../src/icons/index.ts";
 /* eslint-enable @typescript-eslint/ban-ts-comment */
 
 declare global {

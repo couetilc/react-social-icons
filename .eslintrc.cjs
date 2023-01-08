@@ -28,7 +28,7 @@ module.exports = {
   ],
   "rules": {
 
-    // TODO: style rules
+    // TODO: style rules, aka just use prettier
     // TODO: typescript rules
     // TODO: react rules
 
