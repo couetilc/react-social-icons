@@ -28,7 +28,7 @@ test:js() {
 }
 
 test:lint() {
-  pnpm eslint .eslintrc.cjs src
+  pnpm eslint .eslintrc.cjs .
 }
 
 test:publint() {
