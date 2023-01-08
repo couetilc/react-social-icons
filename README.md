@@ -11,6 +11,9 @@
   only be able to do it with their PRs, nothing else. So maybe minimal positions
   for contributors that only grant them position to merge approved PRs.
 
+- change bundler to rollup so I can re-use the generate icons plugin without
+  creating a physical file, and have babel fit in the toolchain easily.
+
 - the issue with tests when Typescript is enabled (although even that is unclear
   to me, the import situation with typescript), has rollup (or something) creating
   multiple instances of the register function, separated by appending "register$<num>"

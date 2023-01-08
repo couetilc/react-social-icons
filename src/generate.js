@@ -9,17 +9,17 @@ export async function generateSocialIcons() {
   const modules = {};
   await Promise.all(icons.map(
     filename => import(`../db/${filename}`)
-      .then(async module => { modules[filename] = module.default; })
+      .then(module => { modules[filename] = module.default; })
   ));
   const filenames = Object.keys(modules);
   const networks = [];
 
   await Promise.all(filenames.map(async filename => {
-    const network = filename.replace(/\.(js|ts)/, "");
+    const network = filename.replace(/\.(?:js|ts)/u, "");
     networks.push(network);
     await fs.writeFile(
       new URL(`./icons/${network}.js`, iconsDirectory),
-      `import { register } from "../component.tsx";register(${JSON.stringify(network)}, ${JSON.stringify(modules[filename])})`
+      `import { register } from "../component.tsx";\nregister(${JSON.stringify(network)}, ${JSON.stringify(modules[filename])})`
     );
     // const { icon, mask, color } = icons[name];
     // await fs.writeFile(

@@ -1,23 +1,83 @@
 import React from "react";
 
-const makeRegex = (socials : string[] = []) => new RegExp("(?:https?:\\/\\/(?:[a-z0-9-]*.)?)?($SOCIALS).*".replace("$SOCIALS", socials.join("|")));
+const DEFAULT_KEY = "sharethis";
 
-type Icon = { icon: string, mask: string, color: string }
+interface SocialIconType {
+  icon: string;
+  mask: string;
+  color: string;
+}
 
-const social_icons = new Map<string, Icon>();
+interface SocialIconProps extends React.DetailedHTMLProps<React.AnchorHTMLAttributes<HTMLAnchorElement>, HTMLAnchorElement>  {
+  className?: string;
+  bgColor?: string;
+  fgColor?: string;
+  label?: string;
+  network?: string;
+  url?: string;
+  defaultSVG?: SocialIconType;
+  style?: React.CSSProperties;
+}
+
+const socialIcon: React.CSSProperties = {
+  display: "inline-block",
+  width: "50px",
+  height: "50px",
+  position: "relative",
+  overflow: "hidden",
+  verticalAlign: "middle"
+};
+
+const socialContainer: React.CSSProperties = {
+  position: "absolute",
+  top: 0,
+  left: 0,
+  width: "100%",
+  height: "100%"
+};
+
+const socialSvg: React.CSSProperties = {
+  borderRadius: "50%",
+  position: "absolute",
+  top: 0,
+  left: 0,
+  width: "100%",
+  height: "100%",
+  fillRule: "evenodd"
+};
+
+const socialSvgContent: React.CSSProperties = {
+  msTransition: "fill 170ms ease-in-out",
+  OTransition: "fill 170ms ease-in-out",
+  MozTransition: "fill 170ms ease-in-out",
+  WebkitTransition: "fill 170ms ease-in-out",
+  transition: "fill 170ms ease-in-out",
+  fill: "transparent"
+};
+
+const socialSvgMask: React.CSSProperties = {
+  ...socialSvgContent,
+  fill: "#0f0b0b"
+};
+
+const makeUriRegex = (socials : string[] = []) => new RegExp(
+  "(?:https?:\\/\\/(?:[a-z0-9-]*.)?)?($SOCIALS).*"
+    .replace("$SOCIALS", socials.join("|")),
+  "u",
+);
+
+const social_icons = new Map<string, SocialIconType>();
 const network_names = new Set<string>();
-let uri_regex = makeRegex();
+let uri_regex = makeUriRegex();
 
-function register(social: string, icon: Icon) {
+function register(social: string, icon: SocialIconType) {
   social_icons.set(social, icon);
   network_names.add(social);
-  uri_regex = makeRegex(
+  uri_regex = makeUriRegex(
     // sort by longest string first
     [ ...network_names ].sort((pre, post) => post.length - pre.length)
   );
 }
-
-const DEFAULT_KEY = "sharethis";
 
 function keyFor(url?: string) {
   if (!url) {
@@ -38,7 +98,7 @@ function SocialIcon(props: SocialIconProps) {
     social_icons.set(DEFAULT_KEY, defaultSVG);
   }
 
-  const networkKey = props.network || keyFor(url);
+  const networkKey = network || keyFor(url);
 
   const { icon, mask, color } = social_icons.get(networkKey) || {};
 
@@ -82,64 +142,6 @@ function SocialIcon(props: SocialIconProps) {
     </a>
   );
 }
-
-interface SocialIconProps extends React.DetailedHTMLProps<React.AnchorHTMLAttributes<HTMLAnchorElement>, HTMLAnchorElement>  {
-  className?: string;
-  bgColor?: string;
-  fgColor?: string;
-  label?: string;
-  network?: string;
-  url?: string;
-  defaultSVG?: SVG;
-  style?: React.CSSProperties;
-}
-
-interface SVG {
-  icon: string;
-  mask: string;
-  color: string;
-}
-
-const socialIcon: React.CSSProperties = {
-  display: "inline-block",
-  width: "50px",
-  height: "50px",
-  position: "relative",
-  overflow: "hidden",
-  verticalAlign: "middle"
-};
-
-const socialContainer: React.CSSProperties = {
-  position: "absolute",
-  top: 0,
-  left: 0,
-  width: "100%",
-  height: "100%"
-};
-
-const socialSvg: React.CSSProperties = {
-  borderRadius: "50%",
-  position: "absolute",
-  top: 0,
-  left: 0,
-  width: "100%",
-  height: "100%",
-  fillRule: "evenodd"
-};
-
-const socialSvgContent: React.CSSProperties = {
-  msTransition: "fill 170ms ease-in-out",
-  OTransition: "fill 170ms ease-in-out",
-  MozTransition: "fill 170ms ease-in-out",
-  WebkitTransition: "fill 170ms ease-in-out",
-  transition: "fill 170ms ease-in-out",
-  fill: "transparent"
-};
-
-const socialSvgMask: React.CSSProperties = {
-  ...socialSvgContent,
-  fill: "#0f0b0b"
-};
 
 export {
   SocialIcon,
