@@ -3,7 +3,7 @@ import type { DetailedHTMLProps, AnchorHTMLAttributes } from "react";
 
 const DEFAULT_KEY = "sharethis";
 
-interface SocialIconType {
+interface SocialIconObject {
   icon: string;
   mask: string;
   color: string;
@@ -16,7 +16,7 @@ interface SocialIconProps extends DetailedHTMLProps<AnchorHTMLAttributes<HTMLAnc
   label?: string;
   network?: string;
   url?: string;
-  defaultSVG?: SocialIconType;
+  defaultSVG?: SocialIconObject;
   style?: React.CSSProperties;
 }
 
@@ -67,11 +67,11 @@ const makeUriRegex = (socials : string[] = []) => new RegExp(
   "u",
 );
 
-const social_icons = new Map<string, SocialIconType>();
+const social_icons = new Map<string, SocialIconObject>();
 const network_names = new Set<string>();
 let uri_regex = makeUriRegex();
 
-function register(social: string, icon: SocialIconType) {
+function register(social: string, icon: SocialIconObject) {
   social_icons.set(social, icon);
   network_names.add(social);
   uri_regex = makeUriRegex(
@@ -90,23 +90,34 @@ function keyFor(url?: string) {
 }
 
 function SocialIcon(props: SocialIconProps) {
+
   const {
-    url, network, bgColor, fgColor, className, label, children, defaultSVG, style,
+    url,
+    network,
+    bgColor,
+    fgColor,
+    className,
+    label,
+    children,
+    defaultSVG,
+    style,
     ...rest
   } = props;
 
-  if (typeof defaultSVG === "object" && defaultSVG !== null) {
-    social_icons.set(DEFAULT_KEY, defaultSVG);
-  }
-
   const networkKey = network || keyFor(url);
 
-  const { icon, mask, color } = social_icons.get(networkKey) || {};
+  const {
+    icon,
+    mask,
+    color,
+  } = networkKey === DEFAULT_KEY && defaultSVG
+    || social_icons.get(networkKey)
+    || {};
 
   return (
     <a
       href={url || ""}
-      className={`social-icon${  className ? ` ${  className}` : ""}`}
+      className={`social-icon${className ? ` ${className}` : ""}`}
       style={{ ...socialIcon, ...style }}
       aria-label={label || networkKey}
       {...rest}
