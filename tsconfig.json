@@ -10,9 +10,9 @@
         "strict": true,
         "esModuleInterop": true,
         "moduleResolution": "node",
-        "lib": ["es5", "es6", "dom"],
+        "lib": ["es6", "dom"],
         "jsx": "react-jsx",
-        "rootDir": "src"
+        "rootDir": "."
     },
     "files": [
         "src/react-social-icons.ts",

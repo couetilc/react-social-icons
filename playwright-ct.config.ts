@@ -3,6 +3,10 @@ import type { PlaywrightTestConfig } from "@playwright/experimental-ct-react";
 import { devices } from "@playwright/experimental-ct-react";
 
 const config: PlaywrightTestConfig = {
+  // useful test settings
+  // headless: false,
+  // workers: 1,
+
   testDir: ".",
   /* The base directory, relative to the config file, for snapshot files created with toMatchSnapshot and toHaveScreenshot. */
   snapshotDir: "__snapshots__",

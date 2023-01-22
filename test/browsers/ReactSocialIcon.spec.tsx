@@ -6,7 +6,11 @@ import { SocialIcon, keyFor, getKeys } from "../../src/react-social-icons.ts";
 import { social_icons } from "../../src/component.tsx";
 // required for social network registry to populate
 import "../../src/icons/index.ts";
+import sharethis from "../../db/sharethis.js";
 /* eslint-enable @typescript-eslint/ban-ts-comment */
+import * as React from 'react';
+import { TwoDefaultSvg } from "./fixtures/separate_default_svg_instances.tsx";
+import convert from 'color-convert';
 
 declare global {
   interface Window {
@@ -22,6 +26,7 @@ const pinterest_url = "http://pinterest.com";
 const pinterest_mask = social_icons.get("pinterest")?.mask || "";
 const pinterest_icon = social_icons.get("pinterest")?.icon || "";
 const github_mask = social_icons.get("github")?.mask || "";
+const default_icon = sharethis;
 
 test.use({ viewport: { width: 500, height: 500 } });
 
@@ -106,6 +111,24 @@ test.describe("<SocialIcon />", () => {
     await expect(svg.locator("g.social-svg-icon path")).toHaveAttribute("d", "test-icon");
     await expect(svg.locator("g.social-svg-mask path")).toHaveAttribute("d", "test-mask");
     await expect(svg.locator("g.social-svg-mask path")).toHaveCSS("fill", "rgb(254, 254, 254)");
+  });
+
+  test("allows for separate default icon overrides for social svg instances", async ({ mount }) => {
+    const component = await mount(
+      <TwoDefaultSvg />
+    );
+
+    let svg;
+
+    svg = component.locator("a[data-testid=\"with-fallback-prop\"] svg");
+    await expect(svg.locator("g.social-svg-icon path")).toHaveAttribute("d", "test-fallback-icon");
+    await expect(svg.locator("g.social-svg-mask path")).toHaveAttribute("d", "test-fallback-mask");
+    await expect(svg.locator("g.social-svg-mask path")).toHaveCSS("fill", "rgb(0, 0, 0)");
+
+    svg = component.locator("a[data-testid=\"without-fallback-prop\"] svg");
+    await expect(svg.locator("g.social-svg-icon path")).toHaveAttribute("d", default_icon.icon);
+    await expect(svg.locator("g.social-svg-mask path")).toHaveAttribute("d", default_icon.mask);
+    await expect(svg.locator("g.social-svg-mask path")).toHaveCSS("fill", `rgb(${convert.hex.rgb(default_icon.color).join(', ')})`);
   });
 
 });
