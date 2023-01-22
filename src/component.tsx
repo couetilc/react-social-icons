@@ -116,6 +116,13 @@ function SocialIcon(props: SocialIconProps) {
 
   return (
     <a
+      /* todo: this href prop should be href={href || url}. href should have 
+      * precedence in case someone is setting url to specify the network but
+      * wants to link it someplace else, also so it works well composed with
+        * other libraries. empty string ("") should not be the default incase
+      * we change the base element (using a new "as" prop) to an element that
+      * doesn't support the href attribute. Test cases are needed for both of
+        * these features */
       href={url || ""}
       className={`social-icon${className ? ` ${className}` : ""}`}
       style={{ ...socialIcon, ...style }}

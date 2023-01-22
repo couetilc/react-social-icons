@@ -11,7 +11,8 @@
         "esModuleInterop": true,
         "moduleResolution": "node",
         "lib": ["es5", "es6", "dom"],
-        "jsx": "react-jsx"
+        "jsx": "react-jsx",
+        "rootDir": "src"
     },
     "files": [
         "src/react-social-icons.ts",

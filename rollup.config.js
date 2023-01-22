@@ -1,14 +1,16 @@
-import { rollupPluginSocialIcons as socialIcons } from "./src/generate";
-// import babel from "@rollup/plugin-babel";
+import { rollupPluginSocialIcons as socialIcons } from "./src/generate.js";
+import { babel } from "@rollup/plugin-babel";
 import resolve from "@rollup/plugin-node-resolve";
+import typescript from '@rollup/plugin-typescript';
 
 export default (function config(){
   const plugins = [
     socialIcons(),
     resolve(),
-    // babel({
-    //   babelHelpers: 'runtime',
-    // }),
+    typescript(),
+    babel({
+      babelHelpers: 'runtime',
+    }),
   ];
 
   const external = id => {
@@ -29,19 +31,13 @@ export default (function config(){
 
   return [
     {
-      input: "./src/react-social-icons.js",
+      input: "./src/react-social-icons.ts",
       plugins,
       external,
       output,
     },
     {
-      input: "./src/component.jsx",
-      plugins,
-      external,
-      output,
-    },
-    {
-      input: "./src/db.js",
+      input: "./src/component.tsx",
       plugins,
       external,
       output,

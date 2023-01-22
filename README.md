@@ -11,6 +11,8 @@
   only be able to do it with their PRs, nothing else. So maybe minimal positions
   for contributors that only grant them position to merge approved PRs.
 
+- need to make forward refs work.
+
 - change bundler to rollup so I can re-use the generate icons plugin without
   creating a physical file, and have babel fit in the toolchain easily.
 - finalize the eslint config, do the pretty stuff, maybe just add prettier so I
@@ -35,7 +37,7 @@
   it check at least no staged files are yar.lock or package-lock.json when committing.
 - alias "defaultIcon" for "defaultSVG" but still keep it around for compatibility, but have docs reflect new usage.
 - trim down everything into one file that still passes tests.
-- add styling with a <style></style> tag or resort to nano-css. Is there linting for css prefixes? how to handle css prefixes?
+- add styling with a <style></style> tag or resort to nano-css (https://github.com/streamich/nano-css/blob/master/docs/put.md). Is there linting for css prefixes? how to handle css prefixes?
 - create an FAQ or something in the readme:
    - include "how do I open the social network into a new tab" and metion target="_blank"
    - what else can I include from the issues, opened or closed?

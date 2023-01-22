@@ -12,6 +12,7 @@ specifiers:
   '@playwright/experimental-ct-react': ^1.26.0
   '@rollup/plugin-babel': ^5.3.0
   '@rollup/plugin-node-resolve': ^13.1.3
+  '@rollup/plugin-typescript': ^11.0.0
   '@types/react': ^18.0.20
   '@typescript-eslint/eslint-plugin': ^5.48.0
   '@typescript-eslint/parser': ^5.48.0
@@ -25,6 +26,7 @@ specifiers:
   react: ^18.2.0
   react-dom: ^18.2.0
   rollup: ^2.79.1
+  tslib: ^2.4.1
   typescript: ^4.8.3
   vite: ^2.9.15
   vite-plugin-dts: ^1.5.0
@@ -46,6 +48,7 @@ devDependencies:
   '@playwright/experimental-ct-react': 1.26.0
   '@rollup/plugin-babel': 5.3.0_h5ckx4p6nu6724o3yneay43iri
   '@rollup/plugin-node-resolve': 13.1.3_rollup@2.79.1
+  '@rollup/plugin-typescript': 11.0.0_ipm55mneywwhk7y746cdasomxa
   '@types/react': 18.0.20
   '@typescript-eslint/eslint-plugin': 5.48.0_3pbt7ydm7bwozvllq3xvnbepre
   '@typescript-eslint/parser': 5.48.0_2dzgwy5zqpbqnlebe4vtikzq4i
@@ -56,6 +59,7 @@ devDependencies:
   eslint-plugin-react: 7.31.11_eslint@8.31.0
   publint: 0.1.5
   rollup: 2.79.1
+  tslib: 2.4.1
   typescript: 4.8.3
   vite: 2.9.15
   vite-plugin-dts: 1.5.0_vite@2.9.15
@@ -1949,6 +1953,26 @@ packages:
       rollup: 2.79.1
     dev: true
 
+  /@rollup/plugin-typescript/11.0.0_ipm55mneywwhk7y746cdasomxa:
+    resolution: {integrity: sha512-goPyCWBiimk1iJgSTgsehFD5OOFHiAknrRJjqFCudcW8JtWiBlK284Xnn4flqMqg6YAjVG/EE+3aVzrL5qNSzQ==}
+    engines: {node: '>=14.0.0'}
+    peerDependencies:
+      rollup: ^2.14.0||^3.0.0
+      tslib: '*'
+      typescript: '>=3.7.0'
+    peerDependenciesMeta:
+      rollup:
+        optional: true
+      tslib:
+        optional: true
+    dependencies:
+      '@rollup/pluginutils': 5.0.2_rollup@2.79.1
+      resolve: 1.22.1
+      rollup: 2.79.1
+      tslib: 2.4.1
+      typescript: 4.8.3
+    dev: true
+
   /@rollup/pluginutils/3.1.0_rollup@2.79.1:
     resolution: {integrity: sha512-GksZ6pr6TpIjHm8h9lSQ8pi8BE9VeubNT0OMJ3B5uZJ8pz73NPiqOtCog/x2/QzM1ENChPKxMDhiQuRHsqc+lg==}
     engines: {node: '>= 8.0.0'}
@@ -1967,6 +1991,21 @@ packages:
     dependencies:
       estree-walker: 2.0.2
       picomatch: 2.3.1
+    dev: true
+
+  /@rollup/pluginutils/5.0.2_rollup@2.79.1:
+    resolution: {integrity: sha512-pTd9rIsP92h+B6wWwFbW8RkZv4hiR/xKsqre4SIuAOaOEQRxi0lqLke9k2/7WegC85GgUs9pjmOjCUi3In4vwA==}
+    engines: {node: '>=14.0.0'}
+    peerDependencies:
+      rollup: ^1.20.0||^2.0.0||^3.0.0
+    peerDependenciesMeta:
+      rollup:
+        optional: true
+    dependencies:
+      '@types/estree': 1.0.0
+      estree-walker: 2.0.2
+      picomatch: 2.3.1
+      rollup: 2.79.1
     dev: true
 
   /@rushstack/node-core-library/3.52.0:
@@ -2013,6 +2052,10 @@ packages:
 
   /@types/estree/0.0.39:
     resolution: {integrity: sha512-EYNwp3bU+98cpU4lAWYYL7Zz+2gryWH1qbdDTidVd6hkiR6weksdbMadyXKXNPEkQFhXM+hVO9ZygomHXp+AIw==}
+    dev: true
+
+  /@types/estree/1.0.0:
+    resolution: {integrity: sha512-WulqXMDUTYAXCjZnk6JtIHPigp55cVtDgDrO2gHRwhyJto21+1zbVCtOYB2L1F9w4qCQ0rOGWBnBe0FNTiEJIQ==}
     dev: true
 
   /@types/json-schema/7.0.11:
