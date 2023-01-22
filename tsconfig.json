@@ -14,11 +14,8 @@
         "jsx": "react-jsx",
         "rootDir": "."
     },
-    "files": [
-        "src/react-social-icons.ts",
-        "test/browsers/ReactSocialIcon.spec.tsx"
-    ],
     "exclude": [
-        "node_modules"
+        "node_modules",
+        "dist"
     ]
 }
