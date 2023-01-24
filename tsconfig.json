@@ -1,6 +1,6 @@
 {
     "compilerOptions": {
-        "module": "ES2015",
+        "module": "ESNEXT",
         "target": "ES6",
         "noImplicitAny": true,
         "removeComments": true,
@@ -10,9 +10,10 @@
         "strict": true,
         "esModuleInterop": true,
         "moduleResolution": "node",
-        "lib": ["es6", "dom"],
+        "lib": ["ES6", "DOM"],
         "jsx": "react-jsx",
-        "rootDir": "."
+        "rootDir": ".",
+        "isolateModules": true
     },
     "exclude": [
         "node_modules",

@@ -18,20 +18,11 @@ export async function generateSocialIcons() {
     const network = filename.replace(/\.(?:js|ts)/u, "");
     networks.push(network);
     await fs.writeFile(
-      new URL(`./icons/${network}.js`, iconsDirectory),
+      new URL(`./icons/${network}.ts`, iconsDirectory),
       `import { register } from "../component.tsx";\nregister(${JSON.stringify(network)}, ${JSON.stringify(modules[filename])})`
     );
-    // const { icon, mask, color } = icons[name];
-    // await fs.writeFile(
-    //   new URL(`./db/${name}.js`, dbDirectory),
-    //   `export default {\n  icon: ${JSON.stringify(icon)},\n  mask: ${JSON.stringify(mask)},\n  color: ${JSON.stringify(color)},\n}`
-    // );
   }));
 
-  await fs.writeFile(
-    new URL("./icons/index.js", iconsDirectory),
-    filenames.map(filename => `import './${filename}';`).join("\n"),
-  );
   await fs.writeFile(
     new URL("./icons/index.ts", iconsDirectory),
     filenames.map(filename => `import './${filename}';`).join("\n"),

@@ -6,18 +6,20 @@ import { SocialIcon, keyFor, getKeys } from "../../src/react-social-icons.ts";
 import { social_icons } from "../../src/component.tsx";
 // required for social network registry to populate
 import "../../src/icons/index.ts";
-import sharethis from "../../db/sharethis.js";
-/* eslint-enable @typescript-eslint/ban-ts-comment */
-import * as React from 'react';
+// @ts-ignore: Vite requires a file extension 
+import sharethis from "../../db/sharethis.js"; // TODO switch the db files to .ts?
+import * as React from "react";
+// @ts-ignore: Vite requires a file extension 
 import { TwoDefaultSvg } from "./fixtures/separate_default_svg_instances.tsx";
-import convert from 'color-convert';
+import convert from "color-convert";
+/* eslint-enable @typescript-eslint/ban-ts-comment */
 
 declare global {
-  interface Window {
+  interface window {
     ReactSocialIcons: {
-      SocialIcon: SocialIcon,
-      keyFor: keyFor
-      getKeys: getKeys,
+      SocialIcon: typeof SocialIcon,
+      keyFor: typeof keyFor
+      getKeys: typeof getKeys,
     }
   }
 }

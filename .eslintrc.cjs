@@ -28,6 +28,8 @@ module.exports = {
   ],
   "rules": {
 
+    // "@typescript-eslint/ban-ts-comment": "off",
+
     // TODO: style rules, aka just use prettier
     // TODO: typescript rules
     // TODO: react rules
