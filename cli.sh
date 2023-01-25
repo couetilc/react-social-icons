@@ -1,21 +1,8 @@
 #!/usr/bin/env bash
 
-generate-icons() {
-  node --input-type=module -e "
-  import { generateSocialIcons } from './src/generate.js';
-  generateSocialIcons();
-  "
-}
-
 build() {
-  generate-icons
-
   # why do I transpile? can I test my desired outcome?
-  pnpm babel src \
-    --copy-files \
-    --out-dir "./dist" \
-    --ignore "src/**/*.{spec,test}.*" \
-    --extensions ".ts"
+  pnpm rollup -c rollup.config.js
 }
 
 dev() {

@@ -1,5 +1,5 @@
-import { SocialIcon } from "../../../src/react-social-icons.ts";
-import { Fragment } from 'react';
+import { SocialIcon } from "../../../src/react-social-icons";
+import React, { Fragment } from "react";
 
 function TwoDefaultSvg() {
   return (

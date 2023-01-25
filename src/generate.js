@@ -1,52 +1,54 @@
+/* eslint-env node */
 import fs from "fs/promises";
 
-export async function generateSocialIcons() {
-  const iconsDirectory = new URL("../src/icons", import.meta.url);
-  const dbDirectory = new URL("../db", import.meta.url);
-  await fs.mkdir(iconsDirectory, { recursive: true });
-  await fs.mkdir(dbDirectory, { recursive: true });
-  const icons = await fs.readdir(dbDirectory);
-  const modules = {};
-  await Promise.all(icons.map(
-    filename => import(`../db/${filename}`)
-      .then(module => { modules[filename] = module.default; })
-  ));
-  const filenames = Object.keys(modules);
-  const networks = [];
+const IMPORT_PREFIX = "\0social-icons";
 
-  await Promise.all(filenames.map(async filename => {
-    const network = filename.replace(/\.(?:js|ts)/u, "");
-    networks.push(network);
-    await fs.writeFile(
-      new URL(`./icons/${network}.ts`, iconsDirectory),
-      `import { register } from "../component.tsx";\nregister(${JSON.stringify(network)}, ${JSON.stringify(modules[filename])})`
-    );
-  }));
-
-  await fs.writeFile(
-    new URL("./icons/index.ts", iconsDirectory),
-    filenames.map(filename => `import './${filename}';`).join("\n"),
-  );
-
-  await fs.writeFile(
-    new URL("./icons/types.ts", iconsDirectory),
-    `export type Network = ${networks.map(JSON.stringify).join(" | ")};`,
-  );
-}
+// TODO rename this file to rollup-plugin-social-icons
 
 export function rollupPluginSocialIcons() {
+
+  const db = new Map();
+
   return {
-    name: "rollup-plugin-social-icons",
-    async resolveId(source, importer, options) {
-      if (source === "./icons") {
-        await generateSocialIcons();
-        const resolution = await this.resolve(source, importer, {
-          skipSelf: true,
-          ...options
-        });
-        return resolution.id;
+    name: "social-icons",
+
+    async buildStart() {
+      const dbFiles = await fs.readdir(new URL("../db", import.meta.url));
+      await Promise.all(dbFiles.map(
+        filename => fs
+          .readFile(new URL(`../db/${filename}`, import.meta.url))
+          .then(icon => {
+            const network = filename.replace(".json", "");
+            db.set(network, JSON.parse(icon.toString()));
+          })
+      ));
+    },
+
+    resolveId(source) {
+      if (source.startsWith("social-icons")) {
+        return `\0${source}`;
       }
       return null;
+    },
+
+    load(id) {
+      if (!id.startsWith(IMPORT_PREFIX)) {
+        return null;
+      }
+
+      if (id === IMPORT_PREFIX) {
+        const code = Array.from(db.keys()).reduce((file, network) => {
+          return `${file}import "social-icons:${network}";`;
+        }, "");
+        return { code, moduleSideEffects: true };
+      }
+
+      const network = id.replace(`${IMPORT_PREFIX}:`, "");
+      return `import { register } from 'src/component.tsx';register(${
+        JSON.stringify(network)
+      }, ${
+        JSON.stringify(db.get(network))
+      });`;
     },
   };
 }

@@ -5,14 +5,16 @@ import { SocialIcon, keyFor, getKeys } from "../../src/react-social-icons.ts";
 // @ts-ignore: Vite requires a file extension 
 import { social_icons } from "../../src/component.tsx";
 // required for social network registry to populate
-import "../../src/icons/index.ts";
+// import "social-icons";
 // @ts-ignore: Vite requires a file extension 
-import sharethis from "../../db/sharethis.js"; // TODO switch the db files to .ts?
 import * as React from "react";
 // @ts-ignore: Vite requires a file extension 
 import { TwoDefaultSvg } from "./fixtures/separate_default_svg_instances.tsx";
 import convert from "color-convert";
 /* eslint-enable @typescript-eslint/ban-ts-comment */
+import fs from "fs";
+
+// TODO make this file NOT a typescript file, make it normal JS
 
 declare global {
   interface window {
@@ -24,10 +26,21 @@ declare global {
   }
 }
 
+function readIcon(network: string) {
+  return JSON.parse(
+    fs.readFileSync(new URL( `../../db/${network}.json`, import.meta.url))
+      .toString()
+  );
+}
+
+const sharethis = readIcon("sharethis");
+const pinterest = readIcon("pinterest");
+const github = readIcon("github");
+
 const pinterest_url = "http://pinterest.com";
-const pinterest_mask = social_icons.get("pinterest")?.mask || "";
-const pinterest_icon = social_icons.get("pinterest")?.icon || "";
-const github_mask = social_icons.get("github")?.mask || "";
+const pinterest_mask = pinterest.mask || "";
+const pinterest_icon = pinterest.icon || "";
+const github_mask = github.mask || "";
 const default_icon = sharethis;
 
 test.use({ viewport: { width: 500, height: 500 } });
@@ -130,7 +143,7 @@ test.describe("<SocialIcon />", () => {
     svg = component.locator("a[data-testid=\"without-fallback-prop\"] svg");
     await expect(svg.locator("g.social-svg-icon path")).toHaveAttribute("d", default_icon.icon);
     await expect(svg.locator("g.social-svg-mask path")).toHaveAttribute("d", default_icon.mask);
-    await expect(svg.locator("g.social-svg-mask path")).toHaveCSS("fill", `rgb(${convert.hex.rgb(default_icon.color).join(', ')})`);
+    await expect(svg.locator("g.social-svg-mask path")).toHaveCSS("fill", `rgb(${convert.hex.rgb(default_icon.color).join(", ")})`);
   });
 
 });

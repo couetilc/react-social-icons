@@ -1,20 +1,10 @@
 # TODO
 
-
-- is it possible with GitHub to provide a contributor temporary permissions to
-  merge their PR into the repo and to deploy a new version only of their
-  approved PR? Or possible to grant them permission to merge after I've approved,
-  then main branch CI will publish automatically, maybe after I give confirmation
-  via email notification or something. To minimize any work to publish and also
-  give people a sense of ownership by allowing to merge an approved PR themselves
-  and see it automatically deployed to NPM immediately afterwards. But they should
-  only be able to do it with their PRs, nothing else. So maybe minimal positions
-  for contributors that only grant them position to merge approved PRs.
+- get typescript declaration file emitted for dist/
 
 - need to make forward refs work.
+- switch browser test file to vanilla JS, then see if works with distribution files
 
-- change bundler to rollup so I can re-use the generate icons plugin without
-  creating a physical file, and have babel fit in the toolchain easily.
 - finalize the eslint config, do the pretty stuff, maybe just add prettier so I
   can skip that tedious stuff, add any missing plugins that are good.
 
@@ -59,6 +49,19 @@
 - I can probably take screenshots of the example page using this tool, give it
   a shot https://github.com/simonw/shot-scraper, otherwise playwright might be
   the best move. This is blog post https://simonwillison.net/2022/Mar/10/shot-scraper/
+
+- is it possible with GitHub to provide a contributor temporary permissions to
+  merge their PR into the repo and to deploy a new version only of their
+  approved PR? Or possible to grant them permission to merge after I've approved,
+  then main branch CI will publish automatically, maybe after I give confirmation
+  via email notification or something. To minimize any work to publish and also
+  give people a sense of ownership by allowing to merge an approved PR themselves
+  and see it automatically deployed to NPM immediately afterwards. But they should
+  only be able to do it with their PRs, nothing else. So maybe minimal positions
+  for contributors that only grant them position to merge approved PRs.
+- I need a contributor document, make it very clear what I need to quickly
+  approve PRs, and also explain the approval process. Look elsewhere for good
+  examples of what that looks like.
 
 # react-social-icons &nbsp; ![build status](https://img.shields.io/github/workflow/status/jaketrent/react-social-icons/Build,%20Test,%20Publish/master) ![package version](https://img.shields.io/npm/v/react-social-icons) ![package size](https://img.shields.io/bundlephobia/minzip/react-social-icons) ![weekly downloads](https://img.shields.io/npm/dw/react-social-icons) ![type definitions](https://img.shields.io/npm/types/react-social-icons)
 

@@ -9,11 +9,11 @@
         "noEmit": true,
         "strict": true,
         "esModuleInterop": true,
-        "moduleResolution": "node",
+        "moduleResolution": "nodenext",
         "lib": ["ES6", "DOM"],
         "jsx": "react-jsx",
-        "rootDir": ".",
-        "isolateModules": true
+        "rootDir": "src",
+        "isolatedModules": true
     },
     "exclude": [
         "node_modules",

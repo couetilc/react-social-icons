@@ -6,5 +6,8 @@
         isTSX: true,
         allExtensions: true
       }]
+  ],
+  "plugins": [
+      "@babel/plugin-transform-runtime",
   ]
 }
