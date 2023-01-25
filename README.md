@@ -5,6 +5,9 @@
 - need to make forward refs work.
 - switch browser test file to vanilla JS, then see if works with distribution files
 
+- need to test adding `"sideEffects": true` to package.json will have webpack
+  and vite and rollup properly codesplit this package.
+
 - finalize the eslint config, do the pretty stuff, maybe just add prettier so I
   can skip that tedious stuff, add any missing plugins that are good.
 

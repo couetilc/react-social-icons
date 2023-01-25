@@ -10,33 +10,8 @@ export async function config() {
   const networks = (await fs.readdir(new URL("db", import.meta.url)))
     .map(filename => filename.replace(".json", ""));
 
-  const plugins = [
-    socialIcons(),
-    resolve(),
-    typescript(),
-    babel({
-      babelHelpers: "runtime",
-      exclude: "**/node_modules/**",
-    }),
-  ];
-
-  const external = id => {
-    if (id === "react") return true;
-    if (id === "react-dom") return true;
-    if (id === "react/jsx-runtime") return true;
-    if (/@babel\/runtime/u.test(id)) return true;
-    return false;
-  };
-
-  const output = [
-    {
-      format: "es",
-      dir: "./dist",
-      entryFileNames: "[name].js",
-    },
-  ];
-
   return {
+
     input: {
       "react-social-icons": "src/react-social-icons.ts",
       component: "src/component.tsx",
@@ -47,9 +22,33 @@ export async function config() {
         return inputMap;
       }, {}),
     },
-    plugins,
-    external,
-    output,
+
+    plugins: [
+      socialIcons(),
+      resolve(),
+      typescript(),
+      babel({
+        babelHelpers: "runtime",
+        exclude: "**/node_modules/**",
+      }),
+    ],
+
+    external(id) {
+      if (id === "react") return true;
+      if (id === "react-dom") return true;
+      if (id === "react/jsx-runtime") return true;
+      if (/@babel\/runtime/u.test(id)) return true;
+      return false;
+    },
+
+    output: [
+      {
+        format: "es",
+        dir: "./dist",
+        entryFileNames: "[name].js",
+      },
+    ],
+
   };
 
 }
