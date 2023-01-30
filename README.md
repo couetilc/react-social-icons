@@ -1,5 +1,12 @@
 # TODO
 
+- Split browser tests into a TestSuite file that exports a function that accepts
+  the SocialIcon module. Then create two other test files, one importing the src
+  module, the other importing the dist file, and have the pass their respective
+  module to the TestSuite function which will run all the tests on that module
+  - open question whether there needs to be any changes to the
+    playwright/index.js file
+
 - get typescript declaration file emitted for dist/
 
 - need to make forward refs work.

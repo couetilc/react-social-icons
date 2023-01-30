@@ -5,9 +5,9 @@ import { config as rollupConfig } from "./rollup.config.js";
 
 async function config(): Promise<PlaywrightTestConfig> {
   return {
-    // useful test settings
-    headless: false,
-    workers: 1,
+    // // useful test settings
+    // headless: false,
+    // workers: 1,
 
     testDir: ".",
     /* The base directory, relative to the config file, for snapshot files created with toMatchSnapshot and toHaveScreenshot. */
