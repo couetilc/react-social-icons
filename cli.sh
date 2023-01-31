@@ -11,7 +11,7 @@ dev() {
 
 test:js() {
   pnpm playwright test \
-    -c playwright-ct.config.ts
+    -c test/browsers/playwright-ct.config.ts
 }
 
 test:lint() {

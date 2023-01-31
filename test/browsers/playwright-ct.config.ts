@@ -1,7 +1,7 @@
 /* eslint-env node */
 import type { PlaywrightTestConfig } from "@playwright/experimental-ct-react";
 import { devices } from "@playwright/experimental-ct-react";
-import { config as rollupConfig } from "./rollup.config.js";
+import { config as rollupConfig } from "../../rollup.config.js";
 
 async function config(): Promise<PlaywrightTestConfig> {
   return {
@@ -30,6 +30,9 @@ async function config(): Promise<PlaywrightTestConfig> {
 
       /* vite config additions */
       ctViteConfig: await rollupConfig(),
+
+      /* folder containing the index.html and index.js used to scaffold component tests */
+      ctTemplateDir: "playwright",
     },
 
     /* Configure projects for major browsers */
