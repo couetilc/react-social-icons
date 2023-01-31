@@ -1,9 +1,10 @@
 /* eslint-env node */
 import type { PlaywrightTestConfig } from "@playwright/experimental-ct-react";
 import { devices } from "@playwright/experimental-ct-react";
+// TODO make rollup.config.js a typescript file?
 import { config as rollupConfig } from "../../rollup.config.js";
 
-async function config(): Promise<PlaywrightTestConfig> {
+export async function config(): Promise<PlaywrightTestConfig> {
   return {
     // // useful test settings
     // headless: false,
@@ -32,7 +33,7 @@ async function config(): Promise<PlaywrightTestConfig> {
       ctViteConfig: await rollupConfig(),
 
       /* folder containing the index.html and index.js used to scaffold component tests */
-      ctTemplateDir: "playwright",
+      ctTemplateDir: "do_not_call_base_config_directly",
     },
 
     /* Configure projects for major browsers */

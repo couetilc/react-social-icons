@@ -9,6 +9,8 @@
 
 - Replace Babel with SWC?
 
+- Grep for all TODO/todo in the repository, address anything there.
+
 - get typescript declaration file emitted for dist/
 
 - need to make forward refs work.

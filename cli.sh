@@ -10,8 +10,18 @@ dev() {
 }
 
 test:js() {
+  test:js-src
+  test:js-dist
+}
+
+test:js-src() {
   pnpm playwright test \
-    -c test/browsers/playwright-ct.config.ts
+    -c test/browsers/playwright-ct-src.config.ts
+}
+
+test:js-dist() {
+  pnpm playwright test \
+    -c test/browsers/playwright-ct-dist.config.ts
 }
 
 test:lint() {
