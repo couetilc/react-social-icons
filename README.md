@@ -7,6 +7,8 @@
   - open question whether there needs to be any changes to the
     playwright/index.js file
 
+- Replace Babel with SWC?
+
 - get typescript declaration file emitted for dist/
 
 - need to make forward refs work.
