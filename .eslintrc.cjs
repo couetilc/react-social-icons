@@ -28,8 +28,16 @@ module.exports = {
   ],
   "rules": {
 
-    // "@typescript-eslint/ban-ts-comment": "off",
-    "@typescript-eslint/no-unused-vars": ["error"],
+    // this weird rest pattern is just a trick so I can group certain eslint
+    // rules and still have eslint enforce they are in alphabetical order
+    ...({
+      "@typescript-eslint/ban-ts-comment": ["off"],
+      "@typescript-eslint/no-unused-vars": ["error"],
+    }),
+
+    ...({
+      "import/no-unresolved": ["error", { "ignore": ["^social-icons[:]?"] }],
+    }),
 
     // TODO: style rules, aka just use prettier
     // TODO: typescript rules

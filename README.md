@@ -1,16 +1,14 @@
 # TODO
 
-- Replace Babel with SWC? before that I need to test for what babel is doing
-
-- Grep for all TODO/todo in the repository, address anything there.
-
-- figure out how to configure typescript so I don't need to tsignore so much in
-  playwright files, jesus, or just switch playwright files to js.
-
 - get typescript declaration file emitted for dist/, and source maps (sourceMap compiler option in tsconfig)
 
 - need to make forward refs work.
-- switch browser test file to vanilla JS, then see if works with distribution files
+
+- Grep for all TODO/todo in the repository, address anything there.
+
+- write tests for code-splitting feature
+
+- write test for esm, umd, etc. types of bundles. Also enable those types of deploys.
 
 - need to test adding `"sideEffects": true` to package.json will have webpack
   and vite and rollup properly codesplit this package.
@@ -25,12 +23,11 @@
   issue surrounding which copy of the DB is actually populated. I need to figure
   out why DB is not being treated as a singleton.
 
-- see if packaging / publishing can be used by outside project.
-    - make puppeteer test against the distribution file
-    - are there tests I can write that provide me confidence of my publishing flow, or at least if my distribution files can be successfully used once published?
 - replace CSS-as-objects with nanocss or something similar, getting rid of inline styles.
-- make sure eslint and prettier is working how I want, and apply to codebase.
 - work on PR magic, for screenshots and bundlesize, etc.
+
+- need to make sure the examples command works (does my vite config still work?),
+  I might have broken it. Also, how should I deploy the GitHub pages docs site? 
 
 -  write githook to throw
   error if yarn.lock or package-lock.json exists when commit or pushing. or have

@@ -32,6 +32,9 @@ export async function config() {
         exclude: "**/node_modules/**",
       }),
     ],
+    // "emitDeclarationOnly": true,
+    // "declaration": true,
+    // "outDir": "dist",
 
     external(id) {
       if (id === "react") return true;

@@ -13,7 +13,7 @@
         "lib": ["ES6", "DOM"],
         "jsx": "react-jsx",
         "rootDir": "src",
-        "isolatedModules": true
+        "isolatedModules": true,
     },
     "exclude": [
         "node_modules",
