@@ -9,6 +9,12 @@ dev() {
   pnpm vite
 }
 
+info:bundlesize() {
+ build
+ tar -c dist | gzip > dist.tar.gz
+ du -h dist dist.tar.gz
+}
+
 test:js() {
   test:js-src
   test:js-dist
@@ -36,13 +42,8 @@ test:ts() {
   pnpm tsc
 }
 
-info:bundlesize() {
- build
- tar -c dist | gzip > dist.tar.gz
- du -h dist dist.tar.gz
-}
-
 test:() {
+  build;
   test:js;
   test:lint;
   test:publint;

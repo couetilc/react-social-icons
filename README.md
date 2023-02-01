@@ -1,12 +1,5 @@
 # TODO
 
-- Split browser tests into a TestSuite file that exports a function that accepts
-  the SocialIcon module. Then create two other test files, one importing the src
-  module, the other importing the dist file, and have the pass their respective
-  module to the TestSuite function which will run all the tests on that module
-  - open question whether there needs to be any changes to the
-    playwright/index.js file
-
 - Replace Babel with SWC?
 
 - Grep for all TODO/todo in the repository, address anything there.
@@ -14,7 +7,7 @@
 - figure out how to configure typescript so I don't need to tsignore so much in
   playwright files, jesus, or just switch playwright files to js.
 
-- get typescript declaration file emitted for dist/
+- get typescript declaration file emitted for dist/, and source maps (sourceMap compiler option in tsconfig)
 
 - need to make forward refs work.
 - switch browser test file to vanilla JS, then see if works with distribution files
