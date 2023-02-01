@@ -1,6 +1,6 @@
 # TODO
 
-- Replace Babel with SWC?
+- Replace Babel with SWC? before that I need to test for what babel is doing
 
 - Grep for all TODO/todo in the repository, address anything there.
 
