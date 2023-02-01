@@ -29,6 +29,7 @@ module.exports = {
   "rules": {
 
     // "@typescript-eslint/ban-ts-comment": "off",
+    "@typescript-eslint/no-unused-vars": ["error"],
 
     // TODO: style rules, aka just use prettier
     // TODO: typescript rules
@@ -168,7 +169,7 @@ module.exports = {
     "no-unused-expressions": ["error"],
     "no-unused-labels": ["error"],
     "no-unused-private-class-members": ["error"],
-    "no-unused-vars": ["error"],
+    "no-unused-vars": "off", // see typescript-eslint/no-unused-vars
     "no-use-before-define": ["error", "nofunc"],
     "no-useless-backreference": ["error"],
     "no-useless-call": ["error"],

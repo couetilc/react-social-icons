@@ -11,6 +11,9 @@
 
 - Grep for all TODO/todo in the repository, address anything there.
 
+- figure out how to configure typescript so I don't need to tsignore so much in
+  playwright files, jesus, or just switch playwright files to js.
+
 - get typescript declaration file emitted for dist/
 
 - need to make forward refs work.

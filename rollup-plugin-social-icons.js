@@ -1,11 +1,9 @@
 /* eslint-env node */
-import fs from "fs/promises";
+import fs from "fs";
 
 const IMPORT_PREFIX = "\0social-icons";
 
-// TODO rename this file to rollup-plugin-social-icons
-
-export function rollupPluginSocialIcons() {
+export default function rollupPluginSocialIcons() {
 
   const db = new Map();
 
@@ -13,10 +11,10 @@ export function rollupPluginSocialIcons() {
     name: "social-icons",
 
     async buildStart() {
-      const dbFiles = await fs.readdir(new URL("../db", import.meta.url));
+      const dbFiles = await fs.promises.readdir(new URL("./db", import.meta.url));
       await Promise.all(dbFiles.map(
-        filename => fs
-          .readFile(new URL(`../db/${filename}`, import.meta.url))
+        filename => fs.promises
+          .readFile(new URL(`./db/${filename}`, import.meta.url))
           .then(icon => {
             const network = filename.replace(".json", "");
             db.set(network, JSON.parse(icon.toString()));

@@ -1,13 +1,13 @@
 /* eslint-env node */
-import { rollupPluginSocialIcons as socialIcons } from "./src/generate.js";
+import socialIcons from "./rollup-plugin-social-icons.js";
 import { babel } from "@rollup/plugin-babel";
 import resolve from "@rollup/plugin-node-resolve";
 import typescript from "@rollup/plugin-typescript";
-import fs from "fs/promises";
+import fs from "fs";
 
 export async function config() {
 
-  const networks = (await fs.readdir(new URL("db", import.meta.url)))
+  const networks = (await fs.promises.readdir(new URL("db", import.meta.url)))
     .map(filename => filename.replace(".json", ""));
 
   return {
