@@ -16,12 +16,12 @@ test:js() {
 
 test:js-src() {
   pnpm playwright test \
-    -c test/browsers/playwright-ct-src.config.ts
+    -c test/browsers/playwright-ct-src.config.js
 }
 
 test:js-dist() {
   pnpm playwright test \
-    -c test/browsers/playwright-ct-dist.config.ts
+    -c test/browsers/playwright-ct-dist.config.js
 }
 
 test:lint() {

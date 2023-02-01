@@ -1,30 +1,11 @@
-/* eslint-disable @typescript-eslint/ban-ts-comment, react/react-in-jsx-scope */
 import { test, expect } from "@playwright/experimental-ct-react";
-// @ts-ignore: Vite requires a file extension 
-import { SocialIcon as SocialIcon_src, keyFor, getKeys } from "../../src/react-social-icons.ts";
+import { SocialIcon as SocialIcon_src } from "../../src/react-social-icons.ts";
 import { SocialIcon as SocialIcon_dist } from "../../dist/react-social-icons.js";
-// @ts-ignore: Vite requires a file extension 
-// required for social network registry to populate
-// import "social-icons";
-// @ts-ignore: Vite requires a file extension 
 import * as React from "react";
 import convert from "color-convert";
-/* eslint-enable @typescript-eslint/ban-ts-comment */
 import fs from "fs";
 
-// TODO make this file NOT a typescript file, make it normal JS
-
-declare global {
-  interface Window {
-    ReactSocialIcons: {
-      SocialIcon: typeof SocialIcon_src,
-      keyFor: typeof keyFor
-      getKeys: typeof getKeys,
-    }
-  }
-}
-
-function readIcon(network: string) {
+function readIcon(network) {
   return JSON.parse(
     fs.readFileSync(new URL( `../../db/${network}.json`, import.meta.url))
       .toString()
@@ -358,7 +339,7 @@ test.describe("keyFor", () => {
   });
 
   test("\"key\".com URIs return \"key\" social network", async ({ page }) => {
-    const keys: Array<string> = await page.evaluate(() => window.ReactSocialIcons.getKeys());
+    const keys = await page.evaluate(() => window.ReactSocialIcons.getKeys());
     await expect(keys.length).toBeGreaterThanOrEqual(NUM_GREATER_THAN_ZERO);
     await Promise.all(keys.map(async key => {
       return expect(await page.evaluate((k) => window.ReactSocialIcons.keyFor(`http://${k}.com`), key)).toEqual(key);
@@ -366,7 +347,7 @@ test.describe("keyFor", () => {
   });
 
   test("\"key\".com/foo/bar URIs return \"key\" social network", async ({ page }) => {
-    const keys: Array<string> = await page.evaluate(() => window.ReactSocialIcons.getKeys());
+    const keys = await page.evaluate(() => window.ReactSocialIcons.getKeys());
     await expect(keys.length).toBeGreaterThanOrEqual(NUM_GREATER_THAN_ZERO);
     await Promise.all(keys.map(async key => {
       const uri = `http://${key}.com/foo/bar`;
@@ -375,7 +356,7 @@ test.describe("keyFor", () => {
   });
 
   test("\"key\".com/foo.bar URIs return \"key\" social network", async ({ page }) => {
-    const keys: Array<string> = await page.evaluate(() => window.ReactSocialIcons.getKeys());
+    const keys = await page.evaluate(() => window.ReactSocialIcons.getKeys());
     await expect(keys.length).toBeGreaterThanOrEqual(NUM_GREATER_THAN_ZERO);
     await Promise.all(keys.map(async key => {
       const uri = `http://${key}.com/foo.bar`;
@@ -384,7 +365,7 @@ test.describe("keyFor", () => {
   });
 
   test("sub-domain.\"key\".com URIs return \"key\" social network", async ({ page }) => {
-    const keys: Array<string> = await page.evaluate(() => window.ReactSocialIcons.getKeys());
+    const keys = await page.evaluate(() => window.ReactSocialIcons.getKeys());
     await expect(keys.length).toBeGreaterThanOrEqual(NUM_GREATER_THAN_ZERO);
     await Promise.all(keys.map(async key => {
       const uri = `http://sub-domain.${key}.com`;

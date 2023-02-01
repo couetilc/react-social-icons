@@ -1,10 +1,9 @@
 /* eslint-env node */
-import type { PlaywrightTestConfig } from "@playwright/experimental-ct-react";
 import { devices } from "@playwright/experimental-ct-react";
 // TODO make rollup.config.js a typescript file?
 import { config as rollupConfig } from "../../rollup.config.js";
 
-export async function config(): Promise<PlaywrightTestConfig> {
+export async function config() {
   return {
     // // useful test settings
     // headless: false,
