@@ -16,16 +16,16 @@
     }
   },
   "scripts": {
-    "build": "./cli.sh build",
+    "build": "./cli build",
     "bundlesize": "pnpm build && tar -c dist | gzip > dist.tar.gz && du -h dist dist.tar.gz",
     "examples": "pnpm start",
     "lint": "pnpm test:lint",
     "prepublish": "pnpm build",
-    "start": "./cli.sh dev",
-    "test": "./cli.sh test:",
-    "test:js": "./cli.sh test:js",
-    "test:lint": "./cli.sh test:lint",
-    "test:ts": "./cli.sh test:ts"
+    "start": "./cli dev",
+    "test": "./cli test:",
+    "test:js": "./cli test:js",
+    "test:lint": "./cli test:lint",
+    "test:ts": "./cli test:ts"
   },
   "author": "jaketrent",
   "license": "MIT",
