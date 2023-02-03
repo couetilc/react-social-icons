@@ -17,7 +17,6 @@ export async function config() {
       component: "src/component.tsx",
       "icons/index": "social-icons",
       ...networks.reduce((inputMap, network) => {
-        // eslint-disable-next-line no-param-reassign
         inputMap[`icons/${network}`] = `social-icons:${network}`;
         return inputMap;
       }, {}),
@@ -32,9 +31,6 @@ export async function config() {
         exclude: "**/node_modules/**",
       }),
     ],
-    // "emitDeclarationOnly": true,
-    // "declaration": true,
-    // "outDir": "dist",
 
     external(id) {
       if (id === "react") return true;
