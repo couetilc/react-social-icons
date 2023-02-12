@@ -2,8 +2,8 @@
 import socialIcons from "./rollup-plugin-social-icons.js";
 import { babel } from "@rollup/plugin-babel";
 import resolve from "@rollup/plugin-node-resolve";
-import typescript from "@rollup/plugin-typescript";
 import fs from "fs";
+import copy from "rollup-plugin-copy";
 
 export async function config() {
 
@@ -13,8 +13,8 @@ export async function config() {
   return {
 
     input: {
-      "react-social-icons": "src/react-social-icons.ts",
-      component: "src/component.tsx",
+      "react-social-icons": "src/react-social-icons.js",
+      component: "src/component.jsx",
       "icons/index": "social-icons",
       ...networks.reduce((inputMap, network) => {
         inputMap[`icons/${network}`] = `social-icons:${network}`;
@@ -25,10 +25,15 @@ export async function config() {
     plugins: [
       socialIcons(),
       resolve(),
-      typescript(),
       babel({
         babelHelpers: "runtime",
         exclude: "**/node_modules/**",
+      }),
+      copy({
+        targets: [{
+          src: "src/react-social-icons.d.ts",
+          dest: "dist/"
+        }]
       }),
     ],
 

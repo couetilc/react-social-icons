@@ -8,11 +8,12 @@
         "sourceMap": false,
         "noEmit": true,
         "strict": true,
+        "declaration": true,
         "esModuleInterop": true,
         "moduleResolution": "nodenext",
         "lib": ["ES6", "DOM"],
         "jsx": "react-jsx",
-        "rootDir": "src",
+        "rootDir": ".",
         "isolatedModules": true,
     },
     "exclude": [

@@ -1,5 +1,5 @@
 import { test, expect } from "@playwright/experimental-ct-react";
-import { SocialIcon as SocialIcon_src } from "../../src/react-social-icons.ts";
+import { SocialIcon as SocialIcon_src } from "../../src/react-social-icons.js";
 import { SocialIcon as SocialIcon_dist } from "../../dist/react-social-icons.js";
 import * as React from "react";
 import convert from "color-convert";

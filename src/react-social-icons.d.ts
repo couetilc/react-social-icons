@@ -21,4 +21,4 @@ declare function keyFor(url?: string): string;
 
 declare function getKeys(): string[];
 
-declare function SocialIcon(props: SocialIconProps): React.ReactNode;
+declare const SocialIcon: React.FunctionComponent<SocialIconProps>;

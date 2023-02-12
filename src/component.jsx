@@ -1,26 +1,8 @@
 import * as React from "react";
-import type { DetailedHTMLProps, AnchorHTMLAttributes } from "react";
 
 const DEFAULT_KEY = "sharethis";
 
-interface SocialIconObject {
-  icon: string;
-  mask: string;
-  color: string;
-}
-
-interface SocialIconProps extends DetailedHTMLProps<AnchorHTMLAttributes<HTMLAnchorElement>, HTMLAnchorElement>  {
-  className?: string;
-  bgColor?: string;
-  fgColor?: string;
-  label?: string;
-  network?: string;
-  url?: string;
-  defaultSVG?: SocialIconObject;
-  style?: React.CSSProperties;
-}
-
-const socialIcon: React.CSSProperties = {
+const socialIcon = {
   display: "inline-block",
   width: "50px",
   height: "50px",
@@ -29,7 +11,7 @@ const socialIcon: React.CSSProperties = {
   verticalAlign: "middle"
 };
 
-const socialContainer: React.CSSProperties = {
+const socialContainer = {
   position: "absolute",
   top: 0,
   left: 0,
@@ -37,7 +19,7 @@ const socialContainer: React.CSSProperties = {
   height: "100%"
 };
 
-const socialSvg: React.CSSProperties = {
+const socialSvg = {
   borderRadius: "50%",
   position: "absolute",
   top: 0,
@@ -47,7 +29,7 @@ const socialSvg: React.CSSProperties = {
   fillRule: "evenodd"
 };
 
-const socialSvgContent: React.CSSProperties = {
+const socialSvgContent = {
   msTransition: "fill 170ms ease-in-out",
   OTransition: "fill 170ms ease-in-out",
   MozTransition: "fill 170ms ease-in-out",
@@ -56,22 +38,22 @@ const socialSvgContent: React.CSSProperties = {
   fill: "transparent"
 };
 
-const socialSvgMask: React.CSSProperties = {
+const socialSvgMask = {
   ...socialSvgContent,
   fill: "#0f0b0b"
 };
 
-const makeUriRegex = (socials : string[] = []) => new RegExp(
+const makeUriRegex = (socials = []) => new RegExp(
   "(?:https?:\\/\\/(?:[a-z0-9-]*.)?)?($SOCIALS).*"
     .replace("$SOCIALS", socials.join("|")),
   "u",
 );
 
-const social_icons = new Map<string, SocialIconObject>();
-const network_names = new Set<string>();
+const social_icons = new Map();
+const network_names = new Set();
 let uri_regex = makeUriRegex();
 
-function register(social: string, icon: SocialIconObject) {
+function register(social, icon) {
   social_icons.set(social, icon);
   network_names.add(social);
   uri_regex = makeUriRegex(
@@ -80,7 +62,7 @@ function register(social: string, icon: SocialIconObject) {
   );
 }
 
-function keyFor(url?: string) {
+function keyFor(url) {
   if (!url) {
     return DEFAULT_KEY;
   }
@@ -89,7 +71,9 @@ function keyFor(url?: string) {
   return key === url ? DEFAULT_KEY : key;
 }
 
-function SocialIcon(props: SocialIconProps) {
+const SocialIcon = (props) => {
+
+  /* eslint-disable react/prop-types */
 
   const {
     url,
@@ -160,7 +144,7 @@ function SocialIcon(props: SocialIconProps) {
       {children}
     </a>
   );
-}
+};
 
 export {
   SocialIcon,
