@@ -125,7 +125,7 @@ module.exports = {
     "no-lonely-if": ["error"],
     "no-loop-func": ["error"],
     "no-loss-of-precision": ["warn"],
-    "no-magic-numbers": ["error"],
+    "no-magic-numbers": ["off"],
     "no-misleading-character-class": ["error"],
     "no-mixed-spaces-and-tabs": ["error", "smart-tabs"],
     "no-multi-assign": ["error"],

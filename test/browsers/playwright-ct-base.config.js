@@ -5,7 +5,7 @@ import { config as rollupConfig } from "../../rollup.config.js";
 
 export async function config() {
   return {
-    // // useful test settings
+    // useful test settings
     // headless: false,
     // workers: 1,
 

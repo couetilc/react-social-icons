@@ -2,6 +2,23 @@ import * as React from "react";
 
 const DEFAULT_KEY = "sharethis";
 
+// const styleNode = document.createElement("style");
+// document.head.appendChild(styleNode);
+
+// // OK so I will just do insertRule for now, even though it may not show up in
+// // dev tools (todo to check this out), because it is faster than using appendChild,
+// // which I guess does show up in devtools. but I only run this once, and I append
+// // a style sheet which should be the string contents of a react-social-icons.css
+// // file I maintain, and make available to servers to bundle by copying it over
+// // to dist/
+// const putCss = () => {
+//   if (process.env.NODE_ENV !== "production") {
+//     // appendChild
+//   } else {
+//     // insertRule
+//   }
+// };
+
 const socialIcon = {
   display: "inline-block",
   width: "50px",

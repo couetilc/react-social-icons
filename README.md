@@ -1,5 +1,13 @@
 # TODO
 
+- OK I have several things here
+  - main package
+  - example page for the documentation website (and for local development, although I should change that?)
+  - browser component tests for source code
+  - browser component tests for distribution code
+  - typescript tests
+I want to keep everthing simple though, let's try to write an SSR test.
+
 - get typescript declaration file emitted for dist/, and source maps (sourceMap compiler option in tsconfig)
 
 - need to make forward refs work.

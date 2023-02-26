@@ -24,6 +24,7 @@ test:js() {
 test:js-src() {
   pnpm playwright test \
     -c test/browsers/playwright-ct-src.config.js
+
 }
 
 test:js-dist() {
@@ -39,6 +40,11 @@ test:publint() {
   pnpm publint .
 }
 
+test:ssr() {
+  pnpm playwright test \
+    -c test/servers/playwright.config.js
+}
+
 test:ts() {
   pnpm tsc
 }
@@ -49,6 +55,7 @@ test:() {
   test:lint;
   test:publint;
   test:ts;
+  test:ssr;
 }
 
 "$@"
