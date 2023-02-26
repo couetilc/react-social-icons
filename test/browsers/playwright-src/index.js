@@ -1,3 +1,3 @@
-import * as ReactSocialIcons from "../../../src/react-social-icons.js";
+import { SocialIcon, getKeys, keyFor } from "../../../src/react-social-icons.js";
 
-window.ReactSocialIcons = ReactSocialIcons;
+window.ReactSocialIcons = { SocialIcon, getKeys, keyFor };

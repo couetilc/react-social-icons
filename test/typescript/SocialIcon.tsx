@@ -38,13 +38,11 @@ const SocialIconTest = () => (
   </>
 );
 
-const keyForTest = () => {
-  keyFor();
-  keyFor("https://twitter.com");
-  // @ts-expect-error
-  keyFor(1234);
-  // @ts-expect-error
-  keyFor(null);
-};
+keyFor();
+keyFor("https://twitter.com");
+// @ts-expect-error
+keyFor(1234);
+// @ts-expect-error
+keyFor(null);
 
 export default SocialIconTest;
