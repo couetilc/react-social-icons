@@ -26,6 +26,7 @@ specifiers:
   eslint-plugin-react: ^7.32.2
   express: ^4.18.2
   get-port: ^6.1.2
+  hex-rgb: ^5.0.0
   playwright: ^1.30.0
   publint: ^0.1.9
   react: ^18.2.0
@@ -67,6 +68,7 @@ devDependencies:
   eslint-plugin-react: 7.32.2_eslint@8.33.0
   express: 4.18.2
   get-port: 6.1.2
+  hex-rgb: 5.0.0
   publint: 0.1.9
   rollup: 3.12.1
   rollup-plugin-copy: 3.4.0
@@ -3253,6 +3255,11 @@ packages:
     engines: {node: '>= 0.4.0'}
     dependencies:
       function-bind: 1.1.1
+    dev: true
+
+  /hex-rgb/5.0.0:
+    resolution: {integrity: sha512-NQO+lgVUCtHxZ792FodgW0zflK+ozS9X9dwGp9XvvmPlH7pyxd588cn24TD3rmPm/N0AIRXF10Otah8yKqGw4w==}
+    engines: {node: '>=12'}
     dev: true
 
   /http-errors/2.0.0:

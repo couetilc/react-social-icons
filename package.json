@@ -66,6 +66,7 @@
     "eslint-plugin-react": "^7.32.2",
     "express": "^4.18.2",
     "get-port": "^6.1.2",
+    "hex-rgb": "^5.0.0",
     "publint": "^0.1.9",
     "rollup": "^3.12.1",
     "rollup-plugin-copy": "^3.4.0",
