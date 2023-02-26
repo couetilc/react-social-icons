@@ -4,6 +4,7 @@ import { babel } from "@rollup/plugin-babel";
 import resolve from "@rollup/plugin-node-resolve";
 import fs from "fs";
 import copy from "rollup-plugin-copy";
+import css from "rollup-plugin-import-css";
 
 export async function config() {
 
@@ -30,11 +31,18 @@ export async function config() {
         exclude: "**/node_modules/**",
       }),
       copy({
-        targets: [{
-          src: "src/react-social-icons.d.ts",
-          dest: "dist/"
-        }]
+        targets: [
+          {
+            src: "src/react-social-icons.d.ts",
+            dest: "dist/"
+          },
+          {
+            src: "src/styles.css",
+            dest: "dist/"
+          },
+        ]
       }),
+      css(),
     ],
 
     external(id) {

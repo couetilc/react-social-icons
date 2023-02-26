@@ -8,7 +8,7 @@
   - typescript tests
 I want to keep everthing simple though, let's try to write an SSR test.
 
-- get typescript declaration file emitted for dist/, and source maps (sourceMap compiler option in tsconfig)
+- get source maps emitted for dist/ (sourceMap compiler option in tsconfig)
 
 - need to make forward refs work.
 

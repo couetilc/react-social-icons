@@ -33,6 +33,7 @@ specifiers:
   react-dom: ^18.2.0
   rollup: ^3.12.1
   rollup-plugin-copy: ^3.4.0
+  rollup-plugin-import-css: ^3.1.0
   tslib: ^2.5.0
   typescript: ^4.9.5
   vite: ^4.0.4
@@ -72,6 +73,7 @@ devDependencies:
   publint: 0.1.9
   rollup: 3.12.1
   rollup-plugin-copy: 3.4.0
+  rollup-plugin-import-css: 3.1.0_rollup@3.12.1
   tslib: 2.5.0
   typescript: 4.9.5
   vite: 4.0.4
@@ -4178,6 +4180,15 @@ packages:
       fs-extra: 8.1.0
       globby: 10.0.1
       is-plain-object: 3.0.1
+    dev: true
+
+  /rollup-plugin-import-css/3.1.0_rollup@3.12.1:
+    resolution: {integrity: sha512-+azurUk2QrUNWs1V5EzpuvV9bRQDEjG+aQDadM6ZEc5LbU6VvFiR3+MPIBnqKrg/miBNag/9H1TWhEUv4TH+jQ==}
+    peerDependencies:
+      rollup: ^2.x.x || ^3.x.x
+    dependencies:
+      '@rollup/pluginutils': 5.0.2_rollup@3.12.1
+      rollup: 3.12.1
     dev: true
 
   /rollup/3.12.1:

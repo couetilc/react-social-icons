@@ -162,6 +162,12 @@ test.describe("<SocialIcon /> (source code)", () => {
     await expect(svg.locator("g:nth-child(3)")).toHaveAttribute("class", "social-svg-mask");
   });
 
+  test("stylesheet styles are applied to the component", async ({ mount }) => {
+    const component = await mount(<SocialIcon_src url={pinterest_url} />);
+    await expect(component).toHaveCSS("width", "50px");
+    await expect(component).toHaveCSS("height", "50px");
+    await expect(component.locator("svg")).toHaveAttribute("viewBox", "0 0 64 64");
+  });
 
 });
 
@@ -308,6 +314,13 @@ test.describe("<SocialIcon /> (distribution code)", () => {
     const component = await mount(<SocialIcon_dist />);
     const svg = component.locator("svg");
     await expect(svg.locator("g:nth-child(3)")).toHaveAttribute("class", "social-svg-mask");
+  });
+
+  test("stylesheet styles are applied to the component", async ({ mount }) => {
+    const component = await mount(<SocialIcon_src url={pinterest_url} />);
+    await expect(component).toHaveCSS("width", "50px");
+    await expect(component).toHaveCSS("height", "50px");
+    await expect(component.locator("svg")).toHaveAttribute("viewBox", "0 0 64 64");
   });
 
 });

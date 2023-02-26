@@ -94,7 +94,7 @@ module.exports = {
     // conflicts with typescript's "import type", replaced by import/no-duplicates
     "no-duplicate-imports": ["off"],
     "no-else-return": ["error", { "allowElseIf": false }],
-    "no-empty": ["error"],
+    "no-empty": ["error", { "allowEmptyCatch": true }],
     "no-empty-character-class": ["error"],
     "no-empty-function": ["error"],
     "no-empty-pattern": ["error"],
