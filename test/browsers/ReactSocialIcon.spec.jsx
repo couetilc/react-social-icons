@@ -26,7 +26,7 @@ const default_icon = sharethis;
 
 test.describe("<SocialIcon /> (source code)", () => {
 
-  test.only("adds correct url to anchor", async ({ mount }) => {
+  test("adds correct url to anchor", async ({ mount }) => {
     const component = await mount(<SocialIcon_src url={pinterest_url} />);
     await expect(component).toHaveAttribute("href", pinterest_url);
   });
