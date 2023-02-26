@@ -42,7 +42,7 @@ test:publint() {
 
 test:ssr() {
   pnpm playwright test \
-    -c test/servers/playwright.config.js
+    -c test/ssr/playwright.config.js
 }
 
 test:ts() {

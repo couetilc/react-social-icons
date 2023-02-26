@@ -13,7 +13,7 @@ const config = async () => {
     forbidOnly: Boolean(process.env.CI),
 
     webServer: {
-      command: `node ./test_server.js ${port}`,
+      command: `node ./server.js ${port}`,
       timeout: 2_000,
       port,
       reuseExistingServer: !process.env.CI,
