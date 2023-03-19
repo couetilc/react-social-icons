@@ -8,17 +8,21 @@ function Page() {
   return (
     <>
       <h1>
-        <a href="https://github.com/jaketrent/react-social-icons">react-social-icons</a>
+        <a href="https://github.com/jaketrent/react-social-icons">
+          react-social-icons
+        </a>
       </h1>
       <p>
-        A set of beautiful svg social icons.  Easily used in React.  No images or
+        A set of beautiful svg social icons. Easily used in React. No images or
         external css dependencies.
       </p>
 
       <h2>Library</h2>
       <p>Here are the available icons.</p>
       <div id="lib">
-        {networks.KEYS.map(k => <SocialIcon network={k} title={k} key={k} />)}
+        {networks.KEYS.map((k) => (
+          <SocialIcon network={k} title={k} key={k} />
+        ))}
       </div>
 
       <h2>Usage</h2>
@@ -39,10 +43,10 @@ function Page() {
 
       <h4>Specify Network</h4>
       <p>
-        If you have a need to specify the network, you can.  If you don't
-        specify a url, your <code>href</code> attribute will be omitted.  You
-        can include props for both <code>url</code> and <code>network</code>.
-        The <code>network</code> prop takes precedence.
+        If you have a need to specify the network, you can. If you don&apos;t
+        specify a url, your <code>href</code> attribute will be omitted. You can
+        include props for both <code>url</code> and <code>network</code>. The{' '}
+        <code>network</code> prop takes precedence.
       </p>
       <div className="one-line-example">
         <div className="icon" id="network-example">
@@ -83,8 +87,9 @@ function Page() {
       <h4>Specify the Label</h4>
       <p>
         By default, the <code>SocialIcon</code> will use the name of a social
-        network as an icon's accessible label. If you think the social
-        network name is not enough context, you can pass in the <code>label</code>
+        network as an icon&apos;s accessible label. If you think the social
+        network name is not enough context, you can pass in the{' '}
+        <code>label</code>
         &nbsp;prop.
       </p>
       <div className="one-line-example">
@@ -99,43 +104,58 @@ function Page() {
       <h4>Render</h4>
       <p>The full code required to render.</p>
       <code className="code">
-        <pre>{
-`var React = require('react');
+        <pre>{`var React = require('react');
 var { SocialIcon } = require('react-social-icons');
-React.render(<SocialIcon url="https://linkedin.com/in/jaketrent" />, document.body);`
-        }</pre>
+React.render(<SocialIcon url="https://linkedin.com/in/jaketrent" />, document.body);`}</pre>
       </code>
 
       <h2>It scales!</h2>
       <p>Witness the beautiful SVG in action.</p>
       <p>
         <i>Note:</i> this library injects on-page <code>style</code> tags into
-        the <code>head</code>.  This is great because you don't have to
-        import any additional stylesheet to support this library.  But more
-        specificity in selectors will be required when overriding default
-        styles from external stylesheets.
+        the <code>head</code>. This is great because you don&apos;t have to
+        import any additional stylesheet to support this library. But more
+        specificity in selectors will be required when overriding default styles
+        from external stylesheets.
       </p>
       <div id="sizes">
-        <SocialIcon network="pinterest" style={{ height: 25, width: 25 }} key="25" />
-        <SocialIcon network="pinterest" style={{ height: 50, width: 50 }} key="50" />
-        <SocialIcon network="pinterest" style={{ height: 100, width: 100 }} key="100" />
-        <SocialIcon network="pinterest" style={{ height: 200, width: 200 }} key="200" /> 
+        <SocialIcon
+          network="pinterest"
+          style={{ height: 25, width: 25 }}
+          key="25"
+        />
+        <SocialIcon
+          network="pinterest"
+          style={{ height: 50, width: 50 }}
+          key="50"
+        />
+        <SocialIcon
+          network="pinterest"
+          style={{ height: 100, width: 100 }}
+          key="100"
+        />
+        <SocialIcon
+          network="pinterest"
+          style={{ height: 200, width: 200 }}
+          key="200"
+        />
       </div>
 
       <code>
-        <pre>{
-`<SocialIcon network="pinterest" style={{ height: 25, width: 25 }} />
+        <pre>{`<SocialIcon network="pinterest" style={{ height: 25, width: 25 }} />
 <SocialIcon network="pinterest" style={{ height: 50, width: 50 }} />
 <SocialIcon network="pinterest" style={{ height: 100, width: 100 }} />
-<SocialIcon network="pinterest" style={{ height: 200, width: 200 }} />`
-        }</pre>
+<SocialIcon network="pinterest" style={{ height: 200, width: 200 }} />`}</pre>
       </code>
 
       <h2>Feedback</h2>
       <p>
-        If you're interested in adding additional networks or helping make the
-        library better, <a href="https://github.com/jaketrent/react-social-icons">
-        fork it on github</a> and let the code fly!
+        If you&apos;re interested in adding additional networks or helping make
+        the library better,{' '}
+        <a href="https://github.com/jaketrent/react-social-icons">
+          fork it on github
+        </a>{' '}
+        and let the code fly!
       </p>
 
       <footer className="footer">
@@ -148,7 +168,7 @@ React.render(<SocialIcon url="https://linkedin.com/in/jaketrent" />, document.bo
         </p>
       </footer>
     </>
-  );
+  )
 }
 
-ReactDOM.render(<Page />, document.getElementById('page'));
+ReactDOM.render(<Page />, document.getElementById('page'))
