@@ -1,13 +1,11 @@
-# react-social-icons &nbsp; ![build status](https://img.shields.io/github/workflow/status/jaketrent/react-social-icons/Build,%20Test,%20Publish/master) ![package version](https://img.shields.io/npm/v/react-social-icons) ![package size](https://img.shields.io/bundlephobia/minzip/react-social-icons) ![weekly downloads](https://img.shields.io/npm/dw/react-social-icons) ![type definitions](https://img.shields.io/npm/types/react-social-icons)
+# Fork of react-socil-icons but with the matrix logo
 
-A set of beautiful svg social icons.  Easily used in React.  No images or external css dependencies.  Svg paths provided by Squarespace.
-
-![social network icons](https://i.imgur.com/OrNeTND.png)
+![social network icons](https://ninja.dog/kcbwFx.png)
 
 ## Install
 
 ```
-npm install react-social-icons
+npm install react-social-icons-matrix
 ```
 
 ## Usage

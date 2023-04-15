@@ -1,7 +1,7 @@
 {
-  "name": "react-social-icons",
-  "version": "5.15.0",
-  "description": "beautiful, easy svg social icons in react",
+  "name": "react-social-icons-matrix",
+  "version": "5.16.2",
+  "description": "beautiful, easy svg social icons in react (fork with matrix)",
   "main": "./build/react-social-icons.js",
   "types": "./build/react-social-icons.d.ts",
   "scripts": {
@@ -18,14 +18,14 @@
     "test:js": "mocha",
     "bundlesize": "npm run prepublish && tar -c build | gzip > build.tar.gz && du -h build build.tar.gz"
   },
-  "author": "jaketrent",
+  "author": "parkalex",
   "license": "MIT",
   "contributors": [
     "Vitaly Aminev <v@makeomatic.ru>"
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/jaketrent/react-social-icons"
+    "url": "https://github.com/alx-alexpark/react-social-icons"
   },
   "devDependencies": {
     "@babel/cli": "^7.2.3",
