@@ -1,6 +1,6 @@
 {
   "name": "react-social-icons-matrix",
-  "version": "5.16.2",
+  "version": "5.16.4",
   "description": "beautiful, easy svg social icons in react (fork with matrix)",
   "main": "./build/react-social-icons.js",
   "types": "./build/react-social-icons.d.ts",
