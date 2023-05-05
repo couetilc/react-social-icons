@@ -11,9 +11,17 @@ npm install react-social-icons-matrix
 Pass in the `url` prop of your social network, and the icon will be rendered.
 
 ```js
-import React from 'react';
-import ReactDOM from 'react-dom';
 import { SocialIcon } from 'react-social-icons-matrix';
-ReactDOM.render(<SocialIcon url="https://twitter.com/jaketrent" />, document.body);
+
+<SocialIcon
+  fgColor="#000000"
+  bgColor="#ffffff"
+  url="https://matrix.to/#/@openssl_rand:projectsegfau.lt"
+  network="matrix"
+/>
 ```
 
+## Example
+Check out https://parkalex.dev
+
+You will see the matrix + other icons being used on the landing page.
