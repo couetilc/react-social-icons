@@ -1,7 +1,7 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 // import { resolve } from "path";
-import { rollupPluginSocialIcons as socialIcons } from "./rollup-plugin-social-icons.js";
+import socialIcons from "./rollup-plugin-social-icons.js";
 // import dts from "vite-plugin-dts";
 
 export default defineConfig(() => {

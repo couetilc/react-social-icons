@@ -23,6 +23,8 @@ I want to keep everthing simple though, let's try to write an SSR test.
 
 - finalize the eslint config, do the pretty stuff, maybe just add prettier so I
   can skip that tedious stuff, add any missing plugins that are good.
+    - NO SEMICOLONS UNLESS NECESSARY
+    - linting for json files in db/
 
 - the issue with tests when Typescript is enabled (although even that is unclear
   to me, the import situation with typescript), has rollup (or something) creating

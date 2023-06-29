@@ -178,7 +178,10 @@ module.exports = {
     "no-unused-labels": ["error"],
     "no-unused-private-class-members": ["error"],
     "no-unused-vars": "off", // see typescript-eslint/no-unused-vars
-    "no-use-before-define": ["error", "nofunc"],
+    "no-use-before-define": ["error", {
+      "functions": false,
+      "variables": false,
+    }],
     "no-useless-backreference": ["error"],
     "no-useless-call": ["error"],
     "no-useless-catch": ["error"],
@@ -212,7 +215,7 @@ module.exports = {
     "require-await": ["error"],
     "require-unicode-regexp": ["error"],
     "require-yield": ["error"],
-    "semi": [ "error", "always" ],
+    "semi": [ "error", "never" ],
     "strict": ["error", "never"],
     "symbol-description": ["error"],
     "use-isnan": ["error", {"enforceForIndexOf": true, "enforceForSwitchCase": true}],
