@@ -32,8 +32,6 @@ function keyFor(url) {
 
 const SocialIcon = (props) => {
 
-  /* eslint-disable react/prop-types */
-
   const {
     url,
     network,
@@ -48,13 +46,8 @@ const SocialIcon = (props) => {
 
   const networkKey = network || keyFor(url)
 
-  const {
-    icon,
-    mask,
-    color,
-  } = networkKey === DEFAULT_KEY && defaultSVG
-    || social_icons.get(networkKey)
-    || {}
+  const { icon, mask, color, } = networkKey === DEFAULT_KEY &&
+    defaultSVG || social_icons.get(networkKey) || {}
 
   return (
     <a

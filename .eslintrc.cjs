@@ -41,7 +41,7 @@ module.exports = {
 
     // TODO: style rules, aka just use prettier
     // TODO: typescript rules
-    // TODO: react rules
+
 
     "accessor-pairs": ["error"],
     "array-callback-return": ["error", { "allowImplicit": false, "checkForEach": true }],
@@ -211,6 +211,10 @@ module.exports = {
     "quote-props": ["error", "as-needed"],
     "quotes": [ "error", "double" ],
     "radix": ["error"],
+
+    // TODO: react rules
+    "react/prop-types": ["off"],
+
     "require-atomic-updates": ["error"],
     "require-await": ["error"],
     "require-unicode-regexp": ["error"],
