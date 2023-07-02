@@ -1,8 +1,9 @@
-import { defineConfig } from "vite";
-import react from "@vitejs/plugin-react";
+import { defineConfig } from 'vite'
+// import react from "@vitejs/plugin-react";
 // import { resolve } from "path";
-import socialIcons from "./rollup-plugin-social-icons.js";
+// import socialIcons from "./rollup-plugin-social-icons.js";
 // import dts from "vite-plugin-dts";
+import { config as rollupConfig } from './rollup.config.js'
 
 export default defineConfig(() => {
 
@@ -60,11 +61,5 @@ export default defineConfig(() => {
   // }
   // }
 
-  return {
-    root: "./examples",
-    plugins: [
-      socialIcons(),
-      react(),
-    ],
-  };
-});
+  return rollupConfig()
+})

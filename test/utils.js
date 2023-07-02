@@ -8,5 +8,9 @@ export function readIcon(network) {
         import.meta.url,
       )
     )
-  );
+  )
+}
+
+export function randString() {
+  return Math.random().toString(36).substr(2, 12)
 }

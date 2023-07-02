@@ -1,3 +1,46 @@
+# Documentation
+
+Here I will start outlining the pieces of react social icon's new features I need to explain.
+
+## `href` as a prop
+
+you can now pass href to a `<SocialIcon>` to set the anchor link. It will override the `url` prop when a user clicks on a link. It will be ignored when `<SocialIcon>` matches a network domain to the `url` prop to set the network icon. but the network icon shown will still be the one that matches `url`.
+
+Let's look at a simple example.
+
+```js
+// renders: default icon
+// on click: navigate to github.com
+<SocialIcon href="www.github.com" />
+```
+
+Here we set the icon svg with `url` and set the `<a>` link using `href`.
+
+```js
+// renders: vimeo icon
+// on click: navigate to github.com
+<SocialIcon hree="www.github.com" url="www.vimeo.com" />
+```
+
+## `as` as a prop
+
+Set `<SocialIcon>` to be any element or React component you want. The `as` prop is passed directly to `React.createElement` as the first argument to create the `<SocialIcon>` component.
+
+Example: Turn `<SocialIcon>` into a `<div>`
+ 
+```js
+<SocialIcon as="div" />
+```
+
+## opening in new tab
+
+To open a link in a new tab, pass the `target` prop to `<SocialIcon>`. The `<SocialIcon>` is just an `<a>` element underneath with all the component's props spread into its attributes.
+
+```js
+// docs for `target`: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a
+<SocialIcon target="_blank" href="www.github.com" />
+```
+
 # TODO
 
 - OK I have several things here

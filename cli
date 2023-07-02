@@ -49,6 +49,10 @@ test:ts() {
   pnpm tsc
 }
 
+test:unit() {
+  node test/unit.test.js
+}
+
 test:() {
   build;
   test:js;
@@ -56,6 +60,7 @@ test:() {
   test:publint;
   test:ts;
   test:ssr;
+  test:unit;
 }
 
 "$@"
