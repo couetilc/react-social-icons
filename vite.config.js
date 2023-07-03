@@ -62,7 +62,7 @@ export default defineConfig(async () => {
   // }
 
   return {
-    ...await rollupConfig(),
+    ...(await rollupConfig())[0],
     test: {
       globals: true,
       environment: 'jsdom',
