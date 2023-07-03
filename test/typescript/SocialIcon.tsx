@@ -5,18 +5,23 @@ const SocialIconTest = () => (
   <>
     <SocialIcon
       url="https//example.com"
+      href="https//example.com"
       bgColor="#000000"
       fgColor="#ffffff"
       label="social icon"
       network="example"
+      fallback={{ icon: '', mask: '', color: '' }}
       defaultSVG={{ icon: '', mask: '', color: '' }}
       style={{ height: '100px', width: '100px' }}
-      target='blank'
-      rel='noreferrer'
+      target="blank"
+      rel="noreferrer"
+      as="div"
     />
     <SocialIcon
       // @ts-expect-error
       url={0}
+      // @ts-expect-error
+      href={0}
       // @ts-expect-error
       bgColor={null}
       // @ts-expect-error
@@ -26,6 +31,8 @@ const SocialIconTest = () => (
       // @ts-expect-error
       network={null}
       // @ts-expect-error
+      fallback={{ icon: '' }}
+      // @ts-expect-error
       defaultSVG={{ icon: '' }}
       // @ts-expect-error
       style={null}
@@ -33,6 +40,8 @@ const SocialIconTest = () => (
       target={null}
       // @ts-expect-error
       rel={null}
+      // @ts-expect-error
+      as={null}
     />
     <SocialIcon><div></div></SocialIcon>
   </>

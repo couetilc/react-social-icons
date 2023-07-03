@@ -13,8 +13,10 @@ interface SocialIconProps extends React.DetailedHTMLProps<React.AnchorHTMLAttrib
   label?: string;
   network?: string;
   url?: string;
+  fallback?: SocialIconObject;
   defaultSVG?: SocialIconObject;
   style?: React.CSSProperties;
+  as?: string;
 }
 
 declare function keyFor(url?: string): string
