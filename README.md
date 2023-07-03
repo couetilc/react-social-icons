@@ -43,16 +43,11 @@ To open a link in a new tab, pass the `target` prop to `<SocialIcon>`. The `<Soc
 
 # TODO
 
-- replace playwright component testing with testing library react. it's not
-  ready.
+- update all dependencies, dev and not dev
 
 - OK I have several things here
   - main package
   - example page for the documentation website (and for local development, although I should change that?)
-  - browser component tests for source code
-  - browser component tests for distribution code
-  - typescript tests
-I want to keep everthing simple though, let's try to write an SSR test.
 
 - get source maps emitted for dist/ (sourceMap compiler option in tsconfig)
 
@@ -69,7 +64,6 @@ I want to keep everthing simple though, let's try to write an SSR test.
 
 - finalize the eslint config, do the pretty stuff, maybe just add prettier so I
   can skip that tedious stuff, add any missing plugins that are good.
-    - NO SEMICOLONS UNLESS NECESSARY
     - linting for json files in db/
 
 - the issue with tests when Typescript is enabled (although even that is unclear
