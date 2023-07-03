@@ -43,6 +43,9 @@ To open a link in a new tab, pass the `target` prop to `<SocialIcon>`. The `<Soc
 
 # TODO
 
+- replace playwright component testing with testing library react. it's not
+  ready.
+
 - OK I have several things here
   - main package
   - example page for the documentation website (and for local development, although I should change that?)

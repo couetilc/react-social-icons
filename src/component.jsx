@@ -41,26 +41,34 @@ const SocialIcon = (props) => {
     className,
     label,
     children,
-    defaultSVG = social_icons.get(DEFAULT_KEY),
+    fallback,
+    defaultSVG,
     ...rest
   } = props
 
   const networkKey = network || keyFor(url)
+  const ariaLabel = label || props['aria-label'] || networkKey
 
-  const { icon, mask, color, } = networkKey === DEFAULT_KEY && defaultSVG || social_icons.get(networkKey) || {}
+  const fallbackIcon = (typeof fallback === 'string'
+    ? social_icons.get(fallback)
+    : fallback || defaultSVG
+  ) || social_icons.get(DEFAULT_KEY)
+
+  const { icon, mask, color, } = networkKey === DEFAULT_KEY
+    ? fallbackIcon : social_icons.get(networkKey) || {}
 
   return (
     React.createElement(as,
       { href: href || url,
         className: `social-icon${className ? ` ${className}` : ''}`,
-        'aria-label': label || networkKey,
         style: social_icon,
-        ...rest
+        ...rest,
+        'aria-label': ariaLabel,
       }, 
       <div className='social-container' style={social_container}>
         <svg
           role='img'
-          aria-label={`${networkKey} social icon`}
+          aria-label={`${ariaLabel} social icon`}
           className='social-svg'
           viewBox='0 0 64 64'
           style={social_svg}

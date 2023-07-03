@@ -16,22 +16,6 @@ info:bundlesize() {
  rm dist.tar.gz
 }
 
-test:js() {
-  test:js-src
-  test:js-dist
-}
-
-test:js-src() {
-  pnpm playwright test \
-    -c test/browsers/playwright-ct-src.config.js
-
-}
-
-test:js-dist() {
-  pnpm playwright test \
-    -c test/browsers/playwright-ct-dist.config.js
-}
-
 test:lint() {
   pnpm eslint .eslintrc.cjs .
 }
@@ -50,12 +34,11 @@ test:ts() {
 }
 
 test:unit() {
-  node test/unit.test.js
+  pnpm vitest test/unit/keyFor.test.js test/unit/socialIcon.test.js
 }
 
 test:() {
   build;
-  test:js;
   test:lint;
   test:publint;
   test:ts;

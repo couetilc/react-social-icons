@@ -1,7 +1,5 @@
-// import { describe, it } from 'node:test'
 import { describe, it } from 'vitest'
-import { keyFor, getKeys } from '../src/react-social-icons.js'
-import { randString } from './utils.js'
+import { keyFor, getKeys } from '../../src/react-social-icons.js'
 
 describe('keyFor', () => {
 
@@ -11,7 +9,7 @@ describe('keyFor', () => {
 
   it('unknown values return default social network', ({ expect }) => {
     expect(keyFor('example.com')).toEqual('sharethis')
-    expect(keyFor(randString())).toEqual('sharethis')
+    expect(keyFor('abcdef')).toEqual('sharethis')
   })
 
   it('mailto URIs return the special \'mailto\' network ', ({ expect }) => {

@@ -1,13 +1,13 @@
 /* eslint-env node */
-import { devices } from "@playwright/test";
-import getPort from "get-port";
+import { devices } from '@playwright/test'
+import getPort from 'get-port'
 
 const config = async () => {
 
-  const port = await getPort();
+  const port = await getPort()
 
   return {
-    testDir: ".",
+    testDir: '.',
     timeout: 2_000,
     fullyParallel: true,
     forbidOnly: Boolean(process.env.CI),
@@ -21,16 +21,16 @@ const config = async () => {
 
     projects: [
       {
-        use: devices["Desktop Chrome"],
+        use: devices['Desktop Chrome'],
       },
       {
-        use: devices["Desktop Firefox"],
+        use: devices['Desktop Firefox'],
       },
       {
-        use: devices["Desktop Safari"],
+        use: devices['Desktop Safari'],
       },
     ],
-  };
-};
+  }
+}
 
-export default config();
+export default config()

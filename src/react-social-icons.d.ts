@@ -1,4 +1,4 @@
-import * as React from "react";
+import * as React from 'react'
 
 interface SocialIconObject {
   icon: string;
@@ -17,8 +17,8 @@ interface SocialIconProps extends React.DetailedHTMLProps<React.AnchorHTMLAttrib
   style?: React.CSSProperties;
 }
 
-declare function keyFor(url?: string): string;
+declare function keyFor(url?: string): string
 
-declare function getKeys(): string[];
+declare function getKeys(): string[]
 
-declare const SocialIcon: React.FunctionComponent<SocialIconProps>;
+declare const SocialIcon: React.FunctionComponent<SocialIconProps>

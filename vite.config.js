@@ -5,7 +5,7 @@ import { defineConfig } from 'vite'
 // import dts from "vite-plugin-dts";
 import { config as rollupConfig } from './rollup.config.js'
 
-export default defineConfig(() => {
+export default defineConfig(async () => {
 
   // I think I can just used this, the build options is specific in the config
   // already, so should be treated separate, need to test out.
@@ -61,5 +61,12 @@ export default defineConfig(() => {
   // }
   // }
 
-  return rollupConfig()
+  return {
+    ...await rollupConfig(),
+    test: {
+      globals: true,
+      environment: 'jsdom',
+      setupFiles: './test/unit/setup.js',
+    },
+  }
 })

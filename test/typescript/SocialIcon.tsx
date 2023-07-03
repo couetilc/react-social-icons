@@ -1,5 +1,5 @@
-import React from "react";
-import { SocialIcon, keyFor } from "../../src/react-social-icons.js";
+import React from 'react'
+import { SocialIcon, keyFor } from '../../src/react-social-icons.js'
 
 const SocialIconTest = () => (
   <>
@@ -9,8 +9,8 @@ const SocialIconTest = () => (
       fgColor="#ffffff"
       label="social icon"
       network="example"
-      defaultSVG={{ icon: "", mask: "", color: "" }}
-      style={{ height: "100px", width: "100px" }}
+      defaultSVG={{ icon: '', mask: '', color: '' }}
+      style={{ height: '100px', width: '100px' }}
       target='blank'
       rel='noreferrer'
     />
@@ -26,7 +26,7 @@ const SocialIconTest = () => (
       // @ts-expect-error
       network={null}
       // @ts-expect-error
-      defaultSVG={{ icon: "" }}
+      defaultSVG={{ icon: '' }}
       // @ts-expect-error
       style={null}
       // @ts-expect-error
@@ -36,13 +36,13 @@ const SocialIconTest = () => (
     />
     <SocialIcon><div></div></SocialIcon>
   </>
-);
+)
 
-keyFor();
-keyFor("https://twitter.com");
+keyFor()
+keyFor('https://twitter.com')
 // @ts-expect-error
-keyFor(1234);
+keyFor(1234)
 // @ts-expect-error
-keyFor(null);
+keyFor(null)
 
-export default SocialIconTest;
+export default SocialIconTest
