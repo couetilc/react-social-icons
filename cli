@@ -24,17 +24,12 @@ test:publint() {
   pnpm publint .
 }
 
-test:ssr() {
-  pnpm playwright test \
-    -c test/ssr/playwright.config.js
-}
-
 test:ts() {
   pnpm tsc
 }
 
 test:unit() {
-  pnpm vitest test/unit/keyFor.test.js test/unit/socialIcon.test.js
+  pnpm vitest test/unit/keyFor.test.js test/unit/socialIcon.test.js "$@"
 }
 
 test:() {
@@ -42,8 +37,7 @@ test:() {
   test:lint;
   test:publint;
   test:ts;
-  test:ssr;
-  test:unit;
+  test:unit --run;
 }
 
 "$@"

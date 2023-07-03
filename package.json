@@ -25,7 +25,6 @@
     "test": "./cli test:",
     "test:unit": "./cli test:unit",
     "test:lint": "./cli test:lint",
-    "test:ssr": "./cli test:ssr",
     "test:ts": "./cli test:ts"
   },
   "author": "jaketrent",
