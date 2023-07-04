@@ -29,7 +29,7 @@ test:ts() {
 }
 
 test:unit() {
-  pnpm vitest test/unit/keyFor.test.js test/unit/socialIcon.test.js "$@"
+  pnpm vitest test/unit/*.test.js "$@"
 }
 
 test:() {

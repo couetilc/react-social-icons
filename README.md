@@ -43,8 +43,6 @@ To open a link in a new tab, pass the `target` prop to `<SocialIcon>`. The `<Soc
 
 # TODO
 
-- need to rune a sanity check on outputted bundles
-
 - can I test for code splitting yet?
 
 - update all dependencies, dev and not dev
