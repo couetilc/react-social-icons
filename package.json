@@ -69,15 +69,17 @@
   },
   "scripts": {
     "build": "./cli build",
-    "bundlesize": "pnpm build && tar -c dist | gzip > dist.tar.gz && du -h dist dist.tar.gz",
-    "examples": "pnpm start",
-    "lint": "pnpm test:lint",
+    "bundlesize": "./cli info:bundlesize",
+    "dev": "./cli dev",
+    "lint": "pnpm test:lint && pnpm test:publint",
     "prepublish": "pnpm build",
     "start": "./cli dev",
     "test": "./cli test:",
     "test:unit": "./cli test:unit",
     "test:lint": "./cli test:lint",
-    "test:ts": "./cli test:ts"
+    "test:publint": "./cli test:publint",
+    "test:ts": "./cli test:ts",
+    "test:codesplitting": "./cli test:codesplitting"
   },
   "author": "jaketrent",
   "license": "MIT",

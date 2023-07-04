@@ -2,10 +2,11 @@
 
 build() {
   # why do I transpile? can I test my desired outcome?
-  pnpm rollup -c rollup.config.js
+  pnpm rollup -c rollup.config.js "$@"
 }
 
 dev() {
+  # TODO make sure the examples page is working. I should rename the directory.
   pnpm vite
 }
 
@@ -21,6 +22,7 @@ test:lint() {
 }
 
 test:publint() {
+  build --silent
   pnpm publint .
 }
 
@@ -29,15 +31,21 @@ test:ts() {
 }
 
 test:unit() {
+  build --silent
   pnpm vitest test/unit/*.test.js "$@"
 }
 
+test:codesplitting() {
+  build --silent
+  ./test/codesplitting.sh
+}
+
 test:() {
-  build;
   test:lint;
   test:publint;
   test:ts;
-  test:unit --run;
+  test:unit --run --silent;
+  test:codesplitting;
 }
 
 "$@"
