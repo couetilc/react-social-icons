@@ -43,6 +43,8 @@ To open a link in a new tab, pass the `target` prop to `<SocialIcon>`. The `<Soc
 
 # TODO
 
+- remove all typescript stuff from eslint config and package.json. WHat typescript stuff can I remove?
+
 - update all dependencies, dev and not dev
 
 - OK I have several things here

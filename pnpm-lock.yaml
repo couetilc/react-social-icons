@@ -6,7 +6,6 @@ specifiers:
   '@babel/plugin-transform-runtime': ^7.19.6
   '@babel/preset-env': ^7.20.2
   '@babel/preset-react': ^7.18.6
-  '@babel/preset-typescript': ^7.18.6
   '@babel/register': ^7.18.9
   '@babel/runtime': ^7.20.13
   '@rollup/plugin-babel': ^6.0.3
@@ -46,7 +45,6 @@ devDependencies:
   '@babel/plugin-transform-runtime': 7.19.6_@babel+core@7.20.12
   '@babel/preset-env': 7.20.2_@babel+core@7.20.12
   '@babel/preset-react': 7.18.6_@babel+core@7.20.12
-  '@babel/preset-typescript': 7.18.6_@babel+core@7.20.12
   '@babel/register': 7.18.9_@babel+core@7.20.12
   '@rollup/plugin-babel': 6.0.3_5n2ngh7v5pkci6t6huited5xhm
   '@rollup/plugin-node-resolve': 15.0.1_rollup@3.12.1
@@ -752,16 +750,6 @@ packages:
       '@babel/helper-plugin-utils': 7.20.2
     dev: true
 
-  /@babel/plugin-syntax-typescript/7.20.0_@babel+core@7.20.12:
-    resolution: {integrity: sha512-rd9TkG+u1CExzS4SM1BlMEhMXwFLKVjOAFFCDx9PbX5ycJWDoWMcwdJH9RhkPu1dOgn5TrxLot/Gx6lWFuAUNQ==}
-    engines: {node: '>=6.9.0'}
-    peerDependencies:
-      '@babel/core': ^7.0.0-0
-    dependencies:
-      '@babel/core': 7.20.12
-      '@babel/helper-plugin-utils': 7.20.2
-    dev: true
-
   /@babel/plugin-transform-arrow-functions/7.20.7_@babel+core@7.20.12:
     resolution: {integrity: sha512-3poA5E7dzDomxj9WXWwuD6A5F3kc7VXwIJO+E+J8qtDtS+pXPAhrgEyh+9GBwBgPq1Z+bB+/JD60lp5jsN7JPQ==}
     engines: {node: '>=6.9.0'}
@@ -1184,20 +1172,6 @@ packages:
       '@babel/helper-plugin-utils': 7.20.2
     dev: true
 
-  /@babel/plugin-transform-typescript/7.20.13_@babel+core@7.20.12:
-    resolution: {integrity: sha512-O7I/THxarGcDZxkgWKMUrk7NK1/WbHAg3Xx86gqS6x9MTrNL6AwIluuZ96ms4xeDe6AVx6rjHbWHP7x26EPQBA==}
-    engines: {node: '>=6.9.0'}
-    peerDependencies:
-      '@babel/core': ^7.0.0-0
-    dependencies:
-      '@babel/core': 7.20.12
-      '@babel/helper-create-class-features-plugin': 7.20.12_@babel+core@7.20.12
-      '@babel/helper-plugin-utils': 7.20.2
-      '@babel/plugin-syntax-typescript': 7.20.0_@babel+core@7.20.12
-    transitivePeerDependencies:
-      - supports-color
-    dev: true
-
   /@babel/plugin-transform-unicode-escapes/7.18.10_@babel+core@7.20.12:
     resolution: {integrity: sha512-kKAdAI+YzPgGY/ftStBFXTI1LZFju38rYThnfMykS+IXy8BVx+res7s2fxf1l8I35DV2T97ezo6+SGrXz6B3iQ==}
     engines: {node: '>=6.9.0'}
@@ -1331,20 +1305,6 @@ packages:
       '@babel/plugin-transform-react-jsx': 7.20.13_@babel+core@7.20.12
       '@babel/plugin-transform-react-jsx-development': 7.18.6_@babel+core@7.20.12
       '@babel/plugin-transform-react-pure-annotations': 7.18.6_@babel+core@7.20.12
-    dev: true
-
-  /@babel/preset-typescript/7.18.6_@babel+core@7.20.12:
-    resolution: {integrity: sha512-s9ik86kXBAnD760aybBucdpnLsAt0jK1xqJn2juOn9lkOvSHV60os5hxoVJsPzMQxvnUJFAlkont2DvvaYEBtQ==}
-    engines: {node: '>=6.9.0'}
-    peerDependencies:
-      '@babel/core': ^7.0.0-0
-    dependencies:
-      '@babel/core': 7.20.12
-      '@babel/helper-plugin-utils': 7.20.2
-      '@babel/helper-validator-option': 7.18.6
-      '@babel/plugin-transform-typescript': 7.20.13_@babel+core@7.20.12
-    transitivePeerDependencies:
-      - supports-color
     dev: true
 
   /@babel/register/7.18.9_@babel+core@7.20.12:
