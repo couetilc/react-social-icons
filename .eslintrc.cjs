@@ -11,9 +11,7 @@ module.exports = {
   'extends': [
     'eslint:recommended',
     'plugin:react/recommended',
-    'plugin:@typescript-eslint/recommended',
     'plugin:import/recommended',
-    'plugin:import/typescript',
   ],
   'overrides': [
   ],
@@ -24,24 +22,18 @@ module.exports = {
   },
   'plugins': [
     'react',
-    '@typescript-eslint'
   ],
   'rules': {
-
-    // this weird rest pattern is just a trick so I can group certain eslint
-    // rules and still have eslint enforce they are in alphabetical order
-    ...({
-      '@typescript-eslint/ban-ts-comment': ['off'],
-      '@typescript-eslint/no-unused-vars': ['error'],
-    }),
 
     ...({
       'import/no-unresolved': ['error', { 'ignore': ['^social-icons[:]?'] }],
     }),
 
-    // TODO: style rules, aka just use prettier
-    // TODO: typescript rules
+    ...({
+      'react/prop-types': ['off'],
+    }),
 
+    // TODO: style rules, aka just use prettier
 
     'accessor-pairs': ['error'],
     'array-callback-return': ['error', { 'allowImplicit': false, 'checkForEach': true }],
@@ -91,7 +83,7 @@ module.exports = {
     'no-dupe-else-if': ['error'],
     'no-dupe-keys': ['error'],
     'no-duplicate-case': ['error'],
-    // conflicts with typescript's 'import type', replaced by import/no-duplicates
+    // replaced by import/no-duplicates
     'no-duplicate-imports': ['off'],
     'no-else-return': ['error', { 'allowElseIf': false }],
     'no-empty': ['error', { 'allowEmptyCatch': true }],
@@ -211,10 +203,6 @@ module.exports = {
     'quote-props': ['error', 'as-needed'],
     'quotes': [ 'error', 'single' ],
     'radix': ['error'],
-
-    // TODO: react rules
-    'react/prop-types': ['off'],
-
     'require-atomic-updates': ['error'],
     'require-await': ['error'],
     'require-unicode-regexp': ['error'],
@@ -227,7 +215,6 @@ module.exports = {
     'vars-on-top': ['error'],
     'wrap-iife': ['error'],
     'yoda': ['error'],
-
   },
   'settings': {
     'import/resolver': {

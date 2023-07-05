@@ -41,11 +41,18 @@ test:codesplitting() {
 }
 
 test:() {
+  set -e
+
   test:lint;
   test:publint;
   test:ts;
   test:unit --run --silent;
   test:codesplitting;
+
+  echo
+  echo Passed All Tests
+
+  set +e
 }
 
 "$@"
