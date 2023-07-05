@@ -1,20 +1,9 @@
 {
     "compilerOptions": {
-        "module": "ESNEXT",
-        "target": "ES6",
-        "noImplicitAny": true,
-        "removeComments": true,
-        "preserveConstEnums": true,
-        "sourceMap": false,
         "noEmit": true,
         "strict": true,
-        "declaration": true,
-        "esModuleInterop": true,
-        "moduleResolution": "nodenext",
         "lib": ["ES6", "DOM"],
         "jsx": "react-jsx",
-        "rootDir": ".",
-        "isolatedModules": true,
     },
     "exclude": [
         "node_modules",

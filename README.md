@@ -43,8 +43,6 @@ To open a link in a new tab, pass the `target` prop to `<SocialIcon>`. The `<Soc
 
 # TODO
 
-- can I remove tsconfig file or at least trim it down to so little the test:ts still passes?
-
 - OK I have several things here
   - main package
   - example page for the documentation website (and for local development, although I should change that?)
