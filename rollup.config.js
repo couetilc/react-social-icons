@@ -61,6 +61,7 @@ export async function config() {
               exports[network] = `./dist/icons/${network}.js`
             }
             packagejson.exports = {
+              types: './dist/react-social-icons.d.ts',
               component: './dist/component.js',
               ...exports
             }
