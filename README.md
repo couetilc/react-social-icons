@@ -47,13 +47,9 @@ To open a link in a new tab, pass the `target` prop to `<SocialIcon>`. The `<Soc
   - main package
   - example page for the documentation website (and for local development, although I should change that?)
 
-- get source maps emitted for dist/ (sourceMap compiler option in tsconfig)
-
 - need to make forward refs work.
 
 - Grep for all TODO/todo in the repository, address anything there.
-
-- write tests for code-splitting feature
 
 - write test for esm, umd, etc. types of bundles. Also enable those types of deploys.
 
