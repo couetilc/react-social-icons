@@ -2,11 +2,14 @@ import * as React from 'react'
 
 const DEFAULT_KEY = 'sharethis'
 
-const makeUriRegex = (socials = []) => new RegExp(
-  '(?:https?:\\/\\/(?:[a-z0-9-]*.)?)?($SOCIALS).*'
-    .replace('$SOCIALS', socials.join('|')),
-  'u',
-)
+const makeUriRegex = (socials = []) =>
+  new RegExp(
+    '(?:https?:\\/\\/(?:[a-z0-9-]*.)?)?($SOCIALS).*'.replace(
+      '$SOCIALS',
+      socials.join('|')
+    ),
+    'u'
+  )
 
 const social_icons = new Map()
 const network_names = new Set()
@@ -17,7 +20,7 @@ function register(social, icon) {
   network_names.add(social)
   uri_regex = makeUriRegex(
     // sort by longest string first
-    [ ...network_names ].sort((pre, post) => post.length - pre.length)
+    [...network_names].sort((pre, post) => post.length - pre.length)
   )
 }
 
@@ -30,7 +33,6 @@ function keyFor(url) {
 }
 
 const SocialIcon = (props) => {
-
   const {
     as = 'a',
     href,
@@ -49,67 +51,87 @@ const SocialIcon = (props) => {
   const networkKey = network || keyFor(url)
   const ariaLabel = label || props['aria-label'] || networkKey
 
-  const fallbackIcon = (typeof fallback === 'string'
-    ? social_icons.get(fallback)
-    : fallback || defaultSVG
-  ) || social_icons.get(DEFAULT_KEY)
+  const fallbackIcon =
+    (typeof fallback === 'string'
+      ? social_icons.get(fallback)
+      : fallback || defaultSVG) || social_icons.get(DEFAULT_KEY)
 
-  const { icon, mask, color, } = networkKey === DEFAULT_KEY
-    ? fallbackIcon : social_icons.get(networkKey) || {}
+  const { icon, mask, color } =
+    networkKey === DEFAULT_KEY
+      ? fallbackIcon
+      : social_icons.get(networkKey) || {}
 
-  return (
-    React.createElement(as,
-      { href: href || url,
-        className: `social-icon${className ? ` ${className}` : ''}`,
-        style: social_icon,
-        ...rest,
-        'aria-label': ariaLabel,
-      }, 
-      <div className='social-container' style={social_container}>
-        <svg
-          role='img'
-          aria-label={`${ariaLabel} social icon`}
-          className='social-svg'
-          viewBox='0 0 64 64'
-          style={social_svg}
-        >
+  return React.createElement(
+    as,
+    {
+      href: href || url,
+      className: `social-icon${className ? ` ${className}` : ''}`,
+      style: social_icon,
+      ...rest,
+      'aria-label': ariaLabel,
+    },
+    <div className="social-container" style={social_container}>
+      <svg
+        role="img"
+        aria-label={`${ariaLabel} social icon`}
+        className="social-svg"
+        viewBox="0 0 64 64"
+        style={social_svg}
+      >
+        <g className="social-svg-background" style={social_svg_g}>
+          <circle cx="32" cy="32" r="31" />
+        </g>
 
-          <g className='social-svg-background' style={social_svg_g}>
-            <circle cx='32' cy='32' r='31' />
-          </g>
-
-          <g className='social-svg-icon' style={{
+        <g
+          className="social-svg-icon"
+          style={{
             ...social_svg_g,
             fill: fgColor,
-          }}>
-            <path d={icon} />
-          </g>
+          }}
+        >
+          <path d={icon} />
+        </g>
 
-          <g className='social-svg-mask' style={{
+        <g
+          className="social-svg-mask"
+          style={{
             ...social_svg_g,
-            fill: bgColor || color
-          }}>
-            <path d={mask} />
-          </g>
-        </svg>
-      </div>,
-      children,
-    )
+            fill: bgColor || color,
+          }}
+        >
+          <path d={mask} />
+        </g>
+      </svg>
+    </div>,
+    children
   )
 }
 
-const social_icon  = {
-  display: 'inline-block', width: '50px', height: '50px',
-  position: 'relative', overflow: 'hidden', verticalAlign: 'middle',
+const social_icon = {
+  display: 'inline-block',
+  width: '50px',
+  height: '50px',
+  position: 'relative',
+  overflow: 'hidden',
+  verticalAlign: 'middle',
 }
 
 const social_container = {
-  position: 'absolute', top: '0', left: '0', width: '100%', height: '100',
+  position: 'absolute',
+  top: '0',
+  left: '0',
+  width: '100%',
+  height: '100',
 }
 
 const social_svg = {
-  borderRadius: '50%', position: 'absolute', top: '0', left: '0', width: '100%',
-  height: '100%', fillRule: 'evenodd',
+  borderRadius: '50%',
+  position: 'absolute',
+  top: '0',
+  left: '0',
+  width: '100%',
+  height: '100%',
+  fillRule: 'evenodd',
 }
 
 const social_svg_g = {
@@ -121,11 +143,4 @@ const social_svg_g = {
   fill: 'transparent',
 }
 
-export {
-  SocialIcon,
-  keyFor,
-  register,
-  social_icons,
-  network_names,
-  uri_regex,
-}
+export { SocialIcon, keyFor, register, social_icons, network_names, uri_regex }

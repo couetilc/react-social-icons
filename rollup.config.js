@@ -7,11 +7,11 @@ import copy from 'rollup-plugin-copy'
 import packagejson from './package.json' assert { type: 'json' }
 
 export async function config() {
+  const networks = (
+    await fs.promises.readdir(new URL('db', import.meta.url))
+  ).map((filename) => filename.replace('.json', ''))
 
-  const networks = (await fs.promises.readdir(new URL('db', import.meta.url)))
-    .map(filename => filename.replace('.json', ''))
-
-  const external = id => {
+  const external = (id) => {
     if (id === 'react') return true
     if (id === 'react-dom') return true
     if (id === 'react/jsx-runtime') return true
@@ -49,9 +49,9 @@ export async function config() {
           targets: [
             {
               src: 'src/react-social-icons.d.ts',
-              dest: 'dist/'
+              dest: 'dist/',
             },
-          ]
+          ],
         }),
         {
           name: 'update-package-json-exports',
@@ -63,14 +63,14 @@ export async function config() {
             packagejson.exports = {
               types: './dist/react-social-icons.d.ts',
               component: './dist/component.js',
-              ...exports
+              ...exports,
             }
             await fs.promises.writeFile(
               './package.json',
-              JSON.stringify(packagejson, null, 2),
+              JSON.stringify(packagejson, null, 2)
             )
-          }
-        }
+          },
+        },
       ],
       external,
     },

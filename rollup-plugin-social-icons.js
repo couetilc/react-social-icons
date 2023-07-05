@@ -4,22 +4,25 @@ import fs from 'fs'
 const IMPORT_PREFIX = '\0social-icons'
 
 export default function rollupPluginSocialIcons() {
-
   const db = new Map()
 
   return {
     name: 'social-icons',
 
     async buildStart() {
-      const dbFiles = await fs.promises.readdir(new URL('./db', import.meta.url))
-      await Promise.all(dbFiles.map(
-        filename => fs.promises
-          .readFile(new URL(`./db/${filename}`, import.meta.url))
-          .then(icon => {
-            const network = filename.replace('.json', '')
-            db.set(network, JSON.parse(icon.toString()))
-          })
-      ))
+      const dbFiles = await fs.promises.readdir(
+        new URL('./db', import.meta.url)
+      )
+      await Promise.all(
+        dbFiles.map((filename) =>
+          fs.promises
+            .readFile(new URL(`./db/${filename}`, import.meta.url))
+            .then((icon) => {
+              const network = filename.replace('.json', '')
+              db.set(network, JSON.parse(icon.toString()))
+            })
+        )
+      )
     },
 
     resolveId(source) {
@@ -42,11 +45,9 @@ export default function rollupPluginSocialIcons() {
       }
 
       const network = id.replace(`${IMPORT_PREFIX}:`, '')
-      return `import { register } from './src/component.jsx';register(${
-        JSON.stringify(network)
-      }, ${
-        JSON.stringify(db.get(network))
-      })`
+      return `import { register } from './src/component.jsx';register(${JSON.stringify(
+        network
+      )}, ${JSON.stringify(db.get(network))})`
     },
   }
 }

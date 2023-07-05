@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+PRETTIER_PATTERN=("./*.js" "src/**" "test/**")
+
 build() {
   # why do I transpile? can I test my desired outcome?
   pnpm rollup -c rollup.config.js "$@"
@@ -8,6 +10,10 @@ build() {
 dev() {
   # TODO make sure the examples page is working. I should rename the directory.
   pnpm vite
+}
+
+fmt() {
+  pnpm prettier -u -w "${PRETTIER_PATTERN[@]}"
 }
 
 info:bundlesize() {
@@ -24,6 +30,10 @@ test:lint() {
 test:publint() {
   build --silent
   pnpm publint .
+}
+
+test:fmt() {
+  pnpm prettier -u -c "${PRETTIER_PATTERN[@]}"
 }
 
 test:ts() {
@@ -45,6 +55,7 @@ test:() {
 
   test:lint;
   test:publint;
+  test:fmt;
   test:ts;
   test:unit --run --silent;
   test:codesplitting;

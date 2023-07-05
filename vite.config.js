@@ -6,7 +6,6 @@ import { defineConfig } from 'vite'
 import { config as rollupConfig } from './rollup.config.js'
 
 export default defineConfig(async () => {
-
   // I think I can just used this, the build options is specific in the config
   // already, so should be treated separate, need to test out.
   // if (command === 'build') {

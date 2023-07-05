@@ -2,7 +2,6 @@ import { describe, it } from 'vitest'
 import { keyFor, getKeys } from '../../src/react-social-icons.js'
 
 describe('keyFor', () => {
-
   it('falsy values return default social network', ({ expect }) => {
     expect(keyFor()).toEqual('sharethis')
   })
@@ -12,7 +11,7 @@ describe('keyFor', () => {
     expect(keyFor('abcdef')).toEqual('sharethis')
   })
 
-  it('mailto URIs return the special \'mailto\' network ', ({ expect }) => {
+  it("mailto URIs return the special 'mailto' network ", ({ expect }) => {
     expect(keyFor('mailto:doe@example.com')).toEqual('mailto')
   })
 
@@ -20,34 +19,33 @@ describe('keyFor', () => {
     expect(getKeys().length).toBeGreaterThan(0)
   })
 
-  it('\'key\'.com URIs return \'key\' social network', ({ expect }) => {
-    getKeys().forEach(key => {
+  it("'key'.com URIs return 'key' social network", ({ expect }) => {
+    getKeys().forEach((key) => {
       expect(keyFor(`http://${key}.com`)).toEqual(key)
     })
   })
 
-  it('\'key\'.com/foo/bar URIs return \'key\' social network', ({ expect }) => {
-    getKeys().forEach(key => {
+  it("'key'.com/foo/bar URIs return 'key' social network", ({ expect }) => {
+    getKeys().forEach((key) => {
       expect(keyFor(`http://${key}.com/foo/bar`)).toEqual(key)
     })
   })
 
-  it('\'key\'.com/foo.bar URIs return \'key\' social network', ({ expect }) => {
-    getKeys().forEach(key => {
+  it("'key'.com/foo.bar URIs return 'key' social network", ({ expect }) => {
+    getKeys().forEach((key) => {
       expect(keyFor(`http://${key}.com/foo.bar`)).toEqual(key)
     })
   })
 
-  it('sub-domain.\'key\'.com URIs return \'key\' social network', ({ expect }) => {
-    getKeys().forEach(key => {
+  it("sub-domain.'key'.com URIs return 'key' social network", ({ expect }) => {
+    getKeys().forEach((key) => {
       expect(keyFor(`http://sub-domain.${key}.com`)).toEqual(key)
     })
   })
 
-  it('www.\'key\'.com URIs return \'key\' social network', ({ expect }) => {
-    getKeys().forEach(key => {
+  it("www.'key'.com URIs return 'key' social network", ({ expect }) => {
+    getKeys().forEach((key) => {
       expect(keyFor(`www.${key}.com`)).toEqual(key)
     })
   })
-
 })

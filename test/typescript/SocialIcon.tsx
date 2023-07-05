@@ -43,7 +43,9 @@ const SocialIconTest = () => (
       // @ts-expect-error
       as={null}
     />
-    <SocialIcon><div></div></SocialIcon>
+    <SocialIcon>
+      <div></div>
+    </SocialIcon>
   </>
 )
 

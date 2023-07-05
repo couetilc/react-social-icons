@@ -201,7 +201,7 @@ module.exports = {
     'prefer-spread': ['error'],
     'prefer-template': ['error'],
     'quote-props': ['error', 'as-needed'],
-    'quotes': [ 'error', 'single' ],
+    'quotes': [ 'error', 'single', { 'avoidEscape': true }],
     'radix': ['error'],
     'require-atomic-updates': ['error'],
     'require-await': ['error'],

@@ -19,6 +19,7 @@ specifiers:
   eslint-plugin-react: ^7.32.2
   global-jsdom: ^9.0.1
   jsdom: ^22.1.0
+  prettier: ^2.8.8
   publint: ^0.1.15
   react: ^18.2.0
   react-dom: ^18.2.0
@@ -51,6 +52,7 @@ devDependencies:
   eslint-plugin-react: 7.32.2_eslint@8.44.0
   global-jsdom: 9.0.1_jsdom@22.1.0
   jsdom: 22.1.0
+  prettier: 2.8.8
   publint: 0.1.15
   rollup: 3.26.0
   rollup-plugin-copy: 3.4.0
@@ -4227,6 +4229,12 @@ packages:
   /prelude-ls/1.2.1:
     resolution: {integrity: sha512-vkcDPrRZo1QZLbn5RLGPpg/WmIQ65qoWWhcGKf/b5eplkkarX0m9z8ppCat4mlOqUsWpyNuYgO3VRyrYHSzX5g==}
     engines: {node: '>= 0.8.0'}
+    dev: true
+
+  /prettier/2.8.8:
+    resolution: {integrity: sha512-tdN8qQGvNjw4CHbY+XXk0JgCXn9QiF21a55rBe5LJAU+kDyC4WQn4+awm2Xfk2lQMk5fKup9XgzTZtGkjBdP9Q==}
+    engines: {node: '>=10.13.0'}
+    hasBin: true
     dev: true
 
   /pretty-format/27.5.1:
