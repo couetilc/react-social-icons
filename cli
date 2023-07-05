@@ -8,7 +8,6 @@ build() {
 }
 
 dev() {
-  # TODO make sure the examples page is working. I should rename the directory.
   pnpm vite
 }
 

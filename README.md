@@ -49,54 +49,27 @@ To open a link in a new tab, pass the `target` prop to `<SocialIcon>`. The `<Soc
 
 - need to make forward refs work.
 
-- Grep for all TODO/todo in the repository, address anything there.
+- linting for json files in db/
 
-- write test for esm, umd, etc. types of bundles. Also enable those types of deploys.
-
-- need to test adding `"sideEffects": true` to package.json will have webpack
-  and vite and rollup properly codesplit this package.
-
-- finalize the eslint config, do the pretty stuff, maybe just add prettier so I
-  can skip that tedious stuff, add any missing plugins that are good.
-    - linting for json files in db/
-
-- the issue with tests when Typescript is enabled (although even that is unclear
-  to me, the import situation with typescript), has rollup (or something) creating
-  multiple instances of the register function, separated by appending "register$<num>"
-  to the function name, each with their own DB in the closure. So there's an
-  issue surrounding which copy of the DB is actually populated. I need to figure
-  out why DB is not being treated as a singleton.
-
-- replace CSS-as-objects with nanocss or something similar, getting rid of inline styles.
 - work on PR magic, for screenshots and bundlesize, etc.
 
-- need to make sure the examples command works (does my vite config still work?),
-  I might have broken it. Also, how should I deploy the GitHub pages docs site? 
+- deploy docs page to website, on every release.
 
--  write githook to throw
+- write githook to throw
   error if yarn.lock or package-lock.json exists when commit or pushing. or have
   it check at least no staged files are yar.lock or package-lock.json when committing.
-- alias "defaultIcon" for "defaultSVG" but still keep it around for compatibility, but have docs reflect new usage.
-- trim down everything into one file that still passes tests.
-- add styling with a <style></style> tag or resort to nano-css (https://github.com/streamich/nano-css/blob/master/docs/put.md). Is there linting for css prefixes? how to handle css prefixes?
-- create an FAQ or something in the readme:
-   - include "how do I open the social network into a new tab" and metion target="_blank"
-   - what else can I include from the issues, opened or closed?
-- auto deploy examples page on every release
-- auto-update README image on every push to master.
+
+- create an FAQ or something in the readme: what else can I include from the issues, opened or closed?
+
+- auto-update README image of all icons on every push/publish to master. ( i think publish better)
+
 - fix the inkscape instructions
-- add eslint rule to only allow like es2015 syntax or something like that so I
-  can get rid of babel transpilation. do some research on whats needed here,
-  also simplify all the code, there's too many files for what this package does.
-  Also, can I not use inline styles somehow but still have it be re-usable and
-  performant? may not need this is esbuild with target es2015 does the trick.
+
 - how to handle changelog and releases? maybe everytime there's a new semantic
   versioning tag? or use that changesets package or something?
-- add prop to override the base type of the element e.g.
-  ```js
-  const { as = 'a' } = props;
-  React.createElement(as, props, children);
-  ```
+  - basically, how can I make publishing painless, super easy, and still track
+    and communicate changes easily to package consumers
+
 - I can probably take screenshots of the example page using this tool, give it
   a shot https://github.com/simonw/shot-scraper, otherwise playwright might be
   the best move. This is blog post https://simonwillison.net/2022/Mar/10/shot-scraper/
@@ -110,6 +83,7 @@ To open a link in a new tab, pass the `target` prop to `<SocialIcon>`. The `<Soc
   and see it automatically deployed to NPM immediately afterwards. But they should
   only be able to do it with their PRs, nothing else. So maybe minimal positions
   for contributors that only grant them position to merge approved PRs.
+
 - I need a contributor document, make it very clear what I need to quickly
   approve PRs, and also explain the approval process. Look elsewhere for good
   examples of what that looks like.
