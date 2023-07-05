@@ -41,13 +41,30 @@ To open a link in a new tab, pass the `target` prop to `<SocialIcon>`. The `<Soc
 <SocialIcon target="_blank" href="www.github.com" />
 ```
 
+# Contributing
+
+## formatting code
+
+run `./cli fmt` to get `./cli test:fmt` to pass.
+
+## writing tests
+
+you must write a unit test for your feature. add it to `test/unit/cases.js`. while you are developing, practice tdd using `./cli test:src` to have vitest rerun tests when source code changes.
+
+when you're finished developing your feature, run `pnpm test` until you get all tests to pass.
+
+once completed, you are ready to make a pull request
+
+## making a pull request
+
+idk yet
+
 # TODO
 
-- OK I have several things here
-  - main package
-  - example page for the documentation website (and for local development, although I should change that?)
+- example page for the documentation website (and for local development, although I should change that?)
 
-- need to make forward refs work.
+* publishing. how much can I automate to be done from command line, and/or
+    activated by github actions.
 
 - linting for json files in db/
 

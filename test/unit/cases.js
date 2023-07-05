@@ -245,4 +245,11 @@ export const cases = (SocialIcon) =>
       )
       expect(screen.getByTestId(true).children[1]).toHaveAttribute('id', 'test')
     })
+
+    it('forwards refs', ({ expect }) => {
+      const ref = React.createRef()
+      render(<SocialIcon ref={ref}></SocialIcon>)
+      expect(ref.current).not.to.equal(null)
+      expect(ref.current).to.be.an.instanceof(HTMLElement)
+    })
   })

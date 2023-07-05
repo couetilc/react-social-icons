@@ -32,7 +32,7 @@ function keyFor(url) {
   return url.match(uri_regex)?.[1] || DEFAULT_KEY
 }
 
-const SocialIcon = (props) => {
+const SocialIcon = React.forwardRef(function SocialIcon(props, ref) {
   const {
     as = 'a',
     href,
@@ -69,6 +69,7 @@ const SocialIcon = (props) => {
       style: social_icon,
       ...rest,
       'aria-label': ariaLabel,
+      ref,
     },
     <div className="social-container" style={social_container}>
       <svg
@@ -105,7 +106,7 @@ const SocialIcon = (props) => {
     </div>,
     children
   )
-}
+})
 
 const social_icon = {
   display: 'inline-block',

@@ -44,6 +44,10 @@ test:unit() {
   pnpm vitest test/unit/*.test.js "$@"
 }
 
+test:src() {
+  pnpm vitest test/unit/src.test.js "$@"
+}
+
 test:codesplitting() {
   build --silent
   ./test/codesplitting.sh
