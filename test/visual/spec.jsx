@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { SocialIcon, getKeys } from '../../src/react-social-icons.js'
 import * as Icons from '../../dist/icons'
@@ -6,15 +6,20 @@ import * as Icons from '../../dist/icons'
 // TODO can I add a button to toggle responsive styles? so that all icons grow and shrink to fit the width of the page without changing aspect ratio or layout? Would be a nice way with a wide screen to do a deep zoom, and be able to compare icons at different sizes. I'll make it a url parameter to so I can take snapshots of the fixed width, but enable the responsive option for development by default
 
 function VisualTest(props) {
-  const [current, setCurrent] = useState(new URL(window.location.href).searchParams.get('network'))
+  const url = new URL(window.location.href)
+  const highlighted = url.searchParams.get('network')
+  const fixed_width = url.searchParams.get('fixed_width')
+
   return (
     <div>
       <form action="/">
         <label htmlFor="network">Select network to highlight: </label>
-        <select name="network" defaultValue={current}>
+        <select name="network" defaultValue={highlighted}>
           <option value="">---</option>
-          {getKeys().map(network => (
-            <option key={network} value={network}>{network}</option>
+          {getKeys().map((network) => (
+            <option key={network} value={network}>
+              {network}
+            </option>
           ))}
         </select>
         <br />
@@ -22,15 +27,17 @@ function VisualTest(props) {
         <input
           name="fixed_width"
           type="checkbox"
-          defaultChecked={new URL(window.location.href).searchParams.get('fixed_width')}
+          defaultChecked={fixed_width}
         />
         <br />
         <button>Submit</button>
       </form>
 
-      {current && <HighlightCase network={current} />}
+      {highlighted && <HighlightCase network={highlighted} />}
 
-      {getKeys().map(network => <Case key={network} network={network} />)}
+      {getKeys().map((network) => (
+        <Case key={network} network={network} />
+      ))}
     </div>
   )
 }
