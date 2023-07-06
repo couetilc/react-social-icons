@@ -255,12 +255,12 @@ export const cases = (SocialIcon) =>
     })
 
     it('fgColor defaults to white', ({ expect }) => {
-      render(<SocialIcon url='http://example.com' />)
+      render(<SocialIcon url="http://example.com" />)
       expect(icon()).toHaveStyle('fill: white;')
     })
 
     it('has correct styles', ({ expect }) => {
-      render(<SocialIcon url='http://example.com' />)
+      render(<SocialIcon url="http://example.com" />)
       expect(link()).toHaveStyle(`
         display: inline-block;
         width: 50px;
@@ -288,9 +288,11 @@ export const cases = (SocialIcon) =>
       const g_styles = `
         transition: fill 170ms ease-in-out;
         fill: transparent;
-      `;
+      `
       expect(icon()).toHaveStyle(g_styles.replace(/transparent/u, 'white'))
-      expect(mask()).toHaveStyle(g_styles.replace(/transparent/u, default_icon.color))
+      expect(mask()).toHaveStyle(
+        g_styles.replace(/transparent/u, default_icon.color)
+      )
       expect(background()).toHaveStyle(g_styles)
     })
   })
