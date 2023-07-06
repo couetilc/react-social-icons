@@ -295,4 +295,16 @@ export const cases = (SocialIcon) =>
       )
       expect(background()).toHaveStyle(g_styles)
     })
+
+    it('accepts a style prop that merges with the default social icon styles', ({ expect }) => {
+      render(<SocialIcon style={{ height: '75px' }} url="http://example.com" />)
+      expect(link()).toHaveStyle(`
+        display: inline-block;
+        width: 50px;
+        height: 75px;
+        position: relative;
+        overflow: hidden;
+        vertical-align: middle;
+      `)
+    })
   })

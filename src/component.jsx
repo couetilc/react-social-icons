@@ -66,8 +66,8 @@ const SocialIcon = React.forwardRef(function SocialIcon(props, ref) {
     {
       href: href || url,
       className: `social-icon${className ? ` ${className}` : ''}`,
-      style: social_icon,
       ...rest,
+      style: { ...social_icon, ...rest.style, },
       'aria-label': ariaLabel,
       ref,
     },
