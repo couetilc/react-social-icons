@@ -22,6 +22,7 @@ function register(social, icon) {
     // sort by longest string first
     [...network_names].sort((pre, post) => post.length - pre.length)
   )
+  return icon
 }
 
 function keyFor(url) {

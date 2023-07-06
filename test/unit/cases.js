@@ -307,4 +307,10 @@ export const cases = (SocialIcon) =>
         vertical-align: middle;
       `)
     })
+
+    it('default export of an icon is the icon definition', async ({ expect }) => {
+      const icon_def = await import('social-icons:sharethis')
+        .then(mod => mod.default)
+      expect(icon_def).to.have.all.keys('icon', 'mask', 'color')
+    })
   })

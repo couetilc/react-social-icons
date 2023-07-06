@@ -46,9 +46,15 @@ export default function rollupPluginSocialIcons() {
       }
 
       const network = id.replace(`${IMPORT_PREFIX}:`, '')
-      return `import { register } from './src/component.jsx';register(${JSON.stringify(
-        network
-      )}, ${JSON.stringify(db.get(network))})`
+
+      return `
+        import { register } from './src/component.jsx';
+        export default register(${
+          JSON.stringify(network)
+        }, ${
+          JSON.stringify(db.get(network))
+        });
+      `
     },
   }
 }
