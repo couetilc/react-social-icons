@@ -1,14 +1,8 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import ReactDOM from 'react-dom/client';
 
+// import { SocialIcon, getKeys } from '../dist/react-social-icons';
 import { SocialIcon, getKeys } from '../src/react-social-icons';
-// import { SocialIcon, getKeys } from '../dist/react-social-icons.js';
-// import { SocialIcon, getKeys } from '../build/react-social-icons.js';
-// import * as ReactSocialIcons from '../build/react-social-icons.js';
-// console.log({ ReactSocialIcons });
-// const SocialIcon = ReactSocialIcons.SocialIcon;
-// const getKeys = ReactSocialIcons.getKeys;
-// this import must come after any icon imports
 
 function Page() {
   return (
@@ -102,16 +96,6 @@ function Page() {
         </code>
       </div>
 
-      <h4>Render</h4>
-      <p>The full code required to render.</p>
-      <code className="code">
-        <pre>{
-`import React from 'react';
-import { SocialIcon } from 'react-social-icons';
-React.render(<SocialIcon url="https://linkedin.com/in/jaketrent" />, document.body);`
-        }</pre>
-      </code>
-
       <h2>It scales!</h2>
       <p>Witness the beautiful SVG in action.</p>
       <p>
@@ -122,10 +106,10 @@ React.render(<SocialIcon url="https://linkedin.com/in/jaketrent" />, document.bo
         styles from external stylesheets.
       </p>
       <div id="sizes">
-        <SocialIcon network="pinterest" style={{ height: 25, width: 25 }} key="25" />
-        <SocialIcon network="pinterest" style={{ height: 50, width: 50 }} key="50" />
-        <SocialIcon network="pinterest" style={{ height: 100, width: 100 }} key="100" />
-        <SocialIcon network="pinterest" style={{ height: 200, width: 200 }} key="200" /> 
+        <SocialIcon as='div' network="pinterest" style={{ height: 25, width: 25 }} key="25" />
+        <SocialIcon as='div' network="pinterest" style={{ height: 50, width: 50 }} key="50" />
+        <SocialIcon as='div' network="pinterest" style={{ height: 100, width: 100 }} key="100" />
+        <SocialIcon as='div' network="pinterest" style={{ height: 200, width: 200 }} key="200" /> 
       </div>
 
       <code>
@@ -157,4 +141,6 @@ React.render(<SocialIcon url="https://linkedin.com/in/jaketrent" />, document.bo
   );
 }
 
-ReactDOM.render(<Page />, document.getElementById('page'));
+const root = ReactDOM.createRoot(document.getElementById('page'));
+
+root.render(<Page />)

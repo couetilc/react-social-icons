@@ -51,9 +51,16 @@ p code, li code {
   margin: 0 auto;
 }
 
+#sizes {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
 #sizes .social-icon {
   vertical-align: bottom;
   margin-right: 10px;
+  position: relative;
 }
 .social-icon.sm {
   height: 25px;

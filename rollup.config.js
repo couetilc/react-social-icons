@@ -35,6 +35,7 @@ export async function config() {
           format: 'es',
           dir: './dist',
           entryFileNames: '[name].js',
+          sourcemap: false,
         },
       ],
       plugins: [
@@ -83,6 +84,7 @@ export async function config() {
         dir: './dist',
         entryFileNames: '[name].cjs',
         name: 'ReactSocialIcons',
+        sourcemap: false,
       },
       plugins: [
         socialIcons(),

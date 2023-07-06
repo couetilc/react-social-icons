@@ -1,7 +1,8 @@
 /* eslint-env node */
 import fs from 'fs'
 
-const IMPORT_PREFIX = '\0social-icons'
+const VIRTUAL_PKG = 'social-icons'
+const IMPORT_PREFIX = `\0${VIRTUAL_PKG}`
 
 export default function rollupPluginSocialIcons() {
   const db = new Map()
@@ -26,7 +27,7 @@ export default function rollupPluginSocialIcons() {
     },
 
     resolveId(source) {
-      if (source.startsWith('social-icons')) {
+      if (source.startsWith(VIRTUAL_PKG)) {
         return `\0${source}`
       }
       return null
@@ -39,7 +40,7 @@ export default function rollupPluginSocialIcons() {
 
       if (id === IMPORT_PREFIX) {
         const code = Array.from(db.keys()).reduce((file, network) => {
-          return `${file}import 'social-icons:${network}';`
+          return `${file}import '${VIRTUAL_PKG}:${network}';`
         }, '')
         return { code, moduleSideEffects: true }
       }

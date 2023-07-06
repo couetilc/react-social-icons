@@ -2,6 +2,12 @@
 
 Here I will start outlining the pieces of react social icon's new features I need to explain.
 
+## adding new icons to db/
+
+explain format of db directory, explain format of icon, explain how to share
+icons between multiple domains by symlinking, and whatever else, maybe linting
+rules too.
+
 ## `href` as a prop
 
 you can now pass href to a `<SocialIcon>` to set the anchor link. It will override the `url` prop when a user clicks on a link. It will be ignored when `<SocialIcon>` matches a network domain to the `url` prop to set the network icon. but the network icon shown will still be the one that matches `url`.
@@ -43,13 +49,21 @@ To open a link in a new tab, pass the `target` prop to `<SocialIcon>`. The `<Soc
 
 # Contributing
 
+## set node.js version
+
+use `nodenv`.
+
+```sh
+# TODO commands to install nodenv and install and set node version
+```
+
 ## formatting code
 
 run `./cli fmt` to get `./cli test:fmt` to pass.
 
 ## writing tests
 
-you must write a unit test for your feature. add it to `test/unit/cases.js`. while you are developing, practice tdd using `./cli test:src` to have vitest rerun tests when source code changes.
+you must write a unit test for your feature. add it to `test/unit/cases.js`. while you are developing, practice tdd and run `./cli test:src` to have vitest rerun tests when source code changes.
 
 when you're finished developing your feature, run `pnpm test` until you get all tests to pass.
 
@@ -71,6 +85,8 @@ idk yet
 - work on PR magic, for screenshots and bundlesize, etc.
 
 - deploy docs page to website, on every release.
+
+- write examples of how to codesplit with this package. write example rollup config, and also write example webpack config. can I add a webpack config test to `codesplitting.sh`?
 
 - write githook to throw
   error if yarn.lock or package-lock.json exists when commit or pushing. or have

@@ -3,12 +3,11 @@
 PRETTIER_PATTERN=("./*.js" "src/**" "test/**")
 
 build() {
-  # why do I transpile? can I test my desired outcome?
   pnpm rollup -c rollup.config.js "$@"
 }
 
 dev() {
-  pnpm vite
+  pnpm vite -c vite.config.js examples/
 }
 
 fmt() {
