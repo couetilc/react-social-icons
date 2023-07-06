@@ -7,7 +7,7 @@ build() {
 }
 
 dev() {
-  pnpm vite -c vite.config.js dev/
+  info:visual
 }
 
 fmt() {
