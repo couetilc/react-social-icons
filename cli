@@ -7,7 +7,7 @@ build() {
 }
 
 dev() {
-  pnpm vite -c vite.config.js examples/
+  pnpm vite -c vite.config.js dev/
 }
 
 fmt() {
@@ -19,6 +19,14 @@ info:bundlesize() {
  tar -c dist | gzip > dist.tar.gz
  du -h dist dist.tar.gz
  rm dist.tar.gz
+}
+
+info:visual() {
+  pnpm vite -c vite.config.js test/visual/
+}
+
+info:www() {
+  pnpm vite -c vite.config.js www/
 }
 
 test:lint() {

@@ -1,0 +1,19 @@
+html {
+  color: white;
+  background: rgb(38, 38, 38);
+}
+
+section {
+  display: flex;
+  flex-flow: row nowrap;
+}
+
+.sm {
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+.lg {
+  display: flex;
+  flex-flow: row nowrap;
+}

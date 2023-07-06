@@ -40,7 +40,9 @@ export default function rollupPluginSocialIcons() {
 
       if (id === IMPORT_PREFIX) {
         const code = Array.from(db.keys()).reduce((file, network) => {
-          return `${file}import '${VIRTUAL_PKG}:${network}';`
+          return `${file}export { default as ${JSON.stringify(
+            network.replace(/\W/u, '')
+          )} } from '${VIRTUAL_PKG}:${network}';`
         }, '')
         return { code, moduleSideEffects: true }
       }
@@ -49,11 +51,9 @@ export default function rollupPluginSocialIcons() {
 
       return `
         import { register } from './src/component.jsx';
-        export default register(${
-          JSON.stringify(network)
-        }, ${
-          JSON.stringify(db.get(network))
-        });
+        export default register(${JSON.stringify(network)}, ${JSON.stringify(
+        db.get(network)
+      )});
       `
     },
   }

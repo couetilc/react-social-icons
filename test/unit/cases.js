@@ -21,7 +21,7 @@ const mask = () => svg().children[2]
 const icon_path = () => icon().children[0]
 const mask_path = () => mask().children[0]
 
-export const cases = (SocialIcon) =>
+export const cases = ({ SocialIcon, getKeys }) =>
   describe('<SocialIcon />', () => {
     it('adds correct url to anchor', ({ expect }) => {
       render(<SocialIcon url={pinterest_url} />)
@@ -296,7 +296,9 @@ export const cases = (SocialIcon) =>
       expect(background()).toHaveStyle(g_styles)
     })
 
-    it('accepts a style prop that merges with the default social icon styles', ({ expect }) => {
+    it('accepts a style prop that merges with the default social icon styles', ({
+      expect,
+    }) => {
       render(<SocialIcon style={{ height: '75px' }} url="http://example.com" />)
       expect(link()).toHaveStyle(`
         display: inline-block;
@@ -308,9 +310,23 @@ export const cases = (SocialIcon) =>
       `)
     })
 
-    it('default export of an icon is the icon definition', async ({ expect }) => {
-      const icon_def = await import('social-icons:sharethis')
-        .then(mod => mod.default)
-      expect(icon_def).to.have.all.keys('icon', 'mask', 'color')
-    })
+    // getKeys is undefined for the social-icons/component export
+    if (getKeys) {
+      it('default export of an icon is the icon definition', async ({
+        expect,
+      }) => {
+        await Promise.all(
+          getKeys().map(async (network) => {
+            const icon_def = await import(`social-icons:${network}`).then(
+              (mod) => mod.default
+            )
+            expect(Object.keys(icon_def)).to.deep.equal([
+              'icon',
+              'mask',
+              'color',
+            ])
+          })
+        )
+      })
+    }
   })

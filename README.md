@@ -75,7 +75,14 @@ idk yet
 
 # TODO
 
-- example page for the documentation website (and for local development, although I should change that?)
+- can I move the examples page to a new command `./cli www` and `mv examples/ www/`
+
+- can I make a command `./cli dev` that will show all icons in small large,
+  with different fg and bg colors, and with transparent. Basically, show me
+  all icons in every configuration such that I'll be confident my icon
+  definition works well. Or at least be able to debug/catch any problems that
+  are present in an icon definition. I can then re-use the page to make
+  snapshots of for the PR bot.
 
 * publishing. how much can I automate to be done from command line, and/or
     activated by github actions.
