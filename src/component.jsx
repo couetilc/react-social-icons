@@ -87,7 +87,7 @@ const SocialIcon = React.forwardRef(function SocialIcon(props, ref) {
           className="social-svg-icon"
           style={{
             ...social_svg_g,
-            fill: fgColor,
+            fill: fgColor || 'white',
           }}
         >
           <path d={icon} />
@@ -122,7 +122,7 @@ const social_container = {
   top: '0',
   left: '0',
   width: '100%',
-  height: '100',
+  height: '100%',
 }
 
 const social_svg = {

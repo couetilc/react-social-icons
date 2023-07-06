@@ -252,4 +252,9 @@ export const cases = (SocialIcon) =>
       expect(ref.current).not.to.equal(null)
       expect(ref.current).to.be.an.instanceof(HTMLElement)
     })
+
+    it('fgColor defaults to white', ({ expect }) => {
+      render(<SocialIcon url='http://example.com' />)
+      expect(icon()).toHaveStyle('fill: white;')
+    })
   })
