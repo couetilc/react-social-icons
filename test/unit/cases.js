@@ -12,8 +12,9 @@ const pinterest_icon = pinterest.icon || ''
 const github_mask = github.mask || ''
 const default_icon = sharethis
 
-const svg = () => screen.getByRole('img')
 const link = () => screen.getByRole('link')
+const container = () => link().children[0]
+const svg = () => screen.getByRole('img')
 const background = () => svg().children[0]
 const icon = () => svg().children[1]
 const mask = () => svg().children[2]
@@ -256,5 +257,40 @@ export const cases = (SocialIcon) =>
     it('fgColor defaults to white', ({ expect }) => {
       render(<SocialIcon url='http://example.com' />)
       expect(icon()).toHaveStyle('fill: white;')
+    })
+
+    it('has correct styles', ({ expect }) => {
+      render(<SocialIcon url='http://example.com' />)
+      expect(link()).toHaveStyle(`
+        display: inline-block;
+        width: 50px;
+        height: 50px;
+        position: relative;
+        overflow: hidden;
+        vertical-align: middle;
+      `)
+      expect(container()).toHaveStyle(`
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+      `)
+      expect(svg()).toHaveStyle(`
+        borderRadius: 50%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        fillRule: evenodd;
+      `)
+      const g_styles = `
+        transition: fill 170ms ease-in-out;
+        fill: transparent;
+      `;
+      expect(icon()).toHaveStyle(g_styles.replace(/transparent/u, 'white'))
+      expect(mask()).toHaveStyle(g_styles.replace(/transparent/u, default_icon.color))
+      expect(background()).toHaveStyle(g_styles)
     })
   })

@@ -136,10 +136,6 @@ const social_svg = {
 }
 
 const social_svg_g = {
-  msTransition: 'fill 170ms ease-in-out',
-  OTransition: 'fill 170ms ease-in-out',
-  MozTransition: 'fill 170ms ease-in-out',
-  WebkitTransition: 'fill 170ms ease-in-out',
   transition: 'fill 170ms ease-in-out',
   fill: 'transparent',
 }
