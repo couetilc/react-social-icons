@@ -38,6 +38,20 @@ Example: Turn `<SocialIcon>` into a `<div>`
 <SocialIcon as="div" />
 ```
 
+## `fallback` as a prop
+
+Accepts a network
+
+```js
+<SocialIcon fallback="pinterest" /> // renders pinterest icon
+```
+
+Or an icon definition
+
+```js
+<SocialIcon fallback={{ icon, mask, color }} /> // renders custom icon
+```
+
 ## opening in new tab
 
 To open a link in a new tab, pass the `target` prop to `<SocialIcon>`. The `<SocialIcon>` is just an `<a>` element underneath with all the component's props spread into its attributes.
@@ -75,14 +89,16 @@ idk yet
 
 # TODO
 
-- can I move the examples page to a new command `./cli www` and `mv examples/ www/`
-
 - can I make a command `./cli dev` that will show all icons in small large,
   with different fg and bg colors, and with transparent. Basically, show me
   all icons in every configuration such that I'll be confident my icon
   definition works well. Or at least be able to debug/catch any problems that
   are present in an icon definition. I can then re-use the page to make
   snapshots of for the PR bot.
+
+* icon behance has a path outside its viewbox, makes it slightly larger than 50px.
+  I need to diagnose root issue, then I should be able to write a test that
+  checks this for all SVGs.
 
 * publishing. how much can I automate to be done from command line, and/or
     activated by github actions.

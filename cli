@@ -60,6 +60,11 @@ test:codesplitting() {
   ./test/codesplitting.sh
 }
 
+test:visual() {
+  echo 'test:visual'
+  # TODO take pictures of the social icons. store them in a folder here.
+}
+
 test:() {
   set -e
 

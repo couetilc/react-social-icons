@@ -1,3 +1,8 @@
+:root {
+  --form-height: 75px;
+  --icon-height: 50px;
+}
+
 html {
   color: white;
   background: rgb(38, 38, 38);
@@ -7,18 +12,21 @@ form {
   display: block;
   flex-flow: column wrap;
   align-items: flex-start;
-  height: 100px;
+  height: var(--form-height);
 }
 
 section {
   display: flex;
   flex-flow: row nowrap;
-  height: 200px;
+  height: calc(var(--icon-height) * 4);
 }
 
 .sm {
   display: flex;
   flex-flow: column nowrap;
+}
+
+.sm .social-icon {
 }
 
 .lg {
@@ -34,11 +42,15 @@ section {
 .highlight .lg {
   display: flex;
   flex-flow: column wrap;
-  width: 400px;
+  width: calc(var(--icon-height) * 8);
 }
 
 section.highlight {
-  height: 400px;
+  height: calc(var(--icon-height) * 8);
   display: flex;
   flex-flow: row nowrap;
+}
+
+section * {
+  flex: 0 0 auto;
 }
