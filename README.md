@@ -89,6 +89,11 @@ idk yet
 
 # TODO
 
+- Add direnv to project. Add instructions to readme. will replace the cli file.
+    https://github.com/direnv/direnv
+
+- Add switcher between light theme and dark theme for the info:visual page
+
 - can I make a command `./cli dev` that will show all icons in small large,
   with different fg and bg colors, and with transparent. Basically, show me
   all icons in every configuration such that I'll be confident my icon

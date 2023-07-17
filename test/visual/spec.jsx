@@ -11,35 +11,38 @@ function VisualTest(props) {
   const url = new URL(window.location.href)
   const highlighted = url.searchParams.get('network')
   const scale = url.searchParams.get('scale') || '1'
+  const knobs = url.searchParams.get('knobs') !== 'false'
 
   return (
     <div style={{"--icon-height": `calc(50px * ${scale})`}}>
-      <form action="/">
-        <label htmlFor="network">Select network to highlight: </label>
-        <select name="network" defaultValue={highlighted}>
-          <option value="">---</option>
-          {getKeys().map((network) => (
-            <option key={network} value={network}>
-              {network}
-            </option>
-          ))}
-        </select>
-        <br />
-        <label htmlFor="scale">Scale: </label>
-        <input
-          min="0"
-          max="10"
-          step=".01"
-          name="scale"
-          type="range"
-          defaultValue={scale}
-        />
-        <br />
-        <button>Submit</button>
-        <a href="/">
-          Reset
-        </a>
-      </form>
+      {knobs &&
+        <form id="knobs" action="/">
+          <label htmlFor="network">Select network to highlight: </label>
+          <select name="network" defaultValue={highlighted}>
+            <option value="">---</option>
+            {getKeys().map((network) => (
+              <option key={network} value={network}>
+                {network}
+              </option>
+            ))}
+          </select>
+          <br />
+          <label htmlFor="scale">Scale: </label>
+          <input
+            min="0"
+            max="10"
+            step=".01"
+            name="scale"
+            type="range"
+            defaultValue={scale}
+          />
+          <br />
+          <button>Submit</button>
+          <a href="/">
+            Reset
+          </a>
+        </form>
+      }
 
       {highlighted && <HighlightCase network={highlighted} />}
 
@@ -141,3 +144,4 @@ const lg = {height: 'calc(4 * var(--icon-height))', width: 'calc(4 * var(--icon-
 const xl = {height: 'calc(8 * var(--icon-height))', width: 'calc(8 * var(--icon-height))'}
 
 ReactDOM.createRoot(document.querySelector('#root')).render(<VisualTest />)
+

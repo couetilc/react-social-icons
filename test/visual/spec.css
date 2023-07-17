@@ -8,6 +8,10 @@ html {
   background: rgb(38, 38, 38);
 }
 
+body {
+  margin: 0;
+}
+
 form {
   display: block;
   flex-flow: column wrap;

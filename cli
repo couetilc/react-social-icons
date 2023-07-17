@@ -61,8 +61,18 @@ test:codesplitting() {
 }
 
 test:visual() {
-  echo 'test:visual'
-  # TODO take pictures of the social icons. store them in a folder here.
+  # add argument parsing for 
+  #   network
+  #   scale
+  #   outfile
+  #   open # if flag present, open the file after performing screenshot
+  scale=2
+  network=tiktok
+  out=./tmp/visual-test/shot.png
+  pnpx playwright screenshot \
+    --viewport-size="$((1250 * scale)), $((400 * scale))" \
+    "http://localhost:5173/?network=$network&knobs=false&scale=$scale" \
+    "$out"
 }
 
 test:() {
