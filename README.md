@@ -89,9 +89,6 @@ idk yet
 
 # TODO
 
-- Add direnv to project. Add instructions to readme. will replace the cli file.
-    https://github.com/direnv/direnv
-
 - Add switcher between light theme and dark theme for the info:visual page
 
 - can I make a command `./cli dev` that will show all icons in small large,
@@ -114,7 +111,9 @@ idk yet
 
 - deploy docs page to website, on every release.
 
-- write examples of how to codesplit with this package. write example rollup config, and also write example webpack config. can I add a webpack config test to `codesplitting.sh`?
+- write examples of how to codesplit with this package. write example rollup
+    config, and also write example webpack config. can I add a webpack config
+    test to `codesplitting.sh`?
 
 - write githook to throw
   error if yarn.lock or package-lock.json exists when commit or pushing. or have

@@ -58,3 +58,17 @@ section.highlight {
 section * {
   flex: 0 0 auto;
 }
+
+html.dark {
+  color: white;
+  background: rgb(38, 38, 38);
+}
+
+html.light {
+  color: black;
+  background: white;
+}
+
+*[data-responsive="true"] {
+
+}

@@ -3,8 +3,6 @@ import ReactDOM from 'react-dom/client'
 import { SocialIcon, getKeys } from '../../src/react-social-icons.js'
 import * as Icons from '../../dist/icons'
 
-// TODO can I add a button to toggle responsive styles? so that all icons grow and shrink to fit the width of the page without changing aspect ratio or layout? Would be a nice way with a wide screen to do a deep zoom, and be able to compare icons at different sizes. I'll make it a url parameter to so I can take snapshots of the fixed width, but enable the responsive option for development by default
-
 // TODO want to test normal, then flip fgColor and bgColor, then transparent fg, then transparent bg
 
 function VisualTest(props) {
@@ -12,9 +10,16 @@ function VisualTest(props) {
   const highlighted = url.searchParams.get('network')
   const scale = url.searchParams.get('scale') || '1'
   const knobs = url.searchParams.get('knobs') !== 'false'
+  const responsive = url.searchParams.get('responsive') !== 'false'
+  const colorscheme = url.searchParams.get('colorscheme') || 'dark'
+
+  document.querySelector('html').classList.add(colorscheme)
 
   return (
-    <div style={{"--icon-height": `calc(50px * ${scale})`}}>
+    <div
+      data-responsive={responsive}
+      style={{"--icon-height": `calc(50px * ${scale})`}}
+    >
       {knobs &&
         <form id="knobs" action="/">
           <label htmlFor="network">Select network to highlight: </label>
