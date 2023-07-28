@@ -1,14 +1,59 @@
-# Documentation
+# react-social-icons
 
-Here I will start outlining the pieces of react social icon's new features I need to explain.
+![build status](https://img.shields.io/github/actions/workflow/status/jaketrent/react-social-icons/build_test_publish.yml?branch=master)
+![package version](https://img.shields.io/npm/v/react-social-icons)
+![package size](https://img.shields.io/bundlephobia/minzip/react-social-icons)
+![weekly downloads](https://img.shields.io/npm/dw/react-social-icons)
+![type definitions](https://img.shields.io/npm/types/react-social-icons)
 
-## adding new icons to db/
+A set of beautiful svg social icons. Easily used in React. No images or
+external css dependencies.
 
-explain format of db directory, explain format of icon, explain how to share
-icons between multiple domains by symlinking, and whatever else, maybe linting
-rules too.
+## Install
 
-## `href` as a prop
+```
+npm install react-social-icons
+```
+
+## Usage
+
+Pass in the `url` prop of your social network, and the icon will be rendered.
+
+```js
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { SocialIcon } from 'react-social-icons';
+
+ReactDOM
+  .render(<SocialIcon url="https://twitter.com/jaketrent" />, document.body);
+# or
+ReactDOM
+  .createRoot(document.Body)
+  .render(<SocialIcon url="https://twitter.com/jaketrent" />)
+```
+
+See more [usage options on the example site](https://jaketrent.github.io/react-social-icons/).
+
+This library supports [TypeScript](https://www.typescriptlang.org/) since v5.2.0.
+([type declarations](https://github.com/jaketrent/react-social-icons/blob/master/src/react-social-icons.d.ts))
+
+## Props
+
+| Property   | Type   | Required | Description |
+| :--------- | :----- | :------: | :---------- |
+| url        | String | No       | The rendered component will link to this url and show the social network's icon.
+| network    | String | No       | Override which network icon to render (defaults to the url's social network)
+| bgColor    | String | No       | Override the background fill color (defaults to social network's color)
+| fgColor    | String | No       | Override the icon's fill color (defaults to transparent)
+| label      | String | No       | Set the `aria-label` attribute on the rendered anchor tag (defaults to the social network's name)
+| className  | String | No       | Specify a class to attach to the rendered anchor tag
+| style      | Object | No       | Override style properties passed to the rendered anchor tag |
+| href      | String | No       | TODO |
+| as      | String | No       | TODO |
+| fallback | String | No | TODO |
+| (deprecated) defaultSVG | Object | No       | Override the default icon for when a url is not matched to a social network. Requires string properties `icon`, `mask`, and `color`. (defaults to network `'sharethis'`)
+
+### `href`
 
 you can now pass href to a `<SocialIcon>` to set the anchor link. It will override the `url` prop when a user clicks on a link. It will be ignored when `<SocialIcon>` matches a network domain to the `url` prop to set the network icon. but the network icon shown will still be the one that matches `url`.
 
@@ -28,7 +73,7 @@ Here we set the icon svg with `url` and set the `<a>` link using `href`.
 <SocialIcon hree="www.github.com" url="www.vimeo.com" />
 ```
 
-## `as` as a prop
+### `as`
 
 Set `<SocialIcon>` to be any element or React component you want. The `as` prop is passed directly to `React.createElement` as the first argument to create the `<SocialIcon>` component.
 
@@ -38,7 +83,7 @@ Example: Turn `<SocialIcon>` into a `<div>`
 <SocialIcon as="div" />
 ```
 
-## `fallback` as a prop
+### `fallback`
 
 Accepts a network
 
@@ -52,7 +97,9 @@ Or an icon definition
 <SocialIcon fallback={{ icon, mask, color }} /> // renders custom icon
 ```
 
-## opening in new tab
+## FAQ
+
+### opening in new tab
 
 To open a link in a new tab, pass the `target` prop to `<SocialIcon>`. The `<SocialIcon>` is just an `<a>` element underneath with all the component's props spread into its attributes.
 
@@ -63,6 +110,10 @@ To open a link in a new tab, pass the `target` prop to `<SocialIcon>`. The `<Soc
 
 # Contributing
 
+See CONTRIBUTING.md.
+
+TODO this section should be it's own file, and I'll link it here in the README
+
 ## set node.js version
 
 use `nodenv`.
@@ -70,6 +121,12 @@ use `nodenv`.
 ```sh
 # TODO commands to install nodenv and install and set node version
 ```
+
+### adding new icons to db/
+
+explain format of db directory, explain format of icon, explain how to share
+icons between multiple domains by symlinking, and whatever else, maybe linting
+rules too.
 
 ## formatting code
 
@@ -87,16 +144,71 @@ once completed, you are ready to make a pull request
 
 idk yet
 
+## the other exports
+
+There are other useful functions and objects exported from the
+SocialIcon library.
+
+### `networkFor`
+
+A function that accepts a url string and returns the matching social network
+domain name.
+
+```js
+import { networkFor } from 'react-social-icons';
+const url = 'https://www.pinterest.com'
+const network = networkFor(url)
+```
+
+### `register`
+
+A function that accepts the domain name of a social network with an object
+definition of the icon's paths and color. It will register the social network
+icon with the `<SocialIcon>` component, which will have gained the ability to
+render the icon for your social network, and update `uri_regex` to match the
+domain name.
+
+```js
+import { register } from 'react-social-icons';
+const icon = { color: 'red', icon: 'icon path', mask: 'mask color' }
+const social_network = 'mynetwork'
+register(social_network, icon)
+```
+
+### `social_icons`
+
+A map that associates social network domain names to the icon objects with the
+network's color and icon paths.
+
+### `network_names` and `getKeys`
+
+`network_names` is a set that stores all the registered social network domain
+names. `getKeys` returns an array of the same information.
+
+```js
+import { network_names } from 'react-social-icons'
+const array_of_names = [...network_names]
+const same_array_of_names = getKeys()
+```
+
+### `uri_regex`
+
+A regex for urls that will match any social network domain names that are
+registered.
+
+```js
+import { uri_regex } from 'react-social-icons'
+const url = 'https://www.pinterest.com'
+const network = url.match(uri_regex)?.[1]
+```
+
 # TODO
 
-- Add switcher between light theme and dark theme for the info:visual page
-
-- can I make a command `./cli dev` that will show all icons in small large,
-  with different fg and bg colors, and with transparent. Basically, show me
-  all icons in every configuration such that I'll be confident my icon
-  definition works well. Or at least be able to debug/catch any problems that
-  are present in an icon definition. I can then re-use the page to make
-  snapshots of for the PR bot.
+* I need instructions on how to draw a path for this library. even I'm hazy on
+  it. Like how does viewbox work? Do all paths need to stay with the 0 0 64 64
+  it set or does it scale automatically, like a fit to min-width?
+  - then I need to update the `### register` section with a link to the explanation
+    for how to define an icon.
 
 * icon behance has a path outside its viewbox, makes it slightly larger than 50px.
   I need to diagnose root issue, then I should be able to write a test that
@@ -148,7 +260,13 @@ idk yet
   approve PRs, and also explain the approval process. Look elsewhere for good
   examples of what that looks like.
 
-# react-social-icons &nbsp; ![build status](https://img.shields.io/github/workflow/status/jaketrent/react-social-icons/Build,%20Test,%20Publish/master) ![package version](https://img.shields.io/npm/v/react-social-icons) ![package size](https://img.shields.io/bundlephobia/minzip/react-social-icons) ![weekly downloads](https://img.shields.io/npm/dw/react-social-icons) ![type definitions](https://img.shields.io/npm/types/react-social-icons)
+- make default branch `main`
+
+- at the end of all this, once I've deployed v6.0 to NPM, check the badges
+  for the minzipped size calculation. Right now for v5.15.0 it's 33.3kb.
+  I hope it shrinks a lot.
+
+# react-social-icons &nbsp; ![build status](https://img.shields.io/github/actions/workflow/status/jaketrent/react-social-icons/build_test_publish.yml?branch=master) ![package version](https://img.shields.io/npm/v/react-social-icons) ![package size](https://img.shields.io/bundlephobia/minzip/react-social-icons) ![weekly downloads](https://img.shields.io/npm/dw/react-social-icons) ![type definitions](https://img.shields.io/npm/types/react-social-icons)
 
 A set of beautiful svg social icons.  Easily used in React.  No images or external css dependencies.  Svg paths provided by Squarespace.
 
@@ -175,19 +293,6 @@ See more [usage options on the example site](https://jaketrent.github.io/react-s
 
 This library supports [TypeScript](https://www.typescriptlang.org/) since v5.2.0.
 ([type declarations](https://github.com/jaketrent/react-social-icons/blob/master/src/react-social-icons.d.ts))
-
-## Prop Types
-
-| Property   | Type   | Required | Description |
-| :--------- | :----- | :------: | :---------- |
-| url        | String | No       | The rendered component will link to this url and show the social network's icon.
-| network    | String | No       | Override which network icon to render (defaults to the url's social network)
-| bgColor    | String | No       | Override the background fill color (defaults to social network's color)
-| fgColor    | String | No       | Override the icon's fill color (defaults to transparent)
-| label      | String | No       | Set the `aria-label` attribute on the rendered anchor tag (defaults to the social network's name)
-| className  | String | No       | Specify a class to attach to the rendered anchor tag
-| defaultSVG | Object | No       | Override the default icon for when a url is not matched to a social network. Requires string properties `icon`, `mask`, and `color`. (defaults to network `'sharethis'`)
-| style      | Object | No       | Override style properties passed to the rendered anchor tag |
 
 ## Contributing
 

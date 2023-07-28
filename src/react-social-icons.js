@@ -1,8 +1,22 @@
 import 'social-icons'
-import { SocialIcon, keyFor, network_names } from './component.jsx'
+import {
+  SocialIcon,
+  networkFor,
+  register,
+  social_icons,
+  network_names,
+  uri_regex
+} from './component.jsx'
 
-function getKeys() {
+export function getKeys() {
   return [...network_names]
 }
 
-export { SocialIcon, keyFor, getKeys }
+export {
+  SocialIcon,
+  networkFor,
+  register,
+  social_icons,
+  network_names,
+  uri_regex,
+}

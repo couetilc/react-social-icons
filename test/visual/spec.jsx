@@ -1,9 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import { SocialIcon, getKeys } from '../../src/react-social-icons.js'
+import { SocialIcon, getKeys, social_icons  } from '../../src/react-social-icons.js'
 import * as Icons from '../../dist/icons'
-
-// TODO want to test normal, then flip fgColor and bgColor, then transparent fg, then transparent bg
 
 function VisualTest(props) {
   const url = new URL(window.location.href)
@@ -69,14 +67,18 @@ function Case(props) {
         <SocialIcon
           network={network}
           style={sm}
+          fgColor={social_icons.get(network).color}
+          bgColor="white"
         />
         <SocialIcon
           network={network}
           style={sm}
+          fgColor="transparent"
         />
         <SocialIcon
           network={network}
           style={sm}
+          bgColor="transparent"
         />
       </div>
       <div className="lg">
@@ -87,14 +89,18 @@ function Case(props) {
         <SocialIcon
           network={network}
           style={lg}
+          fgColor={social_icons.get(network).color}
+          bgColor="white"
         />
         <SocialIcon
           network={network}
           style={lg}
+          fgColor="transparent"
         />
         <SocialIcon
           network={network}
           style={lg}
+          bgColor="transparent"
         />
       </div>
     </section>
@@ -107,14 +113,46 @@ function HighlightCase(props) {
   return (
     <section className={`${network} highlight`}>
       <div className="sm">
-        <SocialIcon network={network} style={sm} />
-        <SocialIcon network={network} style={sm} />
-        <SocialIcon network={network} style={sm} />
-        <SocialIcon network={network} style={sm} />
-        <SocialIcon network={network} style={sm} />
-        <SocialIcon network={network} style={sm} />
-        <SocialIcon network={network} style={sm} />
-        <SocialIcon network={network} style={sm} />
+        <SocialIcon
+          network={network}
+          style={sm}
+        />
+        <SocialIcon
+          network={network}
+          style={sm}
+          fgColor={social_icons.get(network).color}
+          bgColor="white"
+        />
+        <SocialIcon
+          network={network}
+          style={sm}
+          fgColor="transparent"
+        />
+        <SocialIcon
+          network={network}
+          style={sm}
+          bgColor="transparent"
+        />
+        <SocialIcon
+          network={network}
+          style={sm}
+        />
+        <SocialIcon
+          network={network}
+          style={sm}
+          fgColor={social_icons.get(network).color}
+          bgColor="white"
+        />
+        <SocialIcon
+          network={network}
+          style={sm}
+          fgColor="transparent"
+        />
+        <SocialIcon
+          network={network}
+          style={sm}
+          bgColor="transparent"
+        />
       </div>
       <div className="lg">
         <SocialIcon
@@ -124,14 +162,18 @@ function HighlightCase(props) {
         <SocialIcon
           network={network}
           style={lg}
+          fgColor={social_icons.get(network).color}
+          bgColor="white"
         />
         <SocialIcon
           network={network}
           style={lg}
+          fgColor="transparent"
         />
         <SocialIcon
           network={network}
           style={lg}
+          bgColor="transparent"
         />
       </div>
       <div className="xl">

@@ -1,6 +1,38 @@
 import * as React from 'react'
 
-const DEFAULT_KEY = 'sharethis'
+const default_key = 'sharethis'
+
+const social_icon = {
+  display: 'inline-block',
+  width: '50px',
+  height: '50px',
+  position: 'relative',
+  overflow: 'hidden',
+  verticalAlign: 'middle',
+}
+
+const social_container = {
+  position: 'absolute',
+  top: '0',
+  left: '0',
+  width: '100%',
+  height: '100%',
+}
+
+const social_svg = {
+  borderRadius: '50%',
+  position: 'absolute',
+  top: '0',
+  left: '0',
+  width: '100%',
+  height: '100%',
+  fillRule: 'evenodd',
+}
+
+const social_svg_g = {
+  transition: 'fill 170ms ease-in-out',
+  fill: 'transparent',
+}
 
 const makeUriRegex = (socials = []) =>
   new RegExp(
@@ -11,11 +43,11 @@ const makeUriRegex = (socials = []) =>
     'u'
   )
 
-const social_icons = new Map()
-const network_names = new Set()
-let uri_regex = makeUriRegex()
+export const social_icons = new Map()
+export const network_names = new Set()
+export let uri_regex = makeUriRegex()
 
-function register(social, icon) {
+export function register(social, icon) {
   social_icons.set(social, icon)
   network_names.add(social)
   uri_regex = makeUriRegex(
@@ -25,15 +57,15 @@ function register(social, icon) {
   return icon
 }
 
-function keyFor(url) {
+export function networkFor(url) {
   if (!url) {
-    return DEFAULT_KEY
+    return default_key
   }
 
-  return url.match(uri_regex)?.[1] || DEFAULT_KEY
+  return url.match(uri_regex)?.[1] || default_key
 }
 
-const SocialIcon = React.forwardRef(function SocialIcon(props, ref) {
+export const SocialIcon = React.forwardRef(function SocialIcon(props, ref) {
   const {
     as = 'a',
     href,
@@ -49,16 +81,16 @@ const SocialIcon = React.forwardRef(function SocialIcon(props, ref) {
     ...rest
   } = props
 
-  const networkKey = network || keyFor(url)
+  const networkKey = network || networkFor(url)
   const ariaLabel = label || props['aria-label'] || networkKey
 
   const fallbackIcon =
     (typeof fallback === 'string'
       ? social_icons.get(fallback)
-      : fallback || defaultSVG) || social_icons.get(DEFAULT_KEY)
+      : fallback || defaultSVG) || social_icons.get(default_key)
 
   const { icon, mask, color } =
-    networkKey === DEFAULT_KEY
+    networkKey === default_key
       ? fallbackIcon
       : social_icons.get(networkKey) || {}
 
@@ -108,37 +140,3 @@ const SocialIcon = React.forwardRef(function SocialIcon(props, ref) {
     children
   )
 })
-
-const social_icon = {
-  display: 'inline-block',
-  width: '50px',
-  height: '50px',
-  position: 'relative',
-  overflow: 'hidden',
-  verticalAlign: 'middle',
-}
-
-const social_container = {
-  position: 'absolute',
-  top: '0',
-  left: '0',
-  width: '100%',
-  height: '100%',
-}
-
-const social_svg = {
-  borderRadius: '50%',
-  position: 'absolute',
-  top: '0',
-  left: '0',
-  width: '100%',
-  height: '100%',
-  fillRule: 'evenodd',
-}
-
-const social_svg_g = {
-  transition: 'fill 170ms ease-in-out',
-  fill: 'transparent',
-}
-
-export { SocialIcon, keyFor, register, social_icons, network_names, uri_regex }
