@@ -75,6 +75,15 @@ test:visual() {
     "$out"
 }
 
+test:dep() {
+  [[ ! -a 'package-lock.json' ]] || (
+    echo "Error: invalid package manager npm detected, this project uses pnpm." && exit 1
+  )
+  [[ ! -a 'yarn.lock' ]] || (
+    echo "Error: invalid package manager yarn detected, this project uses pnpm." && exit 1
+  )
+}
+
 test:() {
   set -e
 
@@ -84,6 +93,7 @@ test:() {
   test:ts;
   test:unit --run --silent;
   test:codesplitting;
+  test:dep
 
   echo
   echo Passed All Tests

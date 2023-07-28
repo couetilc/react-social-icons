@@ -204,6 +204,10 @@ const network = url.match(uri_regex)?.[1]
 
 # TODO
 
+* I need to merge in all the icon updates, and any other open PRs. Then see if
+  info:visual still picks up on anything. This is the time to checkout the PRs
+  and see if I addressed all the issues by my updates.
+
 * I need instructions on how to draw a path for this library. even I'm hazy on
   it. Like how does viewbox work? Do all paths need to stay with the 0 0 64 64
   it set or does it scale automatically, like a fit to min-width?
@@ -221,7 +225,9 @@ const network = url.match(uri_regex)?.[1]
 
 - work on PR magic, for screenshots and bundlesize, etc.
 
-- deploy docs page to website, on every release.
+- deploy docs page to website, on every release. Actually instead use a workflow:
+    https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages
+    also https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site#publishing-with-a-custom-github-actions-workflow
 
 - write examples of how to codesplit with this package. write example rollup
     config, and also write example webpack config. can I add a webpack config
