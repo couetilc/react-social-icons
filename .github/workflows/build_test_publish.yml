@@ -22,23 +22,16 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: Setup Node
-        uses: guardian/actions-setup-node@main
-        with:
-          node-version: latest
-          registry-url: 'https://registry.npmjs.org'
-
-      - name: Install Dependencies
-        uses: bahmutov/npm-install@v1
+      - *install-deps
 
       - name: Install React v${{ matrix.react-version }}
-        run: npm i react@${{ matrix.react-version }} react-dom@${{ matrix.react-version }} --no-save
+        run: pnpm i react@${{ matrix.react-version }} react-dom@${{ matrix.react-version }} --no-save
 
       - name: Test build
-        run: npm run build
+        run: pnpm run build
 
       - name: Test React v${{ matrix.react-version }}
-        run: npm test
+        run: pnpm test
 
   publish:
     if: github.event_name == 'release' && github.event.action == 'published'
@@ -50,23 +43,18 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: Setup Node
-        uses: guardian/actions-setup-node@main
-        with:
-          registry-url: 'https://registry.npmjs.org'
-
-      - name: Install Dependencies
-        uses: bahmutov/npm-install@v1
+      - *install-deps
 
       - name: Prepublish
-        run: npm run prepublish
+        run: pnpm run prepublish
 
       - name: Publish
-        run: npm publish
+        run: pnpm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
   example-page:
+    if: github.event_name == 'release' && github.event.action == 'published'
     needs: publish
     runs-on: ubuntu-latest
     name: Update Example Page
@@ -77,17 +65,11 @@ jobs:
         with:
           ref: 'origin/gh-pages'
 
-      - name: Setup Node
-        uses: guardian/actions-setup-node@main
-        with:
-          registry-url: 'https://registry.npmjs.org'
-
-      - name: Install Dependencies
-        uses: bahmutov/npm-install@v1
+      - *install-deps
 
       - name: Save Release Version
         id: release
-        run: echo ::set-output name=version::$(npm view react-social-icons version)
+        run: echo ::set-output name=version::$(pnpm view react-social-icons version)
 
       - name: Update, Build & Commit Example Site
         run: |
@@ -98,3 +80,32 @@ jobs:
           git add .
           git commit -m "v${{steps.release.outputs.version}}"
           git push origin gh-pages
+
+x-install-deps: &install-deps
+  - name: Setup Node
+    uses: guardian/actions-setup-node@main
+    with:
+      node-version: latest
+      registry-url: 'https://registry.npmjs.org'
+
+  - name: Setup pnpm
+    uses: pnpm/action-setup@v2
+    with:
+      run_install: false
+
+  - name: Get pnpm store directory
+    shell: bash
+    run: |
+      echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
+
+  - uses: actions/cache@v3
+    name: Setup pnpm cache
+    with:
+      path: ${{ env.STORE_PATH }}
+      key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+      restore-keys: |
+        ${{ runner.os }}-pnpm-store-
+
+  - name: Install dependencies
+    run: pnpm install
+
