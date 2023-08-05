@@ -2,7 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import {
   SocialIcon,
-  getKeys,
+  getNetworks,
   social_icons,
 } from '../../src/react-social-icons.js'
 import * as Icons from '../../dist/icons'
@@ -27,7 +27,7 @@ function VisualTest(props) {
           <label htmlFor="network">Select network to highlight: </label>
           <select name="network" defaultValue={highlighted}>
             <option value="">---</option>
-            {getKeys().map((network) => (
+            {getNetworks().map((network) => (
               <option key={network} value={network}>
                 {network}
               </option>
@@ -51,7 +51,7 @@ function VisualTest(props) {
 
       {highlighted && <HighlightCase network={highlighted} />}
 
-      {getKeys().map((network) => (
+      {getNetworks().map((network) => (
         <Case key={network} network={network} />
       ))}
     </div>
