@@ -43,6 +43,11 @@ function VisualTest(props) {
             type="range"
             defaultValue={scale}
           />
+          <label htmlFor="colorscheme">Colorscheme: </label>
+          <select name="colorscheme" defaultValue={colorscheme}>
+            <option value="dark">dark</option>
+            <option value="light">light</option>
+          </select>
           <br />
           <button>Submit</button>
           <a href="/">Reset</a>
