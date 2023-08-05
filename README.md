@@ -1,3 +1,10 @@
+# temp changelog for release
+
+- code splitting is now supported
+- added new icons
+- props were updated, some were deprecate, some are new
+- React v15 is no longer supported. Now supporting v16, v17, and v18.
+
 # react-social-icons
 
 ![build status](https://img.shields.io/github/actions/workflow/status/jaketrent/react-social-icons/build_test_publish.yml?branch=master)
