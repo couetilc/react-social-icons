@@ -22,6 +22,33 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
+      - name: Setup Node
+        uses: guardian/actions-setup-node@main
+        with:
+          node-version: latest
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          run_install: false
+
+      - name: Get pnpm store directory
+        shell: bash
+        run: |
+          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
+
+      - uses: actions/cache@v3
+        name: Setup pnpm cache
+        with:
+          path: ${{ env.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+
+      - name: Install dependencies
+        run: pnpm install
+
       - name: Install React v${{ matrix.react-version }}
         run: pnpm i react@${{ matrix.react-version }} react-dom@${{ matrix.react-version }} --no-save
 
@@ -40,6 +67,33 @@ jobs:
 
       - name: Checkout
         uses: actions/checkout@v2
+
+      - name: Setup Node
+        uses: guardian/actions-setup-node@main
+        with:
+          node-version: latest
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          run_install: false
+
+      - name: Get pnpm store directory
+        shell: bash
+        run: |
+          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
+
+      - uses: actions/cache@v3
+        name: Setup pnpm cache
+        with:
+          path: ${{ env.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+
+      - name: Install dependencies
+        run: pnpm install
 
       - name: Prepublish
         run: pnpm run prepublish
@@ -61,6 +115,32 @@ jobs:
         with:
           ref: 'origin/gh-pages'
 
+      - name: Setup Node
+        uses: guardian/actions-setup-node@main
+        with:
+          node-version: latest
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          run_install: false
+
+      - name: Get pnpm store directory
+        shell: bash
+        run: |
+          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
+
+      - uses: actions/cache@v3
+        name: Setup pnpm cache
+        with:
+          path: ${{ env.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+
+      - name: Install dependencies
+        run: pnpm install
 
       - name: Save Release Version
         id: release
@@ -75,32 +155,4 @@ jobs:
           git add .
           git commit -m "v${{steps.release.outputs.version}}"
           git push origin gh-pages
-
-x-install-deps: &install-deps
-  - name: Setup Node
-    uses: guardian/actions-setup-node@main
-    with:
-      node-version: latest
-      registry-url: 'https://registry.npmjs.org'
-
-  - name: Setup pnpm
-    uses: pnpm/action-setup@v2
-    with:
-      run_install: false
-
-  - name: Get pnpm store directory
-    shell: bash
-    run: |
-      echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
-
-  - uses: actions/cache@v3
-    name: Setup pnpm cache
-    with:
-      path: ${{ env.STORE_PATH }}
-      key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
-      restore-keys: |
-        ${{ runner.os }}-pnpm-store-
-
-  - name: Install dependencies
-    run: pnpm install
 
