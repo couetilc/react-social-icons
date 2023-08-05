@@ -25,19 +25,25 @@ describe('networkFor', () => {
     })
   })
 
-  it("'network'.com/foo/bar URIs return 'network' social network", ({ expect }) => {
+  it("'network'.com/foo/bar URIs return 'network' social network", ({
+    expect,
+  }) => {
     getNetworks().forEach((network) => {
       expect(networkFor(`http://${network}.com/foo/bar`)).toEqual(network)
     })
   })
 
-  it("'network'.com/foo.bar URIs return 'network' social network", ({ expect }) => {
+  it("'network'.com/foo.bar URIs return 'network' social network", ({
+    expect,
+  }) => {
     getNetworks().forEach((network) => {
       expect(networkFor(`http://${network}.com/foo.bar`)).toEqual(network)
     })
   })
 
-  it("sub-domain.'network'.com URIs return 'network' social network", ({ expect }) => {
+  it("sub-domain.'network'.com URIs return 'network' social network", ({
+    expect,
+  }) => {
     getNetworks().forEach((network) => {
       expect(networkFor(`http://sub-domain.${network}.com`)).toEqual(network)
     })
