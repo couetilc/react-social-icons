@@ -22,8 +22,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - *install-deps
-
       - name: Install React v${{ matrix.react-version }}
         run: pnpm i react@${{ matrix.react-version }} react-dom@${{ matrix.react-version }} --no-save
 
@@ -42,8 +40,6 @@ jobs:
 
       - name: Checkout
         uses: actions/checkout@v2
-
-      - *install-deps
 
       - name: Prepublish
         run: pnpm run prepublish
@@ -65,7 +61,6 @@ jobs:
         with:
           ref: 'origin/gh-pages'
 
-      - *install-deps
 
       - name: Save Release Version
         id: release
