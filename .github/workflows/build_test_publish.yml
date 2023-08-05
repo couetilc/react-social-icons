@@ -50,7 +50,7 @@ jobs:
         run: pnpm install
 
       - name: Install React v${{ matrix.react-version }}
-        run: pnpm i react@${{ matrix.react-version }} react-dom@${{ matrix.react-version }} --no-save
+        run: pnpm i react@${{ matrix.react-version }} react-dom@${{ matrix.react-version }}
 
       - name: Test build
         run: pnpm run build
