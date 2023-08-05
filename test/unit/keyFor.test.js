@@ -1,51 +1,51 @@
 import { describe, it } from 'vitest'
-import { keyFor, getKeys } from '../../src/react-social-icons.js'
+import { networkFor, getNetworks } from '../../src/react-social-icons.js'
 
-describe('keyFor', () => {
+describe('networkFor', () => {
   it('falsy values return default social network', ({ expect }) => {
-    expect(keyFor()).toEqual('sharethis')
+    expect(networkFor()).toEqual('sharethis')
   })
 
   it('unknown values return default social network', ({ expect }) => {
-    expect(keyFor('example.com')).toEqual('sharethis')
-    expect(keyFor('abcdef')).toEqual('sharethis')
+    expect(networkFor('example.com')).toEqual('sharethis')
+    expect(networkFor('abcdef')).toEqual('sharethis')
   })
 
   it("mailto URIs return the special 'mailto' network ", ({ expect }) => {
-    expect(keyFor('mailto:doe@example.com')).toEqual('mailto')
+    expect(networkFor('mailto:doe@example.com')).toEqual('mailto')
   })
 
-  it('getKeys is an array of non zero length', ({ expect }) => {
-    expect(getKeys().length).toBeGreaterThan(0)
+  it('getNetworks is an array of non zero length', ({ expect }) => {
+    expect(getNetworks().length).toBeGreaterThan(0)
   })
 
-  it("'key'.com URIs return 'key' social network", ({ expect }) => {
-    getKeys().forEach((key) => {
-      expect(keyFor(`http://${key}.com`)).toEqual(key)
+  it("'network'.com URIs return 'network' social network", ({ expect }) => {
+    getNetworks().forEach((network) => {
+      expect(networkFor(`http://${network}.com`)).toEqual(network)
     })
   })
 
-  it("'key'.com/foo/bar URIs return 'key' social network", ({ expect }) => {
-    getKeys().forEach((key) => {
-      expect(keyFor(`http://${key}.com/foo/bar`)).toEqual(key)
+  it("'network'.com/foo/bar URIs return 'network' social network", ({ expect }) => {
+    getNetworks().forEach((network) => {
+      expect(networkFor(`http://${network}.com/foo/bar`)).toEqual(network)
     })
   })
 
-  it("'key'.com/foo.bar URIs return 'key' social network", ({ expect }) => {
-    getKeys().forEach((key) => {
-      expect(keyFor(`http://${key}.com/foo.bar`)).toEqual(key)
+  it("'network'.com/foo.bar URIs return 'network' social network", ({ expect }) => {
+    getNetworks().forEach((network) => {
+      expect(networkFor(`http://${network}.com/foo.bar`)).toEqual(network)
     })
   })
 
-  it("sub-domain.'key'.com URIs return 'key' social network", ({ expect }) => {
-    getKeys().forEach((key) => {
-      expect(keyFor(`http://sub-domain.${key}.com`)).toEqual(key)
+  it("sub-domain.'network'.com URIs return 'network' social network", ({ expect }) => {
+    getNetworks().forEach((network) => {
+      expect(networkFor(`http://sub-domain.${network}.com`)).toEqual(network)
     })
   })
 
-  it("www.'key'.com URIs return 'key' social network", ({ expect }) => {
-    getKeys().forEach((key) => {
-      expect(keyFor(`www.${key}.com`)).toEqual(key)
+  it("www.'network'.com URIs return 'network' social network", ({ expect }) => {
+    getNetworks().forEach((network) => {
+      expect(networkFor(`www.${network}.com`)).toEqual(network)
     })
   })
 })

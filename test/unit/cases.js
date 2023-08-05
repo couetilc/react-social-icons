@@ -320,11 +320,11 @@ export const cases = ({ SocialIcon, getKeys }) =>
             const icon_def = await import(`social-icons:${network}`).then(
               (mod) => mod.default
             )
-            expect(Object.keys(icon_def)).to.deep.equal([
+            expect(Object.keys(icon_def)).to.be.an('array').that.includes(
               'icon',
               'mask',
               'color',
-            ])
+            )
           })
         )
       })

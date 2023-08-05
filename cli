@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-PRETTIER_PATTERN=("./*.js" "src/**" "test/**")
+PRETTIER_PATTERN=("./*.js" "src/**" "test/**" "db/**")
 
 build() {
   pnpm rollup -c rollup.config.js "$@"

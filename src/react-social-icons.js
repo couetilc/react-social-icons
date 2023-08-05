@@ -5,10 +5,10 @@ import {
   register,
   social_icons,
   network_names,
-  uri_regex
+  uri_regex,
 } from './component.jsx'
 
-export function getKeys() {
+export function getNetworks() {
   return [...network_names]
 }
 

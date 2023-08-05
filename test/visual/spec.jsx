@@ -1,6 +1,10 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import { SocialIcon, getKeys, social_icons  } from '../../src/react-social-icons.js'
+import {
+  SocialIcon,
+  getKeys,
+  social_icons,
+} from '../../src/react-social-icons.js'
 import * as Icons from '../../dist/icons'
 
 function VisualTest(props) {
@@ -16,9 +20,9 @@ function VisualTest(props) {
   return (
     <div
       data-responsive={responsive}
-      style={{"--icon-height": `calc(50px * ${scale})`}}
+      style={{ '--icon-height': `calc(50px * ${scale})` }}
     >
-      {knobs &&
+      {knobs && (
         <form id="knobs" action="/">
           <label htmlFor="network">Select network to highlight: </label>
           <select name="network" defaultValue={highlighted}>
@@ -41,15 +45,15 @@ function VisualTest(props) {
           />
           <br />
           <button>Submit</button>
-          <a href="/">
-            Reset
-          </a>
+          <a href="/">Reset</a>
         </form>
-      }
+      )}
 
       {highlighted && <HighlightCase network={highlighted} />}
 
-      {getKeys().map((network) => ( <Case key={network} network={network} />))}
+      {getKeys().map((network) => (
+        <Case key={network} network={network} />
+      ))}
     </div>
   )
 }
@@ -60,48 +64,26 @@ function Case(props) {
   return (
     <section className={network}>
       <div className="sm">
-        <SocialIcon
-          network={network}
-          style={sm}
-        />
+        <SocialIcon network={network} style={sm} />
         <SocialIcon
           network={network}
           style={sm}
           fgColor={social_icons.get(network).color}
           bgColor="white"
         />
-        <SocialIcon
-          network={network}
-          style={sm}
-          fgColor="transparent"
-        />
-        <SocialIcon
-          network={network}
-          style={sm}
-          bgColor="transparent"
-        />
+        <SocialIcon network={network} style={sm} fgColor="transparent" />
+        <SocialIcon network={network} style={sm} bgColor="transparent" />
       </div>
       <div className="lg">
-        <SocialIcon
-          network={network}
-          style={lg}
-        />
+        <SocialIcon network={network} style={lg} />
         <SocialIcon
           network={network}
           style={lg}
           fgColor={social_icons.get(network).color}
           bgColor="white"
         />
-        <SocialIcon
-          network={network}
-          style={lg}
-          fgColor="transparent"
-        />
-        <SocialIcon
-          network={network}
-          style={lg}
-          bgColor="transparent"
-        />
+        <SocialIcon network={network} style={lg} fgColor="transparent" />
+        <SocialIcon network={network} style={lg} bgColor="transparent" />
       </div>
     </section>
   )
@@ -113,82 +95,51 @@ function HighlightCase(props) {
   return (
     <section className={`${network} highlight`}>
       <div className="sm">
-        <SocialIcon
-          network={network}
-          style={sm}
-        />
-        <SocialIcon
-          network={network}
-          style={sm}
-          fgColor={social_icons.get(network).color}
-          bgColor="white"
-        />
-        <SocialIcon
-          network={network}
-          style={sm}
-          fgColor="transparent"
-        />
-        <SocialIcon
-          network={network}
-          style={sm}
-          bgColor="transparent"
-        />
-        <SocialIcon
-          network={network}
-          style={sm}
-        />
+        <SocialIcon network={network} style={sm} />
         <SocialIcon
           network={network}
           style={sm}
           fgColor={social_icons.get(network).color}
           bgColor="white"
         />
+        <SocialIcon network={network} style={sm} fgColor="transparent" />
+        <SocialIcon network={network} style={sm} bgColor="transparent" />
+        <SocialIcon network={network} style={sm} />
         <SocialIcon
           network={network}
           style={sm}
-          fgColor="transparent"
+          fgColor={social_icons.get(network).color}
+          bgColor="white"
         />
-        <SocialIcon
-          network={network}
-          style={sm}
-          bgColor="transparent"
-        />
+        <SocialIcon network={network} style={sm} fgColor="transparent" />
+        <SocialIcon network={network} style={sm} bgColor="transparent" />
       </div>
       <div className="lg">
-        <SocialIcon
-          network={network}
-          style={lg}
-        />
+        <SocialIcon network={network} style={lg} />
         <SocialIcon
           network={network}
           style={lg}
           fgColor={social_icons.get(network).color}
           bgColor="white"
         />
-        <SocialIcon
-          network={network}
-          style={lg}
-          fgColor="transparent"
-        />
-        <SocialIcon
-          network={network}
-          style={lg}
-          bgColor="transparent"
-        />
+        <SocialIcon network={network} style={lg} fgColor="transparent" />
+        <SocialIcon network={network} style={lg} bgColor="transparent" />
       </div>
       <div className="xl">
-        <SocialIcon
-          network={network}
-          style={xl}
-        />
+        <SocialIcon network={network} style={xl} />
       </div>
     </section>
   )
 }
 
-const sm = {height: 'var(--icon-height)', width: 'var(--icon-height)'}
-const lg = {height: 'calc(4 * var(--icon-height))', width: 'calc(4 * var(--icon-height))'}
-const xl = {height: 'calc(8 * var(--icon-height))', width: 'calc(8 * var(--icon-height))'}
+const sm = { height: 'var(--icon-height)', width: 'var(--icon-height)' }
+const lg = {
+  height: 'calc(4 * var(--icon-height))',
+  width: 'calc(4 * var(--icon-height))',
+}
+const xl = {
+  height: 'calc(8 * var(--icon-height))',
+  width: 'calc(8 * var(--icon-height))',
+}
 
 ReactDOM.createRoot(document.querySelector('#root')).render(<VisualTest />)
-
