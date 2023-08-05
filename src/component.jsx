@@ -36,7 +36,7 @@ const social_svg_g = {
 
 const makeUriRegex = (socials = []) =>
   new RegExp(
-    '(?:https?:\\/\\/(?:[a-z0-9-]*.)?)?($SOCIALS).*'.replace(
+    '(?:https?:\\/\\/(?:[a-z0-9-])?)?($SOCIALS)[.]'.replace(
       '$SOCIALS',
       socials.join('|')
     ),
@@ -60,6 +60,10 @@ export function register(social, icon) {
 export function networkFor(url) {
   if (!url) {
     return default_key
+  }
+
+  if (url.startsWith('mailto:')) {
+    return 'mailto'
   }
 
   return url.match(uri_regex)?.[1] || default_key
