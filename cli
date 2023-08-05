@@ -22,7 +22,7 @@ info:bundlesize() {
 }
 
 info:visual() {
-  pnpm vite -c vite.config.js test/visual/
+  pnpm vite --force -c vite.config.js test/visual/
 }
 
 info:www() {
@@ -30,7 +30,7 @@ info:www() {
 }
 
 test:lint() {
-  pnpm eslint .eslintrc.cjs .
+  pnpm eslint .eslintrc.cjs . db/*
 }
 
 test:publint() {

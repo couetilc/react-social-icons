@@ -13,6 +13,7 @@ module.exports = {
     'plugin:react/recommended',
     'plugin:import/recommended',
     'prettier',
+    'plugin:json/recommended'
   ],
   'overrides': [
   ],
@@ -22,7 +23,7 @@ module.exports = {
     'sourceType': 'module'
   },
   'plugins': [
-    'react',
+    'react'
   ],
   'rules': {
 

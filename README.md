@@ -208,6 +208,8 @@ const network = url.match(uri_regex)?.[1]
   info:visual still picks up on anything. This is the time to checkout the PRs
   and see if I addressed all the issues by my updates.
 
+* update github workflow for build test publish.
+
 * I need instructions on how to draw a path for this library. even I'm hazy on
   it. Like how does viewbox work? Do all paths need to stay with the 0 0 64 64
   it set or does it scale automatically, like a fit to min-width?
@@ -224,6 +226,11 @@ const network = url.match(uri_regex)?.[1]
 - linting for json files in db/
 
 - work on PR magic, for screenshots and bundlesize, etc.
+    I can maybe do this based on the static files pushed to github pages by
+    a workflow. if I have a directory for screenshots, and even better if I
+    can publish a single file at a time to the website instead of all files at
+    once, would be easy to have a workflow take and post a screenshot of the
+    whole page with all the networks. can be directory `screenshots/[commit_hash].png`
 
 - deploy docs page to website, on every release. Actually instead use a workflow:
     https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages
