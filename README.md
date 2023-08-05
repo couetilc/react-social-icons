@@ -204,10 +204,6 @@ const network = url.match(uri_regex)?.[1]
 
 # TODO
 
-* I need to merge in all the icon updates, and any other open PRs. Then see if
-  info:visual still picks up on anything. This is the time to checkout the PRs
-  and see if I addressed all the issues by my updates.
-
 * update github workflow for build test publish.
 
 * I need instructions on how to draw a path for this library. even I'm hazy on
@@ -222,8 +218,6 @@ const network = url.match(uri_regex)?.[1]
 
 * publishing. how much can I automate to be done from command line, and/or
     activated by github actions.
-
-- linting for json files in db/
 
 - work on PR magic, for screenshots and bundlesize, etc.
     I can maybe do this based on the static files pushed to github pages by

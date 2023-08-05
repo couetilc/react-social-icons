@@ -69,6 +69,7 @@
     "vsco": "./dist/icons/vsco.js",
     "wechat": "./dist/icons/wechat.js",
     "whatsapp": "./dist/icons/whatsapp.js",
+    "x": "./dist/icons/x.js",
     "yelp": "./dist/icons/yelp.js",
     "youtube": "./dist/icons/youtube.js"
   },
@@ -131,5 +132,6 @@
     "@babel/runtime": "^7.22.6",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
-  }
+  },
+  "packageManager": "pnpm@8.6.6"
 }

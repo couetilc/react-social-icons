@@ -25,6 +25,7 @@ jobs:
       - name: Setup Node
         uses: guardian/actions-setup-node@main
         with:
+          node-version: latest
           registry-url: 'https://registry.npmjs.org'
 
       - name: Install Dependencies

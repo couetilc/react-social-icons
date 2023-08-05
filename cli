@@ -29,6 +29,22 @@ info:www() {
   pnpm vite -c vite.config.js www/
 }
 
+task:update-node() {
+  brew upgrade nodenv node-build
+  latest="$(node-build --definitions | sort -urn | head -n 1)"
+  echo "$latest" > .node-version
+  nodenv install --skip-existing "$(cat .node-version)"
+  corepack enable
+  node -e "
+    var packagejson = require('./package.json')
+    packagejson.packageManager = 'pnpm@$(pnpm -v)'
+    fs.writeFileSync(
+      './package.json',
+      JSON.stringify(packagejson, null, 2)
+    )
+  "
+}
+
 test:lint() {
   pnpm eslint .eslintrc.cjs . db/*
 }
