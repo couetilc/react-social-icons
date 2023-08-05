@@ -25,7 +25,7 @@ jobs:
       - name: Setup Node
         uses: guardian/actions-setup-node@main
         with:
-          node-version: latest
+          node-version-file: .node-version
           registry-url: 'https://registry.npmjs.org'
 
       - name: Setup pnpm
@@ -71,7 +71,7 @@ jobs:
       - name: Setup Node
         uses: guardian/actions-setup-node@main
         with:
-          node-version: latest
+          node-version-file: .node-version
           registry-url: 'https://registry.npmjs.org'
 
       - name: Setup pnpm
@@ -118,7 +118,7 @@ jobs:
       - name: Setup Node
         uses: guardian/actions-setup-node@main
         with:
-          node-version: latest
+          node-version-file: .node-version
           registry-url: 'https://registry.npmjs.org'
 
       - name: Setup pnpm
