@@ -16,7 +16,7 @@ jobs:
     name: Test React v${{ matrix.react-version }}
     strategy:
       matrix:
-        react-version: [ 18 ]
+        react-version: [ 15, 16, 17, 18 ]
     steps:
 
       - name: Checkout
@@ -48,6 +48,10 @@ jobs:
 
       - name: Install dependencies
         run: pnpm install
+
+      - name: blah
+        if: ${{ matrix.react-version }} < 18
+        run: pnpm add -D @testing-library/react@12
 
       - name: Install React v${{ matrix.react-version }}
         run: pnpm i react@${{ matrix.react-version }} react-dom@${{ matrix.react-version }}
