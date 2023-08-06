@@ -47,6 +47,8 @@ jobs:
         run: |
           sha="$GITHUB_SHA"
 
+          env
+
           networks=$(
             git diff --name-only "$GITHUB_BASE_REF" \
             | grep db/ \
@@ -111,7 +113,7 @@ jobs:
             const link_networks = '${{ steps.screenshot.outputs.link_networks }}'.split(',');
             const link_index = '${{ steps.screenshot.outputs.link_networks }}'
 
-            console.log(context)
+            console.log(arguments)
 
             github.rest.pulls.createReviewComment({
               pull_number: context.pull.number,
