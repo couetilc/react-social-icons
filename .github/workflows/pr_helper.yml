@@ -41,10 +41,12 @@ jobs:
 
       - name: Take Screenshot
         run: |
+          sha="$GIT_SHA"
+          
           pnpm vite build \
             -l silent \
             -c test/visual/vite.config.js \
-            --outDir "/tmp/visual/$GIT_SHA/dist" \
+            --outDir "/tmp/visual/$sha/dist" \
             test/visual
 
           pnpm vite preview \
@@ -54,7 +56,7 @@ jobs:
             --open false \
             -c test/visual/vite.config.js \
             -l silent \
-            "/tmp/visual/$GIT_SHA" \
+            "/tmp/visual/$sha" \
             &
           pid=$!
 
@@ -66,12 +68,12 @@ jobs:
           pnpx playwright screenshot \
             --viewport-size="$((1250 * $scale)), $((400 * $scale))" \
             "http://localhost:4173?network=$network&knobs=false&scale=$scale" \
-            "./static/$GIT_SHA/$network.png"
+            "./static/$sha/$network.png"
 
           pnpx playwright screenshot \
           --full-page \
             "http://localhost:4173?network=$network&knobs=false&scale=$scale" \
-            "./static/$GIT_SHA/index.png"
+            "./static/$sha/index.png"
 
           kill $pid
 
@@ -86,6 +88,43 @@ jobs:
 
           # trigger github pages build (is done auto?)
           # add link to pr
+
+          git checkout -
+
+          link_networks="https://jaketrent.github.io/react-social-icons/static/$sha/$network.png"
+          link_index="https://jaketrent.github.io/react-social-icons/static/$sha/index.png"
+
+          echo "link_networks=$link_networks" >> $GITHUB_OUTPUT
+          echo "link_index=$link_index" >> $GITHUB_OUTPUT
+
+      - name: Comment on PR with screenshots
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const link_networks = ${{ steps.vars.outputs.link_networks }}
+            const link_index = ${{ steps.vars.outputs.link_index }}
+
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: `
+                # Screenshots
+                <details>
+                  <summary>
+                    ${link_networks.replace(/^.*\//, '')}
+                  </summary>
+                  <img
+                    src="${link_networks}"
+                    alt="screenshot of ${link_networks.replace(/^.*\//, '').replace('.png', '')}"
+                  />
+                  <img
+                    src="${link_index}"
+                    alt="screenshot of all networks"
+                  />
+                </details>
+              `.replace(/^\w+/, '').trim()
+            })
 
 #       - name: take screenshot
 #         uses: ./.github/actions/screenshot
