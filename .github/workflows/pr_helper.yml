@@ -47,6 +47,8 @@ jobs:
           sha="$GITHUB_SHA"
 
           echo "sha: $sha"
+
+          pnpm vite build --help
           
           pnpm vite build \
             -l silent \
