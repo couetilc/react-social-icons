@@ -45,12 +45,16 @@ jobs:
       - name: Take Screenshot
         run: |
           sha="$GIT_SHA"
+
+          echo "sha: $sha"
           
           pnpm vite build \
             -l silent \
             -c test/visual/vite.config.js \
             --outDir "/tmp/visual/$sha/dist" \
             test/visual
+
+          echo "successful build"
 
           pnpm vite preview \
             --host 0.0.0.0 \
@@ -63,7 +67,12 @@ jobs:
             &
           pid=$!
 
+          echo "preview running $pid"
+
           git checkout gh-pages
+
+          echo "status:"
+          git status
 
           scale=2
           network=tiktok
@@ -73,12 +82,18 @@ jobs:
             "http://localhost:4173?network=$network&knobs=false&scale=$scale" \
             "./static/$sha/$network.png"
 
+          echo "successful network screenshot"
+
           pnpx playwright screenshot \
           --full-page \
             "http://localhost:4173?network=$network&knobs=false&scale=$scale" \
             "./static/$sha/index.png"
 
+          echo "successful index screenshot"
+
           kill $pid
+
+          echo "killed"
 
           git add static/
           git \
@@ -89,16 +104,25 @@ jobs:
             --no-verify
           git push origin gh-pages
 
+          echo "successful push"
+
           # trigger github pages build (is done auto?)
           # add link to pr
 
           git checkout -
+
+          echo "status:"
+          git status
 
           link_networks="https://jaketrent.github.io/react-social-icons/static/$sha/$network.png"
           link_index="https://jaketrent.github.io/react-social-icons/static/$sha/index.png"
 
           echo "link_networks=$link_networks" >> $GITHUB_OUTPUT
           echo "link_index=$link_index" >> $GITHUB_OUTPUT
+
+          echo "SUCCESS"
+
+          exit 0;
 
       - name: Comment on PR with screenshots
         uses: actions/github-script@v6
