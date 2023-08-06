@@ -103,7 +103,7 @@ jobs:
             // const link_networks = ${{ steps.vars.outputs.link_networks }}
             // const link_index = ${{ steps.vars.outputs.link_index }}
 
-            const link = ${{ steps.vars.outputs.link_networks }}
+            const link = "${{ steps.vars.outputs.link_networks }}";
             console.log(link)
 
             /*
