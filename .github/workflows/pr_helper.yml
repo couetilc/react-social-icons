@@ -49,6 +49,14 @@ jobs:
 
           env
 
+          networks=$(
+            git diff --name-only "$GITHUB_BASE_REF" \
+            | grep db/ \
+            | sed -E 's/db\/(.*)[.]json/\1/'
+          )
+
+          echo $networks
+
           ./cli build:visual --outDir "/tmp/visual/$sha/dist"
 
           pnpm vite preview \
@@ -69,10 +77,6 @@ jobs:
 
           scale=2
 
-          suffixed=${GITHUB_REF/refs\/pull\//}
-          pr=${suffixed/\/merge/}
-          networks="$(gh pr view $pr --json files --jq '.files.[].path' | grep db/)"
-
           for network in $networks
           do
             pnpx playwright screenshot \
@@ -80,11 +84,6 @@ jobs:
               "http://localhost:4173?network=$network&knobs=false&scale=$scale&colorscheme=light" \
               "./static/$sha/$network.png"
           done
-
-          pnpx playwright screenshot \
-            --viewport-size="$((850 * $scale)), $((400 * $scale))" \
-            "http://localhost:4173?network=$network&knobs=false&scale=$scale&colorscheme=light" \
-            "./static/$sha/$network.png"
 
           pnpx playwright screenshot \
           --full-page \
