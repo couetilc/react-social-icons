@@ -48,13 +48,7 @@ jobs:
 
           echo "sha: $sha"
 
-          pnpm vite build --help
-          
-          # something is wrong with the next line
-          pnpm vite build \
-            -c test/visual/vite.config.js \
-            --outDir "/tmp/visual/$sha/dist" \
-            test/visual/
+          ./cli build:visual --outDir "/tmp/visual/$sha/dist"
 
           echo "successful build"
 

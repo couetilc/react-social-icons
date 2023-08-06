@@ -3,7 +3,16 @@
 PRETTIER_PATTERN=("./*.js" "src/**" "test/**" "db/**")
 
 build() {
+  build:pkg "$@"
+}
+
+build:pkg() {
   pnpm rollup -c rollup.config.js "$@"
+}
+
+build:visual() {
+  build:pkg
+  pnpm vite build -c test/visual/vite.config.js "$@" test/visual
 }
 
 dev() {
