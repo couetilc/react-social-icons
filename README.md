@@ -177,7 +177,7 @@ domain name.
 
 ```js
 import { register } from 'react-social-icons';
-const icon = { color: 'red', icon: 'icon path', mask: 'mask color' }
+const icon = { color: 'red', icon: 'icon path', mask: 'mask path' }
 const social_network = 'mynetwork'
 register(social_network, icon)
 ```
@@ -201,7 +201,8 @@ const same_array_of_names = getKeys()
 ### `uri_regex`
 
 A regex for urls that will match any social network domain names that are
-registered.
+registered. (this will not match `mailto:` links or return the default network,
+use `networkFor` instead)
 
 ```js
 import { uri_regex } from 'react-social-icons'

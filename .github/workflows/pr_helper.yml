@@ -1,0 +1,91 @@
+name: PR Helper
+
+on:
+  pull_request:
+    branches: '*'
+
+jobs:
+  screenshot:
+    runs-on: ubuntu-latest
+    name: Screenshot
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version-file: .node-version
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          run_install: false
+
+      - name: Get pnpm store directory
+        shell: bash
+        run: |
+          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
+
+      - uses: actions/cache@v3
+        name: Setup pnpm cache
+        with:
+          path: ${{ env.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Take Screenshot
+        run: |
+          pnpm vite build \
+            -l silent \
+            -c test/visual/vite.config.js \
+            --outDir "/tmp/visual/$GIT_SHA/dist" \
+            test/visual
+
+          pnpm vite preview \
+            --host 0.0.0.0 \
+            --port 4173 \
+            --strictPort \
+            --open false \
+            -c test/visual/vite.config.js \
+            -l silent \
+            "/tmp/visual/$GIT_SHA" \
+            &
+          pid=$!
+
+          git checkout gh-pages
+
+          scale=2
+          network=tiktok
+
+          pnpx playwright screenshot \
+            --viewport-size="$((1250 * $scale)), $((400 * $scale))" \
+            "http://localhost:4173?network=$network&knobs=false&scale=$scale" \
+            "./static/$GIT_SHA/$network.png"
+
+          pnpx playwright screenshot \
+          --full-page \
+            "http://localhost:4173?network=$network&knobs=false&scale=$scale" \
+            "./static/$GIT_SHA/index.png"
+
+          kill $pid
+
+          git add static/
+          git \
+            -c user.name="screenshots[bot]" \
+            -c user.email="screenshots[bot]@users.noreply.github.com" \
+            commit \
+            -m "screenshots (automated)" \
+            --no-verify
+          git push origin gh-pages
+
+          # trigger github pages build (is done auto?)
+          # add link to pr
+
+#       - name: take screenshot
+#         uses: ./.github/actions/screenshot
