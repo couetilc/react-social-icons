@@ -3,6 +3,7 @@ name: PR Helper
 on:
   pull_request:
     branches: '*'
+    types: [opened, synchronize]
 
 jobs:
   screenshot:
