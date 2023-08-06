@@ -47,6 +47,8 @@ jobs:
         run: |
           sha="$GITHUB_SHA"
 
+          env
+
           ./cli build:visual --outDir "/tmp/visual/$sha/dist"
 
           pnpm vite preview \
@@ -66,16 +68,27 @@ jobs:
           git status
 
           scale=2
-          network=tiktok
+
+          suffixed=${GITHUB_REF/refs\/pull\//}
+          pr=${suffixed/\/merge/}
+          networks="$(gh pr view $pr --json files --jq '.files.[].path' | grep db/)"
+
+          for network in $networks
+          do
+            pnpx playwright screenshot \
+              --viewport-size="$((850 * $scale)), $((400 * $scale))" \
+              "http://localhost:4173?network=$network&knobs=false&scale=$scale&colorscheme=light" \
+              "./static/$sha/$network.png"
+          done
 
           pnpx playwright screenshot \
-            --viewport-size="$((1250 * $scale)), $((400 * $scale))" \
-            "http://localhost:4173?network=$network&knobs=false&scale=$scale" \
+            --viewport-size="$((850 * $scale)), $((400 * $scale))" \
+            "http://localhost:4173?network=$network&knobs=false&scale=$scale&colorscheme=light" \
             "./static/$sha/$network.png"
 
           pnpx playwright screenshot \
           --full-page \
-            "http://localhost:4173?knobs=false&scale=$scale" \
+            "http://localhost:4173?knobs=false&scale=$scale&colorscheme=light" \
             "./static/$sha/index.png"
 
           kill $pid
@@ -101,27 +114,32 @@ jobs:
         uses: actions/github-script@v6
         with:
           script: |
-            // const link_networks = ${{ steps.screenshot.outputs.link_networks }}
-            // const link_index = ${{ steps.screenshot.outputs.link_index }}
+            const link_networks = '${{ steps.screenshot.outputs.link_networks }}'.split(',');
+            const link_index = '${{ steps.screenshot.outputs.link_networks }}'
 
-            const link = '${{ steps.screenshot.outputs.link_networks }}';
-            console.log('link: ' + link)
-
-            /*
             github.rest.issues.createComment({
               issue_number: context.issue.number,
               owner: context.repo.owner,
               repo: context.repo.repo,
               body: `
                 # Screenshots
+                ${link_networks.map(link => {
+                  const filename = link.replace(/^.*\//u, '')
+                  const network = filename.replace('.png', '')
+                  return `
+                    <details>
+                      <summary>
+                        ${network}
+                      </summary>
+                      <img
+                        src="${link}"
+                        alt="screenshot of an updated social network"
+                      />
+                    </details>
+                  `;
+                })}
                 <details>
-                  <summary>
-                    ${link_networks.replace(/^.*\//, '')}
-                  </summary>
-                  <img
-                    src="${link_networks}"
-                    alt="screenshot of an updated social network"
-                  />
+                  <summary>All Networks</summary>
                   <img
                     src="${link_index}"
                     alt="screenshot of all networks"
@@ -129,7 +147,6 @@ jobs:
                 </details>
               `.replace(/^\w+/, '').trim()
             })
-            */
 
 #       - name: take screenshot
 #         uses: ./.github/actions/screenshot
