@@ -1,7 +1,7 @@
 name: PR Helper
 
 on:
-  pull_request_target:
+  pull_request:
     types: [opened, synchronize, reopened, edited]
 
 jobs:
@@ -44,8 +44,6 @@ jobs:
         run: |
           sha="$GITHUB_SHA"
 
-          env
-
           networks=$(
             git diff --name-only "$GITHUB_BASE_REF" \
             | grep db/ \
@@ -71,7 +69,6 @@ jobs:
 
           link_networks=""
           link_index="https://jaketrent.github.io/react-social-icons/static/$sha/index.png"
-
 
           for network in $networks
           do
@@ -110,8 +107,6 @@ jobs:
             const link_networks = '${{ steps.screenshot.outputs.link_networks }}'.split(',');
             const link_index = '${{ steps.screenshot.outputs.link_networks }}'
 
-            console.log(arguments)
-
             github.rest.pulls.createReviewComment({
               pull_number: context.pull.number,
               owner: context.repo.owner,
@@ -146,6 +141,3 @@ jobs:
                 </details>
               `.replace(/^\w+/, '').trim()
             })
-
-#       - name: take screenshot
-#         uses: ./.github/actions/screenshot
