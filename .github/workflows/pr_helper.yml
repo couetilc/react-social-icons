@@ -2,10 +2,8 @@ name: PR Helper
 
 on:
   pull_request:
-    branches: '*'
     types: [opened, synchronize, reopened, edited]
   pull_request_target:
-    branches: '*'
     types: [assigned, opened, synchronize, reopened]
 
 jobs:
