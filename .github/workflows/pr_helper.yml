@@ -64,6 +64,7 @@ jobs:
 
           echo "preview running $pid"
 
+          git fetch origin
           git checkout gh-pages
 
           echo "status:"
