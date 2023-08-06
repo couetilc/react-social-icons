@@ -13,6 +13,7 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
+    if: github.ref != 'refs/heads/gh-pages
     name: Test React v${{ matrix.react-version }}
     strategy:
       matrix:
