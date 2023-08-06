@@ -43,6 +43,7 @@ jobs:
         run: pnpm install
 
       - name: Take Screenshot
+        id: screenshot
         run: |
           sha="$GITHUB_SHA"
 
@@ -100,11 +101,11 @@ jobs:
         uses: actions/github-script@v6
         with:
           script: |
-            // const link_networks = ${{ steps.vars.outputs.link_networks }}
-            // const link_index = ${{ steps.vars.outputs.link_index }}
+            // const link_networks = ${{ steps.screenshot.outputs.link_networks }}
+            // const link_index = ${{ steps.screenshot.outputs.link_index }}
 
-            const link = "${{ steps.vars.outputs.link_networks }}";
-            console.log(link)
+            const link = '${{ steps.screenshot.outputs.link_networks }}';
+            console.log('link: ' + link)
 
             /*
             github.rest.issues.createComment({
