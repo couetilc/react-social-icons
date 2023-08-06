@@ -44,7 +44,7 @@ jobs:
 
       - name: Take Screenshot
         run: |
-          sha="$GIT_SHA"
+          sha="$GITHUB_SHA"
 
           echo "sha: $sha"
           
