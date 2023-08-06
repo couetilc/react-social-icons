@@ -47,15 +47,11 @@ jobs:
         run: |
           sha="$GITHUB_SHA"
 
-          env
-
           networks=$(
             git diff --name-only "$GITHUB_BASE_REF" \
             | grep db/ \
             | sed -E 's/db\/(.*)[.]json/\1/'
           )
-
-          echo $networks
 
           ./cli build:visual --outDir "/tmp/visual/$sha/dist"
 
@@ -72,10 +68,11 @@ jobs:
           git fetch origin
           git checkout gh-pages
 
-          echo "status:"
-          git status
-
           scale=2
+
+          link_networks=""
+          link_index="https://jaketrent.github.io/react-social-icons/static/$sha/index.png"
+
 
           for network in $networks
           do
@@ -83,6 +80,7 @@ jobs:
               --viewport-size="$((850 * $scale)), $((400 * $scale))" \
               "http://localhost:4173?network=$network&knobs=false&scale=$scale&colorscheme=light" \
               "./static/$sha/$network.png"
+            link_networks="$link_networks,https://jaketrent.github.io/react-social-icons/static/$sha/$network.png"
           done
 
           pnpx playwright screenshot \
@@ -103,9 +101,6 @@ jobs:
 
           git checkout -
 
-          link_networks="https://jaketrent.github.io/react-social-icons/static/$sha/$network.png"
-          link_index="https://jaketrent.github.io/react-social-icons/static/$sha/index.png"
-
           echo "link_networks=$link_networks" >> $GITHUB_OUTPUT
           echo "link_index=$link_index" >> $GITHUB_OUTPUT
 
@@ -116,27 +111,33 @@ jobs:
             const link_networks = '${{ steps.screenshot.outputs.link_networks }}'.split(',');
             const link_index = '${{ steps.screenshot.outputs.link_networks }}'
 
-            github.rest.issues.createComment({
-              issue_number: context.issue.number,
+            console.log(context)
+
+            github.rest.pulls.createReviewComment({
+              pull_number: context.pull.number,
               owner: context.repo.owner,
               repo: context.repo.repo,
               body: `
                 # Screenshots
-                ${link_networks.map(link => {
-                  const filename = link.replace(/^.*\//u, '')
-                  const network = filename.replace('.png', '')
-                  return `
-                    <details>
-                      <summary>
-                        ${network}
-                      </summary>
-                      <img
-                        src="${link}"
-                        alt="screenshot of an updated social network"
-                      />
-                    </details>
-                  `;
-                })}
+                ${link_networks
+                  .filter(link => link.length > 0)
+                  .sort((a, b) => a.localeCompare(b))
+                  .map(link => {
+                    const filename = link.replace(/^.*\//u, '')
+                    const network = filename.replace('.png', '')
+                    return `
+                      <details>
+                        <summary>
+                          ${network}
+                        </summary>
+                        <img
+                          src="${link}"
+                          alt="screenshot of an updated social network"
+                        />
+                      </details>
+                    `;
+                  })
+                }
                 <details>
                   <summary>All Networks</summary>
                   <img
