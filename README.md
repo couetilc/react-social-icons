@@ -106,6 +106,14 @@ Or an icon definition
 
 ## FAQ
 
+TODO FAQ topics
+
+- write examples of how to codesplit with this package. write example rollup
+    config, and also write example webpack config. can I add a webpack config
+    test to `codesplitting.sh`?
+
+- create an FAQ or something in the readme: what else can I include from the issues, opened or closed?
+
 ### opening in new tab
 
 To open a link in a new tab, pass the `target` prop to `<SocialIcon>`. The `<SocialIcon>` is just an `<a>` element underneath with all the component's props spread into its attributes.
@@ -212,7 +220,24 @@ const network = url.match(uri_regex)?.[1]
 
 # TODO
 
-* update github workflow for build test publish.
+* I think the big next things are to:
+    - update docs
+    - make the default branch `main` and not `master`
+    - squash merge code-splitting branch into main
+    - publish a beta release v6.0.0-beta1
+    - post on the issues where their updates reflect what is in v6 to please
+      try out the beta (this will be code splitting issue, and some of the PRs)
+    - try out the beta on dad's website.
+    - once confirm is working on dad's website, publish v6.0.0
+    - reset the `gh-pages` branch to `main`, then remove all files except for
+      `static/`, and then manually run a build targeting the root of the repo
+      and commit all files so the page updates.
+    - start testing my PR helper action, so  screenshots are correct, by making
+      new PRs incorporating changes from the PRs against v5.
+    - start testing my auto example page workflow for when I publish new releases.
+      (workflow_dispatch this one?)
+    - now I can hit the rest of my todos on the list
+    - auto-update README image of all icons on every push/publish to master. ( i think publish better)
 
 * I need instructions on how to draw a path for this library. even I'm hazy on
   it. Like how does viewbox work? Do all paths need to stay with the 0 0 64 64
@@ -224,42 +249,7 @@ const network = url.match(uri_regex)?.[1]
   I need to diagnose root issue, then I should be able to write a test that
   checks this for all SVGs.
 
-* publishing. how much can I automate to be done from command line, and/or
-    activated by github actions.
-
-- work on PR magic, for screenshots and bundlesize, etc.
-    I can maybe do this based on the static files pushed to github pages by
-    a workflow. if I have a directory for screenshots, and even better if I
-    can publish a single file at a time to the website instead of all files at
-    once, would be easy to have a workflow take and post a screenshot of the
-    whole page with all the networks. can be directory `screenshots/[commit_hash].png`
-
-- deploy docs page to website, on every release. Actually instead use a workflow:
-    https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages
-    also https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site#publishing-with-a-custom-github-actions-workflow
-
-- write examples of how to codesplit with this package. write example rollup
-    config, and also write example webpack config. can I add a webpack config
-    test to `codesplitting.sh`?
-
-- write githook to throw
-  error if yarn.lock or package-lock.json exists when commit or pushing. or have
-  it check at least no staged files are yar.lock or package-lock.json when committing.
-
-- create an FAQ or something in the readme: what else can I include from the issues, opened or closed?
-
-- auto-update README image of all icons on every push/publish to master. ( i think publish better)
-
 - fix the inkscape instructions
-
-- how to handle changelog and releases? maybe everytime there's a new semantic
-  versioning tag? or use that changesets package or something?
-  - basically, how can I make publishing painless, super easy, and still track
-    and communicate changes easily to package consumers
-
-- I can probably take screenshots of the example page using this tool, give it
-  a shot https://github.com/simonw/shot-scraper, otherwise playwright might be
-  the best move. This is blog post https://simonwillison.net/2022/Mar/10/shot-scraper/
 
 - is it possible with GitHub to provide a contributor temporary permissions to
   merge their PR into the repo and to deploy a new version only of their
@@ -274,8 +264,6 @@ const network = url.match(uri_regex)?.[1]
 - I need a contributor document, make it very clear what I need to quickly
   approve PRs, and also explain the approval process. Look elsewhere for good
   examples of what that looks like.
-
-- make default branch `main`
 
 - at the end of all this, once I've deployed v6.0 to NPM, check the badges
   for the minzipped size calculation. Right now for v5.15.0 it's 33.3kb.
