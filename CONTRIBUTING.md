@@ -223,3 +223,6 @@ Run test:
 ```
 
 ## Making a PR
+
+Describe your feature or bugfix, include a test or screenshot where applicable,
+and make sure all tests running in CI pass.
