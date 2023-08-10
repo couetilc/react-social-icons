@@ -19,10 +19,6 @@ dev() {
   info:visual
 }
 
-fmt() {
-  pnpm prettier -u -w "${PRETTIER_PATTERN[@]}"
-}
-
 info:bundlesize() {
  build
  tar -c dist | gzip > dist.tar.gz
@@ -36,6 +32,10 @@ info:visual() {
 
 info:www() {
   pnpm vite -c vite.config.js www/
+}
+
+task:fmt() {
+  pnpm prettier -u -w "${PRETTIER_PATTERN[@]}"
 }
 
 task:update-node() {
@@ -52,6 +52,14 @@ task:update-node() {
       JSON.stringify(packagejson, null, 2)
     )
   "
+}
+
+task:setup-dev() {
+  brew install nodenv node-build
+  echo "eval \"\$(nodenv init -)\"" >> ".${SHELL/[a-z\/]*\//}rc"
+  nodenv install
+  corepack enable
+  pnpm install
 }
 
 test:lint() {

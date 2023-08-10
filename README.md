@@ -38,22 +38,23 @@ See more [usage options on the example site](https://jaketrent.github.io/react-s
 This library supports [TypeScript](https://www.typescriptlang.org/) since v5.2.0.
 ([type declarations](https://github.com/jaketrent/react-social-icons/blob/master/src/react-social-icons.d.ts))
 
-### Code Splitting
+### Code Splitting and Tree Shaking
 
 Reduce the size of bundled code from this library by importing the `SocialIcon`
 component directly and only importing the icons you need. Bundled code using
 only one icon will be 20 times smaller, or about 5% of the full library's size.
 The size of the bundled library will scale linearly with each icon you import.
+Many bundlers will tree shake the unused icons from the final code-split bundle.
 
 ```js
 const { SocialIcon } from 'react-social-icons/component'
 import 'react-social-icons/vimeo'
 import 'react-social-icons/meetup'
-// render: vimeo icon
+// renders: vimeo icon
 <SocialIcon url="www.vimeo.com" />
-// render: meetup icon
+// renders: meetup icon
 <SocialIcon url="www.meetup.com" />
-// render: default icon
+// renders: default icon
 <SocialIcon url="www.pinterest.com" />
 ```
 
@@ -97,12 +98,12 @@ Overrides the icon rendered by the component.
 
 ### `bgColor` and `fgColor`
 
-Overrides the foreground or background fill colors. Defaults to the network's
-brand color (fg) and white (bg).
+Overrides the background or foreground fill colors. Defaults to the network's
+brand color (bg) and transparent (fg).
 
 ```js
 // renders: default icon
-<SocialIcon fgColor="blue" bgColor="green" />
+<SocialIcon bgColor="green" fgColor="blue" />
 ```
 
 ### `label`
@@ -119,7 +120,7 @@ Overrides the ARIA attribute on the anchor element. Defaults to network name.
 ### `className` and `style`
 
 Specify a CSS class and styles for the anchor element. [Read more about these
-special React prop.](https://legacy.reactjs.org/docs/faq-styling.html)
+special React props.](https://legacy.reactjs.org/docs/faq-styling.html)
 
 ```js
 <SocialIcon className="colorscheme" style={{ color: 'green' }} />
@@ -127,9 +128,8 @@ special React prop.](https://legacy.reactjs.org/docs/faq-styling.html)
 
 ### `href`
 
-you can now pass href to a `<SocialIcon>` to set the anchor link. It will override the `url` prop when a user clicks on a link. It will be ignored when `<SocialIcon>` matches a network domain to the `url` prop to set the network icon. but the network icon shown will still be the one that matches `url`.
-
-Let's look at a simple example.
+Overrides the anchor link. Ignored when the component decides what icon to
+render.
 
 ```js
 // renders: default icon
@@ -137,7 +137,7 @@ Let's look at a simple example.
 <SocialIcon href="www.github.com" />
 ```
 
-Here we set the icon svg with `url` and set the `<a>` link using `href`.
+`href` specifies the anchor link while `url` specifies the rendered icon
 
 ```js
 // renders: vimeo icon
@@ -149,8 +149,6 @@ Here we set the icon svg with `url` and set the `<a>` link using `href`.
 
 Set `<SocialIcon>` to be any html element you want. Defaults to 'a'.
 
-Example: Turn `<SocialIcon>` into a `<div>`
- 
 ```js
 <SocialIcon as="div" />
 ```
@@ -173,60 +171,35 @@ Or an icon definition:
 
 ## FAQ
 
-TODO FAQ topics
+### How do I open the link in a new tab when the icon is clicked?
 
-- write examples of how to codesplit with this package. write example rollup
-    config, and also write example webpack config. can I add a webpack config
-    test to `codesplitting.sh`?
+Pass the prop `target` like so: `<SocialIcon target="_blank"
+url="www.vimeo.com" />`. All props are forwarded to the underlying element, [an
+anchor](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a).
 
-- create an FAQ or something in the readme: what else can I include from the issues, opened or closed?
+### How do I use code-splitting?
 
-### opening in new tab
+This package packages exposes the component code and icon definitions in
+separate files with a simple import interface. There are several useful tools
+that implement features like tree-shaking to reduce the size of bundled code.
+Certain browsers contain features that let you important un-bundled code
+directly. An effort has been made to keep distribution code files simple,
+separate, and small.
 
-To open a link in a new tab, pass the `target` prop to `<SocialIcon>`. The `<SocialIcon>` is just an `<a>` element underneath with all the component's props spread into its attributes.
+#### with ES6 browser imports
 
-```js
-// docs for `target`: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a
-<SocialIcon target="_blank" href="www.github.com" />
-```
+[Refer to a list of compatible
+browsers](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules)
+and import files directly from your own servers or [a
+CDN](https://www.jsdelivr.com/).
 
-# Contributing
+#### with a bundler
 
-See CONTRIBUTING.md.
+[Webpack](https://webpack.js.org/guides/tree-shaking/) and
+[Rollup](https://rollupjs.org/introduction/#tree-shaking) will tree shake any
+unused code from this package when you are bundling your code.
 
-TODO this section should be it's own file, and I'll link it here in the README
-
-## set node.js version
-
-use `nodenv`.
-
-```sh
-# TODO commands to install nodenv and install and set node version
-```
-
-### adding new icons to db/
-
-explain format of db directory, explain format of icon, explain how to share
-icons between multiple domains by symlinking, and whatever else, maybe linting
-rules too.
-
-## formatting code
-
-run `./cli fmt` to get `./cli test:fmt` to pass.
-
-## writing tests
-
-you must write a unit test for your feature. add it to `test/unit/cases.js`. while you are developing, practice tdd and run `./cli test:src` to have vitest rerun tests when source code changes.
-
-when you're finished developing your feature, run `pnpm test` until you get all tests to pass.
-
-once completed, you are ready to make a pull request
-
-## making a pull request
-
-idk yet
-
-## the other exports
+## The other exports
 
 There are other useful functions and objects exported from the
 SocialIcon library.
@@ -289,6 +262,10 @@ import { uri_regex } from 'react-social-icons'
 import assert from 'assert'
 assert.equal(uri_regex.exec('https://www.pinterest.com')?.[1], 'pinterest')
 ```
+
+## Contributing
+
+Contributors are welcome. See [CONTRIBUTING.md](CONTRIBUTING.md).
 
 # TODO
 
@@ -368,78 +345,3 @@ See more [usage options on the example site](https://jaketrent.github.io/react-s
 
 This library supports [TypeScript](https://www.typescriptlang.org/) since v5.2.0.
 ([type declarations](https://github.com/jaketrent/react-social-icons/blob/master/src/react-social-icons.d.ts))
-
-## Contributing
-
-### How to add new icons
-
-Icons are stored in `src\_networks-db.js`
-
-For example:
-
-```
-facebook: {
-  icon:
-    'M34.1,47V33.3h4.6l0.7-5.3h-5.3v-3.4c0-1.5,0.4-2.6,2.6-2.6l2.8,0v-4.8c-0.5-0.1-2.2-0.2-4.1-0.2 c-4.1,0-6.9,2.5-6.9,7V28H24v5.3h4.6V47H34.1z',
-  mask:
-    'M0,0v64h64V0H0z M39.6,22l-2.8,0c-2.2,0-2.6,1.1-2.6,2.6V28h5.3l-0.7,5.3h-4.6V47h-5.5V33.3H24V28h4.6V24 c0-4.6,2.8-7,6.9-7c2,0,3.6,0.1,4.1,0.2V22z',
-  color: '#3b5998'
-},
-```
-
-To add a new icon, you first need to find a copy of that icon as an svg file,
-and a hex code for the social network's main color.  Check the network's own
-style guidelines or website for the official icon and color.
-
-The 'icon' and 'mask' properties for each network in `networks-db.js` should
-contain the vector information for the svg.  The 'icon' is the foreground, so
-the path for describes the shape of the icon itself. This will be transparent
-by default.  The 'mask' is the background area, so the path for this describes
-the area between the surrounding circle and the icon shape. By default this
-will take the color you provide in the 'color' property.  The 'color' property
-will set the background color for the icon. This should be the main color
-associated with the social network.
-
-An easy way to generate the path for the 'mask' is to begin with
-'M0,0v64h64V0H0z', which defines the circular border, and follow this with the
-exact same path that you used for the 'icon'.
-
-Depending on the svg file that you start with, you may need to edit attributes
-in the svg file such as width, height, and viewbox (see
-https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial) in order to put the
-icon in the centre of the circular border. You can then use a tool such as
-https://www.iloveimg.com/resize-image to rewrite the svg path so you have a
-nice simple path to use here in the 'icon' and 'mask', without needing those
-extra attributes.
-
-### Using Inkscape
-
-These steps should work for most logos. Feel free to tweak any of the steps to
-make the final svg look neater:
-
-1. Open the SVG in Inkscape's editor and select `File > Document Properties` in
-   the menu bar.  Change the page's width and height to 64px.
-2. Select the icon and click `Object > Transform` in the menu bar. Choose the
-   "Scale" tab, check the box "Scale proportionally", set the height and width
-   to be within 32px, and click the "Apply" button
-3. Select the icon and click `Object > Align and Distribute` in the menu bar.
-   Set relative to "Page" in the dropdown menu and click the buttons "Center on
-   vertical axis" and "Center on horizontal axis".
-4. Create a square starting at the origin with a width of 64px. Select
-   `Object > Lower to Bottom` in the menu. Select `Path > Object to Path` in
-   the menu.
-5. Select both the square and icon. Click `Path > Exclusion` in the menu. You
-   must convert all objects to paths and remove all groups before you can
-   perform the Exclusion operation.
-6. Select `File > Save a Copy` in the menu. Open the saved svg file in a text
-   editor, find the `path` element, and copy the `d` attribute's value.
-7. In the `react-social-icons` repository, open the `src/_networks-db.js` file
-   and add a new entry in the object whose key has the same name as the social
-   network's domain name. Set the property `icon` to `"M 0,0 H 64 V 64 H 0 Z"`.
-   Set the property `mask` to the copied value from Step 6. Set the property
-   `color` to the social network's brand color.
-8. Commit your changes and preview the new icon by running `npm start` and
-   visiting `http://localhost:1234` in your web browser. Once you're happy with
-   the result, create a PR against master at
-   https://github.com/jaketrent/react-social-icons, where it will be reviewed
-   and merged. Thank you for contributing!
