@@ -15,6 +15,7 @@ module.exports = {
     'prettier',
     'plugin:json/recommended'
   ],
+  'ignorePatterns': [ 'node_modules', 'dist' ],
   'overrides': [
   ],
   'parser': '@typescript-eslint/parser',
