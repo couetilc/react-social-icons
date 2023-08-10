@@ -55,6 +55,7 @@ task:update-node() {
 }
 
 test:lint() {
+  build --silent
   pnpm eslint .eslintrc.cjs . db/*
 }
 
