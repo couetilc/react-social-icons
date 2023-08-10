@@ -171,8 +171,8 @@ domain name.
 
 ```js
 import { networkFor } from 'react-social-icons';
-const url = 'https://www.pinterest.com'
-const network = networkFor(url)
+import { assert } from 'assert'
+assert.equal(networkFor('https://www.pinterest.com'), 'pinterest')
 ```
 
 ### `register`
@@ -185,15 +185,19 @@ domain name.
 
 ```js
 import { register } from 'react-social-icons';
-const icon = { color: 'red', icon: 'icon path', mask: 'mask path' }
-const social_network = 'mynetwork'
-register(social_network, icon)
+register('mynetwork', { color: 'red', icon: 'H ', mask: 'path', })
 ```
 
 ### `social_icons`
 
-A map that associates social network domain names to the icon objects with the
+A map that associates social network names to the icon objects with the
 network's color and icon paths.
+
+```js
+import { social_icons } from 'react-social-icons'
+import assert from 'assert'
+assert.ok(social_icons instanceof Map)
+```
 
 ### `network_names` and `getKeys`
 
@@ -201,9 +205,10 @@ network's color and icon paths.
 names. `getKeys` returns an array of the same information.
 
 ```js
-import { network_names } from 'react-social-icons'
-const array_of_names = [...network_names]
-const same_array_of_names = getKeys()
+import { network_names, getKeys } from 'react-social-icons'
+import assert from 'assert'
+assert.deepEqual(getKeys(), [...network_names])
+assert.ok(network_names instanceof Set)
 ```
 
 ### `uri_regex`
@@ -214,8 +219,8 @@ use `networkFor` instead)
 
 ```js
 import { uri_regex } from 'react-social-icons'
-const url = 'https://www.pinterest.com'
-const network = url.match(uri_regex)?.[1]
+import assert from 'assert'
+assert.equal(uri_regex.exec('https://www.pinterest.com')?.[1], 'pinterest')
 ```
 
 # TODO
