@@ -21,7 +21,7 @@ Component](https://react.dev/learn/your-first-component), and is compiled for
 distribution using [Rollup](https://rollupjs.org/). Syntax support is provided
 by [Babel](https://babeljs.io/) while tree shaking for code splitting is
 enabled using a [Rollup plugin](https://rollupjs.org/plugin-development/) that
-takes advantage of a feature called "virtual modules". The development
+takes advantage of a feature called ["virtual modules"](rollup-plugin-social-icons.js). The development
 environment is powered by [Vite](https://vitejs.dev/)
 
 ## Development Setup
