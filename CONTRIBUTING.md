@@ -32,12 +32,12 @@ If the node.js version is out of date, run the update task `./cli task:update-no
 
 Otherwise, follow these steps to set up your development environment manually.
 
-1. Setup node.js
+### 1. Setup node.js
 
 Install [nodenv](https://github.com/nodenv/nodenv), which manages our node.js
 versions. Once installed, run `nodenv install`.
 
-2. Install package dependencies
+### 2. Install package dependencies
 
 [Corepack](https://nodejs.org/api/corepack.html) is a node.js feature that
 manages our package manager. Run the following commands:
@@ -47,7 +47,7 @@ corepack enable
 pnpm install
 ```
 
-3. Run setup check
+### 3. Run setup check
 
 Run all tests to make sure node.js and package dependencies were setup correctly:
 
