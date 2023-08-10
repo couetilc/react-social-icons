@@ -169,36 +169,6 @@ Or an icon definition:
 <SocialIcon fallback={{ icon, mask, color }} /> // renders custom icon
 ```
 
-## FAQ
-
-### How do I open the link in a new tab when the icon is clicked?
-
-Pass the prop `target` like so: `<SocialIcon target="_blank"
-url="www.vimeo.com" />`. All props are forwarded to the underlying element, [an
-anchor](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a).
-
-### How do I use code-splitting?
-
-This package packages exposes the component code and icon definitions in
-separate files with a simple import interface. There are several useful tools
-that implement features like tree-shaking to reduce the size of bundled code.
-Certain browsers contain features that let you important un-bundled code
-directly. An effort has been made to keep distribution code files simple,
-separate, and small.
-
-#### with ES6 browser imports
-
-[Refer to a list of compatible
-browsers](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules)
-and import files directly from your own servers or [a
-CDN](https://www.jsdelivr.com/).
-
-#### with a bundler
-
-[Webpack](https://webpack.js.org/guides/tree-shaking/) and
-[Rollup](https://rollupjs.org/introduction/#tree-shaking) will tree shake any
-unused code from this package when you are bundling your code.
-
 ## The other exports
 
 There are other useful functions and objects exported from the
@@ -267,6 +237,40 @@ assert.equal(uri_regex.exec('https://www.pinterest.com')?.[1], 'pinterest')
 
 Contributors are welcome. See [CONTRIBUTING.md](CONTRIBUTING.md).
 
+## FAQ
+
+### How do I open the link in a new tab when the icon is clicked?
+
+Pass the prop `target` like so: `<SocialIcon target="_blank"
+url="www.vimeo.com" />`. All props are forwarded to the underlying element, [an
+anchor](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a).
+
+### How do I use code-splitting?
+
+This package packages exposes the component code and icon definitions in
+separate files with a simple import interface. There are several useful tools
+that implement features like tree-shaking to reduce the size of bundled code.
+Certain browsers contain features that let you important un-bundled code
+directly. An effort has been made to keep distribution code files simple,
+separate, and small.
+
+#### with ES6 browser imports
+
+[Refer to a list of compatible
+browsers](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules)
+and import files directly from your own servers or [a
+CDN](https://www.jsdelivr.com/).
+
+#### with a bundler
+
+[Webpack](https://webpack.js.org/guides/tree-shaking/) and
+[Rollup](https://rollupjs.org/introduction/#tree-shaking) will tree shake any
+unused code from this package when you are bundling your code.
+
+### How do I add a new icon?
+
+Follow the instructions in [CONTRIBUTING.md](CONTRIBUTING.md).
+
 # TODO
 
 * I think the big next things are to:
@@ -317,31 +321,3 @@ Contributors are welcome. See [CONTRIBUTING.md](CONTRIBUTING.md).
 - at the end of all this, once I've deployed v6.0 to NPM, check the badges
   for the minzipped size calculation. Right now for v5.15.0 it's 33.3kb.
   I hope it shrinks a lot.
-
-# react-social-icons &nbsp; ![build status](https://img.shields.io/github/actions/workflow/status/jaketrent/react-social-icons/build_test_publish.yml?branch=master) ![package version](https://img.shields.io/npm/v/react-social-icons) ![package size](https://img.shields.io/bundlephobia/minzip/react-social-icons) ![weekly downloads](https://img.shields.io/npm/dw/react-social-icons) ![type definitions](https://img.shields.io/npm/types/react-social-icons)
-
-A set of beautiful svg social icons.  Easily used in React.  No images or external css dependencies.  Svg paths provided by Squarespace.
-
-![social network icons](https://i.imgur.com/OrNeTND.png)
-
-## Install
-
-```
-npm install react-social-icons
-```
-
-## Usage
-
-Pass in the `url` prop of your social network, and the icon will be rendered.
-
-```js
-import React from 'react';
-import ReactDOM from 'react-dom';
-import { SocialIcon } from 'react-social-icons';
-ReactDOM.render(<SocialIcon url="https://twitter.com/jaketrent" />, document.body);
-```
-
-See more [usage options on the example site](https://jaketrent.github.io/react-social-icons/).
-
-This library supports [TypeScript](https://www.typescriptlang.org/) since v5.2.0.
-([type declarations](https://github.com/jaketrent/react-social-icons/blob/master/src/react-social-icons.d.ts))

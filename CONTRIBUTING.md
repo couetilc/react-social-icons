@@ -199,7 +199,9 @@ Run test:
 
 ### Style and Formatting Tests
 
-[ESLint](), [Prettier](), and [Publint]() are use to catch errors and enforce coding style.
+[ESLint](https://eslint.org/), [Prettier](https://prettier.io/), and
+[Publint](https://github.com/bluwy/publint) are use to catch errors and enforce
+coding style.
 
 Run test:
 ```sh
