@@ -32,6 +32,9 @@ pnpm rollup \
 full_size="$(stat -n -f "%z" .codesplitting/full.gz)"
 split_size="$(stat -n -f "%z" .codesplitting/split.gz)"
 
+echo "full_size: $full_size"
+echo "split_size: $split_size"
+
 rm .codesplitting/split.*
 rm .codesplitting/full.*
 rmdir .codesplitting

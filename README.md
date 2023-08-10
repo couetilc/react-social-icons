@@ -1,10 +1,3 @@
-# temp changelog for release
-
-- code splitting is now supported
-- added new icons
-- props were updated, some were deprecate, some are new
-- React v15 is no longer supported. Now supporting v16, v17, and v18.
-
 # react-social-icons
 
 ![build status](https://img.shields.io/github/actions/workflow/status/jaketrent/react-social-icons/build_test_publish.yml?branch=master)
@@ -20,6 +13,8 @@ external css dependencies.
 
 ```
 npm install react-social-icons
+yarn add react-social-icons
+pnpm add react-social-icons
 ```
 
 ## Usage
@@ -27,16 +22,15 @@ npm install react-social-icons
 Pass in the `url` prop of your social network, and the icon will be rendered.
 
 ```js
-import React from 'react';
-import ReactDOM from 'react-dom';
-import { SocialIcon } from 'react-social-icons';
+import React from 'react'
+import ReactDOM from 'react-dom'
+import { SocialIcon } from 'react-social-icons'
 
-ReactDOM
-  .render(<SocialIcon url="https://twitter.com/jaketrent" />, document.body);
-# or
-ReactDOM
-  .createRoot(document.Body)
-  .render(<SocialIcon url="https://twitter.com/jaketrent" />)
+const Component = <SocialIcon url="https://twitter.com/jaketrent" />
+# React v16
+ReactDOM.render(Component, document.body)
+# React v17+
+ReactDOM.createRoot(document.body).render(Component)
 ```
 
 See more [usage options on the example site](https://jaketrent.github.io/react-social-icons/).
@@ -44,21 +38,92 @@ See more [usage options on the example site](https://jaketrent.github.io/react-s
 This library supports [TypeScript](https://www.typescriptlang.org/) since v5.2.0.
 ([type declarations](https://github.com/jaketrent/react-social-icons/blob/master/src/react-social-icons.d.ts))
 
+### Code Splitting
+
+Reduce the size of bundled code from this library by importing the `SocialIcon`
+component directly and only importing the icons you need. Bundled code using
+only one icon will be 20 times smaller, or about 5% of the full libraries size.
+The size of the bundled library will scale linearly with each icon you import.
+
+```js
+const { SocialIcon } from 'react-social-icons/component'
+import 'react-social-icons/vimeo'
+import 'react-social-icons/meetup'
+// render: vimeo icon
+<SocialIcon url="www.vimeo.com" />
+// render: meetup icon
+<SocialIcon url="www.meetup.com" />
+// render: default icon
+<SocialIcon url="www.pinterest.com" />
+```
+
 ## Props
 
 | Property   | Type   | Required | Description |
 | :--------- | :----- | :------: | :---------- |
 | url        | String | No       | The rendered component will link to this url and show the social network's icon.
-| network    | String | No       | Override which network icon to render (defaults to the url's social network)
+| network    | String | No       | Override which network icon to render 
 | bgColor    | String | No       | Override the background fill color (defaults to social network's color)
 | fgColor    | String | No       | Override the icon's fill color (defaults to transparent)
 | label      | String | No       | Set the `aria-label` attribute on the rendered anchor tag (defaults to the social network's name)
 | className  | String | No       | Specify a class to attach to the rendered anchor tag
-| style      | Object | No       | Override style properties passed to the rendered anchor tag |
-| href      | String | No       | TODO |
-| as      | String | No       | TODO |
-| fallback | String | No | TODO |
-| (deprecated) defaultSVG | Object | No       | Override the default icon for when a url is not matched to a social network. Requires string properties `icon`, `mask`, and `color`. (defaults to network `'sharethis'`)
+| style      | Object | No       | Override style properties passed to the rendered anchor tag
+| href      | String | No       | Override the link while keeping the icon matching prop `url`
+| as      | String | No       | Override the root element of the component (defaults to 'a')
+| fallback | String | No | Specify the icon shown when no network matches the `url` prop
+
+### `url`
+
+Sets the link the anchor element points to and renders the icon associated
+with the network matching the `url`.
+
+```js
+// renders: vimeo.com
+<SocialIcon url="www.vimeo.com" />
+```
+
+### `network`
+
+Overrides the icon rendered by the component.
+
+```js
+// renders: github icon
+<SocialIcon network="github" />
+
+// renders: github icon
+// on click: navigate to vimeo.com
+<SocialIcon network="github" url="www.vimeo.com" />
+```
+
+### `bgColor` and `fgColor`
+
+Overrides the foreground or background fill colors. Defaults to the network's
+brand color (fg) and white (bg).
+
+```js
+// renders: default icon
+<SocialIcon fgColor="blue" bgColor="green" />
+```
+
+### `label`
+
+Overrides the ARIA attribute on the anchor element. Defaults to network name.
+
+```js
+// renders: vimeo icon
+<SocialIcon label="my video channel" url="www.vimeo.com" />
+// or
+<SocialIcon aria-label="my video channel" url="www.vimeo.com" />
+```
+
+### `className` and `style`
+
+Specify a CSS class and styles for the anchor element. [Read more about these
+special React prop.](https://legacy.reactjs.org/docs/faq-styling.html)
+
+```js
+<SocialIcon className="colorscheme" style={{ color: 'green' }} />
+```
 
 ### `href`
 
@@ -77,12 +142,12 @@ Here we set the icon svg with `url` and set the `<a>` link using `href`.
 ```js
 // renders: vimeo icon
 // on click: navigate to github.com
-<SocialIcon hree="www.github.com" url="www.vimeo.com" />
+<SocialIcon href="www.github.com" url="www.vimeo.com" />
 ```
 
 ### `as`
 
-Set `<SocialIcon>` to be any element or React component you want. The `as` prop is passed directly to `React.createElement` as the first argument to create the `<SocialIcon>` component.
+Set `<SocialIcon>` to be any html element you want. Defaults to 'a'.
 
 Example: Turn `<SocialIcon>` into a `<div>`
  
@@ -92,13 +157,15 @@ Example: Turn `<SocialIcon>` into a `<div>`
 
 ### `fallback`
 
-Accepts a network
+Overrides the default icon shown when a network does not match the given URL.
+
+Accepts a network:
 
 ```js
 <SocialIcon fallback="pinterest" /> // renders pinterest icon
 ```
 
-Or an icon definition
+Or an icon definition:
 
 ```js
 <SocialIcon fallback={{ icon, mask, color }} /> // renders custom icon
