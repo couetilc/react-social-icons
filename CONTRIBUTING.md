@@ -156,7 +156,7 @@ It displays all icons in a variety of sizes and colors.
 
 Run visual test:
 ```sh
-./cli test:visual # starts vite dev server
+./cli info:visual # starts vite dev server
 ```
 
 ### Unit Tests
