@@ -27,9 +27,9 @@ import ReactDOM from 'react-dom'
 import { SocialIcon } from 'react-social-icons'
 
 const Component = <SocialIcon url="https://twitter.com/jaketrent" />
-# React v16
+// React v16
 ReactDOM.render(Component, document.body)
-# React v17+
+// React v17+
 ReactDOM.createRoot(document.body).render(Component)
 ```
 
@@ -42,7 +42,7 @@ This library supports [TypeScript](https://www.typescriptlang.org/) since v5.2.0
 
 Reduce the size of bundled code from this library by importing the `SocialIcon`
 component directly and only importing the icons you need. Bundled code using
-only one icon will be 20 times smaller, or about 5% of the full libraries size.
+only one icon will be 20 times smaller, or about 5% of the full library's size.
 The size of the bundled library will scale linearly with each icon you import.
 
 ```js
