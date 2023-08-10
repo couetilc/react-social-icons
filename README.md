@@ -7,7 +7,7 @@
 ![type definitions](https://img.shields.io/npm/types/react-social-icons)
 
 A set of beautiful svg social icons. Easily used in React. No images or
-external css dependencies.
+external css dependencies. [Example](https://jaketrent.github.io/react-social-icons/)
 
 ## Install
 
