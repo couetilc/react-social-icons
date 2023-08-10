@@ -3,6 +3,7 @@ name: PR Helper
 on:
   pull_request:
     types: [opened, synchronize, reopened, edited]
+  workflow_dispatch:
 
 jobs:
   screenshot:
