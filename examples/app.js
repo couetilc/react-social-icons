@@ -140,7 +140,7 @@ React.render(<SocialIcon url="https://linkedin.com/in/jaketrent" />, document.bo
 
       <footer className="footer">
         <p>
-          <a href="https://github.com/jaketrent/react-social-icons/blob/master/LICENSE.md">
+          <a href="https://github.com/jaketrent/react-social-icons/blob/main/LICENSE.md">
             MIT Licensed
           </a>
           &nbsp;- from&nbsp;

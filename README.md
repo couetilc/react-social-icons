@@ -1,4 +1,4 @@
-# react-social-icons &nbsp; ![build status](https://img.shields.io/github/workflow/status/jaketrent/react-social-icons/Build,%20Test,%20Publish/master) ![package version](https://img.shields.io/npm/v/react-social-icons) ![package size](https://img.shields.io/bundlephobia/minzip/react-social-icons) ![weekly downloads](https://img.shields.io/npm/dw/react-social-icons) ![type definitions](https://img.shields.io/npm/types/react-social-icons)
+# react-social-icons &nbsp; ![build status](https://img.shields.io/github/workflow/status/jaketrent/react-social-icons/Build,%20Test,%20Publish/main) ![package version](https://img.shields.io/npm/v/react-social-icons) ![package size](https://img.shields.io/bundlephobia/minzip/react-social-icons) ![weekly downloads](https://img.shields.io/npm/dw/react-social-icons) ![type definitions](https://img.shields.io/npm/types/react-social-icons)
 
 A set of beautiful svg social icons.  Easily used in React.  No images or external css dependencies.  Svg paths provided by Squarespace.
 
@@ -24,7 +24,7 @@ ReactDOM.render(<SocialIcon url="https://twitter.com/jaketrent" />, document.bod
 See more [usage options on the example site](https://jaketrent.github.io/react-social-icons/).
 
 This library supports [TypeScript](https://www.typescriptlang.org/) since v5.2.0.
-([type declarations](https://github.com/jaketrent/react-social-icons/blob/master/src/react-social-icons.d.ts))
+([type declarations](https://github.com/jaketrent/react-social-icons/blob/main/src/react-social-icons.d.ts))
 
 ## Prop Types
 
@@ -110,6 +110,6 @@ make the final svg look neater:
    `color` to the social network's brand color.
 8. Commit your changes and preview the new icon by running `npm start` and
    visiting `http://localhost:1234` in your web browser. Once you're happy with
-   the result, create a PR against master at
+   the result, create a PR against main at
    https://github.com/jaketrent/react-social-icons, where it will be reviewed
    and merged. Thank you for contributing!
