@@ -274,10 +274,10 @@ Follow the instructions in [CONTRIBUTING.md](CONTRIBUTING.md).
 # TODO
 
 * I think the big next things are to:
-    - update docs
     - make the default branch `main` and not `master`
     - squash merge code-splitting branch into main
     - publish a beta release v6.0.0-beta1
+    - update the changelog to prep for v6
     - post on the issues where their updates reflect what is in v6 to please
       try out the beta (this will be code splitting issue, and some of the PRs)
     - try out the beta on dad's website.
@@ -313,10 +313,6 @@ Follow the instructions in [CONTRIBUTING.md](CONTRIBUTING.md).
   and see it automatically deployed to NPM immediately afterwards. But they should
   only be able to do it with their PRs, nothing else. So maybe minimal positions
   for contributors that only grant them position to merge approved PRs.
-
-- I need a contributor document, make it very clear what I need to quickly
-  approve PRs, and also explain the approval process. Look elsewhere for good
-  examples of what that looks like.
 
 - at the end of all this, once I've deployed v6.0 to NPM, check the badges
   for the minzipped size calculation. Right now for v5.15.0 it's 33.3kb.
