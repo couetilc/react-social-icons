@@ -47,7 +47,7 @@ The size of the bundled library will scale linearly with each icon you import.
 Many bundlers will tree shake the unused icons from the final code-split bundle.
 
 ```js
-const { SocialIcon } from 'react-social-icons/component'
+import { SocialIcon } from 'react-social-icons/component'
 import 'react-social-icons/vimeo'
 import 'react-social-icons/meetup'
 // renders: vimeo icon
@@ -274,7 +274,6 @@ Follow the instructions in [CONTRIBUTING.md](CONTRIBUTING.md).
 # TODO
 
 * I think the big next things are to:
-    - make the default branch `main` and not `master`
     - squash merge code-splitting branch into main
     - publish a beta release v6.0.0-beta1
     - update the changelog to prep for v6

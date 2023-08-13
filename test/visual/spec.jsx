@@ -17,6 +17,8 @@ function VisualTest(props) {
 
   document.querySelector('html').classList.add(colorscheme)
 
+  const networks = getNetworks().sort((a, b) => a.localeCompare(b))
+
   return (
     <div
       data-responsive={responsive}
@@ -27,7 +29,7 @@ function VisualTest(props) {
           <label htmlFor="network">Select network to highlight: </label>
           <select name="network" defaultValue={highlighted}>
             <option value="">---</option>
-            {getNetworks().map((network) => (
+            {networks.map(network => (
               <option key={network} value={network}>
                 {network}
               </option>
@@ -56,7 +58,7 @@ function VisualTest(props) {
 
       {highlighted && <HighlightCase network={highlighted} />}
 
-      {getNetworks().map((network) => (
+      {networks.map((network) => (
         <Case key={network} network={network} />
       ))}
     </div>
