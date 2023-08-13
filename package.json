@@ -120,13 +120,13 @@
     "eslint-plugin-react": "^7.33.1",
     "global-jsdom": "^9.1.0",
     "jsdom": "^22.1.0",
-    "prettier": "^2.8.8",
+    "prettier": "^3.0.1",
     "publint": "^0.2.0",
     "rollup": "^3.28.0",
     "rollup-plugin-copy": "^3.4.0",
     "typescript": "^5.1.6",
     "vite": "^4.4.9",
-    "vitest": "^0.32.4"
+    "vitest": "^0.34.1"
   },
   "dependencies": {
     "@babel/runtime": "^7.22.10",

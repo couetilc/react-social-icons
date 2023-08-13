@@ -69,7 +69,7 @@ export async function config() {
             }
             await fs.promises.writeFile(
               './package.json',
-              JSON.stringify(packagejson, null, 2)
+              JSON.stringify(packagejson, null, 2),
             )
           },
         },

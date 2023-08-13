@@ -12,7 +12,7 @@ export default function rollupPluginSocialIcons() {
 
     async buildStart() {
       const dbFiles = await fs.promises.readdir(
-        new URL('./db', import.meta.url)
+        new URL('./db', import.meta.url),
       )
       await Promise.all(
         dbFiles.map((filename) =>
@@ -21,8 +21,8 @@ export default function rollupPluginSocialIcons() {
             .then((icon) => {
               const network = filename.replace('.json', '')
               db.set(network, JSON.parse(icon.toString()))
-            })
-        )
+            }),
+        ),
       )
     },
 
@@ -41,7 +41,7 @@ export default function rollupPluginSocialIcons() {
       if (id === IMPORT_PREFIX) {
         const code = Array.from(db.keys()).reduce((file, network) => {
           return `${file}export { default as ${JSON.stringify(
-            network.replace(/\W/u, '')
+            network.replace(/\W/u, ''),
           )} } from '${VIRTUAL_PKG}:${network}';`
         }, '')
         return { code, moduleSideEffects: true }
@@ -52,8 +52,8 @@ export default function rollupPluginSocialIcons() {
       return `
         import { register } from './src/component.jsx';
         export default register(${JSON.stringify(network)}, ${JSON.stringify(
-        db.get(network)
-      )});
+          db.get(network),
+        )});
       `
     },
   }

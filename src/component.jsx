@@ -34,9 +34,9 @@ const makeUriRegex = (socials = []) =>
   new RegExp(
     '(?:https?:\\/\\/(?:[a-z0-9-])?)?($SOCIALS)[.]'.replace(
       '$SOCIALS',
-      socials.join('|')
+      socials.join('|'),
     ),
-    'u'
+    'u',
   )
 
 export const social_icons = new Map()
@@ -48,7 +48,7 @@ export function register(social, icon) {
   network_names.add(social)
   uri_regex = makeUriRegex(
     // sort by longest string first
-    [...network_names].sort((pre, post) => post.length - pre.length)
+    [...network_names].sort((pre, post) => post.length - pre.length),
   )
   return icon
 }
@@ -133,6 +133,6 @@ export const SocialIcon = React.forwardRef(function SocialIcon(props, ref) {
         </g>
       </svg>
     </div>,
-    children
+    children,
   )
 })

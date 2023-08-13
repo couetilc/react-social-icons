@@ -38,7 +38,7 @@ export const cases = ({ SocialIcon, getKeys }) =>
       render(
         <SocialIcon url={pinterest_url}>
           <div>child</div>
-        </SocialIcon>
+        </SocialIcon>,
       )
       expect(link()).toHaveTextContent('child')
     })
@@ -52,7 +52,7 @@ export const cases = ({ SocialIcon, getKeys }) =>
       render(<SocialIcon rel="noopener noreferrer" data-testid />)
       expect(screen.getByTestId(true)).toHaveAttribute(
         'rel',
-        'noopener noreferrer'
+        'noopener noreferrer',
       )
     })
 
@@ -75,7 +75,7 @@ export const cases = ({ SocialIcon, getKeys }) =>
 
     it('overrides aria label on anchor with correct order', ({ expect }) => {
       render(
-        <SocialIcon url={pinterest_url} label="override" aria-label="aria" />
+        <SocialIcon url={pinterest_url} label="override" aria-label="aria" />,
       )
       expect(link()).toHaveAttribute('aria-label', 'override')
     })
@@ -115,7 +115,7 @@ export const cases = ({ SocialIcon, getKeys }) =>
         <SocialIcon
           url="https://example.com"
           fallback={{ path: 'test-path', color: 'rgb(254,254,254)' }}
-        />
+        />,
       )
       expect(icon_path()).toHaveAttribute('d', pathToIcon('test-path'))
       expect(mask_path()).toHaveAttribute('d', 'test-path')
@@ -134,7 +134,7 @@ export const cases = ({ SocialIcon, getKeys }) =>
         <SocialIcon
           url="https://example.com"
           defaultSVG={{ path: 'test-path', color: 'rgb(254,254,254)' }}
-        />
+        />,
       )
       expect(icon_path()).toHaveAttribute('d', pathToIcon('test-path'))
       expect(mask_path()).toHaveAttribute('d', 'test-path')
@@ -158,7 +158,7 @@ export const cases = ({ SocialIcon, getKeys }) =>
             path: 'test-fallback-path',
             color: 'rgb(0,0,0)',
           }}
-        />
+        />,
       )
 
       expect(icon_path()).toHaveAttribute('d', pathToIcon('test-fallback-path'))
@@ -221,7 +221,7 @@ export const cases = ({ SocialIcon, getKeys }) =>
       render(<SocialIcon as="label" />)
       expect(screen.getByLabelText('sharethis')).toHaveAttribute(
         'class',
-        'social-icon'
+        'social-icon',
       )
     })
 
@@ -229,7 +229,7 @@ export const cases = ({ SocialIcon, getKeys }) =>
       render(
         <SocialIcon data-testid>
           <div id="test" />
-        </SocialIcon>
+        </SocialIcon>,
       )
       expect(screen.getByTestId(true).children[1]).toHaveAttribute('id', 'test')
     })
@@ -278,7 +278,7 @@ export const cases = ({ SocialIcon, getKeys }) =>
       `
       expect(icon()).toHaveStyle(g_styles.replace(/transparent/u, 'white'))
       expect(mask()).toHaveStyle(
-        g_styles.replace(/transparent/u, default_icon.color)
+        g_styles.replace(/transparent/u, default_icon.color),
       )
     })
 
@@ -304,12 +304,12 @@ export const cases = ({ SocialIcon, getKeys }) =>
         await Promise.all(
           getKeys().map(async (network) => {
             const icon_def = await import(`social-icons:${network}`).then(
-              (mod) => mod.default
+              (mod) => mod.default,
             )
             expect(Object.keys(icon_def))
               .to.be.an('array')
               .that.includes('path', 'color')
-          })
+          }),
         )
       })
     }
