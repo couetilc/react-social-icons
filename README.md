@@ -291,20 +291,7 @@ Follow the instructions in [CONTRIBUTING.md](CONTRIBUTING.md).
       new PRs incorporating changes from the PRs against v5.
     - start testing my auto example page workflow for when I publish new releases.
       (workflow_dispatch this one?)
-    - now I can hit the rest of my todos on the list
     - auto-update README image of all icons on every push/publish to master. ( i think publish better)
-
-* I need instructions on how to draw a path for this library. even I'm hazy on
-  it. Like how does viewbox work? Do all paths need to stay with the 0 0 64 64
-  it set or does it scale automatically, like a fit to min-width?
-  - then I need to update the `### register` section with a link to the explanation
-    for how to define an icon.
-
-* icon behance has a path outside its viewbox, makes it slightly larger than 50px.
-  I need to diagnose root issue, then I should be able to write a test that
-  checks this for all SVGs.
-
-- fix the inkscape instructions
 
 - is it possible with GitHub to provide a contributor temporary permissions to
   merge their PR into the repo and to deploy a new version only of their
