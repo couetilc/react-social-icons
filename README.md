@@ -166,7 +166,7 @@ Accepts a network:
 Or an icon definition:
 
 ```js
-<SocialIcon fallback={{ icon, mask, color }} /> // renders custom icon
+<SocialIcon fallback={{ color, path }} /> // renders custom icon
 ```
 
 ## The other exports
@@ -195,7 +195,10 @@ domain name.
 
 ```js
 import { register } from 'react-social-icons';
-register('mynetwork', { color: 'red', icon: 'H ', mask: 'path', })
+register('mynetwork', {
+  color: 'red',
+  path: 'path commands' // see https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/d#path_commands
+})
 ```
 
 ### `social_icons`

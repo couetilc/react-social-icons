@@ -6,18 +6,19 @@ import sharethis from '../../db/sharethis.json'
 import github from '../../db/github.json'
 import pinterest from '../../db/pinterest.json'
 
+const pathToIcon = (path) => `M0,0H64V64H0Z${path}`
+
 const pinterest_url = 'http://pinterest.com'
-const pinterest_mask = pinterest.mask || ''
-const pinterest_icon = pinterest.icon || ''
-const github_mask = github.mask || ''
+const pinterest_mask = pinterest.path || ''
+const pinterest_icon = pathToIcon(pinterest_mask)
+const github_mask = github.path || ''
 const default_icon = sharethis
 
 const link = () => screen.getByRole('link')
 const container = () => link().children[0]
 const svg = () => screen.getByRole('img')
-const background = () => svg().children[0]
-const icon = () => svg().children[1]
-const mask = () => svg().children[2]
+const icon = () => svg().children[0]
+const mask = () => svg().children[1]
 const icon_path = () => icon().children[0]
 const mask_path = () => mask().children[0]
 
@@ -113,15 +114,11 @@ export const cases = ({ SocialIcon, getKeys }) =>
       render(
         <SocialIcon
           url="https://example.com"
-          fallback={{
-            icon: 'test-icon',
-            mask: 'test-mask',
-            color: 'rgb(254,254,254)',
-          }}
+          fallback={{ path: 'test-path', color: 'rgb(254,254,254)' }}
         />
       )
-      expect(icon_path()).toHaveAttribute('d', 'test-icon')
-      expect(mask_path()).toHaveAttribute('d', 'test-mask')
+      expect(icon_path()).toHaveAttribute('d', pathToIcon('test-path'))
+      expect(mask_path()).toHaveAttribute('d', 'test-path')
       expect(mask()).toHaveStyle('fill: rgb(254,254,254)')
     })
 
@@ -136,15 +133,11 @@ export const cases = ({ SocialIcon, getKeys }) =>
       render(
         <SocialIcon
           url="https://example.com"
-          defaultSVG={{
-            icon: 'test-icon',
-            mask: 'test-mask',
-            color: 'rgb(254,254,254)',
-          }}
+          defaultSVG={{ path: 'test-path', color: 'rgb(254,254,254)' }}
         />
       )
-      expect(icon_path()).toHaveAttribute('d', 'test-icon')
-      expect(mask_path()).toHaveAttribute('d', 'test-mask')
+      expect(icon_path()).toHaveAttribute('d', pathToIcon('test-path'))
+      expect(mask_path()).toHaveAttribute('d', 'test-path')
       expect(mask()).toHaveStyle('fill: rgb(254,254,254)')
     })
 
@@ -162,33 +155,27 @@ export const cases = ({ SocialIcon, getKeys }) =>
         <SocialIcon
           url="https://example.com"
           fallback={{
-            icon: 'test-fallback-icon',
-            mask: 'test-fallback-mask',
+            path: 'test-fallback-path',
             color: 'rgb(0,0,0)',
           }}
         />
       )
 
-      expect(icon_path()).toHaveAttribute('d', 'test-fallback-icon')
-      expect(mask_path()).toHaveAttribute('d', 'test-fallback-mask')
+      expect(icon_path()).toHaveAttribute('d', pathToIcon('test-fallback-path'))
+      expect(mask_path()).toHaveAttribute('d', 'test-fallback-path')
       expect(mask()).toHaveStyle('fill: rgb(0,0,0)')
 
       // relies on rendering the default icon from the library
       rerender(<SocialIcon url="https://example.com" />)
 
-      expect(icon_path()).toHaveAttribute('d', default_icon.icon)
-      expect(mask_path()).toHaveAttribute('d', default_icon.mask)
+      expect(icon_path()).toHaveAttribute('d', pathToIcon(default_icon.path))
+      expect(mask_path()).toHaveAttribute('d', default_icon.path)
       expect(mask()).toHaveStyle(`fill: ${default_icon.color}`)
     })
 
     it('adds img role to social svg', ({ expect }) => {
       render(<SocialIcon />)
       expect(svg()).toHaveAttribute('role', 'img')
-    })
-
-    it('adds class to background path within svg', ({ expect }) => {
-      render(<SocialIcon />)
-      expect(background()).toHaveAttribute('class', 'social-svg-background')
     })
 
     it('adds class to icon path within svg', ({ expect }) => {
@@ -293,7 +280,6 @@ export const cases = ({ SocialIcon, getKeys }) =>
       expect(mask()).toHaveStyle(
         g_styles.replace(/transparent/u, default_icon.color)
       )
-      expect(background()).toHaveStyle(g_styles)
     })
 
     it('accepts a style prop that merges with the default social icon styles', ({
@@ -322,7 +308,7 @@ export const cases = ({ SocialIcon, getKeys }) =>
             )
             expect(Object.keys(icon_def))
               .to.be.an('array')
-              .that.includes('icon', 'mask', 'color')
+              .that.includes('path', 'color')
           })
         )
       })

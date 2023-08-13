@@ -29,7 +29,7 @@ function VisualTest(props) {
           <label htmlFor="network">Select network to highlight: </label>
           <select name="network" defaultValue={highlighted}>
             <option value="">---</option>
-            {networks.map(network => (
+            {networks.map((network) => (
               <option key={network} value={network}>
                 {network}
               </option>

@@ -89,7 +89,7 @@ export const SocialIcon = React.forwardRef(function SocialIcon(props, ref) {
       ? social_icons.get(fallback)
       : fallback || defaultSVG) || social_icons.get(default_key)
 
-  const { icon, mask, color } =
+  const { color, path } =
     networkKey === default_key
       ? fallbackIcon
       : social_icons.get(networkKey) || {}
@@ -112,10 +112,6 @@ export const SocialIcon = React.forwardRef(function SocialIcon(props, ref) {
         viewBox="0 0 64 64"
         style={social_svg}
       >
-        <g className="social-svg-background" style={social_svg_g}>
-          <circle cx="32" cy="32" r="31" />
-        </g>
-
         <g
           className="social-svg-icon"
           style={{
@@ -123,7 +119,7 @@ export const SocialIcon = React.forwardRef(function SocialIcon(props, ref) {
             fill: fgColor || 'white',
           }}
         >
-          <path d={icon} />
+          <path d={`M0,0H64V64H0Z${path}`} />
         </g>
 
         <g
@@ -133,7 +129,7 @@ export const SocialIcon = React.forwardRef(function SocialIcon(props, ref) {
             fill: bgColor || color,
           }}
         >
-          <path d={mask} />
+          <path d={path} />
         </g>
       </svg>
     </div>,

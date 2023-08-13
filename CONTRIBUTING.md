@@ -3,8 +3,8 @@
 We have several goals with this library:
 
 - Useful
-- High Quality
 - Flexible
+- Easy to contribute
 - Avoids breaking API changes
 - Supports tree shaking
 - Full test coverage
@@ -58,15 +58,14 @@ pnpm test
 ## Adding New Icons
 
 All icons are stored in the `db/` folder. Each file contains the icon definition
-as a JSON object with three keys, `color`, `icon`, and `mask`.
+as a JSON object with two keys, `color`, and `path`.
 
 For example, the file `db/facebook.json`:
 
 ```json
 {
   color: "#3b5998",
-  icon: "M34.1,47V33.3h4.6l0.7-5.3h-5.3v-3.4c0-1.5,0.4-2.6,2.6-2.6l2.8,0v-4.8c-0.5-0.1-2.2-0.2-4.1-0.2 c-4.1,0-6.9,2.5-6.9,7V28H24v5.3h4.6V47H34.1z",
-  mask: "M0,0v64h64V0H0z M39.6,22l-2.8,0c-2.2,0-2.6,1.1-2.6,2.6V28h5.3l-0.7,5.3h-4.6V47h-5.5V33.3H24V28h4.6V24 c0-4.6,2.8-7,6.9-7c2,0,3.6,0.1,4.1,0.2V22z"
+  path: "M39.6,22l-2.8,0c-2.2,0-2.6,1.1-2.6,2.6V28h5.3l-0.7,5.3h-4.6V47h-5.5V33.3H24V28h4.6V24 c0-4.6,2.8-7,6.9-7c2,0,3.6,0.1,4.1,0.2V22z"
 }
 ```
 
@@ -80,25 +79,22 @@ To add a new icon, you first need to find a copy of that icon as an svg file,
 and a hex code for the social network's main color.  Check the network's own
 style guidelines or website for the official icon and color.
 
-The 'icon' and 'mask' properties for each network in `db/` should contain the
-vector information for the svg.  The 'icon' is the foreground, whose path
-describes the shape of the icon itself. This will be transparent by default.
-The 'mask' is the background area, whose path describes the area between the
-surrounding circle and the icon shape. By default this will take the color you
-provide in the 'color' property.  The 'color' property will set the background
-color for the icon. This should be the main color associated with the social
-network.
-
-An easy way to generate the path for the 'mask' is to begin with
-'M0,0v64h64V0H0z', which defines the circular border, and follow this with the
-exact same path that you used for the 'icon'.
+The 'path' property for each network in `db/` should contain the vector
+information for the svg as [path
+commands](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/d#path_commands).
+The 'path' is the foreground, whose path describes the shape of the icon
+itself. This will be transparent by default. It will be used to make a mask for
+the background area, whose path describes the area between the surrounding
+circle and the icon shape. By default this will take the color you provide in
+the 'color' property.  The 'color' property will set the background color for
+the icon. This should be the main color associated with the social network.
 
 Depending on the svg file that you start with, you may need to edit attributes
 in the svg file such as width, height, and viewbox (see
 https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial) in order to put the
 icon in the centre of the circular border. You can then use a tool such as
 https://www.iloveimg.com/resize-image to rewrite the svg path so you have a
-simple path to use here in the 'icon' and 'mask', without needing those extra
+simple path to use here in the 'path' property, without needing those extra
 attributes.
 
 ### Using Inkscape
@@ -122,12 +118,10 @@ make the final svg look neater:
    perform the Exclusion operation.
 6. Select `File > Save a Copy` in the menu. Open the saved svg file in a text
    editor, find the `path` element, and copy the `d` attribute's value.
-7. In the `react-social-icons` repository, open the `src/_networks-db.js` file
-   and add a new entry in the object whose key has the same name as the social
-   network's domain name. Set the property `icon` to `"M 0,0 H 64 V 64 H 0 Z"`
-   plus the copied value from Step 6. Set the property `mask` to the copied
-   value from Step 6. Set the property `color` to the social network's brand
-   color.
+7. In the `react-social-icons` repository, add a `.json` file to the `db/`
+   directory and set the filename to the  same name as the social network's
+   domain name. Set the property `path` to the copied value from Step 6. Set
+   the property `color` to the social network's brand color.
 8. Commit your changes and preview the new icon by running `npm start` and
    visiting `http://localhost:1234` in your web browser. Once you're happy with
    the result, create a PR against master at
