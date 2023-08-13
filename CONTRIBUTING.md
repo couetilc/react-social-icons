@@ -106,10 +106,6 @@ attributes.
 These steps should work for most logos. Feel free to tweak any of the steps to
 make the final svg look neater:
 
-NOTE: there is a fatal flaw in these steps. When the property `icon` is set to
-the circle shape, it breaks the transparency of the icon mask. These steps need
-to be updated.
-
 1. Open the SVG in Inkscape's editor and select `File > Document Properties` in
    the menu bar.  Change the page's width and height to 64px.
 2. Select the icon and click `Object > Transform` in the menu bar. Choose the
@@ -128,9 +124,10 @@ to be updated.
    editor, find the `path` element, and copy the `d` attribute's value.
 7. In the `react-social-icons` repository, open the `src/_networks-db.js` file
    and add a new entry in the object whose key has the same name as the social
-   network's domain name. Set the property `icon` to `"M 0,0 H 64 V 64 H 0 Z"`.
-   Set the property `mask` to the copied value from Step 6. Set the property
-   `color` to the social network's brand color.
+   network's domain name. Set the property `icon` to `"M 0,0 H 64 V 64 H 0 Z"`
+   plus the copied value from Step 6. Set the property `mask` to the copied
+   value from Step 6. Set the property `color` to the social network's brand
+   color.
 8. Commit your changes and preview the new icon by running `npm start` and
    visiting `http://localhost:1234` in your web browser. Once you're happy with
    the result, create a PR against master at
