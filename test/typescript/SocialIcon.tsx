@@ -1,5 +1,10 @@
 import * as React from 'react'
-import { SocialIcon, keyFor } from '../../src/react-social-icons.js'
+import {
+  SocialIcon,
+  getNetworks,
+  networkFor,
+  register,
+} from '../../src/react-social-icons.js'
 
 const SocialIconTest = () => (
   <>
@@ -49,11 +54,21 @@ const SocialIconTest = () => (
   </>
 )
 
-keyFor()
-keyFor('https://twitter.com')
+getNetworks()
 // @ts-expect-error
-keyFor(1234)
+getNetworks('foo')
+
+networkFor()
+networkFor('https://twitter.com')
 // @ts-expect-error
-keyFor(null)
+networkFor(1234)
+// @ts-expect-error
+networkFor(null)
+
+register('mynetwork', { color: 'blue', path: 'M0,0' })
+// @ts-expect-error
+register()
+// @ts-expect-error
+register('mynetwork')
 
 export default SocialIconTest

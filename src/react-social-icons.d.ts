@@ -22,8 +22,16 @@ interface SocialIconProps
   as?: string
 }
 
-declare function keyFor(url?: string): string
+declare function networkFor(url?: string): string
 
-declare function getKeys(): string[]
+declare function getNetworks(): string[]
 
 declare const SocialIcon: React.FunctionComponent<SocialIconProps>
+
+declare function register(network: string, icon: SocialIconObject): void
+
+declare const social_icons: Map<string, SocialIconObject>
+
+declare const network_names: Set<string>
+
+declare const uri_regex: RegExp
