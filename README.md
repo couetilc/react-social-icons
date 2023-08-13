@@ -42,9 +42,10 @@ This library supports [TypeScript](https://www.typescriptlang.org/) since v5.2.0
 
 Reduce the size of bundled code from this library by importing the `SocialIcon`
 component directly and only importing the icons you need. Bundled code using
-only one icon will be 20 times smaller, or about 5% of the full library's size.
-The size of the bundled library will scale linearly with each icon you import.
-Many bundlers will tree shake the unused icons from the final code-split bundle.
+only one icon will be 20 times smaller, or about 5% of the full library's size
+(from 26.3kb for all icons to as small as 1.5kb for one icon). The size of the
+bundled library will scale linearly with each icon you import. Many bundlers
+will tree shake the unused icons from the final code-split bundle.
 
 ```js
 import { SocialIcon } from 'react-social-icons/component'
@@ -302,7 +303,3 @@ Follow the instructions in [CONTRIBUTING.md](CONTRIBUTING.md).
   and see it automatically deployed to NPM immediately afterwards. But they should
   only be able to do it with their PRs, nothing else. So maybe minimal positions
   for contributors that only grant them position to merge approved PRs.
-
-- at the end of all this, once I've deployed v6.0 to NPM, check the badges
-  for the minzipped size calculation. Right now for v5.15.0 it's 33.3kb.
-  I hope it shrinks a lot.
