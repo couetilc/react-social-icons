@@ -10,8 +10,8 @@ const SocialIconTest = () => (
       fgColor="#ffffff"
       label="social icon"
       network="example"
-      fallback={{ icon: '', mask: '', color: '' }}
-      defaultSVG={{ icon: '', mask: '', color: '' }}
+      fallback={{ path: '', color: '' }}
+      defaultSVG={{ path: '', color: '' }}
       style={{ height: '100px', width: '100px' }}
       target="blank"
       rel="noreferrer"
@@ -31,9 +31,9 @@ const SocialIconTest = () => (
       // @ts-expect-error
       network={null}
       // @ts-expect-error
-      fallback={{ icon: '' }}
+      fallback={{ path: '' }}
       // @ts-expect-error
-      defaultSVG={{ icon: '' }}
+      defaultSVG={{ path: '' }}
       // @ts-expect-error
       style={null}
       // @ts-expect-error

@@ -1,9 +1,8 @@
 import * as React from 'react'
 
 interface SocialIconObject {
-  icon: string
-  mask: string
   color: string
+  path: string
 }
 
 interface SocialIconProps
