@@ -38,14 +38,6 @@ task:fmt() {
   pnpm prettier -u -w "${PRETTIER_PATTERN[@]}"
 }
 
-task:rewrite() {
-  for file in db/* 
-  do
-    jq '.path = .mask | del(.icon, .mask)' "$file" > "$file.new"
-    mv "$file.new" "$file"
-  done
-}
-
 task:update-node() {
   brew upgrade nodenv node-build
   latest="$(node-build --definitions | sort -urn | head -n 1)"
