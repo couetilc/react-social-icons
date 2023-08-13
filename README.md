@@ -293,6 +293,7 @@ Follow the instructions in [CONTRIBUTING.md](CONTRIBUTING.md).
     - start testing my auto example page workflow for when I publish new releases.
       (workflow_dispatch this one?)
     - auto-update README image of all icons on every push/publish to master. ( i think publish better)
+    - tell styxlab the api for getKeys changed https://github.com/jaketrent/react-social-icons/issues/92
 
 - is it possible with GitHub to provide a contributor temporary permissions to
   merge their PR into the repo and to deploy a new version only of their
