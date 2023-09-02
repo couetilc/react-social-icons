@@ -276,33 +276,3 @@ unused code from this package when you are bundling your code.
 ### How do I add a new icon?
 
 Follow the instructions in [CONTRIBUTING.md](CONTRIBUTING.md).
-
-# TODO
-
-* I think the big next things are to:
-    - test update readme image with latest icons on release
-    - test updating gh-ages branches branch with build on release. I will have to delete all the code there except for static/ folder
-    - squash merge code-splitting branch into main
-    - publish a beta release v6.0.0-beta1
-    - update the changelog to prep for v6
-    - post on the issues where their updates reflect what is in v6 to please
-      try out the beta (this will be code splitting issue, and some of the PRs)
-    - try out the beta on dad's website.
-    - once confirm is working on dad's website, publish v6.0.0
-    - reset the `gh-pages` branch to `main`, then remove all files except for
-      `static/`, and then manually run a build targeting the root of the repo
-      and commit all files so the page updates.
-    - start testing my auto example page workflow for when I publish new releases.
-      (workflow_dispatch this one?)
-    - auto-update README image of all icons on every push/publish to master. ( i think publish better)
-    - tell styxlab the api for getKeys changed https://github.com/jaketrent/react-social-icons/issues/92
-
-- is it possible with GitHub to provide a contributor temporary permissions to
-  merge their PR into the repo and to deploy a new version only of their
-  approved PR? Or possible to grant them permission to merge after I've approved,
-  then main branch CI will publish automatically, maybe after I give confirmation
-  via email notification or something. To minimize any work to publish and also
-  give people a sense of ownership by allowing to merge an approved PR themselves
-  and see it automatically deployed to NPM immediately afterwards. But they should
-  only be able to do it with their PRs, nothing else. So maybe minimal positions
-  for contributors that only grant them position to merge approved PRs.
