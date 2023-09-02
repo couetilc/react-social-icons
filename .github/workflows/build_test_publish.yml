@@ -99,12 +99,8 @@ jobs:
 
       - name: Publish
         run: |
-          set -x
           pnpm install
-          git status
-          git diff
-          git diff --cached
-          pnpm publish --publish-branch "$GITHUB_REF"
+          pnpm publish --no-git-checks
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
