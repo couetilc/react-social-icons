@@ -100,6 +100,8 @@ jobs:
       - name: Publish
         run: |
           pnpm install
+          ls -al
+          git status
           pnpm publish --publish-branch "$GITHUB_REF"
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
