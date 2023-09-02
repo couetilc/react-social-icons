@@ -6,38 +6,62 @@ on:
       - '*'
   push:
     branches:
-      - '*'
+      - main
   release:
     types: [published]
 
 jobs:
   test:
     runs-on: ubuntu-latest
+    if: github.ref != 'refs/heads/gh-pages'
     name: Test React v${{ matrix.react-version }}
     strategy:
       matrix:
-        react-version: [ 15, 16, 17, 18 ]
+        react-version: [ 16, 17, 18 ]
     steps:
 
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Setup Node
-        uses: guardian/actions-setup-node@main
+        uses: actions/setup-node@v3
         with:
+          node-version-file: .node-version
           registry-url: 'https://registry.npmjs.org'
 
-      - name: Install Dependencies
-        uses: bahmutov/npm-install@v1
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          run_install: false
+
+      - name: Get pnpm store directory
+        shell: bash
+        run: |
+          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
+
+      - uses: actions/cache@v3
+        name: Setup pnpm cache
+        with:
+          path: ${{ env.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Install compatible testing library for older react versions
+        if: ${{ matrix.react-version }} < 18
+        run: pnpm add -D @testing-library/react@12
 
       - name: Install React v${{ matrix.react-version }}
-        run: npm i react@${{ matrix.react-version }} react-dom@${{ matrix.react-version }} --no-save
+        run: pnpm i react@${{ matrix.react-version }} react-dom@${{ matrix.react-version }}
 
       - name: Test build
-        run: npm run build
+        run: pnpm run build
 
       - name: Test React v${{ matrix.react-version }}
-        run: npm test
+        run: pnpm test
 
   publish:
     if: github.event_name == 'release' && github.event.action == 'published'
@@ -47,53 +71,198 @@ jobs:
     steps:
 
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Setup Node
-        uses: guardian/actions-setup-node@main
+        uses: actions/setup-node@v3
         with:
+          node-version-file: .node-version
           registry-url: 'https://registry.npmjs.org'
 
-      - name: Install Dependencies
-        uses: bahmutov/npm-install@v1
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          run_install: false
 
-      - name: Prepublish
-        run: npm run prepublish
+      - name: Get pnpm store directory
+        shell: bash
+        run: |
+          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
+
+      - uses: actions/cache@v3
+        name: Setup pnpm cache
+        with:
+          path: ${{ env.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
 
       - name: Publish
-        run: npm publish
+        run: |
+          pnpm install
+          pnpm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
-  example-page:
+  docs:
     needs: publish
     runs-on: ubuntu-latest
     name: Update Example Page
     steps:
 
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
-          ref: 'origin/gh-pages'
+          ref: 'code-splitting' # TODO change to main
 
       - name: Setup Node
-        uses: guardian/actions-setup-node@main
+        uses: actions/setup-node@v3
         with:
+          node-version-file: .node-version
           registry-url: 'https://registry.npmjs.org'
 
-      - name: Install Dependencies
-        uses: bahmutov/npm-install@v1
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          run_install: false
+
+      - name: Get pnpm store directory
+        shell: bash
+        run: |
+          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
+
+      - uses: actions/cache@v3
+        name: Setup pnpm cache
+        with:
+          path: ${{ env.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
 
       - name: Save Release Version
         id: release
-        run: echo ::set-output name=version::$(npm view react-social-icons version)
+        run: echo "version=$(pnpm view react-social-icons version)" >> $GITHUB_OUTPUT
 
-      - name: Update, Build & Commit Example Site
+      - name: Update Example Site
         run: |
-          git pull --no-edit origin v${{steps.release.outputs.version}}
-          parcel build examples/index.html --public-url /react-social-icons/
-          rm app.*
-          cp dist/* .
+          github_pages_branch=gh-pages
+          set -x
+          pnpm install
+          rm -rf dist
+          ./cli build:www
+          mkdir dist
+          mv -v www/dist/* dist/
+          git fetch origin
+          git checkout "$github_pages_branch"
+          rm -rf assets
+          mv -v dist/* .
+          rmdir dist
+          git status
           git add .
-          git commit -m "v${{steps.release.outputs.version}}"
-          git push origin gh-pages
+          git status
+          git \
+            -c user.name="examplesite[bot]" \
+            -c user.email="examplesite[bot]@users.noreply.github.com" \
+            commit \
+            -m "v${{steps.release.outputs.version}}" \
+            --no-verify
+          git push origin "$github_pages_branch"
+          set +x
+
+      # - name: Update readme
+      #   run: |
+      #     set -x
+      #     ls -al
+      #     ls -al ..
+      #     ls -al ~
+      #     git checkout code-splitting # TODO change to 'main'
+      #     version="v${{steps.release.outputs.version}}"
+
+      #     pnpm install
+      #     echo "
+      #       import React from 'react'
+      #       import ReactDOM from 'react-dom/client'
+      #       import { SocialIcon, getNetworks } from '../src/react-social-icons'
+
+      #       ReactDOM
+      #         .createRoot(document.getElementById('page'))
+      #         .render(() => (
+      #           <div id=\"icons-shot\">
+      #             {getNetworks().map(network => {
+      #               <SocialIcon network={network} key={network} />
+      #             })}
+      #           </div>
+      #         ))
+      #     " > www/app.jsx
+      #     pnpm vite build -c www/vite.config.js --outDir dist/ www/
+      #     pnpm vite preview \
+      #       --host 0.0.0.0 \
+      #       --port 4173 \
+      #       --strictPort \
+      #       --open false \
+      #       -c www/vite.config.js \
+      #       www/ \
+      #       &
+      #     pid=$!
+
+      #     git checkout -- .
+      #     git fetch origin
+      #     # git checkout v6/gh-pages # TODO change to gh-pages
+      #     # git checkout code-splitting package.json # TODO change to main
+      #     # git checkout code-splitting pnpm-lock.yaml # TODO change to main
+      #     # git checkout code-splitting www # TODO change to main
+      #     # git checkout code-splitting vite.config.js # TODO change to main
+      #     # git checkout code-splitting rollup-plugin-social-icons.js # TODO change to main
+
+      #     filename="static/$version/icons.png"
+      #     pnpx playwright install
+      #     pnpx playwright screenshot \
+      #       --full-page \
+      #       "http://localhost:4173" \
+      #       "./icons.png"
+
+      #     kill $pid
+
+      #     ls -al
+
+      #     git checkout v6/gh-pages
+
+      #     ls -al
+      #     mkdir -p "$(dirname "${filename}")"
+      #     mv "./icons.png" "./$filename"
+
+      #     git add static
+      #     git \
+      #       -c user.name="readme[bot]" \
+      #       -c user.email="readme[bot]@users.noreply.github.com" \
+      #       commit \
+      #       -m "$version icons picture" \
+      #       --no-verify
+      #     git push origin v6/gh-pages # TODO change to gh-pages
+
+      #     git checkout code-splitting # TODO change to main
+      #     git checkout -b "v${{steps.release.outputs.version}}/icons"
+
+      #     ls -al
+
+      #     networks=$(ls db | sed 's/.json/, /' | tr '\n' ' ')
+
+      #     sed -E "s/!\[the social networks.*?)/!\[the social networks configured in this library are $networks](\/jaketrent\/react-social-icons\/blob\/gh-pages\/$filename#$GIT_SHA)" README.md
+
+      #     git add .
+      #     git \
+      #       -c user.name="readme[bot]" \
+      #       -c user.email="readme[bot]@users.noreply.github.com" \
+      #       commit \
+      #       -m "$version icons picture" \
+      #       --no-verify
+      #     git push origin "$version/icons"
+
+      #     for_testing="v6/gh-pages" # TODO will be main
+
+      #     gh pr create \
+      #       --title "v6 readme icons" \
+      #       --body "![networks are $networks](/jaketrent/react-social-icons/blob/gh-pages/$filename)" \
+      #       --base "$for_testing" \
+      #       --head "$version/icons"
+      #     set +x

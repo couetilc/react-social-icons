@@ -1,11 +1,6 @@
-dist
-src
-test
-scripts
-examples
-karma.conf.js
-webpack.config.js
-.babelrc
-.eslintrc
-.gitignore
-build.tar.gz
+*
+
+!package.json
+!README.md
+!LICENSE.md
+!dist/

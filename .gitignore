@@ -2,8 +2,13 @@ node_modules
 npm-debug.log
 __build__
 dist
+dist.tar.gz
 build
 build.tar.gz
 lib
 .cache
 notes.md
+/test-results/
+/playwright-report/
+/playwright/.cache/
+.pnpm-debug.log

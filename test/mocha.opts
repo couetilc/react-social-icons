@@ -1,3 +1,0 @@
---require should
---require @babel/register
---require test/setup.js

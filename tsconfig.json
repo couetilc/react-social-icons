@@ -1,0 +1,13 @@
+{
+    "compilerOptions": {
+        "noEmit": true,
+        "strict": true,
+        "lib": ["ES6", "DOM"],
+        "jsx": "react-jsx",
+        "skipLibCheck": true
+    },
+    "exclude": [
+        "node_modules",
+        "dist"
+    ]
+}
