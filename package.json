@@ -94,6 +94,7 @@
     "Vitaly Aminev <v@makeomatic.ru>",
     "Jake Trent <hi@jaketrent.com>"
   ],
+  "homepage": "https://react-social-icons.com",
   "repository": {
     "type": "git",
     "url": "https://github.com/couetilc/react-social-icons"
