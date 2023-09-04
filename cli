@@ -24,10 +24,10 @@ dev() {
 }
 
 info:bundlesize() {
- build
- tar -c dist | gzip > dist.tar.gz
- du -h dist dist.tar.gz
- rm dist.tar.gz
+  build
+  tar -c dist | gzip > dist.tar.gz
+  du -h dist dist.tar.gz
+  rm dist.tar.gz
 }
 
 info:visual() {

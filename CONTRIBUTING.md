@@ -216,3 +216,8 @@ Run test:
 
 Describe your feature or bugfix, include a test or screenshot where applicable,
 and make sure all tests running in CI pass.
+
+## Infrastructure
+
+`react-social-icons.com` is registered with Google Domains. The site is powered
+by Cloudflare (DNS + Pages).

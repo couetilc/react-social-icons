@@ -126,7 +126,8 @@
     "rollup-plugin-copy": "^3.5.0",
     "typescript": "^5.2.2",
     "vite": "^4.4.9",
-    "vitest": "^0.34.3"
+    "vitest": "^0.34.3",
+    "wrangler": "^3.6.0"
   },
   "dependencies": {
     "@babel/runtime": "^7.22.11",
