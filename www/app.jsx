@@ -6,7 +6,7 @@ function Page() {
   return (
     <>
       <h1>
-        <a href="https://github.com/jaketrent/react-social-icons">react-social-icons</a>
+        <a href="https://github.com/couetilc/react-social-icons">react-social-icons</a>
       </h1>
       <p>
         A set of beautiful svg social icons.  Easily used in React.  No images or
@@ -28,10 +28,10 @@ function Page() {
       </p>
       <div className="one-line-example">
         <div className="icon" id="url-example">
-          <SocialIcon url="https://linkedin.com/in/jaketrent" />
+          <SocialIcon url="https://linkedin.com/in/couetilc" />
         </div>
         <code className="code">
-          <pre>{`<SocialIcon url="https://linkedin.com/in/jaketrent" />`}</pre>
+          <pre>{`<SocialIcon url="https://linkedin.com/in/couetilc" />`}</pre>
         </code>
       </div>
 
@@ -44,10 +44,10 @@ function Page() {
       </p>
       <div className="one-line-example">
         <div className="icon" id="network-example">
-          <SocialIcon network="tumblr" url="https://jaketrent.com" />
+          <SocialIcon network="tumblr" url="https://couetilc.com" />
         </div>
         <code className="code">
-          <pre>{`<SocialIcon url="https://jaketrent.com" network="tumblr" />`}</pre>
+        <pre>{`<SocialIcon url="https://react-social-icons.com" network="tumblr" />`}</pre>
         </code>
       </div>
 
@@ -122,17 +122,15 @@ function Page() {
       <h2>Feedback</h2>
       <p>
         If you're interested in adding additional networks or helping make the
-        library better, <a href="https://github.com/jaketrent/react-social-icons">
+        library better, <a href="https://github.com/couetilc/react-social-icons">
         fork it on github</a> and let the code fly!
       </p>
 
       <footer className="footer">
         <p>
-          <a href="https://github.com/jaketrent/react-social-icons/blob/main/LICENSE.md">
+          <a href="https://github.com/couetilc/react-social-icons/blob/main/LICENSE.md">
             MIT Licensed
           </a>
-          &nbsp;- from&nbsp;
-          <a href="https://jaketrent.com">Jake Trent</a>
         </p>
       </footer>
     </>

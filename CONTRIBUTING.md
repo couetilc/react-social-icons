@@ -125,7 +125,7 @@ make the final svg look neater:
 8. Commit your changes and preview the new icon by running `npm start` and
    visiting `http://localhost:1234` in your web browser. Once you're happy with
    the result, create a PR against master at
-   https://github.com/jaketrent/react-social-icons, where it will be reviewed
+   https://github.com/couetilc/react-social-icons, where it will be reviewed
    and merged. Thank you for contributing!
 
 ## Writing and Running Tests

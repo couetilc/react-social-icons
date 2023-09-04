@@ -1,6 +1,6 @@
 # Changelog
 
-[The Releases page](https://github.com/jaketrent/react-social-icons/releases)
+[The Releases page](https://github.com/couetilc/react-social-icons/releases)
 will have the most up-to-date changelog for `react-social-icons`.
 
 ## v6

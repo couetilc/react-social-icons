@@ -1,15 +1,15 @@
 # react-social-icons
 
-![build status](https://img.shields.io/github/actions/workflow/status/jaketrent/react-social-icons/build_test_publish.yml?branch=master)
+![build status](https://img.shields.io/github/actions/workflow/status/couetilc/react-social-icons/build_test_publish.yml?branch=master)
 ![package version](https://img.shields.io/npm/v/react-social-icons)
 ![package size](https://img.shields.io/bundlephobia/minzip/react-social-icons)
 ![weekly downloads](https://img.shields.io/npm/dw/react-social-icons)
 ![type definitions](https://img.shields.io/npm/types/react-social-icons)
 
 A set of beautiful svg social icons. Easily used in React. No images or
-external css dependencies. [Example](https://jaketrent.github.io/react-social-icons/)
+external css dependencies. [Example](https://react-social-icons.com)
 
-![the social networks configured in this library are](/jaketrent/react-social-icons/blob/gh-pages/$filename)
+![the social networks configured in this library are](/couetilc/react-social-icons/blob/gh-pages/$filename)
 
 ## Install
 
@@ -28,17 +28,17 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { SocialIcon } from 'react-social-icons'
 
-const Component = <SocialIcon url="https://twitter.com/jaketrent" />
+const Component = <SocialIcon url="https://twitter.com" />
 // React v16
 ReactDOM.render(Component, document.body)
 // React v17+
 ReactDOM.createRoot(document.body).render(Component)
 ```
 
-See more [usage options on the example site](https://jaketrent.github.io/react-social-icons/).
+See more [usage options on the example site](https://react-social-icons.com).
 
 This library supports [TypeScript](https://www.typescriptlang.org/) since v5.2.0.
-([type declarations](https://github.com/jaketrent/react-social-icons/blob/main/src/react-social-icons.d.ts))
+([type declarations](https://github.com/couetilc/react-social-icons/blob/main/src/react-social-icons.d.ts))
 
 ### Code Splitting and Tree Shaking
 
