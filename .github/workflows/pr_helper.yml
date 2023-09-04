@@ -39,108 +39,108 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
-      - name: Take Screenshot
-        id: screenshot
-        run: |
-          sha="$GITHUB_SHA"
+#       - name: Take Screenshot
+#         id: screenshot
+#         run: |
+#           sha="$GITHUB_SHA"
 
-          networks=$(
-            git diff --name-only "$GITHUB_BASE_REF" \
-            | grep db/ \
-            | sed -E 's/db\/(.*)[.]json/\1/'
-          )
+#           networks=$(
+#             git diff --name-only "$GITHUB_BASE_REF" \
+#             | grep db/ \
+#             | sed -E 's/db\/(.*)[.]json/\1/'
+#           )
 
-          ./cli build:visual --outDir "/tmp/visual/$sha/dist"
+#           ./cli build:visual --outDir "/tmp/visual/$sha/dist"
 
-          pnpm vite preview \
-            --host 0.0.0.0 \
-            --port 4173 \
-            --strictPort \
-            --open false \
-            -c test/visual/vite.config.js \
-            "/tmp/visual/$sha" \
-            &
-          pid=$!
+#           pnpm vite preview \
+#             --host 0.0.0.0 \
+#             --port 4173 \
+#             --strictPort \
+#             --open false \
+#             -c test/visual/vite.config.js \
+#             "/tmp/visual/$sha" \
+#             &
+#           pid=$!
 
-          git fetch origin
-          git checkout gh-pages
+#           git fetch origin
+#           git checkout gh-pages
 
-          scale=2
+#           scale=2
 
-          link_networks=""
-          link_index="https://jaketrent.github.io/react-social-icons/static/$sha/index.png"
+#           link_networks=""
+#           link_index="https://jaketrent.github.io/react-social-icons/static/$sha/index.png"
 
-          pnpx playwright install
+#           pnpx playwright install
 
-          for network in $networks
-          do
-            pnpx playwright screenshot \
-              --viewport-size="$((850 * $scale)), $((400 * $scale))" \
-              "http://localhost:4173?network=$network&knobs=false&scale=$scale" \
-              "./static/$sha/$network.png"
-            link_networks="$link_networks,https://jaketrent.github.io/react-social-icons/static/$sha/$network.png"
-          done
+#           for network in $networks
+#           do
+#             pnpx playwright screenshot \
+#               --viewport-size="$((850 * $scale)), $((400 * $scale))" \
+#               "http://localhost:4173?network=$network&knobs=false&scale=$scale" \
+#               "./static/$sha/$network.png"
+#             link_networks="$link_networks,https://jaketrent.github.io/react-social-icons/static/$sha/$network.png"
+#           done
 
-          pnpx playwright screenshot \
-          --full-page \
-            "http://localhost:4173?knobs=false&scale=$scale" \
-            "./static/$sha/index.png"
+#           pnpx playwright screenshot \
+#           --full-page \
+#             "http://localhost:4173?knobs=false&scale=$scale" \
+#             "./static/$sha/index.png"
 
-          kill $pid
+#           kill $pid
 
-          git add static/
-          git \
-            -c user.name="screenshots[bot]" \
-            -c user.email="screenshots[bot]@users.noreply.github.com" \
-            commit \
-            -m "screenshots (automated)" \
-            --no-verify
-          git push origin gh-pages
+#           git add static/
+#           git \
+#             -c user.name="screenshots[bot]" \
+#             -c user.email="screenshots[bot]@users.noreply.github.com" \
+#             commit \
+#             -m "screenshots (automated)" \
+#             --no-verify
+#           git push origin gh-pages
 
-          git checkout -
+#           git checkout -
 
-          echo "link_networks=$link_networks" >> $GITHUB_OUTPUT
-          echo "link_index=$link_index" >> $GITHUB_OUTPUT
+#           echo "link_networks=$link_networks" >> $GITHUB_OUTPUT
+#           echo "link_index=$link_index" >> $GITHUB_OUTPUT
 
-      - name: Comment on PR with screenshots
-        uses: actions/github-script@v6
-        with:
-          script: |
-            const link_networks = '${{ steps.screenshot.outputs.link_networks }}'.split(',');
-            const link_index = '${{ steps.screenshot.outputs.link_index }}'
+#       - name: Comment on PR with screenshots
+#         uses: actions/github-script@v6
+#         with:
+#           script: |
+#             const link_networks = '${{ steps.screenshot.outputs.link_networks }}'.split(',');
+#             const link_index = '${{ steps.screenshot.outputs.link_index }}'
 
-            github.rest.pulls.createReview({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              pull_number: context.payload.number,
-              event: 'COMMENT',
-              body: `
-                # Screenshots
-                ${link_networks
-                  .filter(link => link.length > 0)
-                  .sort((a, b) => a.localeCompare(b))
-                  .map(link => {
-                    const filename = link.replace(/^.*\//u, '')
-                    const network = filename.replace('.png', '')
-                    return `
-                      <details>
-                        <summary>
-                          ${network}
-                        </summary>
-                        <img
-                          src="${link}"
-                          alt="screenshot of an updated social network"
-                        />
-                      </details>
-                    `;
-                  })
-                }
-                <details>
-                  <summary>All Networks</summary>
-                  <img
-                    src="${link_index}"
-                    alt="screenshot of all networks"
-                  />
-                </details>
-              `.replace(/^\s+/gm, '').trim()
-            })
+#             github.rest.pulls.createReview({
+#               owner: context.repo.owner,
+#               repo: context.repo.repo,
+#               pull_number: context.payload.number,
+#               event: 'COMMENT',
+#               body: `
+#                 # Screenshots
+#                 ${link_networks
+#                   .filter(link => link.length > 0)
+#                   .sort((a, b) => a.localeCompare(b))
+#                   .map(link => {
+#                     const filename = link.replace(/^.*\//u, '')
+#                     const network = filename.replace('.png', '')
+#                     return `
+#                       <details>
+#                         <summary>
+#                           ${network}
+#                         </summary>
+#                         <img
+#                           src="${link}"
+#                           alt="screenshot of an updated social network"
+#                         />
+#                       </details>
+#                     `;
+#                   })
+#                 }
+#                 <details>
+#                   <summary>All Networks</summary>
+#                   <img
+#                     src="${link_index}"
+#                     alt="screenshot of all networks"
+#                   />
+#                 </details>
+#               `.replace(/^\s+/gm, '').trim()
+#             })
