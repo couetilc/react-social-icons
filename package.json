@@ -10,6 +10,7 @@
     "dist"
   ],
   "exports": {
+    ".": "./dist/react-social-icons.js",
     "types": "./dist/react-social-icons.d.ts",
     "component": "./dist/component.js",
     "bandsintown": "./dist/icons/bandsintown.js",
