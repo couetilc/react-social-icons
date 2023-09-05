@@ -60,12 +60,11 @@ export async function config() {
           closeBundle: async () => {
             const exports = {}
             for (const network of networks) {
-              exports[network] = `./dist/icons/${network}.js`
+              exports[`./${network}`] = `./dist/icons/${network}.js`
             }
             packagejson.exports = {
               '.': './dist/react-social-icons.js',
-              types: './dist/react-social-icons.d.ts',
-              component: './dist/component.js',
+              './component': './dist/component.js',
               ...exports,
             }
             await fs.promises.writeFile(
