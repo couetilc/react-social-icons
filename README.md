@@ -276,3 +276,50 @@ unused code from this package when you are bundling your code.
 ### How do I add a new icon?
 
 Follow the instructions in [CONTRIBUTING.md](CONTRIBUTING.md).
+
+### How do I change the color on hover?
+
+There are a couple approaches to changing the color of the icon on hover. These
+can be modified to fit your particular use case by examining what attributes
+are on the underlying HTML element.
+
+#### `currentColor` and `className`
+
+In a stylesheet, apply two fills to the social icon. One by default, and one
+on hover.
+
+```css
+/* file: app.css */
+.custom-class .social-svg-icon {
+    fill: green;
+}
+.custom-class:hover .social-svg-icon {
+    fill: red;
+}
+```
+
+In your component, set the `fgColor` prop to `currentColor` to inherit colors
+from the stylesheet rather than the inline style rule from the component.
+
+```js
+// file: app.js
+<SocialIcon className="custom-class" fgColor="currentColor" />
+```
+
+#### `!important` override
+
+You can override the fill color by using the [!important CSS declaration](https://developer.mozilla.org/en-US/docs/Web/CSS/important)
+
+```css
+/* file: app.css */
+.social-svg-icon {
+    fill: green !important;
+}
+```
+
+And simply use the icon like normal.
+
+```js
+// file: app.js
+<SocialIcon />
+```
