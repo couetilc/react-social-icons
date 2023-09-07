@@ -9,7 +9,7 @@
 A set of beautiful svg social icons. Easily used in React. No images or
 external css dependencies. [Example](https://react-social-icons.com)
 
-![icons for all social networks configured in this library](https://i.imgur.com/U1gTVJS.png)
+![icons for all social networks configured in this library](https://static.react-social-icons.com/readme-images/index.png)
 
 ## Install
 
