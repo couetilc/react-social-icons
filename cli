@@ -10,6 +10,7 @@ build:pkg() {
   pnpm rollup -c rollup.config.js "$@"
 }
 
+# shellcheck disable=SC2120
 build:visual() {
   build:pkg
   pnpm vite build -c test/visual/vite.config.js "$@" test/visual
