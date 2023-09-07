@@ -21,7 +21,7 @@ devDependencies:
     version: 7.22.15
   '@babel/plugin-transform-runtime':
     specifier: ^7.22.10
-    version: 7.22.10(@babel/core@7.22.15)
+    version: 7.22.15(@babel/core@7.22.15)
   '@babel/preset-env':
     specifier: ^7.22.14
     version: 7.22.14(@babel/core@7.22.15)
@@ -1126,14 +1126,14 @@ packages:
       '@babel/helper-plugin-utils': 7.22.5
     dev: true
 
-  /@babel/plugin-transform-runtime@7.22.10(@babel/core@7.22.15):
-    resolution: {integrity: sha512-RchI7HePu1eu0CYNKHHHQdfenZcM4nz8rew5B1VWqeRKdcwW5aQ5HeG9eTUbWiAS1UrmHVLmoxTWHt3iLD/NhA==}
+  /@babel/plugin-transform-runtime@7.22.15(@babel/core@7.22.15):
+    resolution: {integrity: sha512-tEVLhk8NRZSmwQ0DJtxxhTrCht1HVo8VaMzYT4w6lwyKBuHsgoioAUA7/6eT2fRfc5/23fuGdlwIxXhRVgWr4g==}
     engines: {node: '>=6.9.0'}
     peerDependencies:
       '@babel/core': ^7.0.0-0
     dependencies:
       '@babel/core': 7.22.15
-      '@babel/helper-module-imports': 7.22.5
+      '@babel/helper-module-imports': 7.22.15
       '@babel/helper-plugin-utils': 7.22.5
       babel-plugin-polyfill-corejs2: 0.4.5(@babel/core@7.22.15)
       babel-plugin-polyfill-corejs3: 0.8.3(@babel/core@7.22.15)
