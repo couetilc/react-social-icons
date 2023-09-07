@@ -323,3 +323,13 @@ And simply use the icon like normal.
 // file: app.js
 <SocialIcon />
 ```
+
+### How do I render the mastodon icon?
+
+Mastodon is a federated social network, each instance may have a different
+domain name associated with it. Specify the network attribute as "mastodon" to
+render the Mastodon icon.
+
+```js
+<SocialIcon network="mastodon" url="https://techhub.social/" />
+```
