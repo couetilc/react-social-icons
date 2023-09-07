@@ -108,6 +108,9 @@ jobs:
         run: |
           pnpm install
           ./cli build:www
-          pnpm wrangler pages deploy --project-name react-social-icons www/dist
+          pnpm wrangler pages deploy \
+            --env production \
+            --project-name react-social-icons \
+            www/dist
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
