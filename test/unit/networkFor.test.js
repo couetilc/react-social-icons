@@ -1,5 +1,9 @@
 import { describe, it } from 'vitest'
-import { networkFor, getNetworks } from '../../src/react-social-icons.js'
+import {
+  networkFor,
+  getNetworks,
+  register,
+} from '../../src/react-social-icons.js'
 
 describe('networkFor', () => {
   it('falsy values return default social network', ({ expect }) => {
@@ -53,5 +57,12 @@ describe('networkFor', () => {
     getNetworks().forEach((network) => {
       expect(networkFor(`www.${network}.com`)).toEqual(network)
     })
+  })
+
+  it('a dot in a network name should not be treated as a match for any character', ({
+    expect,
+  }) => {
+    register('f.oo', { color: 'green', path: 'M0,0H64V64H0Z' })
+    expect(networkFor('www.floo.com')).toEqual('sharethis')
   })
 })

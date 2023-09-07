@@ -34,7 +34,7 @@ const makeUriRegex = (socials = []) =>
   new RegExp(
     '(?:https?:\\/\\/(?:[a-z0-9-])?)?($SOCIALS)[.]'.replace(
       '$SOCIALS',
-      socials.join('|'),
+      socials.join('|').replace(/\./gu, '\\.'),
     ),
     'u',
   )
