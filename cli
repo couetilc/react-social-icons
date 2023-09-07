@@ -77,6 +77,18 @@ test:lint() {
   pnpm eslint .eslintrc.cjs . db/*
 }
 
+test:pkg-exports() {
+  networks=$(find db/* | sed -E 's/db\/(.*)[.]json/\1/')
+  exports=$(jq .exports < package.json)
+  for network in $networks
+  do
+    if ! echo "$exports" | grep -q "$network"; then
+      echo "icon is missing from package.json#exports: $network"
+      exit 1
+    fi
+  done
+}
+
 test:publint() {
   build --silent
   pnpm publint .
@@ -126,6 +138,7 @@ test:dep() {
 test:() {
   set -e
 
+  test:pkg-exports
   test:lint;
   test:publint;
   test:fmt;

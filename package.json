@@ -41,6 +41,7 @@
     "./medium": "./dist/icons/medium.js",
     "./meetup": "./dist/icons/meetup.js",
     "./opensea": "./dist/icons/opensea.js",
+    "./patreon": "./dist/icons/patreon.js",
     "./pinterest": "./dist/icons/pinterest.js",
     "./pixiv": "./dist/icons/pixiv.js",
     "./ravelry": "./dist/icons/ravelry.js",
