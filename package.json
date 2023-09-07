@@ -16,6 +16,7 @@
     "./behance": "./dist/icons/behance.js",
     "./clubhouse": "./dist/icons/clubhouse.js",
     "./codepen": "./dist/icons/codepen.js",
+    "./developer.mozilla": "./dist/icons/developer.mozilla.js",
     "./discord": "./dist/icons/discord.js",
     "./dribbble": "./dist/icons/dribbble.js",
     "./dropbox": "./dist/icons/dropbox.js",
