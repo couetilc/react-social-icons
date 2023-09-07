@@ -43,6 +43,15 @@ export const social_icons = new Map()
 export const network_names = new Set()
 export let uri_regex = makeUriRegex()
 
+export function getNetworks() {
+  return [...network_names]
+}
+
+// note: deprecate in v7
+export function getKeys() {
+  return getNetworks()
+}
+
 export function register(social, icon) {
   social_icons.set(social, icon)
   network_names.add(social)
