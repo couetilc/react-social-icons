@@ -23,9 +23,21 @@ describe('networkFor', () => {
     expect(getNetworks().length).toBeGreaterThan(0)
   })
 
-  it("'network'.com URIs return 'network' social network", ({ expect }) => {
+  it("http URIs return 'network' social network", ({ expect }) => {
     getNetworks().forEach((network) => {
       expect(networkFor(`http://${network}.com`)).toEqual(network)
+    })
+  })
+
+  it("https URIs return 'network' social network", ({ expect }) => {
+    getNetworks().forEach((network) => {
+      expect(networkFor(`https://${network}.com`)).toEqual(network)
+    })
+  })
+
+  it("URIs without protocol return 'network' social network", ({ expect }) => {
+    getNetworks().forEach((network) => {
+      expect(networkFor(`${network}.com`)).toEqual(network)
     })
   })
 
@@ -64,5 +76,21 @@ describe('networkFor', () => {
   }) => {
     register('f.oo', { color: 'green', path: 'M0,0H64V64H0Z' })
     expect(networkFor('www.floo.com')).toEqual('sharethis')
+  })
+
+  it('network names are treated strictly as domain names', ({ expect }) => {
+    register('x', { color: 'black', path: 'M0,0H64V64H0Z' })
+    expect(networkFor('http://x.com')).toEqual('x')
+    expect(networkFor('http://xx.com')).not.toEqual('x')
+    expect(networkFor('http://xx.com')).toEqual('sharethis')
+  })
+
+  it('network names are treated strictly as domain names including sub-domains', ({
+    expect,
+  }) => {
+    register('sub.y', { color: 'black', path: 'M0,0H64V64H0Z' })
+    expect(networkFor('http://sub.y.com')).toEqual('sub.y')
+    expect(networkFor('http://asub.y.com')).not.toEqual('sub.y')
+    expect(networkFor('http://asub.y.com')).toEqual('sharethis')
   })
 })
