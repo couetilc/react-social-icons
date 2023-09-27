@@ -41,6 +41,15 @@ describe('networkFor', () => {
     })
   })
 
+  it("URIs with any TLD return 'network' social network", ({ expect }) => {
+    const tlds = ['com', 'org', 'co.uk', 'fr']
+    tlds.forEach((tld) => {
+      getNetworks().forEach((network) => {
+        expect(networkFor(`${network}.${tld}`)).toEqual(network)
+      })
+    })
+  })
+
   it("'network'.com/foo/bar URIs return 'network' social network", ({
     expect,
   }) => {
