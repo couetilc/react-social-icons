@@ -71,6 +71,7 @@
     "./wechat": "./dist/icons/wechat.js",
     "./whatsapp": "./dist/icons/whatsapp.js",
     "./x": "./dist/icons/x.js",
+    "./xing": "./dist/icons/xing.js",
     "./yelp": "./dist/icons/yelp.js",
     "./youtube": "./dist/icons/youtube.js"
   },
