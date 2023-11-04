@@ -53,6 +53,11 @@ export async function config() {
               src: 'src/react-social-icons.d.ts',
               dest: 'dist/',
             },
+            {
+              src: 'src/react-social-icons.d.ts',
+              dest: 'dist/',
+              rename: 'component.d.ts',
+            },
           ],
         }),
         {
