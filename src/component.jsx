@@ -113,7 +113,7 @@ export const SocialIcon = React.forwardRef(function SocialIcon(props, ref) {
       'aria-label': ariaLabel,
       ref,
     },
-    <div className="social-container" style={social_container}>
+    <span className="social-container" style={social_container}>
       <svg
         role="img"
         aria-label={`${ariaLabel} social icon`}
@@ -141,7 +141,7 @@ export const SocialIcon = React.forwardRef(function SocialIcon(props, ref) {
           <path d={path} />
         </g>
       </svg>
-    </div>,
+    </span>,
     children,
   )
 })
