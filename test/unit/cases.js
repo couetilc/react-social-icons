@@ -313,4 +313,10 @@ export const cases = ({ SocialIcon, getKeys }) =>
         )
       })
     }
+
+    // from https://github.com/couetilc/react-social-icons/pull/236
+    it('renders the svg within an inline element', ({ expect }) => {
+      render(<SocialIcon url={pinterest_url} />)
+      expect(link().querySelector('div')).toBeNull()
+    })
   })
