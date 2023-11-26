@@ -318,5 +318,5 @@ export const cases = ({ SocialIcon, getKeys }) =>
     it('renders the svg within an inline element', ({ expect }) => {
       render(<SocialIcon url={pinterest_url} />)
       expect(link().querySelector('div')).toBeNull()
-    });
+    })
   })
