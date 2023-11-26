@@ -333,3 +333,31 @@ render the Mastodon icon.
 ```js
 <SocialIcon network="mastodon" url="https://techhub.social/" />
 ```
+
+### Tree-shaking with Typescript causes a build error where the type declarations cannot be found
+
+When importing `react-social-icons/component` in a Typescript project, if your
+`tsconfig.json` is misconfigured you may run into the error message `TS2307:
+Cannot find module 'react-social-icons/component' or its corresponding type
+declarations`.
+
+To fix the issue, set `"moduleResolution"` in your `tsconfig.json` to
+`"bundler"`.
+
+The error occurs when the [`"moduleResolution"`
+property](https://www.typescriptlang.org/docs/handbook/modules/theory.html#module-resolution)
+in your Typescript configuration is set to some variant of `classic`, or
+`node`. Tree-shaking is a strategy of Node.js builds targeting a browser
+environment. They take advantage of a bundler feature provided by tools like
+[`webpack`](https://webpack.js.org/guides/tree-shaking/) or
+[`rollup`](https://rollupjs.org/introduction/#tree-shaking). If you are using
+`react-social-icons` in a project targeting a non-browser environment, you
+should use the `.cjs` build of this package, which will be resolved
+automatically if you import from `react-social-icons` in your project.
+
+```js
+// in server projects ("moduleResolution": "node" or "classic")
+import { SocialIcon } from 'react-social-icons'
+// in browser projects ("moduleResolution": "bundler")
+import { SocialIcon } from 'react-social-icons/component'
+```
