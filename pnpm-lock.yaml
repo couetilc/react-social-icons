@@ -21,7 +21,7 @@ devDependencies:
     version: 7.23.3
   '@babel/plugin-transform-runtime':
     specifier: ^7.22.10
-    version: 7.23.2(@babel/core@7.23.3)
+    version: 7.23.6(@babel/core@7.23.3)
   '@babel/preset-env':
     specifier: ^7.22.14
     version: 7.23.6(@babel/core@7.23.3)
@@ -1210,8 +1210,8 @@ packages:
       '@babel/helper-plugin-utils': 7.22.5
     dev: true
 
-  /@babel/plugin-transform-runtime@7.23.2(@babel/core@7.23.3):
-    resolution: {integrity: sha512-XOntj6icgzMS58jPVtQpiuF6ZFWxQiJavISGx5KGjRj+3gqZr8+N6Kx+N9BApWzgS+DOjIZfXXj0ZesenOWDyA==}
+  /@babel/plugin-transform-runtime@7.23.6(@babel/core@7.23.3):
+    resolution: {integrity: sha512-kF1Zg62aPseQ11orDhFRw+aPG/eynNQtI+TyY+m33qJa2cJ5EEvza2P2BNTIA9E5MyqFABHEyY6CPHwgdy9aNg==}
     engines: {node: '>=6.9.0'}
     peerDependencies:
       '@babel/core': ^7.0.0-0
