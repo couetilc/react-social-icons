@@ -64,14 +64,17 @@ export async function config() {
           name: 'update-package-json-exports',
           closeBundle: async () => {
             const exports = {}
+            const sideEffects = ['./dist/react-social-icons.js']
             for (const network of networks) {
               exports[`./${network}`] = `./dist/icons/${network}.js`
+              sideEffects.push(`./dist/icons/${network}.js`)
             }
             packagejson.exports = {
               '.': './dist/react-social-icons.js',
               './component': './dist/component.js',
               ...exports,
             }
+            packagejson.sideEffects = sideEffects
             await fs.promises.writeFile(
               './package.json',
               JSON.stringify(packagejson, null, 2),
