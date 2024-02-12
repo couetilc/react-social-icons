@@ -59,6 +59,7 @@
     "./stackoverflow": "./dist/icons/stackoverflow.js",
     "./t.me": "./dist/icons/t.me.js",
     "./telegram": "./dist/icons/telegram.js",
+    "./threads": "./dist/icons/threads.js",
     "./tiktok": "./dist/icons/tiktok.js",
     "./tumblr": "./dist/icons/tumblr.js",
     "./twitch": "./dist/icons/twitch.js",
