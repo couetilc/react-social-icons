@@ -32,7 +32,7 @@ const social_svg_g = {
 
 const makeUriRegex = (socials = []) =>
   new RegExp(
-    '(?:[/.]|^)($SOCIALS)[.]'.replace(
+    '(?:[/.]|^)($SOCIALS)([.]|$|/)'.replace(
       '$SOCIALS',
       socials.join('|').replace(/\./gu, '\\.'),
     ),

@@ -102,4 +102,13 @@ describe('networkFor', () => {
     expect(networkFor('http://asub.y.com')).not.toEqual('sub.y')
     expect(networkFor('http://asub.y.com')).toEqual('sharethis')
   })
+
+  it('networks that are the domain resource name will render', ({ expect }) => {
+    getNetworks().forEach((network) => {
+      expect(networkFor(`https://${network}`)).toEqual(network)
+    })
+    getNetworks().forEach((network) => {
+      expect(networkFor(`https://${network}/somepath`)).toEqual(network)
+    })
+  })
 })
