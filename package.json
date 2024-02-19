@@ -1,6 +1,6 @@
 {
   "name": "react-social-icons",
-  "version": "6.13.0",
+  "version": "6.14.0",
   "description": "beautiful, easy svg social icons in react",
   "main": "./dist/react-social-icons.cjs",
   "module": "./dist/react-social-icons.js",
