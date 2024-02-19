@@ -14,6 +14,7 @@
     "./component": "./dist/component.js",
     "./bandsintown": "./dist/icons/bandsintown.js",
     "./behance": "./dist/icons/behance.js",
+    "./bsky.app": "./dist/icons/bsky.app.js",
     "./clubhouse": "./dist/icons/clubhouse.js",
     "./codepen": "./dist/icons/codepen.js",
     "./developer.mozilla": "./dist/icons/developer.mozilla.js",
