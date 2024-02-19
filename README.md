@@ -44,10 +44,10 @@ This library supports [TypeScript](https://www.typescriptlang.org/) since v5.2.0
 
 Reduce the size of bundled code from this library by importing the `SocialIcon`
 component directly and only importing the icons you need. Bundled code using
-only one icon will be 20 times smaller, or about 5% of the full library's size
-(from 26.3kb for all icons to as small as 1.5kb for one icon). The size of the
-bundled library will scale linearly with each icon you import. Many bundlers
-will tree shake the unused icons from the final code-split bundle.
+only one icon will be many times smaller. Most icons are only a few hundred
+bytes in size without compression, which shrinks them another ~30%. The size of
+the bundled library will scale linearly with each icon you import. Many
+bundlers will tree shake the unused icons from the final code-split bundle.
 
 ```js
 import { SocialIcon } from 'react-social-icons/component'
