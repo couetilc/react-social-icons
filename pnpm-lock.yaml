@@ -24,7 +24,7 @@ devDependencies:
     version: 7.24.0(@babel/core@7.24.0)
   '@babel/preset-env':
     specifier: ^7.23.8
-    version: 7.23.9(@babel/core@7.24.0)
+    version: 7.24.0(@babel/core@7.24.0)
   '@babel/preset-react':
     specifier: ^7.23.3
     version: 7.23.3(@babel/core@7.24.0)
@@ -944,8 +944,8 @@ packages:
       '@babel/plugin-syntax-numeric-separator': 7.10.4(@babel/core@7.24.0)
     dev: true
 
-  /@babel/plugin-transform-object-rest-spread@7.23.4(@babel/core@7.24.0):
-    resolution: {integrity: sha512-9x9K1YyeQVw0iOXJlIzwm8ltobIIv7j2iLyP2jIhEbqPRQ7ScNgwQufU2I0Gq11VjyG4gI4yMXt2VFags+1N3g==}
+  /@babel/plugin-transform-object-rest-spread@7.24.0(@babel/core@7.24.0):
+    resolution: {integrity: sha512-y/yKMm7buHpFFXfxVFS4Vk1ToRJDilIa6fKRioB9Vjichv58TDGXTvqV0dN7plobAmTW5eSEGXDngE+Mm+uO+w==}
     engines: {node: '>=6.9.0'}
     peerDependencies:
       '@babel/core': ^7.0.0-0
@@ -1233,8 +1233,8 @@ packages:
       '@babel/helper-plugin-utils': 7.24.0
     dev: true
 
-  /@babel/preset-env@7.23.9(@babel/core@7.24.0):
-    resolution: {integrity: sha512-3kBGTNBBk9DQiPoXYS0g0BYlwTQYUTifqgKTjxUwEUkduRT2QOa0FPGBJ+NROQhGyYO5BuTJwGvBnqKDykac6A==}
+  /@babel/preset-env@7.24.0(@babel/core@7.24.0):
+    resolution: {integrity: sha512-ZxPEzV9IgvGn73iK0E6VB9/95Nd7aMFpbE0l8KQFDG70cOV9IxRP7Y2FUPmlK0v6ImlLqYX50iuZ3ZTVhOF2lA==}
     engines: {node: '>=6.9.0'}
     peerDependencies:
       '@babel/core': ^7.0.0-0
@@ -1242,7 +1242,7 @@ packages:
       '@babel/compat-data': 7.23.5
       '@babel/core': 7.24.0
       '@babel/helper-compilation-targets': 7.23.6
-      '@babel/helper-plugin-utils': 7.22.5
+      '@babel/helper-plugin-utils': 7.24.0
       '@babel/helper-validator-option': 7.23.5
       '@babel/plugin-bugfix-safari-id-destructuring-collision-in-function-expression': 7.23.3(@babel/core@7.24.0)
       '@babel/plugin-bugfix-v8-spread-parameters-in-optional-chaining': 7.23.3(@babel/core@7.24.0)
@@ -1295,7 +1295,7 @@ packages:
       '@babel/plugin-transform-new-target': 7.23.3(@babel/core@7.24.0)
       '@babel/plugin-transform-nullish-coalescing-operator': 7.23.4(@babel/core@7.24.0)
       '@babel/plugin-transform-numeric-separator': 7.23.4(@babel/core@7.24.0)
-      '@babel/plugin-transform-object-rest-spread': 7.23.4(@babel/core@7.24.0)
+      '@babel/plugin-transform-object-rest-spread': 7.24.0(@babel/core@7.24.0)
       '@babel/plugin-transform-object-super': 7.23.3(@babel/core@7.24.0)
       '@babel/plugin-transform-optional-catch-binding': 7.23.4(@babel/core@7.24.0)
       '@babel/plugin-transform-optional-chaining': 7.23.4(@babel/core@7.24.0)
