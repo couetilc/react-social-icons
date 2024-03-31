@@ -324,15 +324,20 @@ And simply use the icon like normal.
 <SocialIcon />
 ```
 
-### How do I render the mastodon icon?
+### How do I render icons for federated or decentralized social networks?
 
-Mastodon is a federated social network, each instance may have a different
-domain name associated with it. Specify the network attribute as "mastodon" to
-render the Mastodon icon.
+Specify the network prop of the social network icon you want to render. For example:
 
 ```js
 <SocialIcon network="mastodon" url="https://techhub.social/" />
+// or
+<SocialIcon network="misskey" url="https://misskey-hub.net" />
 ```
+
+Federated/decentralized social networks can have instances or user accounts
+hosted on different domains. This can cause the library to not detect the
+proper network on a naive inspection of the `url` prop. Refer to [the
+documentation on props](#props).
 
 ### Tree-shaking with Typescript causes a build error where the type declarations cannot be found
 
