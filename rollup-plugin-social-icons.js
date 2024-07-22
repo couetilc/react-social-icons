@@ -1,5 +1,6 @@
 /* eslint-env node */
 import fs from 'fs'
+import { optimize } from 'svgo'
 
 const VIRTUAL_PKG = 'social-icons'
 const IMPORT_PREFIX = `\0${VIRTUAL_PKG}`
@@ -20,7 +21,9 @@ export default function rollupPluginSocialIcons() {
             .readFile(new URL(`./db/${filename}`, import.meta.url))
             .then((icon) => {
               const network = filename.replace('.json', '')
-              db.set(network, JSON.parse(icon.toString()))
+              const json = JSON.parse(icon.toString())
+              json.path = optimizePath(json.path);
+              db.set(network, json)
             }),
         ),
       )
@@ -57,4 +60,19 @@ export default function rollupPluginSocialIcons() {
       `
     },
   }
+}
+
+function optimizePath(path) {
+    return optimize(
+        `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><path d="${path}"/></svg>`,
+        {
+            multipass: true,
+        }
+      )
+      .data
+      .replace(
+        '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><path d="',
+        '',
+      )
+      .replace('"/></svg>', '')
 }
