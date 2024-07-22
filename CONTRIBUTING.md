@@ -128,18 +128,6 @@ make the final svg look neater:
    https://github.com/couetilc/react-social-icons, where it will be reviewed
    and merged. Thank you for contributing!
 
-### Optimizing the SVG
-
-Use [`svgo`](https://github.com/svg/svgo) to optimize the size of the icon you
-are introducing. We include a useful script that will do this for you.
-
-```sh
-node optimize.mjs
-```
-
-Be sure to perform a visual check of your icon after optimizing to avoid any
-visual regressions (e.g. use `./cli info:visual`).
-
 ## Writing and Running Tests
 
 Any feature or bugfix _must_ have an accompanying test.
@@ -223,6 +211,12 @@ Run test:
 ```sh
 ./cli test:dep
 ```
+
+### SVG Optimizations
+
+[`svgo`](https://github.com/svg/svgo) is used in the rollup pipeline to
+optimize the size of the icon you are introducing. Check the final look of your
+icon to avoid any visual regressions.
 
 ## Making a PR
 
