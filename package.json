@@ -123,11 +123,11 @@
     "@types/react": "^18.2.48",
     "@typescript-eslint/parser": "^7.1.0",
     "@vitejs/plugin-react": "^4.2.1",
-    "eslint": "^8.56.0",
+    "eslint": "^9.7.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-import-resolver-typescript": "^3.6.1",
     "eslint-plugin-import": "^2.29.1",
-    "eslint-plugin-json": "^3.1.0",
+    "eslint-plugin-json": "^4.0.0",
     "eslint-plugin-react": "^7.33.2",
     "global-jsdom": "^24.0.0",
     "jsdom": "^24.0.0",
@@ -138,7 +138,7 @@
     "svgo": "^3.2.0",
     "typescript": "^5.3.3",
     "vite": "^5.0.11",
-    "vitest": "^1.2.0",
+    "vitest": "^2.0.4",
     "wrangler": "^3.22.4"
   },
   "dependencies": {
