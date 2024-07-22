@@ -12,6 +12,7 @@
   "exports": {
     ".": "./dist/react-social-icons.js",
     "./component": "./dist/component.js",
+    "./auth0": "./dist/icons/auth0.js",
     "./bandsintown": "./dist/icons/bandsintown.js",
     "./behance": "./dist/icons/behance.js",
     "./bsky.app": "./dist/icons/bsky.app.js",
@@ -78,6 +79,7 @@
     "./x": "./dist/icons/x.js",
     "./xiaohongshu": "./dist/icons/xiaohongshu.js",
     "./xing": "./dist/icons/xing.js",
+    "./yandex": "./dist/icons/yandex.js",
     "./yelp": "./dist/icons/yelp.js",
     "./youtube": "./dist/icons/youtube.js"
   },
