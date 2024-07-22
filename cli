@@ -50,7 +50,7 @@ task:fmt() {
 
 task:update-node() {
   brew upgrade nodenv node-build
-  latest="$(node-build --definitions | sort -urn | head -n 1)"
+  latest="$(node-build --definitions | sort -rn | head -n 1)"
   echo "$latest" > .node-version
   nodenv install --skip-existing "$(cat .node-version)"
   corepack enable
