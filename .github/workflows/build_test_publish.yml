@@ -109,7 +109,6 @@ jobs:
           pnpm install
           ./cli build:www
           pnpm wrangler pages deploy \
-            --env production \
             --project-name react-social-icons \
             www/dist
         env:

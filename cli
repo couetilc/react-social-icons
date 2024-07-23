@@ -72,6 +72,73 @@ task:setup-dev() {
   pnpm install
 }
 
+task:update-readme-image() {
+
+    echo "...checking playwright install..."
+
+    pnpm playwright install
+
+    echo "...building website..."
+
+    pnpm vite build -l silent -c www/vite.config.js www/
+
+    echo "...running server..."
+
+    pnpm vite preview \
+      --host 0.0.0.0 \
+      --port 4173 \
+      --strictPort \
+      -c vite.config.js \
+      -l silent \
+      "www" &
+
+    echo "...taking screenshot..."
+
+    node --experimental-detect-module -e "
+    import { chromium } from 'playwright';
+    import { scheduler } from 'node:timers/promises';
+    const load = async page => {
+      for (let i = 0; i < 10; i++) {
+        try {
+          await page.goto('http://localhost:4173');
+          break;
+        }
+        catch(error) {
+          await scheduler.wait(500);
+        }
+      }
+    }
+    (async () => {
+      const browser = await chromium.launch();
+      const page = await browser.newPage({
+        vewport: { width: 1440, height: 800 },
+        deviceScaleFactor: 2
+      });
+      await load(page);
+      await page.locator('#lib').screenshot({ path: 'readme-image.png' });
+      await page.close();
+      await browser.close();
+    })()
+    "
+
+    echo "...killing server..."
+
+    ps | grep 'vite.*preview.*port.4173' | grep -v 'grep' | awk '{ print $1 }' | xargs kill
+
+    echo "...uploading image..."
+
+    pnpm wrangler r2 object put \
+      --file readme-image.png \
+      --content-type "image/png" \
+      react-social-icons/readme-image.png
+
+    echo '...cleaning up image...'
+
+    rm readme-image.png
+
+    echo "---Finished---"
+}
+
 test:lint() {
   build --silent
   pnpm eslint .eslintrc.cjs . db/*

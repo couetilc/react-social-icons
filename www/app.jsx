@@ -16,7 +16,9 @@ function Page() {
       <h2>Library</h2>
       <p>Here are the available icons.</p>
       <div id="lib">
-        {getKeys().map(k => <SocialIcon network={k} title={k} key={k} />)}
+        {getKeys().sort((a, b) => a.localeCompare(b)).map(k =>
+          <SocialIcon network={k} title={k} key={k} />
+        )}
       </div>
 
       <h2>Usage</h2>
