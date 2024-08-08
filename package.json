@@ -61,6 +61,7 @@
     "./spotify": "./dist/icons/spotify.js",
     "./squarespace": "./dist/icons/squarespace.js",
     "./stackoverflow": "./dist/icons/stackoverflow.js",
+    "./substack": "./dist/icons/substack.js",
     "./t.me": "./dist/icons/t.me.js",
     "./telegram": "./dist/icons/telegram.js",
     "./threads": "./dist/icons/threads.js",
