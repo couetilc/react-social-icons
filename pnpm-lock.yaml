@@ -7,7 +7,7 @@ settings:
 dependencies:
   '@babel/runtime':
     specifier: ^7.24.8
-    version: 7.24.8
+    version: 7.25.4
   react:
     specifier: ^18.3.1
     version: 18.3.1
@@ -1427,8 +1427,8 @@ packages:
     resolution: {integrity: sha512-x/rqGMdzj+fWZvCOYForTghzbtqPDZ5gPwaoNGHdgDfF2QA/XZbCBp4Moo5scrkAMPhB7z26XM/AaHuIJdgauA==}
     dev: true
 
-  /@babel/runtime@7.24.8:
-    resolution: {integrity: sha512-5F7SDGs1T72ZczbRwbGO9lQi0NLjQxzl6i4lJxLxfW9U5UluCSyEJeniWvnhl3/euNiqQVbo8zruhsDfid0esA==}
+  /@babel/runtime@7.25.4:
+    resolution: {integrity: sha512-DSgLeL/FNcpXuzav5wfYvHCGvynXkJbn3Zvc3823AEe9nPwW9IK4UoCSS5yGymmQzN0pCPvivtgS6/8U2kkm1w==}
     engines: {node: '>=6.9.0'}
     dependencies:
       regenerator-runtime: 0.14.1
@@ -2260,7 +2260,7 @@ packages:
     engines: {node: '>=18'}
     dependencies:
       '@babel/code-frame': 7.24.7
-      '@babel/runtime': 7.24.8
+      '@babel/runtime': 7.25.4
       '@types/aria-query': 5.0.4
       aria-query: 5.3.0
       chalk: 4.1.2
@@ -2291,7 +2291,7 @@ packages:
         optional: true
     dependencies:
       '@adobe/css-tools': 4.4.0
-      '@babel/runtime': 7.24.8
+      '@babel/runtime': 7.25.4
       aria-query: 5.3.0
       chalk: 3.0.0
       css.escape: 1.5.1
@@ -2316,7 +2316,7 @@ packages:
       '@types/react-dom':
         optional: true
     dependencies:
-      '@babel/runtime': 7.24.8
+      '@babel/runtime': 7.25.4
       '@testing-library/dom': 10.4.0
       '@types/react': 18.3.3
       react: 18.3.1
@@ -5013,7 +5013,7 @@ packages:
   /regenerator-transform@0.15.2:
     resolution: {integrity: sha512-hfMp2BoF0qOk3uc5V20ALGDS2ddjQaLrdl7xrGXvAIow7qeWRM2VA2HuCHkUKk9slq3VwEwLNK3DFBqDfPGYtg==}
     dependencies:
-      '@babel/runtime': 7.24.8
+      '@babel/runtime': 7.25.4
     dev: true
 
   /regexp.prototype.flags@1.5.2:
