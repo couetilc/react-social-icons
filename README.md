@@ -192,9 +192,8 @@ assert.equal(networkFor('https://www.pinterest.com'), 'pinterest')
 
 A function that accepts the domain name of a social network with an object
 definition of the icon's paths and color. It will register the social network
-icon with the `<SocialIcon>` component, which will have gained the ability to
-render the icon for your social network, and update `uri_regex` to match the
-domain name.
+icon with the `<SocialIcon>` component, which now can render the icon for your
+social network.
 
 ```js
 import { register } from 'react-social-icons';
@@ -253,12 +252,11 @@ anchor](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a).
 
 ### How do I use code-splitting?
 
-This package packages exposes the component code and icon definitions in
-separate files with a simple import interface. There are several useful tools
-that implement features like tree-shaking to reduce the size of bundled code.
-Certain browsers contain features that let you important un-bundled code
-directly. An effort has been made to keep distribution code files simple,
-separate, and small.
+This package exposes the component code and icon definitions in separate files
+with a simple import interface. There are several useful tools that implement
+features like tree-shaking to reduce the size of bundled code. Certain browsers
+contain features that let you import un-bundled code directly. An effort has
+been made to keep distribution code files simple, separate, and small.
 
 #### with ES6 browser imports
 
@@ -365,4 +363,5 @@ automatically if you import from `react-social-icons` in your project.
 import { SocialIcon } from 'react-social-icons'
 // in browser projects ("moduleResolution": "bundler")
 import { SocialIcon } from 'react-social-icons/component'
+import 'react-social-icons/sharethis'
 ```

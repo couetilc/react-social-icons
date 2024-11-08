@@ -47,7 +47,7 @@ export function getNetworks() {
   return [...network_names]
 }
 
-// note: deprecate in v7
+// deprecate: remove getKeys in v7
 export function getKeys() {
   return getNetworks()
 }
@@ -85,18 +85,16 @@ export const SocialIcon = React.forwardRef(function SocialIcon(props, ref) {
     className,
     label,
     children,
-    fallback,
-    defaultSVG,
     ...rest
   } = props
 
   const networkKey = network || networkFor(url)
   const ariaLabel = label || props['aria-label'] || networkKey
+  const fallback = props.fallback || props.defaultSVG // deprecate: remove defaultSVG in v7
 
   const fallbackIcon =
-    (typeof fallback === 'string'
-      ? social_icons.get(fallback)
-      : fallback || defaultSVG) || social_icons.get(default_key)
+    (typeof fallback === 'string' ? social_icons.get(fallback) : fallback) ||
+    social_icons.get(default_key)
 
   const { color, path } =
     networkKey === default_key
