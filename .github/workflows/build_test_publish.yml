@@ -21,47 +21,29 @@ jobs:
     steps:
 
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+        name: Install pnpm
 
       - name: Setup Node
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version-file: .node-version
           registry-url: 'https://registry.npmjs.org'
+          cache: pnpm
+          cache-dependency-path: pnpm-lock.yaml
 
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v2
-        with:
-          run_install: false
-
-      - name: Get pnpm store directory
-        shell: bash
+      - name: Run Tests
         run: |
-          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
-
-      - uses: actions/cache@v3
-        name: Setup pnpm cache
-        with:
-          path: ${{ env.STORE_PATH }}
-          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
-          restore-keys: |
-            ${{ runner.os }}-pnpm-store-
-
-      - name: Install dependencies
-        run: pnpm install
-
-      - name: Install compatible testing library for older react versions
-        if: ${{ matrix.react-version }} < 18
-        run: pnpm add -D @testing-library/react@12
-
-      - name: Install React v${{ matrix.react-version }}
-        run: pnpm i react@${{ matrix.react-version }} react-dom@${{ matrix.react-version }}
-
-      - name: Test build
-        run: pnpm run build
-
-      - name: Test React v${{ matrix.react-version }}
-        run: pnpm test
+          set -x
+          react="react@${{ matrix.react-version }} react-dom@${{ matrix.react-version }}"
+          pnpm install
+          if test ${{ matrix.react-version }} -lt 18
+          then pnpm update $react @testing-library/react@12
+          else pnpm update $react @testing-library/react
+          fi
+          pnpm test
 
   publish:
     if: github.event_name == 'release' && github.event.action == 'published'
@@ -71,31 +53,18 @@ jobs:
     steps:
 
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+        name: Install pnpm
 
       - name: Setup Node
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version-file: .node-version
           registry-url: 'https://registry.npmjs.org'
-
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v2
-        with:
-          run_install: false
-
-      - name: Get pnpm store directory
-        shell: bash
-        run: |
-          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
-
-      - uses: actions/cache@v3
-        name: Setup pnpm cache
-        with:
-          path: ${{ env.STORE_PATH }}
-          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
-          restore-keys: |
-            ${{ runner.os }}-pnpm-store-
+          cache: pnpm
+          cache-dependency-path: pnpm-lock.yaml
 
       - name: Publish
         run: |
