@@ -45,6 +45,7 @@
     "./medium": "./dist/icons/medium.js",
     "./meetup": "./dist/icons/meetup.js",
     "./misskey": "./dist/icons/misskey.js",
+    "./onlyfans": "./dist/icons/onlyfans.js",
     "./opensea": "./dist/icons/opensea.js",
     "./patreon": "./dist/icons/patreon.js",
     "./pinterest": "./dist/icons/pinterest.js",
