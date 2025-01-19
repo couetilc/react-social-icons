@@ -13,16 +13,16 @@ jobs:
     name: Screenshot
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Setup Node
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version-file: .node-version
           registry-url: 'https://registry.npmjs.org'
 
       - name: Setup pnpm
-        uses: pnpm/action-setup@v2
+        uses: pnpm/action-setup@v4
         with:
           run_install: false
 
@@ -31,7 +31,7 @@ jobs:
         run: |
           echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
 
-      - uses: actions/cache@v3
+      - uses: actions/cache@v4
         name: Setup pnpm cache
         with:
           path: ${{ env.STORE_PATH }}
@@ -111,7 +111,7 @@ jobs:
           echo "link_index=$link_index" >> $GITHUB_OUTPUT
 
       - name: Comment on PR with screenshots
-        uses: actions/github-script@v6
+        uses: actions/github-script@v7
         with:
           script: |
             const link_networks = '${{ steps.screenshot.outputs.link_networks }}'.split(',');
