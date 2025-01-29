@@ -172,13 +172,19 @@ test:codesplitting() {
 }
 
 test:visual() {
+  pnpm vite --port 5173  -c vite.config.js test/visual/ &
+  srv=$!
+
   scale=2
   network=tiktok
   out=./tmp/visual-test/shot.png
+
   pnpx playwright screenshot \
     --viewport-size="$((1250 * scale)), $((400 * scale))" \
     "http://localhost:5173/?network=$network&knobs=false&scale=$scale" \
     "$out"
+
+  kill $srv
 }
 
 test:dep() {
