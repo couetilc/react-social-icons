@@ -33,6 +33,7 @@
     "./google": "./dist/icons/google.js",
     "./google_play": "./dist/icons/google_play.js",
     "./groupme": "./dist/icons/groupme.js",
+    "./hashnode": "./dist/icons/hashnode.js",
     "./instagram": "./dist/icons/instagram.js",
     "./itch.io": "./dist/icons/itch.io.js",
     "./itunes": "./dist/icons/itunes.js",
