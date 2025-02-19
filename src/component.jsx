@@ -87,6 +87,7 @@ export const SocialIcon = React.forwardRef(function SocialIcon(props, ref) {
     children,
     fallback,
     defaultSVG,
+    isSquare = false,
     ...rest
   } = props
 
@@ -119,7 +120,7 @@ export const SocialIcon = React.forwardRef(function SocialIcon(props, ref) {
         aria-label={`${ariaLabel} social icon`}
         className="social-svg"
         viewBox="0 0 64 64"
-        style={social_svg}
+        style={{ ...social_svg, borderRadius: isSquare ? 0 : '50%' }}
       >
         <g
           className="social-svg-icon"

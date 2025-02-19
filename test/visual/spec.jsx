@@ -50,8 +50,14 @@ function VisualTest(props) {
 
       {highlighted && <HighlightCase network={highlighted} />}
 
+      <h2>Default Icons</h2>
       {networks.map((network) => (
         <Case key={network} network={network} />
+      ))}
+
+      <h2>Square Icons</h2>
+      {networks.map((network) => (
+        <SquareCase key={`square-${network}`} network={network} />
       ))}
     </div>
   )
@@ -126,6 +132,59 @@ function HighlightCase(props) {
       </div>
       <div className="xl">
         <SocialIcon network={network} style={xl} />
+      </div>
+    </section>
+  )
+}
+
+function SquareCase(props) {
+  const { network } = props
+
+  return (
+    <section className={`${network} square`}>
+      <div className="sm">
+        <SocialIcon network={network} style={sm} isSquare />
+        <SocialIcon
+          network={network}
+          style={sm}
+          isSquare
+          fgColor={social_icons.get(network).color}
+          bgColor="white"
+        />
+        <SocialIcon
+          network={network}
+          style={sm}
+          isSquare
+          fgColor="transparent"
+        />
+        <SocialIcon
+          network={network}
+          style={sm}
+          isSquare
+          bgColor="transparent"
+        />
+      </div>
+      <div className="lg">
+        <SocialIcon network={network} style={lg} isSquare />
+        <SocialIcon
+          network={network}
+          style={lg}
+          isSquare
+          fgColor={social_icons.get(network).color}
+          bgColor="white"
+        />
+        <SocialIcon
+          network={network}
+          style={lg}
+          isSquare
+          fgColor="transparent"
+        />
+        <SocialIcon
+          network={network}
+          style={lg}
+          isSquare
+          bgColor="transparent"
+        />
       </div>
     </section>
   )
