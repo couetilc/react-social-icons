@@ -320,15 +320,15 @@ export const cases = ({ SocialIcon, getKeys }) =>
       expect(link().querySelector('div')).toBeNull()
     })
 
-    it('renders circular icon by default when isSquare is not provided', ({
+    it('renders circular icon by default when square is not provided', ({
       expect,
     }) => {
       render(<SocialIcon url={pinterest_url} />)
       expect(svg()).toHaveStyle('borderRadius: 50%')
     })
 
-    it('renders square icon when isSquare prop is true', ({ expect }) => {
-      render(<SocialIcon url={pinterest_url} isSquare />)
+    it('renders square icon when square prop is true', ({ expect }) => {
+      render(<SocialIcon url={pinterest_url} square />)
       expect(svg()).toHaveStyle('borderRadius: 0')
     })
   })

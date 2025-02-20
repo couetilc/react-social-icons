@@ -21,7 +21,7 @@ const SocialIconTest = () => (
       target="blank"
       rel="noreferrer"
       as="div"
-      isSquare
+      square
     />
     <SocialIcon
       // @ts-expect-error
@@ -53,9 +53,9 @@ const SocialIconTest = () => (
       <div></div>
     </SocialIcon>
 
-    <SocialIcon url="https://example.com" isSquare={true} />
-    {/* @ts-expect-error: isSquare should be a boolean */}
-    <SocialIcon url="https://example.com" isSquare="true" />
+    <SocialIcon url="https://example.com" square={true} />
+    {/* @ts-expect-error: square should be a boolean */}
+    <SocialIcon url="https://example.com" square="true" />
   </>
 )
 

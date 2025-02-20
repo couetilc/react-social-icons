@@ -39,6 +39,14 @@ const makeUriRegex = (socials = []) =>
     'u',
   )
 
+const getSvgStyle = (square = false) => {
+  const style = { ...social_svg }
+  if (square) {
+    style.borderRadius = 0
+  }
+  return style
+}
+
 export const social_icons = new Map()
 export const network_names = new Set()
 export let uri_regex = makeUriRegex()
@@ -87,12 +95,13 @@ export const SocialIcon = React.forwardRef(function SocialIcon(props, ref) {
     children,
     fallback,
     defaultSVG,
-    isSquare = false,
+    square = false,
     ...rest
   } = props
 
   const networkKey = network || networkFor(url)
   const ariaLabel = label || props['aria-label'] || networkKey
+  const svgStyle = getSvgStyle(square)
 
   const fallbackIcon =
     (typeof fallback === 'string'
@@ -120,7 +129,7 @@ export const SocialIcon = React.forwardRef(function SocialIcon(props, ref) {
         aria-label={`${ariaLabel} social icon`}
         className="social-svg"
         viewBox="0 0 64 64"
-        style={{ ...social_svg, borderRadius: isSquare ? 0 : '50%' }}
+        style={svgStyle}
       >
         <g
           className="social-svg-icon"
