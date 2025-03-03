@@ -136,7 +136,7 @@
     "eslint-plugin-json": "^3.1.0",
     "eslint-plugin-react": "^7.37.4",
     "global-jsdom": "^26.0.0",
-    "globals": "^15.8.0",
+    "globals": "^16.0.0",
     "jsdom": "^26.0.0",
     "playwright": "^1.45.3",
     "prettier": "^3.3.3",
@@ -151,8 +151,8 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.24.8",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
   },
   "packageManager": "pnpm@8.15.3"
 }
