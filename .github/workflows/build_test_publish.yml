@@ -7,6 +7,7 @@ on:
   push:
     branches:
       - main
+      - v7-release-candidate
   release:
     types: [published]
 
