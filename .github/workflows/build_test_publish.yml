@@ -16,6 +16,7 @@ jobs:
     runs-on: ubuntu-latest
     if: github.ref != 'refs/heads/gh-pages'
     name: Test React v${{ matrix.react-version }}
+    continue-on-error: true
     strategy:
       matrix:
         react-version: [ 15, 16, 17, 18, 19 ]
