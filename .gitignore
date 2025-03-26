@@ -13,3 +13,4 @@ notes.md
 /playwright/.cache/
 .pnpm-debug.log
 vite.config.js.timestamp*
+tmp
