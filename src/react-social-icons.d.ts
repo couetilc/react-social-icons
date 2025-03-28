@@ -20,6 +20,7 @@ interface SocialIconProps
   defaultSVG?: SocialIconObject
   style?: React.CSSProperties
   as?: string
+  square?: boolean
 }
 
 declare function networkFor(url?: string): string
