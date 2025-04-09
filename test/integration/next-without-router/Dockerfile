@@ -4,10 +4,12 @@ FROM node:${NODE_VERSION}
 
 WORKDIR /app
 
-COPY ./app /app
+COPY ./app .
 
-RUN npm install
+RUN npm install && \
+ rm -rf ./node_modules/react-social-icons/*
 
-COPY --from=root package.json dist /app/node_modules/react-social-icons
+COPY package.json ./node_modules/react-social-icons/
+COPY dist ./node_modules/react-social-icons/dist/
 
 CMD ["npm", "run", "build"]

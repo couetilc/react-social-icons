@@ -9,10 +9,9 @@ run_next_integration_test() {
 	node_version=$(cat "$rootdir/.node-version" | tr -d " \t\n")
 	git_repo="couetilc/react-social-icons"
 
-	docker build \
+	docker build --no-cache --progress plain \
 		--build-arg "NODE_VERSION=$node_version" \
 		-t "$git_repo:test-integration-$targetdir" \
-		--build-context root="$rootdir" \
 		"$thisdir/$targetdir"
 
 	docker run -a STDOUT -a STDERR "$git_repo:test-integration-$targetdir"
@@ -20,13 +19,13 @@ run_next_integration_test() {
 	errno="$?"
 
 	if [ "$errno" -eq "1" ]; then
-		echo "Test Failure"
-		exit 1
+		echo "🚨 Test Failure"
+		trap 'exit 1' EXIT
 	else
-		echo "Test Success"
-		exit 0
+		echo "✅ Test Success"
 	fi
 }
 
+setup
 run_next_integration_test "next-without-router"
-# run_next_integration_test "next-with-router"
+run_next_integration_test "next-with-router"
