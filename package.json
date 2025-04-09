@@ -114,8 +114,8 @@
     "url": "git+https://github.com/couetilc/react-social-icons.git"
   },
   "peerDependencies": {
-    "react": "15.x.x || 16.x.x || 17.x.x || 18.x.x",
-    "react-dom": "15.x.x || 16.x.x || 17.x.x || 18.x.x"
+    "react": "16.x.x || 17.x.x || 18.x.x || 19.x.x",
+    "react-dom": "16.x.x || 17.x.x || 18.x.x || 19.x.x"
   },
   "devDependencies": {
     "@babel/core": "^7.24.9",
@@ -141,6 +141,8 @@
     "playwright": "^1.45.3",
     "prettier": "^3.3.3",
     "publint": "^0.3.2",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
     "rollup": "^4.19.0",
     "rollup-plugin-copy": "^3.5.0",
     "svgo": "^3.3.2",
@@ -150,9 +152,7 @@
     "wrangler": "^3.65.1"
   },
   "dependencies": {
-    "@babel/runtime": "^7.24.8",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "@babel/runtime": "^7.24.8"
   },
   "packageManager": "pnpm@8.15.3"
 }
