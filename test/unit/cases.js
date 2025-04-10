@@ -1,6 +1,6 @@
 import React from 'react'
 import { describe, it } from 'vitest'
-import { render, screen } from '@testing-library/react'
+import { render, screen, cleanup } from '@testing-library/react'
 
 import sharethis from '../../db/sharethis.json'
 import github from '../../db/github.json'
@@ -318,5 +318,28 @@ export const cases = ({ SocialIcon, getKeys }) =>
     it('renders the svg within an inline element', ({ expect }) => {
       render(<SocialIcon url={pinterest_url} />)
       expect(link().querySelector('div')).toBeNull()
+    })
+
+    it('accepts a borderRadius prop to control svg border-radius', ({
+      expect,
+    }) => {
+      render(<SocialIcon borderRadius={false} />)
+      expect(svg()).toHaveStyle(`border-radius: 50%;`)
+      cleanup()
+      render(<SocialIcon borderRadius={0} />)
+      expect(svg()).toHaveStyle(`border-radius: 50%;`)
+      cleanup()
+      render(<SocialIcon borderRadius={'25%'} />)
+      expect(svg()).toHaveStyle(`border-radius: 25%;`)
+      cleanup()
+      render(<SocialIcon borderRadius={'10px 5px / 2px'} />)
+      expect(svg()).toHaveStyle(`border-radius: 10px 5px / 2px;`)
+      cleanup()
+      render(<SocialIcon borderRadius={null} />)
+      expect(svg()).toHaveStyle(`border-radius: 50%;`)
+      cleanup()
+      render(<SocialIcon borderRadius={true} />)
+      expect(svg()).toHaveStyle(`border-radius: 50%;`)
+      cleanup()
     })
   })

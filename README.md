@@ -75,6 +75,7 @@ import 'react-social-icons/meetup'
 | href      | String | No       | Override the link while keeping the icon matching prop `url`
 | as      | String | No       | Override the root element of the component (defaults to 'a')
 | fallback | String | No | Specify the icon shown when no network matches the `url` prop
+| borderRadius | String | No | Set the border radius on the svg element (defaults to '50%')
 
 ### `url`
 
@@ -170,6 +171,15 @@ Or an icon definition:
 
 ```js
 <SocialIcon fallback={{ color, path }} /> // renders custom icon
+```
+
+### `borderRadius`
+
+Specifies the `border-radius` CSS attribute on the svg element. Must be a string. Defaults to "50%", a circle.
+
+```js
+// renders: square vimeo icon
+<SocialIcon borderRadius="0" url="http://www.vimeo.com" />
 ```
 
 ## The other exports

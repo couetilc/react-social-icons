@@ -21,7 +21,6 @@ const social_container = {
 
 const social_svg = {
   ...social_container,
-  borderRadius: '50%',
   fillRule: 'evenodd',
 }
 
@@ -87,6 +86,7 @@ export const SocialIcon = React.forwardRef(function SocialIcon(props, ref) {
     children,
     fallback,
     defaultSVG,
+    borderRadius: br = "50%",
     ...rest
   } = props
 
@@ -102,6 +102,8 @@ export const SocialIcon = React.forwardRef(function SocialIcon(props, ref) {
     networkKey === default_key
       ? fallbackIcon
       : social_icons.get(networkKey) || {}
+
+  const borderRadius = typeof br != 'string' ? "50%" : br;
 
   return React.createElement(
     as,
@@ -119,7 +121,7 @@ export const SocialIcon = React.forwardRef(function SocialIcon(props, ref) {
         aria-label={`${ariaLabel} social icon`}
         className="social-svg"
         viewBox="0 0 64 64"
-        style={social_svg}
+        style={{ ...social_svg, borderRadius }}
       >
         <g
           className="social-svg-icon"
