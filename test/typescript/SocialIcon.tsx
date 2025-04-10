@@ -21,7 +21,7 @@ const SocialIconTest = () => (
       target="blank"
       rel="noreferrer"
       as="div"
-      borderRadius={"25%"}
+      borderRadius={'25%'}
     />
     <SocialIcon
       // @ts-expect-error

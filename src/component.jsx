@@ -86,7 +86,7 @@ export const SocialIcon = React.forwardRef(function SocialIcon(props, ref) {
     children,
     fallback,
     defaultSVG,
-    borderRadius: br = "50%",
+    borderRadius: br = '50%',
     ...rest
   } = props
 
@@ -103,7 +103,7 @@ export const SocialIcon = React.forwardRef(function SocialIcon(props, ref) {
       ? fallbackIcon
       : social_icons.get(networkKey) || {}
 
-  const borderRadius = typeof br != 'string' ? "50%" : br;
+  const borderRadius = typeof br != 'string' ? '50%' : br
 
   return React.createElement(
     as,
