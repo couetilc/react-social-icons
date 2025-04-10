@@ -131,12 +131,12 @@
     "@vitejs/plugin-react": "^4.3.1",
     "eslint": "^8.57.1",
     "eslint-config-prettier": "^9.1.0",
-    "eslint-import-resolver-typescript": "^3.7.0",
+    "eslint-import-resolver-typescript": "^4.3.2",
     "eslint-plugin-import": "^2.31.0",
     "eslint-plugin-json": "^3.1.0",
     "eslint-plugin-react": "^7.37.4",
     "global-jsdom": "^26.0.0",
-    "globals": "^15.8.0",
+    "globals": "^16.0.0",
     "jsdom": "^26.0.0",
     "playwright": "^1.45.3",
     "prettier": "^3.3.3",
@@ -149,7 +149,7 @@
     "typescript": "^5.5.3",
     "vite": "^6.0.11",
     "vitest": "^3.0.4",
-    "wrangler": "^3.65.1"
+    "wrangler": "^4.9.1"
   },
   "dependencies": {
     "@babel/runtime": "^7.24.8"
