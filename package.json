@@ -145,7 +145,7 @@
     "react-dom": "^19.1.0",
     "rollup": "^4.19.0",
     "rollup-plugin-copy": "^3.5.0",
-    "svgo": "^3.3.2",
+    "svgo": "^4.0.0",
     "typescript": "^5.5.3",
     "vite": "^6.0.11",
     "vitest": "^3.0.4",
