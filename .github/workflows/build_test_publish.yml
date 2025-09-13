@@ -21,13 +21,13 @@ jobs:
     steps:
 
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - uses: pnpm/action-setup@v4
         name: Install pnpm
 
       - name: Setup Node
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v5
         with:
           node-version-file: .node-version
           registry-url: 'https://registry.npmjs.org'
@@ -53,13 +53,13 @@ jobs:
     steps:
 
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - uses: pnpm/action-setup@v4
         name: Install pnpm
 
       - name: Setup Node
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v5
         with:
           node-version-file: .node-version
           registry-url: 'https://registry.npmjs.org'
