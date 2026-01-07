@@ -38,6 +38,7 @@
     "./itch.io": "./dist/icons/itch.io.js",
     "./itunes": "./dist/icons/itunes.js",
     "./leetcode": "./dist/icons/leetcode.js",
+    "./letterboxd": "./dist/icons/letterboxd.js",
     "./line.me": "./dist/icons/line.me.js",
     "./linkedin": "./dist/icons/linkedin.js",
     "./linktree": "./dist/icons/linktree.js",
