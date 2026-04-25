@@ -30,6 +30,7 @@
     "./foursquare": "./dist/icons/foursquare.js",
     "./github": "./dist/icons/github.js",
     "./gitlab": "./dist/icons/gitlab.js",
+    "./goodreads": "./dist/icons/goodreads.js",
     "./google": "./dist/icons/google.js",
     "./google_play": "./dist/icons/google_play.js",
     "./groupme": "./dist/icons/groupme.js",
