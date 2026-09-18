@@ -25,6 +25,7 @@
     "./dropbox": "./dist/icons/dropbox.js",
     "./email": "./dist/icons/email.js",
     "./facebook": "./dist/icons/facebook.js",
+    "./farcaster": "./dist/icons/farcaster.js",
     "./fivehundredpix": "./dist/icons/fivehundredpix.js",
     "./flickr": "./dist/icons/flickr.js",
     "./foursquare": "./dist/icons/foursquare.js",
