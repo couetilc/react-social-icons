@@ -1,0 +1,44 @@
+name: Test
+
+on:
+  pull_request:
+    branches:
+      - '*'
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    name: Test React v${{ matrix.react-version }}
+    strategy:
+      matrix:
+        react-version: [16, 17, 18, 19]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+        name: Install pnpm
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: .node-version
+          cache: pnpm
+          cache-dependency-path: pnpm-lock.yaml
+
+      - name: Run Tests
+        run: |
+          set -x
+          react="react@${{ matrix.react-version }} react-dom@${{ matrix.react-version }}"
+          pnpm install
+          if test ${{ matrix.react-version }} -lt 18
+          then pnpm update $react @testing-library/react@12
+          else pnpm update $react @testing-library/react
+          fi
+          pnpm test

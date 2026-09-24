@@ -122,9 +122,9 @@ make the final svg look neater:
    directory and set the filename to the  same name as the social network's
    domain name. Set the property `path` to the copied value from Step 6. Set
    the property `color` to the social network's brand color.
-8. Commit your changes and preview the new icon by running `npm start` and
-   visiting `http://localhost:1234` in your web browser. Once you're happy with
-   the result, create a PR against master at
+8. Commit your changes and preview the new icon by running `pnpm start` and
+   visiting the URL printed by Vite (usually `http://localhost:5173`). Once
+   you're happy with the result, create a PR against main at
    https://github.com/couetilc/react-social-icons, where it will be reviewed
    and merged. Thank you for contributing!
 
@@ -204,8 +204,8 @@ Run test:
 
 ### Package Manager tests
 
-This project uses [PNPM](https://pnpm.io/) as a package manager, no others are
-permitted.
+Use [PNPM](https://pnpm.io/) to install and update this repository's
+dependencies, and keep `pnpm-lock.yaml` as the only lockfile.
 
 Run test:
 ```sh
@@ -223,7 +223,39 @@ icon to avoid any visual regressions.
 Describe your feature or bugfix, include a test or screenshot where applicable,
 and make sure all tests running in CI pass.
 
+## Publishing to npm
+
+From `main`, bump `package.json` to an unused version, commit and push, and
+wait for CI to pass. Sign in with `npm login` if needed.
+
+```sh
+npm publish
+npm view react-social-icons version
+```
+
+`npm publish` runs the tests and rebuilds the package automatically.
+GitHub releases and tags are optional.
+
+## Deploying the documentation site
+
+From `main`, use the Cloudflare account that owns the `react-social-icons`
+Pages project:
+
+```sh
+pnpm install --frozen-lockfile
+pnpm exec wrangler login # if needed
+./cli build:www
+pnpm exec wrangler pages deploy www/dist \
+  --project-name react-social-icons \
+  --branch main
+```
+
+`--branch main` deploys to production. Verify the changes at
+https://react-social-icons.com and https://www.react-social-icons.com.
+
 ## Infrastructure
 
-`react-social-icons.com` is registered with Google Domains. The site is powered
-by Cloudflare (DNS + Pages).
+`react-social-icons.com` uses Cloudflare DNS and Pages. The `PR Helper`
+workflow uploads review screenshots to Cloudflare R2 and uses the
+`CLOUDFLARE_API_TOKEN` GitHub secret. npm publishing uses the maintainer's local
+login and does not use a GitHub secret.

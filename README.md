@@ -1,6 +1,6 @@
 # react-social-icons
 
-![build status](https://img.shields.io/github/actions/workflow/status/couetilc/react-social-icons/build_test_publish.yml?branch=master)
+![test status](https://img.shields.io/github/actions/workflow/status/couetilc/react-social-icons/test.yml?branch=main)
 ![package version](https://img.shields.io/npm/v/react-social-icons)
 ![package size](https://img.shields.io/bundlephobia/minzip/react-social-icons)
 ![weekly downloads](https://img.shields.io/npm/dw/react-social-icons)

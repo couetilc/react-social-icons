@@ -96,6 +96,7 @@
     "bundlesize": "./cli info:bundlesize",
     "dev": "./cli dev",
     "lint": "pnpm test:lint && pnpm test:publint",
+    "prepublishOnly": "pnpm test",
     "prepare": "pnpm build",
     "start": "./cli dev",
     "test": "./cli test:",

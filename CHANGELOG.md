@@ -1,7 +1,9 @@
 # Changelog
 
 [The Releases page](https://github.com/couetilc/react-social-icons/releases)
-will have the most up-to-date changelog for `react-social-icons`.
+contains historical release notes. GitHub releases are optional; packages are
+published directly to npm. See the [publishing guide](CONTRIBUTING.md#publishing-to-npm)
+for the current process.
 
 ## v6
 
